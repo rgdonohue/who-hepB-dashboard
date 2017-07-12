@@ -156,13 +156,19 @@
 
     function updateCharts(data, currentYear, currentCode, chartC) {
 
-        // CHART A
+        // CHART A selections
 
-        $totalPop = $("#chartA-total-pop");
-        $births = $("#chartA-births");
-        $infantMortality = $("#chartA-infant-mortality");
+        var $totalPop = $("#chartA-total-pop"),
+            $births = $("#chartA-births"),
+            $infantMortality = $("#chartA-infant-mortality");
 
-        // CHART C
+         // CHART B selections
+
+         var $hepBIntroYear = $('#chartB-hepB-intro-year'),
+             $hepBBirthYear = $('#chartB-hepB-birth-year'),
+             $chartBSchedule = $('#chartB-schedule');
+
+        // CHART C data
 
         var chartCData1 = [],
             chartCData2 = [];
@@ -197,6 +203,18 @@
                 if($births.html() === '') {
                     $infantMortality.html('N/A');
                 }
+
+                // CHART B
+
+                $hepBIntroYear.html(Math.round(datum.HepBintroduced));
+                $hepBBirthYear.html(Math.round(datum.HepBintroducedBirth));
+
+                if(datum.schedule) {
+                    $chartBSchedule.html(datum.schedule);
+                } else {
+                    $chartBSchedule.html("N/A");
+                }
+                
 
 
                 // CHART C
