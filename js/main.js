@@ -1,11 +1,26 @@
 (function(Chart, $){
 
+    var birthYearIntervals = {
+        'births-1980-1985': [1980, 1985],
+        'births-1985-1990': [1986, 1990],
+        'births-1980-1985': [1991, 1995],
+        'births-1985-1990': [1996, 2000],
+        'births-1980-1985': [2001, 2005],
+        'births-1985-1990': [2006, 2010],
+        'births-1980-1985': [2011, 2015],
+    };
+
+    var infantMortalityIntervals = {
+        'InfMort1985-1990': [1985, 1990],
+        'InfMort1990-1995': [1991, 1995],
+        'InfMort1995-2000': [1996, 2000],
+        'InfMort2000-2005': [2001, 2005],
+        'InfMort2005-2010': [2006, 2010],
+        'InfMort2010-2015': [2011, 2015],
+    };
+
     d3.csv('data/hepB-master.csv', function(e,d){
         makeCountryDropdown(d);
-    });
-
-    $('#year-dropdown').dropdown({
-        on: "hover"
     });
 
     function makeCountryDropdown(data) {
@@ -116,25 +131,75 @@
             }
         });
 
+        var currentYear = 1990,
+            currentCode = "DZA";
 
-        updateCharts(data, "DZA", chartC);
+        updateCharts(data, 1990, currentCode, chartC);
+
+        $('#year-dropdown').dropdown({
+            on: "hover",
+            onChange: function(value, text, $selectedItem) {
+                currentYear = value;
+                updateCharts(data, currentYear, currentCode, chartC);
+            }
+        });
 
         $('#country-dropdown').dropdown({
             on: "hover",
             onChange: function(value, text, $selectedItem) {
-                updateCharts(data, value, chartC);
+                currentCode = value;
+                updateCharts(data, currentYear, currentCode, chartC);
             }
         });
 
     }
 
-    function updateCharts(data, currentCode, chartC) {
+    function updateCharts(data, currentYear, currentCode, chartC) {
+
+        // CHART A
+
+        $totalPop = $("#chartA-total-pop");
+        $births = $("#chartA-births");
+        $infantMortality = $("#chartA-infant-mortality");
+
+        // CHART C
 
         var chartCData1 = [],
             chartCData2 = [];
 
         data.forEach(function(datum) {
+
+            // acccess data for current country
             if(datum.ISO3 === currentCode) {
+
+                // CHART A
+
+                $totalPop.html(datum['pop'+currentYear]);
+
+                for(var interval in birthYearIntervals) {
+                    if(+currentYear >= birthYearIntervals[interval][0] && 
+                       +currentYear <= birthYearIntervals[interval][1]) {
+                           $births.html(datum[interval]);
+                    }
+                }
+
+                if($births.html() === '') {
+                    $births.html('N/A');
+                }
+
+                for(var interval in infantMortalityIntervals) {
+                    if(+currentYear >= infantMortalityIntervals[interval][0] && 
+                       +currentYear <= infantMortalityIntervals[interval][1]) {
+                           $infantMortality.html(datum[interval]);
+                    }
+                }
+
+                if($births.html() === '') {
+                    $infantMortality.html('N/A');
+                }
+
+
+                // CHART C
                 for(var i = 1990; i <= 2015; i++) {
                     if(datum['Cov_HepB3_' + i]) {
                         chartCData1.push(datum['Cov_HepB3_' + i]);
