@@ -1,0 +1,29 @@
+{
+  "name": "who-hepb-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rgdonohue/who-hepB-dashboard.git"
+  },
+  "author": "@rgdonohue",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rgdonohue/who-hepB-dashboard/issues"
+  },
+  "homepage": "https://github.com/rgdonohue/who-hepB-dashboard#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "dependencies": {
+    "chartjs": "^0.3.24",
+    "semantic-ui": "^2.2.11"
+  }
+}
