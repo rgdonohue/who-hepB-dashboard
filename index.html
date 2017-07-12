@@ -3,6 +3,13 @@
   <head>
     <title>WHO Hep-B Dashboard</title>
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <style>
+        #map {
+            height: 480px;
+            width: 100%;
+            background: steelblue;
+        }
+    </style>
   </head>
   <body>
     <div class="ui menu">
@@ -323,7 +330,7 @@
         </div>
     </div>  <!-- end ui two column stackable grid -->
 
-     <div class="ui divider"></div>
+    
 
     <div class="ui three column stackable grid container">
         <div class="column">
@@ -338,6 +345,41 @@
             <div class="ui sub header">HBsAg prevalence, pre and post vaccination (with confidence intervals)</div>
             <canvas id="vizD-3"></canvas>
         </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui container">
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>Year</th>
+                        <th>Location</th>
+                        <th>Ages enrolled</th>
+                        <th>Sampling base</th>
+                        <th>Sample size</th>
+                        <th>HBsAg Prevalence (95% CI)</th>
+                        <th>Reference/Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><div>2002</div></td>
+                        <td><div>National</div></td>
+                        <td><div>1 - 9  years</div></td>
+                        <td><div>Hospital based</div></td>
+                        <td><div>249</div></td>
+                        <td><div>.04% (0.0% - 2.2%)</div></td>
+                        <td><div>Gidding Vaccine 2007</div></td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui container">
+        <div id="map"></div>
     </div>
 
     <script
