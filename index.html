@@ -1,64 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>WHO Hep-B Dashboard</title>
+    <title>Visualization Dashboard for Hepatitis B</title>
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
   </head>
   <body>
-    <div class="ui menu">
-        <div class="header item">WHO Hep-B Dashboard</div>
-        <a class="item">About</a>
-        <a class="item">Download raw data</a>
-    </div>
-    <div class="ui two column stackable grid container">
-        <div class="column">
-            <div class="ui sub header">Select a year</div>
-            <div class="ui selection dropdown" id="year-dropdown">
-                <input type="hidden" name="year">
-                <i class="dropdown icon"></i>
-                <div class="default text">1990</div>
-                <div class="menu">
-                    <div class="item" data-value="1990">1990</div>
-                    <div class="item" data-value="1991">1991</div>
-                    <div class="item" data-value="1992">1992</div>
-                    <div class="item" data-value="1993">1993</div>
-                    <div class="item" data-value="1994">1994</div>
-                    <div class="item" data-value="1995">1995</div>
-                    <div class="item" data-value="1996">1996</div>
-                    <div class="item" data-value="1997">1997</div>
-                    <div class="item" data-value="1998">1998</div>
-                    <div class="item" data-value="1999">1999</div>
-                    <div class="item" data-value="2000">2000</div>
-                    <div class="item" data-value="2001">2001</div>
-                    <div class="item" data-value="2002">2002</div>
-                    <div class="item" data-value="2003">2003</div>
-                    <div class="item" data-value="2004">2004</div>
-                    <div class="item" data-value="2005">2005</div>
-                    <div class="item" data-value="2006">2006</div>
-                    <div class="item" data-value="2007">2007</div>
-                    <div class="item" data-value="2008">2008</div>
-                    <div class="item" data-value="2009">2009</div>
-                    <div class="item" data-value="2010">2010</div>
-                    <div class="item" data-value="2011">2011</div>
-                    <div class="item" data-value="2012">2012</div>
-                    <div class="item" data-value="2013">2013</div>
-                    <div class="item" data-value="2014">2014</div>
-                    <div class="item" data-value="2015">2015</div>
+    <!-- <div class=""> -->
+        <div class="ui fixed menu">
+            <div class="header item">Visualization Dashboard for Hepatitis B</div>
+            <a class="item">About</a>
+            <a class="item">Download raw data</a>
+        <!-- </div> -->
+        <!-- <div class="ui two column stackable grid container"> -->
+            <div class="item">
+                <div class="ui sub header">Select a year</div>
+                <div class="ui selection dropdown" id="year-dropdown">
+                    <input type="hidden" name="year">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">1990</div> 
+                    <div class="menu">
+                        <div class="item" data-value="1990">1990</div>
+                        <div class="item" data-value="1991">1991</div>
+                        <div class="item" data-value="1992">1992</div>
+                        <div class="item" data-value="1993">1993</div>
+                        <div class="item" data-value="1994">1994</div>
+                        <div class="item" data-value="1995">1995</div>
+                        <div class="item" data-value="1996">1996</div>
+                        <div class="item" data-value="1997">1997</div>
+                        <div class="item" data-value="1998">1998</div>
+                        <div class="item" data-value="1999">1999</div>
+                        <div class="item" data-value="2000">2000</div>
+                        <div class="item" data-value="2001">2001</div>
+                        <div class="item" data-value="2002">2002</div>
+                        <div class="item" data-value="2003">2003</div>
+                        <div class="item" data-value="2004">2004</div>
+                        <div class="item" data-value="2005">2005</div>
+                        <div class="item" data-value="2006">2006</div>
+                        <div class="item" data-value="2007">2007</div>
+                        <div class="item" data-value="2008">2008</div>
+                        <div class="item" data-value="2009">2009</div>
+                        <div class="item" data-value="2010">2010</div>
+                        <div class="item" data-value="2011">2011</div>
+                        <div class="item" data-value="2012">2012</div>
+                        <div class="item" data-value="2013">2013</div>
+                        <div class="item" data-value="2014">2014</div>
+                        <div class="item" data-value="2015">2015</div>
+                    </div>
                 </div>
-            </div>
-        </div> <!-- end column -->
-        <div class="column">
-            <div class="ui sub header">Select a country</div>
-            <div class="ui fluid search selection dropdown" id="country-dropdown">
-                <input type="hidden" name="country">
-                <i class="dropdown icon"></i>
-                <div class="default text">Select Country</div>
-                <div class="menu" id="countryMenu">
-                </div> <!-- end menu -->
-            </div> <!-- end ui fluid search selection dropdown -->
-        </div> <!-- end column -->
-    </div> <!-- end ui two column stackable grid container -->
+            </div> <!-- end column -->
+            <div class="item">
+                <div class="ui sub header">Select a country</div>
+                <div class="ui fluid search selection dropdown" id="country-dropdown">
+                    <input type="hidden" name="country">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Select Country</div>
+                    <div class="menu" id="countryMenu">
+                    </div> <!-- end menu -->
+                </div> <!-- end ui fluid search selection dropdown -->
+            </div> <!-- end column -->
+        <!-- </div>  end ui two column stackable grid container  -->
+    </div> <!-- end fixed wrapper -->
 
     <div class="ui divider"></div>
 
@@ -114,15 +133,16 @@
 
     <div class="ui three column stackable grid container">
         <div class="column">
-            <div class="ui sub header">HBsAg prevalence, pre and post vaccination (with confidence intervals)</div>
+            <div class="ui sub header">HBsAg prevalence, pre and post vaccination</div>
             <canvas id="vizD-1"></canvas>
+            <!-- <div class="ui sub header">Under 5 years General Population</div> -->
         </div>
         <div class="column">
-            <div class="ui sub header">HBsAg prevalence, pre and post vaccination (with confidence intervals)</div>
+            <div class="ui sub header">HBsAg prevalence, pre and post vaccination</div>
             <canvas id="vizD-2"></canvas>
         </div>
          <div class="column">
-            <div class="ui sub header">HBsAg prevalence, pre and post vaccination (with confidence intervals)</div>
+            <div class="ui sub header">HBsAg prevalence, pre and post vaccination</div>
             <canvas id="vizD-3"></canvas>
         </div>
     </div>

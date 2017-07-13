@@ -88,16 +88,38 @@
 
         var ctxD1 = document.getElementById('vizD-1').getContext('2d');
 
-        var chartD1 = new Chart(ctxD1, {
-            type: 'bar',
-            data: {
+        var chartD1Data = {
                 labels: ["pre", "post", "pre", "post"],
                 datasets: [{
-                    data: [3, 1.2, 3.5, 1.7]
+                    type: "line",
+                    borderColor: "blue",
+                    fill: false,
+                    data: []
+                },{
+                    type: "line",
+                    borderColor: "blue",
+                    fill: false,
+                    data: []
+                },{
+                    type: "bar",
+                    backgroundColor: "green",
+                    data: [] 
                 }]
-            },
+            };
+
+        var chartD1 = new Chart(ctxD1, {
+            type: 'bar',
+            data: chartD1Data,
             options: {
-                scaleBeginAtZero: true
+                scaleBeginAtZero: true,
+                title: {
+                    display: true,
+                    text: "estimated prevalence %",
+                    position: 'left',
+                    fontFamily: "Lato",
+                    fontStyle: "normal",
+                    fontSize: 14
+                }
             }
         });
 
@@ -134,13 +156,13 @@
         var currentYear = 1990,
             currentCode = "DZA";
 
-        updateCharts(data, 1990, currentCode, chartC);
+        updateCharts(data, 1990, currentCode, chartC, chartD1);
 
         $('#year-dropdown').dropdown({
             on: "hover",
             onChange: function(value, text, $selectedItem) {
                 currentYear = value;
-                updateCharts(data, currentYear, currentCode, chartC);
+                updateCharts(data, currentYear, currentCode, chartC, chartD1);
             }
         });
 
@@ -148,13 +170,13 @@
             on: "hover",
             onChange: function(value, text, $selectedItem) {
                 currentCode = value;
-                updateCharts(data, currentYear, currentCode, chartC);
+                updateCharts(data, currentYear, currentCode, chartC, chartD1);
             }
         });
 
     }
 
-    function updateCharts(data, currentYear, currentCode, chartC) {
+    function updateCharts(data, currentYear, currentCode, chartC, chartD1) {
 
         // CHART A selections
 
@@ -173,6 +195,9 @@
 
         var chartCData1 = [],
             chartCData2 = [];
+
+        var chartD1Data = [];
+
 
         data.forEach(function(datum) {
 
@@ -243,16 +268,38 @@
                         chartCData2.push('null');
                     }  
                 }
-            }
-        });
 
-        var newDataSets = [chartCData1, chartCData2];
+                // CHART D1
+
+                chartD1Data = [datum['PreU5EstPre'], 
+                                   datum['PostU5EstPre'], 
+                                   datum['PreGPEstPre'],
+                                   datum['PostGPEstPre']
+                                ];
+
+            } // end if country code
+        });  // end forEach
+
+        var newCDataSets = [chartCData1, chartCData2];
 
         chartC.data.datasets.forEach(function(dataset, i) {
-            dataset.data = newDataSets[i];
+            dataset.data = newCDataSets[i];
         })
         
         chartC.update();
+
+        chartD1.data.datasets.forEach(function(dataset, i) {
+            if(i === 0) {
+               dataset.data = [chartD1Data[0], chartD1Data[1], null, null]; 
+            } else if (i ===1) {
+               dataset.data = [null, null, chartD1Data[2], chartD1Data[3]];  
+            } else {
+                dataset.data = chartD1Data;
+            }
+            
+        });
+
+        chartD1.update();
 
     }
 
