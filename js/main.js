@@ -159,6 +159,7 @@
         // CHART A selections
 
         var $totalPop = $("#chartA-total-pop"),
+            $totalPopU5 = $("#chartA-total-pop-u5"),
             $births = $("#chartA-births"),
             $infantMortality = $("#chartA-infant-mortality");
 
@@ -180,12 +181,23 @@
 
                 // CHART A
 
-                $totalPop.html(datum['pop'+currentYear]);
+                $totalPop.html((datum['pop'+currentYear] * 1000).toLocaleString());
+
+                for(var i = 1990; i <= 2015; i += 5) {
+                    if(currentYear <= i) {
+                        $totalPopU5.html((datum['U5'+i] * 1000).toLocaleString());
+                    }
+                }
+
+                if($totalPopU5 === '') {
+                    $totalPopU5.html('N/A');
+                }
+
 
                 for(var interval in birthYearIntervals) {
                     if(+currentYear >= birthYearIntervals[interval][0] && 
                        +currentYear <= birthYearIntervals[interval][1]) {
-                           $births.html(datum[interval]);
+                           $births.html(datum[interval] * 1000);
                     }
                 }
 
@@ -196,7 +208,7 @@
                 for(var interval in infantMortalityIntervals) {
                     if(+currentYear >= infantMortalityIntervals[interval][0] && 
                        +currentYear <= infantMortalityIntervals[interval][1]) {
-                           $infantMortality.html(datum[interval]);
+                           $infantMortality.html((datum[interval] * 1000).toLocaleString());
                     }
                 }
 
