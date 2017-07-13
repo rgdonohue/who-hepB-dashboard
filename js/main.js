@@ -92,17 +92,17 @@
                 labels: ["pre", "post", "pre", "post"],
                 datasets: [{
                     type: "line",
-                    borderColor: "blue",
+                    borderColor: "steelblue",
                     fill: false,
                     data: []
                 },{
                     type: "line",
-                    borderColor: "blue",
+                    borderColor: "steelblue",
                     fill: false,
                     data: []
                 },{
                     type: "bar",
-                    backgroundColor: "green",
+                    backgroundColor: "steelblue",
                     data: [] 
                 }]
             };
@@ -119,7 +119,8 @@
                     fontFamily: "Lato",
                     fontStyle: "normal",
                     fontSize: 14
-                }
+                },
+                legend: false
             }
         });
 
@@ -130,11 +131,32 @@
             data: {
                 labels: ["pre", "post", "pre", "post"],
                 datasets: [{
-                    data: [3, 1.2, 3.5, 1.7]
+                    type: "line",
+                    borderColor: "steelblue",
+                    fill: false,
+                    data: []
+                },{
+                    type: "line",
+                    borderColor: "steelblue",
+                    fill: false,
+                    data: []
+                },{
+                    type: "bar",
+                    backgroundColor: "steelblue",
+                    data: [] 
                 }]
             },
             options: {
-                scaleBeginAtZero: true
+                scaleBeginAtZero: true,
+                title: {
+                    display: true,
+                    text: "estimated prevalence %",
+                    position: 'left',
+                    fontFamily: "Lato",
+                    fontStyle: "normal",
+                    fontSize: 14
+                },
+                legend: false
             }
         });
 
@@ -143,26 +165,47 @@
         var chartD3 = new Chart(ctxD3, {
             type: 'bar',
             data: {
-                labels: ["pre", "post", "pre", "post"],
+                labels: ["pre", "post"],
                 datasets: [{
-                    data: [3, 1.2, 3.5, 1.7]
+                    type: "line",
+                    borderColor: "steelblue",
+                    fill: false,
+                    data: []
+                },{
+                    type: "line",
+                    borderColor: "steelblue",
+                    fill: false,
+                    data: []
+                },{
+                    type: "bar",
+                    backgroundColor: "steelblue",
+                    data: [] 
                 }]
             },
             options: {
-                scaleBeginAtZero: true
+                scaleBeginAtZero: true,
+                title: {
+                    display: true,
+                    text: "estimated prevalence %",
+                    position: 'left',
+                    fontFamily: "Lato",
+                    fontStyle: "normal",
+                    fontSize: 14
+                },
+                legend: false
             }
         });
 
         var currentYear = 1990,
             currentCode = "DZA";
 
-        updateCharts(data, 1990, currentCode, chartC, chartD1);
+        updateCharts(data, 1990, currentCode, chartC, chartD1, chartD2, chartD3);
 
         $('#year-dropdown').dropdown({
             on: "hover",
             onChange: function(value, text, $selectedItem) {
                 currentYear = value;
-                updateCharts(data, currentYear, currentCode, chartC, chartD1);
+                updateCharts(data, currentYear, currentCode, chartC, chartD1, chartD2, chartD3);
             }
         });
 
@@ -170,13 +213,13 @@
             on: "hover",
             onChange: function(value, text, $selectedItem) {
                 currentCode = value;
-                updateCharts(data, currentYear, currentCode, chartC, chartD1);
+                updateCharts(data, currentYear, currentCode, chartC, chartD1, chartD2, chartD3);
             }
         });
 
     }
 
-    function updateCharts(data, currentYear, currentCode, chartC, chartD1) {
+    function updateCharts(data, currentYear, currentCode, chartC, chartD1, chartD2, chartD3) {
 
         // CHART A selections
 
@@ -196,7 +239,11 @@
         var chartCData1 = [],
             chartCData2 = [];
 
-        var chartD1Data = [];
+        // CHART D data
+
+        var chartD1Data = [],
+            chartD2Data = [],
+            chartD3Data = [];
 
 
         data.forEach(function(datum) {
@@ -269,13 +316,26 @@
                     }  
                 }
 
-                // CHART D1
+                // CHART D
 
-                chartD1Data = [datum['PreU5EstPre'], 
-                                   datum['PostU5EstPre'], 
-                                   datum['PreGPEstPre'],
-                                   datum['PostGPEstPre']
-                                ];
+                chartD1Data = [
+                    datum['PreU5EstPre'], 
+                    datum['PostU5EstPre'], 
+                    datum['PreGPEstPre'],
+                    datum['PostGPEstPre']
+                ];
+
+                chartD2Data = [
+                    datum['PreU5EstCar'], 
+                    datum['PostU5EstCar'], 
+                    datum['PreGPEstCar'],
+                    datum['PostGPEstCar']
+                ];
+
+                chartD3Data = [
+                    datum['PreGPEstCar'], 
+                    datum['PostGPEstCar']
+                ];
 
             } // end if country code
         });  // end forEach
@@ -300,6 +360,25 @@
         });
 
         chartD1.update();
+
+        chartD2.data.datasets.forEach(function(dataset, i) {
+            if(i === 0) {
+               dataset.data = [chartD2Data[0], chartD2Data[1], null, null]; 
+            } else if (i ===1) {
+               dataset.data = [null, null, chartD2Data[2], chartD2Data[3]];  
+            } else {
+                dataset.data = chartD2Data;
+            }
+            
+        });
+
+        chartD2.update();
+
+        chartD3.data.datasets.forEach(function(dataset) {
+            dataset.data = chartD3Data;
+        });
+
+        chartD3.update();
 
     }
 
