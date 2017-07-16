@@ -89,37 +89,39 @@
         var ctxD1 = document.getElementById('vizD-1').getContext('2d');
 
         var chartD1Data = {
-                labels: ["Pre vaccination", "2015 estimates", "Pre vaccination", "2015 estimates"],
-                datasets: [{
-                    type: "line",
-                    borderColor: "blue",
-                    fill: false,
-                    data: []
-                },{
-                    type: "line",
-                    borderColor: "blue",
-                    fill: false,
-                    data: []
-                },
-                {
-                    type: "line",
-                    fill: false,
-                    showLine: false,
-                    pointBackgroundColor: "orange",
-                    data: []
-                },
-                {
-                    type: "line",
-                    fill: false,
-                    showLine: false,
-                    pointBackgroundColor: "red",
-                    data: []
-                },{
-                    type: "bar",
-                    backgroundColor: "steelblue",
-                    data: []
-                }]
-            };
+            labels: ["Pre-vac", "2015 est", "Pre-vac", "2015 est"],
+            datasets: [{
+                type: "line",
+                borderColor: "lightgray",
+                fill: false,
+                pointRadius: 1,
+                data: []
+            },{
+                type: "line",
+                borderColor: "lightgray",
+                fill: false,
+                pointRadius: 1,
+                data: []
+            },
+            {
+                type: "line",
+                fill: false,
+                showLine: false,
+                pointBackgroundColor: "orange",
+                data: []
+            },
+            {
+                type: "line",
+                fill: false,
+                showLine: false,
+                pointBackgroundColor: "red",
+                data: []
+            },{
+                type: "bar",
+                backgroundColor: "steelblue",
+                data: []
+            }]
+        };
     
 
         var chartD1 = new Chart(ctxD1, {
@@ -135,79 +137,125 @@
                     fontStyle: "normal",
                     fontSize: 14
                 },
-                legend: false
+                legend: false,
+                tooltips: {
+                    enabled: false,
+                    mode: "index",
+                    position: "nearest",
+                    custom: customTooltips
+                }
             }
         });
+
+        var chart2Data = {
+            labels: ["Pre-vac", "2015 est", "Pre-vac", "2015 est"],
+            datasets: [{
+                type: "line",
+                borderColor: "lightgray",
+                fill: false,
+                pointRadius: 1,
+                data: []
+            },{
+                type: "line",
+                borderColor: "lightgray",
+                fill: false,
+                pointRadius: 1,
+                data: []
+            },
+            {
+                type: "line",
+                fill: false,
+                showLine: false,
+                pointBackgroundColor: "orange",
+                data: []
+            },
+            {
+                type: "line",
+                fill: false,
+                showLine: false,
+                pointBackgroundColor: "red",
+                data: []
+            },{
+                type: "bar",
+                backgroundColor: "steelblue",
+                data: []
+            }]
+        };
 
         var ctxD2 = document.getElementById('vizD-2').getContext('2d');
 
         var chartD2 = new Chart(ctxD2, {
             type: 'bar',
-            data: {
-                labels: ["pre", "post", "pre", "post"],
-                datasets: [{
-                    type: "line",
-                    borderColor: "steelblue",
-                    fill: false,
-                    data: []
-                },{
-                    type: "line",
-                    borderColor: "steelblue",
-                    fill: false,
-                    data: []
-                },{
-                    type: "bar",
-                    backgroundColor: "steelblue",
-                    data: []
-                }]
-            },
+            data: chart2Data,
             options: {
                 scaleBeginAtZero: true,
                 title: {
                     display: true,
-                    text: "estimated prevalence %",
+                    text: "estimated # of carriers",
                     position: 'left',
                     fontFamily: "Lato",
                     fontStyle: "normal",
                     fontSize: 14
                 },
-                legend: false
+                legend: false,
+                tooltips: {
+                    enabled: false,
+                    mode: "index",
+                    position: "nearest",
+                    custom: customTooltips
+                }
             }
         });
+
+        var chartD3Data = {
+            labels: ["Pre-vac", "2015 est"],
+            datasets: [{
+                type: "line",
+                borderColor: "lightgray",
+                fill: false,
+                data: []
+            },{
+                type: "line",
+                fill: false,
+                showLine: false,
+                pointBackgroundColor: "orange",
+                data: []
+            },
+            {
+                type: "line",
+                fill: false,
+                showLine: false,
+                pointBackgroundColor: "red",
+                data: []
+            },{
+                type: "bar",
+                backgroundColor: "steelblue",
+                data: []
+            }]
+        };
 
         var ctxD3 = document.getElementById('vizD-3').getContext('2d');
 
         var chartD3 = new Chart(ctxD3, {
             type: 'bar',
-            data: {
-                labels: ["pre", "post"],
-                datasets: [{
-                    type: "line",
-                    borderColor: "steelblue",
-                    fill: false,
-                    data: []
-                },{
-                    type: "line",
-                    borderColor: "steelblue",
-                    fill: false,
-                    data: []
-                },{
-                    type: "bar",
-                    backgroundColor: "steelblue",
-                    data: [] 
-                }]
-            },
+            data: chartD3Data,
             options: {
                 scaleBeginAtZero: true,
                 title: {
                     display: true,
-                    text: "estimated prevalence %",
+                    text: "# of carriers prevented",
                     position: 'left',
                     fontFamily: "Lato",
                     fontStyle: "normal",
                     fontSize: 14
                 },
-                legend: false
+                legend: false,
+                tooltips: {
+                    enabled: false,
+                    mode: "index",
+                    position: "nearest",
+                    custom: customTooltips
+                }
             }
         });
 
@@ -261,7 +309,11 @@
             chartD3Data = [];
 
         var chartD1LowerCI = [],
-            chartD1HigherCI = [];
+            chartD1HigherCI = [],
+            chartD2LowerCI = [],
+            chartD2HigherCI = [],
+            chartD3LowerCI = [],
+            chartD3HigherCI = [];
 
 
         data.forEach(function(datum) {
@@ -364,9 +416,33 @@
                     datum['PostGPEstCar']
                 ];
 
+                chartD2LowerCI = [
+                    datum['PreU5EstCarLowCI'], 
+                    datum['PostU5EstCarLowCI'],
+                    datum['PreGPEstCarLowCI'],
+                    datum['PostGPEstCarLowCI']
+                ];
+
+                chartD2HigherCI = [
+                    datum['PreU5EstCarHighCI'], 
+                    datum['PostU5EstCarHighCI'],
+                    datum['PreGPEstCarHighCI'],
+                    datum['PostGPEstCarHighCI']
+                ];
+
                 chartD3Data = [
-                    datum['PreGPEstCar'], 
-                    datum['PostGPEstCar']
+                    datum['NumCarPrevU5'], 
+                    datum['NumCarPrevGP']
+                ];
+
+                chartD3LowerCI = [
+                    datum['NumCarPrevU5LowCI'], 
+                    datum['NumCarPrevGPLowCI'],
+                ];
+
+                chartD3HigherCI = [
+                    datum['NumCarPrevU5HighCI'], 
+                    datum['NumCarPrevGPHighCI'],
                 ];
 
             } // end if country code
@@ -386,7 +462,7 @@
             } else if (i ===1) {
                dataset.data = [null, null, chartD1Data[2], chartD1Data[3]];  
             } else if (i ===2) {
-                dataset.data = chartD1LowerCI;chartD1Data
+                dataset.data = chartD1LowerCI;
             } else if (i ===3) {
                 dataset.data = chartD1HigherCI;
             } else {
@@ -395,29 +471,35 @@
             
         });
 
-        chartD1.options.tooltips.enabled = false;
-        chartD1.options.tooltips.mode = "index";
-        chartD1.options.tooltips.position = "nearest";
-        chartD1.options.tooltips.myData = [3,5];
-        chartD1.options.tooltips.custom = customTooltips;
-
         chartD1.update();
 
         chartD2.data.datasets.forEach(function(dataset, i) {
             if(i === 0) {
                dataset.data = [chartD2Data[0], chartD2Data[1], null, null]; 
-            } else if (i ===1) {
+            } else if(i ===1) {
                dataset.data = [null, null, chartD2Data[2], chartD2Data[3]];  
+            } else if(i ===2) {
+                dataset.data = chartD2LowerCI;
+            } else if(i === 3) {
+                dataset.data = chartD2HigherCI;
             } else {
-                dataset.data = chartD2Data;
+                 dataset.data = chartD2Data;
             }
             
         });
 
         chartD2.update();
 
-        chartD3.data.datasets.forEach(function(dataset) {
-            dataset.data = chartD3Data;
+        chartD3.data.datasets.forEach(function(dataset, i) {
+            if(i === 0) {
+                dataset.data = chartD3Data;
+            } else if(i === 1) {
+                dataset.data = chartD3LowerCI;
+            } else if(i === 2) {
+                dataset.data = chartD3HigherCI;
+            } else {
+                dataset.data = chartD3Data;
+            }
         });
 
         chartD3.update();
@@ -425,8 +507,6 @@
     }
 
     function customTooltips(tooltip) {
-
-        console.log(tooltip)
 
         // Tooltip Element
         var tooltipEl = document.getElementById('chartjs-tooltip');
@@ -468,20 +548,29 @@
             });
             innerHtml += '</thead><tbody>';
 
+            bodyLines.reverse();
+            console.log(bodyLines)
+
             bodyLines.forEach(function(body, i) {
-                // var colors = tooltip.labelColors[i];
-                // var style = 'background:' + colors.backgroundColor;
-                // style += '; border-color:' + colors.borderColor;
-                // style += '; border-width: 2px'; 
-                // var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+                // hacky solution to get items ordered right in tooltip
                 if(i === 0) {
-                    // silence
+                    var colors = tooltip.labelColors[3];
+                    var style = 'background:' + colors.backgroundColor;
+                    var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+                    innerHtml += '<tr><td>' + span + 'Estimated #' + body + '</td></tr>';
                 } else if(i === 1) {
-                    innerHtml += '<tr><td>Estimated #' + body + '</td></tr>';
+                    var colors = tooltip.labelColors[2];
+                    console.log(colors)
+                    var style = 'background:' + colors.backgroundColor;
+                    style += '; border-radius: 50%';
+                    var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+                    innerHtml += '<tr><td>' + span + 'Upper CI #' + body + '</td></tr>';
                 } else if(i === 2) {
-                    innerHtml += '<tr><td>Lower CI #' + body + '</td></tr>';
-                } else {
-                    innerHtml += '<tr><td>Upper CI #' + body + '</td></tr>';
+                    var colors = tooltip.labelColors[1];
+                    var style = 'background:' + colors.backgroundColor;
+                    style += '; border-radius: 50%';
+                    var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+                    innerHtml += '<tr><td>' + span + 'Lower CI #' + body + '</td></tr>';
                 }
           
             });
