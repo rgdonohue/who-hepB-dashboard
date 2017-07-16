@@ -518,10 +518,9 @@
             this._chart.canvas.parentNode.appendChild(tooltipEl);
         }
 
-        // Hide if no tooltip
+        // Remove if no tooltip
         if (tooltip.opacity === 0) {
-            tooltipEl.style.opacity = 0;
-            return;
+            tooltipEl.remove();
         }
 
         // Set caret Position
