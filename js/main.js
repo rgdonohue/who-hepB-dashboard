@@ -55,6 +55,8 @@
 
         });
 
+        $menu.change();
+
         makeCharts(data);
 
     }

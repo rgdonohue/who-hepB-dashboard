@@ -23,19 +23,16 @@
     <meta name="theme-color" content="#ffffff">
   </head>
   <body>
-    <!-- <div class=""> -->
         <div class="ui fixed menu">
             <div class="header item">Visualization Dashboard for Hepatitis B</div>
-            <a class="item">About</a>
-            <a class="item">Download raw data</a>
-        <!-- </div> -->
-        <!-- <div class="ui two column stackable grid container"> -->
-            <div class="item">
+            <!-- <a class="item">About</a>
+            <a class="item">Download raw data</a> -->
+            <div class="item right">
                 <div class="ui sub header">Select a year</div>
-                <div class="ui selection dropdown" id="year-dropdown">
-                    <input type="hidden" name="year">
+                <div class="ui fluid selection dropdown" id="year-dropdown">
+                    <input type="hidden" name="year" value="1990">
                     <i class="dropdown icon"></i>
-                    <div class="default text">1990</div> 
+                    <div class="text">1990</div> 
                     <div class="menu">
                         <div class="item" data-value="1990">1990</div>
                         <div class="item" data-value="1991">1991</div>
@@ -65,18 +62,17 @@
                         <div class="item" data-value="2015">2015</div>
                     </div>
                 </div>
-            </div> <!-- end column -->
+            </div> <!-- end item -->
             <div class="item">
                 <div class="ui sub header">Select a country</div>
                 <div class="ui fluid search selection dropdown" id="country-dropdown">
-                    <input type="hidden" name="country">
+                    <input type="hidden" name="country" value="DZA">
                     <i class="dropdown icon"></i>
-                    <div class="default text">Select Country</div>
+                    <div class="text"><i class="dz flag">::before</i>Algeria</div>
                     <div class="menu" id="countryMenu">
                     </div> <!-- end menu -->
                 </div> <!-- end ui fluid search selection dropdown -->
             </div> <!-- end column -->
-        <!-- </div>  end ui two column stackable grid container  -->
     </div> <!-- end fixed wrapper -->
     <br>
     <br>
