@@ -89,7 +89,7 @@
         var ctxD1 = document.getElementById('vizD-1').getContext('2d');
 
         var chartD1Data = {
-                labels: ["pre", "post", "pre", "post"],
+                labels: ["Pre vaccination", "2015 estimates", "Pre vaccination", "2015 estimates"],
                 datasets: [{
                     type: "line",
                     borderColor: "steelblue",
@@ -104,8 +104,19 @@
                     type: "bar",
                     backgroundColor: "steelblue",
                     data: [] 
+                },
+                {
+                    type: "bar",
+                    backgroundColor: "red",
+                    data: []
+                },
+                {
+                    type: "bar",
+                    backgroundColor: "orange",
+                    data: []
                 }]
             };
+    
 
         var chartD1 = new Chart(ctxD1, {
             type: 'bar',
@@ -120,7 +131,12 @@
                     fontStyle: "normal",
                     fontSize: 14
                 },
-                legend: false
+                legend: false,
+                tooltips: {
+                    callbacks: {
+                        custom: {}
+                    }
+                }
             }
         });
 
@@ -143,7 +159,7 @@
                 },{
                     type: "bar",
                     backgroundColor: "steelblue",
-                    data: [] 
+                    data: []
                 }]
             },
             options: {
@@ -245,6 +261,9 @@
             chartD2Data = [],
             chartD3Data = [];
 
+        var chartD1LowerCI = [],
+            chartD1HigherCI = [];
+
 
         data.forEach(function(datum) {
 
@@ -325,6 +344,20 @@
                     datum['PostGPEstPre']
                 ];
 
+                chartD1LowerCI = [
+                    datum['PreU5EstPreLowCI'], 
+                    datum['PostU5EstPreLowCI'],
+                    datum['PreGPEstPreLowCI'],
+                    datum['PostGPEstPreLowCI']
+                ];
+
+                chartD1HigherCI = [
+                    datum['PreU5EstPreHighCI'], 
+                    datum['PostU5EstPreHighCI'],
+                    datum['PreGPEstPreHighCI'],
+                    datum['PostGPEstPreHighCI']
+                ];
+
                 chartD2Data = [
                     datum['PreU5EstCar'], 
                     datum['PostU5EstCar'], 
@@ -353,11 +386,21 @@
                dataset.data = [chartD1Data[0], chartD1Data[1], null, null]; 
             } else if (i ===1) {
                dataset.data = [null, null, chartD1Data[2], chartD1Data[3]];  
-            } else {
+            } else if (i ===2) {
                 dataset.data = chartD1Data;
+            } else if (i ===3) {
+                dataset.data = chartD1LowerCI;
+            } else {
+                dataset.data = chartD1HigherCI;
             }
             
         });
+
+        chartD1.options.tooltips.enabled = false;
+        chartD1.options.tooltips.mode = "index";
+        chartD1.options.tooltips.position = "nearest";
+        chartD1.options.tooltips.myData = [3,5];
+        chartD1.options.tooltips.custom = customTooltips;
 
         chartD1.update();
 
@@ -381,6 +424,86 @@
         chartD3.update();
 
     }
+
+    function customTooltips(tooltip) {
+
+        console.log(tooltip)
+
+        // Tooltip Element
+        var tooltipEl = document.getElementById('chartjs-tooltip');
+
+        if (!tooltipEl) {
+            tooltipEl = document.createElement('div');
+            tooltipEl.id = 'chartjs-tooltip';
+            tooltipEl.innerHTML = "<table></table>"
+            this._chart.canvas.parentNode.appendChild(tooltipEl);
+        }
+
+        // Hide if no tooltip
+        if (tooltip.opacity === 0) {
+            tooltipEl.style.opacity = 0;
+            return;
+        }
+
+        // Set caret Position
+        tooltipEl.classList.remove('above', 'below', 'no-transform');
+        if (tooltip.yAlign) {
+            tooltipEl.classList.add(tooltip.yAlign);
+        } else {
+            tooltipEl.classList.add('no-transform');
+        }
+
+        function getBody(bodyItem) {
+            return bodyItem.lines;
+        }
+
+        // Set Text
+        if (tooltip.body) {
+            var titleLines = tooltip.title || [];
+            var bodyLines = tooltip.body.map(getBody);
+
+            var innerHtml = '<thead>';
+
+            titleLines.forEach(function(title) {
+                innerHtml += '<tr><th>' + title + '</th></tr>';
+            });
+            innerHtml += '</thead><tbody>';
+
+            bodyLines.forEach(function(body, i) {
+                // var colors = tooltip.labelColors[i];
+                // var style = 'background:' + colors.backgroundColor;
+                // style += '; border-color:' + colors.borderColor;
+                // style += '; border-width: 2px'; 
+                // var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+                if(i === 0) {
+                    // silence
+                } else if(i === 1) {
+                    innerHtml += '<tr><td>Estimated #' + body + '</td></tr>';
+                } else if(i === 2) {
+                    innerHtml += '<tr><td>Lower CI #' + body + '</td></tr>';
+                } else {
+                    innerHtml += '<tr><td>Upper CI #' + body + '</td></tr>';
+                }
+          
+            });
+            innerHtml += '</tbody>';
+
+            var tableRoot = tooltipEl.querySelector('table');
+            tableRoot.innerHTML = innerHtml;
+        }
+
+        var positionY = this._chart.canvas.offsetTop;
+        var positionX = this._chart.canvas.offsetLeft;
+
+        // Display, position, and set styles for font
+        tooltipEl.style.opacity = 1;
+        tooltipEl.style.left = positionX + tooltip.caretX + 'px';
+        tooltipEl.style.top = positionY + tooltip.caretY + 'px';
+        tooltipEl.style.fontFamily = tooltip._fontFamily;
+        tooltipEl.style.fontSize = tooltip.fontSize;
+        tooltipEl.style.fontStyle = tooltip._fontStyle;
+        tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
+    };
 
 
 
