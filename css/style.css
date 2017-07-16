@@ -22,3 +22,19 @@
     height: 10px;
     margin-right: 10px;
 }
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.chartd-subheads {
+    margin-top: 0;
+    padding-top: 0;
+}
+.chartd-subheads span:first-child {
+    margin-left: 87px;
+}
+.chartd-subheads span:nth-child(2) {
+    margin-right: 30px;
+}

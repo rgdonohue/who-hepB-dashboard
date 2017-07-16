@@ -24,7 +24,7 @@
   </head>
   <body>
         <div class="ui fixed menu">
-            <div class="header item">Visualization Dashboard for Hepatitis B</div>
+            <div class="header item"><img src="images/who-logo.png" alt="who logo" style="margin-right: 12px" />Visualization Dashboard for Hepatitis B</div>
             <!-- <a class="item">About</a>
             <a class="item">Download raw data</a> -->
             <div class="item right">
@@ -74,15 +74,10 @@
                 </div> <!-- end ui fluid search selection dropdown -->
             </div> <!-- end column -->
     </div> <!-- end fixed wrapper -->
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="ui divider"></div>
 
-    <div class="ui two column stackable grid container">
+    <div class="ui two column stackable grid container" style="margin-top: 40px">
         <div class="column">
-            <div class="ui sub header">Demographics</div>
+            <div class="ui small header">Demographics</div>
             <table class="ui celled table">
                 <tbody>
                     <tr>
@@ -104,7 +99,7 @@
                 </tbody>
             </table>
 
-            <div class="ui sub header">Hepatitis B Vaccine</div>
+            <div class="ui small header">Hepatitis B Vaccine</div>
             <table class="ui celled table">
                 <tbody>
                     <tr>
@@ -123,56 +118,58 @@
             </table>
         </div>
         <div class="column">
-            <div class="ui sub header">Hepatitis B vaccination coverage</div>
+            <div class="ui small header">Hepatitis B vaccination coverage</div>
             <canvas id="vizC"></canvas>
         </div>
     </div>  <!-- end ui two column stackable grid -->
 
     
-
     <div class="ui three column stackable grid container">
         <div class="column">
-            <div class="ui sub header">HBsAg prevalence, pre and post vaccination</div>
+            <div class="ui small header">HBsAg prevalence, pre and post vaccination</div>
             <canvas id="vizD-1"></canvas>
-            <!-- <div class="ui sub header">Under 5 years General Population</div> -->
+            <div class="chartd-subheads"><span class="fl">Under 5 years</span><span class="fr">General Population</span></div> 
         </div>
         <div class="column">
-            <div class="ui sub header">HBsAg prevalence, pre and post vaccination</div>
+            <div class="ui small header">HBsAg prevalence, pre and post vaccination</div>
             <canvas id="vizD-2"></canvas>
+            <div class="chartd-subheads"><span class="fl">Under 5 years</span><span class="fr">General Population</span></div>
         </div>
          <div class="column">
-            <div class="ui sub header">HBsAg prevalence, pre and post vaccination</div>
+            <div class="ui small header">HBsAg prevalence, pre and post vaccination</div>
             <canvas id="vizD-3"></canvas>
+            <div class="chartd-subheads"><span class="fl">Under 5 years</span><span class="fr">General Population</span></div>
         </div>
     </div>
 
     <div class="ui divider"></div>
 
     <div class="ui container">
-            <table class="ui celled table">
-                <thead>
-                    <tr>
-                        <th>Year</th>
-                        <th>Location</th>
-                        <th>Ages enrolled</th>
-                        <th>Sampling base</th>
-                        <th>Sample size</th>
-                        <th>HBsAg Prevalence (95% CI)</th>
-                        <th>Reference/Notes</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><div>2002</div></td>
-                        <td><div>National</div></td>
-                        <td><div>1 - 9  years</div></td>
-                        <td><div>Hospital based</div></td>
-                        <td><div>249</div></td>
-                        <td><div>.04% (0.0% - 2.2%)</div></td>
-                        <td><div>Gidding Vaccine 2007</div></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="ui small header">Hepatitis B seriological surveys</div>
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>Year</th>
+                    <th>Location</th>
+                    <th>Ages enrolled</th>
+                    <th>Sampling base</th>
+                    <th>Sample size</th>
+                    <th>HBsAg Prevalence (95% CI)</th>
+                    <th>Reference/Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><div>2002</div></td>
+                    <td><div>National</div></td>
+                    <td><div>1 - 9  years</div></td>
+                    <td><div>Hospital based</div></td>
+                    <td><div>249</div></td>
+                    <td><div>.04% (0.0% - 2.2%)</div></td>
+                    <td><div>Gidding Vaccine 2007</div></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="ui divider"></div>
