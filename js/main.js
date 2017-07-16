@@ -92,27 +92,31 @@
                 labels: ["Pre vaccination", "2015 estimates", "Pre vaccination", "2015 estimates"],
                 datasets: [{
                     type: "line",
-                    borderColor: "steelblue",
+                    borderColor: "blue",
                     fill: false,
                     data: []
                 },{
                     type: "line",
-                    borderColor: "steelblue",
+                    borderColor: "blue",
                     fill: false,
+                    data: []
+                },
+                {
+                    type: "line",
+                    fill: false,
+                    showLine: false,
+                    pointBackgroundColor: "orange",
+                    data: []
+                },
+                {
+                    type: "line",
+                    fill: false,
+                    showLine: false,
+                    pointBackgroundColor: "red",
                     data: []
                 },{
                     type: "bar",
                     backgroundColor: "steelblue",
-                    data: [] 
-                },
-                {
-                    type: "bar",
-                    backgroundColor: "red",
-                    data: []
-                },
-                {
-                    type: "bar",
-                    backgroundColor: "orange",
                     data: []
                 }]
             };
@@ -131,12 +135,7 @@
                     fontStyle: "normal",
                     fontSize: 14
                 },
-                legend: false,
-                tooltips: {
-                    callbacks: {
-                        custom: {}
-                    }
-                }
+                legend: false
             }
         });
 
@@ -387,11 +386,11 @@
             } else if (i ===1) {
                dataset.data = [null, null, chartD1Data[2], chartD1Data[3]];  
             } else if (i ===2) {
-                dataset.data = chartD1Data;
+                dataset.data = chartD1LowerCI;chartD1Data
             } else if (i ===3) {
-                dataset.data = chartD1LowerCI;
-            } else {
                 dataset.data = chartD1HigherCI;
+            } else {
+                dataset.data = chartD1Data;
             }
             
         });
