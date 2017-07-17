@@ -8,6 +8,9 @@
     max-height: 480px;
     overflow-y: scroll;
 }
+#year-dropdown {
+    min-width: 0;
+}
 #map {
     height: 480px;
     width: 100%;

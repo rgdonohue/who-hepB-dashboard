@@ -332,7 +332,10 @@
         var $totalPop = $("#chartA-total-pop"),
             $totalPopU5 = $("#chartA-total-pop-u5"),
             $births = $("#chartA-births"),
-            $infantMortality = $("#chartA-infant-mortality");
+            $infantMortality = $("#chartA-infant-mortality"),
+            $urbanPop = $("#chartA-urban-population");
+
+        $("#total-pop-year").html("(" + currentYear + ")");
 
          // CHART B selections
 
@@ -369,8 +372,12 @@
                 $totalPop.html((datum['pop'+currentYear] * 1000).toLocaleString());
 
                 for(var i = 1990; i <= 2015; i += 5) {
-                    if(currentYear <= i) {
+                    
+                    if(currentYear >= i) {
                         $totalPopU5.html((datum['U5'+i] * 1000).toLocaleString());
+                        $urbanPop.html((datum['UrbPop'+i] * 1000).toLocaleString());
+                        $("#under-five-pop-years").html("(" + i + " &ndash; " + (+i + 4) + ")");
+                        $("#urban-pop-years").html("(" + i + " &ndash; " + (+i + 4) + ")");
                     }
                 }
 
@@ -382,7 +389,8 @@
                 for(var interval in birthYearIntervals) {
                     if(+currentYear >= birthYearIntervals[interval][0] && 
                        +currentYear <= birthYearIntervals[interval][1]) {
-                           $births.html(datum[interval] * 1000);
+                           $births.html((datum[interval] * 1000).toLocaleString());
+                           $("#birth-years").html("(" + birthYearIntervals[interval][0] + " &ndash; " + birthYearIntervals[interval][1]+ ")");
                     }
                 }
 
@@ -394,6 +402,7 @@
                     if(+currentYear >= infantMortalityIntervals[interval][0] && 
                        +currentYear <= infantMortalityIntervals[interval][1]) {
                            $infantMortality.html((datum[interval] * 1000).toLocaleString());
+                           $("#infant-mortality-years").html("(" + infantMortalityIntervals[interval][0] + " &ndash; " + infantMortalityIntervals[interval][1] + ")");
                     }
                 }
 

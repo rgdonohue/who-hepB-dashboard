@@ -24,58 +24,54 @@
   </head>
   <body>
 
-<div class="ui fixed inverted menu">
-    <div class="ui container">
-        <a href="#" class="header item">
-            <img class="logo" src="images/who-logo-white.png">
-            Visualization Dashboard for Hepatitis B
-        </a>
-        <div class="ui simple dropdown item" id="country-dropdown">
-            Select a Country <i class="dropdown icon"></i>
-            <div class="menu">
-                <div class="item">
-                    <i class="dropdown icon"></i>
-                    AFRO
-                    <div class="menu" id="menu-afro"></div>
-                </div>
-                <div class="item">
-                    <i class="dropdown icon"></i>
-                    EMRO
-                    <div class="menu" id="menu-emro"></div>
-                </div>
-                <div class="item">
-                    <i class="dropdown icon"></i>
-                    EURO
-                    <div class="menu" id="menu-euro"></div>
-                </div>
-                <div class="item">
-                    <i class="dropdown icon"></i>
-                    PAHO
-                    <div class="menu" id="menu-paho"></div>
-                </div>
-                <div class="item">
-                    <i class="dropdown icon"></i>
-                    SEARO
-                    <div class="menu" id="menu-searo"></div>
-                </div>
-                <div class="item">
-                    <i class="dropdown icon"></i>
-                    WPRO
-                    <div class="menu" id="menu-wpro"></div>
+    <div class="ui fixed inverted menu">
+        <div class="ui container">
+            <a href="#" class="header item">
+                <img class="logo" src="images/who-logo-white.png">
+                WHO Hepatitis B Viz Dashboard
+            </a>
+            <div class="ui simple dropdown item" id="country-dropdown">
+                Select a Country <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item">
+                        <i class="dropdown icon"></i>
+                        AFRO
+                        <div class="menu" id="menu-afro"></div>
+                    </div>
+                    <div class="item">
+                        <i class="dropdown icon"></i>
+                        EMRO
+                        <div class="menu" id="menu-emro"></div>
+                    </div>
+                    <div class="item">
+                        <i class="dropdown icon"></i>
+                        EURO
+                        <div class="menu" id="menu-euro"></div>
+                    </div>
+                    <div class="item">
+                        <i class="dropdown icon"></i>
+                        PAHO
+                        <div class="menu" id="menu-paho"></div>
+                    </div>
+                    <div class="item">
+                        <i class="dropdown icon"></i>
+                        SEARO
+                        <div class="menu" id="menu-searo"></div>
+                    </div>
+                    <div class="item">
+                        <i class="dropdown icon"></i>
+                        WPRO
+                        <div class="menu" id="menu-wpro"></div>
+                    </div>
                 </div>
             </div>
-    </div>
-</div>  
-
-         </div>
+        </div>
     </div> 
 
     <div class="ui two column stackable grid container" style="margin-top: 40px">
         <div class="column">
-            <div class="ui small header">Demographics
-              <span class="">
-                <div class="ui sub header">Select a year</div>
-                <div class="ui fluid selection dropdown" id="year-dropdown">
+            <div class="ui small header">Country Demographics &nbsp; &nbsp;
+                <div class="ui selection dropdown" id="year-dropdown">
                     <input type="hidden" name="year" value="1990">
                     <i class="dropdown icon"></i>
                     <div class="text">1990</div> 
@@ -109,24 +105,27 @@
                     </div>
                 </div>
               </div> <!-- end item -->
-            </span> <!-- end span -->
             <table class="ui celled table">
                 <tbody>
                     <tr>
-                        <td><div>Total Population</div></td>
+                        <td><div>Total Population <span id="total-pop-year"><span></div></td>
                         <td><div id="chartA-total-pop"></div></td>
                     </tr>
                     <tr>
-                        <td><div>Total Population under 5</div></td>
+                        <td><div>Total Population under 5 <span id="under-five-pop-years"><span></div></td>
                         <td><div id="chartA-total-pop-u5"></div></td>
                     </tr>
                     <tr>
-                        <td><div>Births</div></td>
+                        <td><div>Births <span id="birth-years"><span></div></td>
                         <td><div id="chartA-births"></div></td>
                     </tr>
                     <tr>
-                        <td><div>Infant Mortality</div></td>
+                        <td><div>Infant Mortality <span id="infant-mortality-years"><span></div></td>
                         <td><div id="chartA-infant-mortality"></div></td>
+                    </tr>
+                    <tr>
+                        <td><div>Urban Population % <span id="urban-pop-years"><span></div></td>
+                        <td><div id="chartA-urban-population"></div></td>
                     </tr>
                 </tbody>
             </table>
