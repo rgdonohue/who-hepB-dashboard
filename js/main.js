@@ -98,32 +98,30 @@
         var ctxC = document.getElementById('vizC').getContext('2d');
         
         var chartC = new Chart(ctxC, {
-            // The type of chart we want to create
             type: 'line',
-
-            // The data dataset
             data: {
-                labels: ["1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", 
-                         "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006",
-                         "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2015", "2014", "2015"],
                 datasets: [{
                     label: "Percentage of infants vaccinated with 3 doses of Hep B (2015)",
                     borderColor: 'rgb(255, 99, 132)',
-                    fill: false,
-                    data: [1,2],
+                    fill: false
                 }, 
                 {
                     label: "Percentage of infants vaccinated with 3 doses of Hep B birth (2015)",
                     borderColor: 'rgb(0, 99, 132)',
-                    fill: false,
-                    data: [2,3],
+                    fill: false
                 }]
             },
             options: {
                 legend: {
                     position: 'bottom'
                 },
-                scaleBeginAtZero: true
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
         });
 
@@ -318,6 +316,7 @@
             onChange: function(value, text, $selectedItem) {
                 currentCode = value;
                 updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD2, chartD3);
+                $("#dropdown-current-country").html(text);
             }
         });
 
@@ -346,7 +345,10 @@
         // CHART C data
 
         var chartCData1 = [],
-            chartCData2 = [];
+            chartCData2 = [],
+            chartCLabels1 = [],
+            chartCLabels2 = [];
+
 
         // CHART D data
 
@@ -427,14 +429,16 @@
                 for(var i = 1990; i <= 2015; i++) {
                     if(datum['Cov_HepB3_' + i]) {
                         chartCData1.push(datum['Cov_HepB3_' + i]);
+                        chartCLabels1.push(String(i));
                     } else {
-                        chartCData1.push('null');
+                        // chartCData1.push('null');
                     }
                     
                     if(datum['Cov_HepB_BD_' + i]) {
                         chartCData2.push(datum['Cov_HepB_BD_' + i]);
+                        chartCLabels2.push(String(i));
                     } else {
-                        chartCData2.push('null');
+                        // chartCData2.push('null');
                     }  
                 }
 
@@ -502,9 +506,16 @@
 
         var newCDataSets = [chartCData1, chartCData2];
 
+        if(chartCLabels1.length > chartCLabels2.length) {
+            chartC.data.labels = chartCLabels1;
+        } else {
+            chartC.data.labels = chartCLabels2;
+        }
+        
+
         chartC.data.datasets.forEach(function(dataset, i) {
             dataset.data = newCDataSets[i];
-        })
+        });
         
         chartC.update();
 

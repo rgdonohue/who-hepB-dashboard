@@ -11,6 +11,9 @@
 #year-dropdown {
     min-width: 0;
 }
+#dropdown-current-country {
+    font-size: 1.2em;
+}
 #map {
     height: 480px;
     width: 100%;
