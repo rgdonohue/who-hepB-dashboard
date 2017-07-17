@@ -1,3 +1,13 @@
+.ui.menu .item img.logo {
+    margin-right: 1.5em;
+}
+.ui.inverted.menu {
+    background: #0072bb;
+}
+#country-dropdown .menu .menu {
+    max-height: 480px;
+    overflow-y: scroll;
+}
 #map {
     height: 480px;
     width: 100%;

@@ -26,8 +26,6 @@
 
     function ready(e,hepData, surveyData) {
         makeCountryDropdown(hepData, surveyData);
-        console.log(surveyData);
-
     }
 
 
@@ -37,14 +35,24 @@
         // should produce new output file instead
         var swappedIso = {};
 
-        // select empty menu
-        var $menu = $('#countryMenu');
+        // select empty menus
+        var $menuAfro = $('#menu-afro'),
+            $menuEmro = $('#menu-emro'),
+            $menuEuro = $('#menu-euro'),
+            $menuPaho = $('#menu-paho'),
+            $menuSearo = $('#menu-searo'),
+            $menuWpro = $('#menu-wpro');
+
+        var item;
         
         // loop through data
         data.forEach(function(datum) {
 
             // shortcut for code
             var dataISO = datum.ISO3;
+
+            // shortcut for region
+            var region = datum.Region;
 
             // loop through codes and create swapped object
             for(var code in isoCodes) {
@@ -56,14 +64,30 @@
             }
 
             // create item
-            var item = '<div class="item" data-value="' + dataISO + '"><i class="' + swappedIso[dataISO].toLowerCase() + ' flag"></i>' + datum.Country + '</div>';
+            item = '<a class="item" href="#" data-value="' + dataISO + '"><i class="' + swappedIso[dataISO].toLowerCase() + ' flag"></i>' + datum.Country + '</a>';
 
-            // append to menu
-            $menu.append(item);
+            switch (region) {
+                case "AFRO":
+                    $menuAfro.append(item);
+                    break;
+                case "EMRO":
+                    $menuEmro.append(item);
+                    break;
+                case "EURO":
+                    $menuEuro.append(item);
+                    break;
+                case "PAHO":
+                    $menuPaho.append(item);
+                    break;
+                case "SEARO":
+                    $menuSearo.append(item);
+                    break;
+                case "WPRO":
+                    $menuWpro.append(item);
+                    break;
+            }
 
         });
-
-        $menu.change();
 
         makeCharts(data, surveyData);
 
@@ -594,7 +618,6 @@
             innerHtml += '</thead><tbody>';
 
             bodyLines.reverse();
-            console.log(bodyLines)
 
             bodyLines.forEach(function(body, i) {
                 // hacky solution to get items ordered right in tooltip
@@ -605,7 +628,6 @@
                     innerHtml += '<tr><td>' + span + 'Estimated #' + body + '</td></tr>';
                 } else if(i === 1) {
                     var colors = tooltip.labelColors[2];
-                    console.log(colors)
                     var style = 'background:' + colors.backgroundColor;
                     style += '; border-radius: 50%';
                     var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
