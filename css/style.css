@@ -38,3 +38,8 @@
 .chartd-subheads span:nth-child(2) {
     margin-right: 30px;
 }
+
+#chartEtableBody {
+    height: 300px;
+    overflow-y: scroll; 
+}

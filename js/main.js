@@ -19,11 +19,19 @@
         'InfMort2010-2015': [2011, 2015],
     };
 
-    d3.csv('data/hepB-master.csv', function(e,d){
-        makeCountryDropdown(d);
-    });
+    d3.queue()
+        .defer(d3.csv, 'data/hepB-master.csv')
+        .defer(d3.csv, 'data/seroprevalence_surveys.csv')
+        .await(ready);
 
-    function makeCountryDropdown(data) {
+    function ready(e,hepData, surveyData) {
+        makeCountryDropdown(hepData, surveyData);
+        console.log(surveyData);
+
+    }
+
+
+    function makeCountryDropdown(data, surveyData) {
 
         // we want to reverse the codes
         // should produce new output file instead
@@ -57,11 +65,11 @@
 
         $menu.change();
 
-        makeCharts(data);
+        makeCharts(data, surveyData);
 
     }
 
-    function makeCharts(data) {
+    function makeCharts(data, surveyData) {
 
         var ctxC = document.getElementById('vizC').getContext('2d');
         
@@ -90,7 +98,8 @@
             options: {
                 legend: {
                     position: 'bottom'
-                }
+                },
+                scaleBeginAtZero: true
             }
         });
 
@@ -270,13 +279,13 @@
         var currentYear = 1990,
             currentCode = "DZA";
 
-        updateCharts(data, 1990, currentCode, chartC, chartD1, chartD2, chartD3);
+        updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD2, chartD3);
 
         $('#year-dropdown').dropdown({
             on: "hover",
             onChange: function(value, text, $selectedItem) {
                 currentYear = value;
-                updateCharts(data, currentYear, currentCode, chartC, chartD1, chartD2, chartD3);
+                updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD2, chartD3);
             }
         });
 
@@ -284,13 +293,15 @@
             on: "hover",
             onChange: function(value, text, $selectedItem) {
                 currentCode = value;
-                updateCharts(data, currentYear, currentCode, chartC, chartD1, chartD2, chartD3);
+                updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD2, chartD3);
             }
         });
 
+
+
     }
 
-    function updateCharts(data, currentYear, currentCode, chartC, chartD1, chartD2, chartD3) {
+    function updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD2, chartD3) {
 
         // CHART A selections
 
@@ -511,6 +522,33 @@
         });
 
         chartD3.update();
+
+
+        // CHART E
+
+        var chartE = $('#chartEtableBody'),
+            html;
+
+        surveyData.forEach(function(survey) {
+
+            if(survey.ISO3 === currentCode) {
+
+                html =  "<tr>" + 
+                    "<td><div>" + survey['Year start'] + " &ndash; " + survey['Year end'] + "</div></td>" +
+                    "<td><div>" + survey.Country + "</div></td>" +
+                    "<td><div>" + survey.Level + "</div></td>" +
+                    "<td><div>" + survey['Agestart'] + " &ndash; " + survey['Ageend'] + "</div></td>" +
+                    "<td><div>" + (+survey['Sample size']).toLocaleString() + "</div></td>" +
+                    "<td><div>" + survey.pHBsAg+ "</div></td>" +
+                    "<td><div>" + survey['Author, Date'] + "</div></td>" +
+                    "<td><div><a href='" + survey.URL + "'>link</a></div></td>" +
+                "</tr>"
+
+                chartE.append(html)
+
+            }
+
+        });
 
     }
 
