@@ -118,18 +118,22 @@
             data: {
                 datasets: [{
                     label: "Percentage of infants vaccinated with 3 doses of Hep B (2015)",
-                    borderColor: 'rgb(255, 99, 132)',
+                    borderColor: '#f3e79b',
                     fill: false
                 }, 
                 {
                     label: "Percentage of infants vaccinated with 3 doses of Hep B birth (2015)",
-                    borderColor: 'rgb(0, 99, 132)',
+                    borderColor: '#5c53a5',
                     fill: false
                 }]
             },
             options: {
                 legend: {
-                    position: 'bottom'
+                    position: 'bottom',
+                    labels: {
+                        usePointStyle: true
+                    },
+                    onClick: null
                 },
                 scales: {
                     yAxes: [{
