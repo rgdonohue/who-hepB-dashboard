@@ -153,32 +153,28 @@
                 type: "line",
                 borderColor: "lightgray",
                 fill: false,
-                pointRadius: 1,
-                data: []
+                pointRadius: 1
             },{
                 type: "line",
                 borderColor: "lightgray",
                 fill: false,
-                pointRadius: 1,
-                data: []
+                pointRadius: 1
             },
             {
                 type: "line",
                 fill: false,
                 showLine: false,
-                pointBackgroundColor: "orange",
-                data: []
+                pointBackgroundColor: "orange"
             },
             {
                 type: "line",
                 fill: false,
                 showLine: false,
-                pointBackgroundColor: "red",
-                data: []
+                pointBackgroundColor: "red"
             },{
                 type: "bar",
-                backgroundColor: "steelblue",
-                data: []
+                fill: false,
+                backgroundColor: "steelblue"
             }]
         };
     
@@ -187,57 +183,47 @@
             type: 'bar',
             data: chartD1Data,
             options: {
-                scaleBeginAtZero: true,
                 title: {
-                    display: true,
-                    text: "estimated prevalence %",
-                    position: 'left',
-                    fontFamily: "Lato",
-                    fontStyle: "normal",
-                    fontSize: 14
+                    display: false,
                 },
                 legend: false,
                 tooltips: {
                     enabled: false,
                     mode: "index",
                     position: "nearest",
-                    custom: customTooltips
+                    custom: customTooltip
                 }
             }
         });
 
-        var chart2Data = {
+        var chartD2Data = {
             labels: ["Pre-vac", "2015 est", "Pre-vac", "2015 est"],
-            datasets: [{
+            datasets: [
+            {
                 type: "line",
                 borderColor: "lightgray",
                 fill: false,
-                pointRadius: 1,
-                data: []
+                pointRadius: 1
             },{
                 type: "line",
                 borderColor: "lightgray",
                 fill: false,
-                pointRadius: 1,
-                data: []
+                pointRadius: 1
             },
             {
                 type: "line",
                 fill: false,
                 showLine: false,
-                pointBackgroundColor: "orange",
-                data: []
+                pointBackgroundColor: "orange"
             },
             {
                 type: "line",
                 fill: false,
                 showLine: false,
-                pointBackgroundColor: "red",
-                data: []
+                pointBackgroundColor: "red"
             },{
                 type: "bar",
-                backgroundColor: "steelblue",
-                data: []
+                backgroundColor: "steelblue"
             }]
         };
 
@@ -245,51 +231,27 @@
 
         var chartD2 = new Chart(ctxD2, {
             type: 'bar',
-            data: chart2Data,
+            data: chartD2Data,
             options: {
                 scaleBeginAtZero: true,
                 title: {
-                    display: true,
-                    text: "estimated # of carriers",
-                    position: 'left',
-                    fontFamily: "Lato",
-                    fontStyle: "normal",
-                    fontSize: 14
+                    display: false
                 },
                 legend: false,
                 tooltips: {
                     enabled: false,
                     mode: "index",
                     position: "nearest",
-                    custom: customTooltips
+                    custom: customTooltip
                 }
             }
         });
 
         var chartD3Data = {
-            labels: ["Pre-vac", "2015 est"],
+            labels: ["< 5 yrs", "General pop"],
             datasets: [{
-                type: "line",
-                borderColor: "lightgray",
-                fill: false,
-                data: []
-            },{
-                type: "line",
-                fill: false,
-                showLine: false,
-                pointBackgroundColor: "orange",
-                data: []
-            },
-            {
-                type: "line",
-                fill: false,
-                showLine: false,
-                pointBackgroundColor: "red",
-                data: []
-            },{
-                type: "bar",
-                backgroundColor: "steelblue",
-                data: []
+                    type: "bar",
+                    backgroundColor: "steelblue"
             }]
         };
 
@@ -301,19 +263,17 @@
             options: {
                 scaleBeginAtZero: true,
                 title: {
-                    display: true,
-                    text: "# of carriers prevented",
-                    position: 'left',
-                    fontFamily: "Lato",
-                    fontStyle: "normal",
-                    fontSize: 14
+                    display: false
                 },
                 legend: false,
                 tooltips: {
-                    enabled: false,
+                    enabled: true,
                     mode: "index",
                     position: "nearest",
-                    custom: customTooltips
+                    // custom: customTooltip
+                    // custom: function(tooltip, data) {
+                    //     console.log(tooltip, this);
+                    // }
                 }
             }
         });
@@ -366,8 +326,7 @@
 
         var chartCData1 = [],
             chartCData2 = [],
-            chartCLabels1 = [],
-            chartCLabels2 = [];
+            chartCLabels = [];
 
 
         // CHART D data
@@ -449,17 +408,17 @@
                 for(var i = 1990; i <= 2015; i++) {
                     if(datum['Cov_HepB3_' + i]) {
                         chartCData1.push(datum['Cov_HepB3_' + i]);
-                        chartCLabels1.push(String(i));
                     } else {
-                        // chartCData1.push('null');
+                        chartCData1.push(null);
                     }
-                    
+
                     if(datum['Cov_HepB_BD_' + i]) {
                         chartCData2.push(datum['Cov_HepB_BD_' + i]);
-                        chartCLabels2.push(String(i));
                     } else {
-                        // chartCData2.push('null');
-                    }  
+                        chartCData2.push(null);
+                    }
+                    
+                    chartCLabels.push(String(i));
                 }
 
                 // CHART D
@@ -524,14 +483,40 @@
             } // end if country code
         });  // end forEach
 
-        var newCDataSets = [chartCData1, chartCData2];
-
-        if(chartCLabels1.length > chartCLabels2.length) {
-            chartC.data.labels = chartCLabels1;
-        } else {
-            chartC.data.labels = chartCLabels2;
-        }
         
+
+        var index1 = 0,
+            index2 = 0;
+
+        chartCData1.forEach(function(num, i) {
+            if(num === null) {
+                index1 = i;
+            }
+        });
+
+        chartCData2.forEach(function(num, i) {
+            if(num === null) {
+                index2 = i;
+            }
+        })
+
+        if(index1 < index2) {
+            var index = index1 + 1;
+        } else {
+            var index = index2 + 1;
+        }
+
+        var slicedLabels = chartCLabels.slice(index, chartCLabels.length);
+
+        chartC.data.labels = slicedLabels;
+
+        chartCData1 = chartCData1.slice(index, chartCData1.length);
+        chartCData2 = chartCData2.slice(index, chartCData2.length);
+
+        console.log(chartCData1)
+        console.log(chartCData2)
+
+        var newCDataSets = [chartCData1, chartCData2];
 
         chartC.data.datasets.forEach(function(dataset, i) {
             dataset.data = newCDataSets[i];
@@ -574,16 +559,18 @@
         chartD2.update();
 
         chartD3.data.datasets.forEach(function(dataset, i) {
-            if(i === 0) {
-                dataset.data = chartD3Data;
-            } else if(i === 1) {
-                dataset.data = chartD3LowerCI;
-            } else if(i === 2) {
-                dataset.data = chartD3HigherCI;
-            } else {
-                dataset.data = chartD3Data;
-            }
+
+             chartD3.data.datasets[i].data = chartD3Data;
+        //     if(i === 0) {
+        //         dataset.data = chartD3LowerCI;
+        //     } else if(i === 1) {
+        //         dataset.data = chartD3HigherCI;
+        //     } else {
+        //         dataset.data = chartD3Data;
+        //     }
         });
+
+       
 
         chartD3.update();
 
@@ -616,7 +603,15 @@
 
     }
 
-    function customTooltips(tooltip) {
+    function customTooltip(tooltip) {
+
+
+        if(tooltip.dataPoints) {
+            var targetBarIndex = tooltip.dataPoints[0].index;
+
+        }
+        console.log(targetBarIndex)
+        console.log(this._data)
 
         // Tooltip Element
         var tooltipEl = document.getElementById('chartjs-tooltip');
@@ -657,28 +652,30 @@
             });
             innerHtml += '</thead><tbody>';
 
-            bodyLines.reverse();
+            //bodyLines.reverse();
 
             bodyLines.forEach(function(body, i) {
+              
+
                 // hacky solution to get items ordered right in tooltip
-                if(i === 0) {
-                    var colors = tooltip.labelColors[3];
-                    var style = 'background:' + colors.backgroundColor;
-                    var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
-                    innerHtml += '<tr><td>' + span + 'Estimated #' + body + '</td></tr>';
-                } else if(i === 1) {
-                    var colors = tooltip.labelColors[2];
-                    var style = 'background:' + colors.backgroundColor;
-                    style += '; border-radius: 50%';
-                    var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
-                    innerHtml += '<tr><td>' + span + 'Upper CI #' + body + '</td></tr>';
-                } else if(i === 2) {
-                    var colors = tooltip.labelColors[1];
-                    var style = 'background:' + colors.backgroundColor;
-                    style += '; border-radius: 50%';
-                    var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
-                    innerHtml += '<tr><td>' + span + 'Lower CI #' + body + '</td></tr>';
-                }
+                // if(i === 0) {
+                //     var colors = tooltip.labelColors[3];
+                //     var style = 'background:' + colors.backgroundColor;
+                //     var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+                //     innerHtml += '<tr><td>' + span + 'Estimated #' + body + '</td></tr>';
+                // } else if(i === 1) {
+                //     var colors = tooltip.labelColors[2];
+                //     var style = 'background:' + colors.backgroundColor;
+                //     style += '; border-radius: 50%';
+                //     var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+                //     innerHtml += '<tr><td>' + span + 'Upper CI #' + body + '</td></tr>';
+                // } else if(i === 2) {
+                //     var colors = tooltip.labelColors[1];
+                //     var style = 'background:' + colors.backgroundColor;
+                //     style += '; border-radius: 50%';
+                //     var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
+                //     innerHtml += '<tr><td>' + span + 'Lower CI #' + body + '</td></tr>';
+                // }
           
             });
             innerHtml += '</tbody>';
