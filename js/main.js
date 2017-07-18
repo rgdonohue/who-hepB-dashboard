@@ -19,6 +19,22 @@
         'InfMort2010-2015': [2011, 2015],
     };
 
+    $("#modal-about-trigger").on('click', function() { 
+        $("#modal-about").modal('show');
+    });
+
+    $("#modal-methods-trigger").on('click', function() { 
+        $("#modal-methods").modal('show');
+    });
+
+    $("#modal-data-trigger").on('click', function() { 
+        $("#modal-data").modal('show');
+    });
+
+    $("#modal-disclaimer-trigger").on('click', function() { 
+        $("#modal-disclaimer").modal('show');
+    });
+
     d3.queue()
         .defer(d3.csv, 'data/hepB-master.csv')
         .defer(d3.csv, 'data/seroprevalence_surveys.csv')

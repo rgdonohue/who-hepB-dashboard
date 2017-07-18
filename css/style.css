@@ -1,5 +1,8 @@
 .ui.menu .item img.logo {
-    margin-right: 1.5em;
+    margin-right: 1em;
+}
+#mast-header {
+    font-weight: normal;
 }
 .ui.inverted.menu {
     background: #0072bb;
