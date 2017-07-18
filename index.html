@@ -74,8 +74,8 @@
         </div>
     </div> 
 
-    <div class="ui two column stackable grid container" style="margin-top: 40px">
-        <div class="column">
+    <div class="ui stackable grid container" style="margin-top: 40px">
+        <div class="six wide column">
             <div class="ui small header">Country Demographics &nbsp; &nbsp;
                 <div class="ui selection dropdown" id="year-dropdown">
                     <input type="hidden" name="year" value="1990">
@@ -154,27 +154,65 @@
                 </tbody>
             </table>
         </div>
-        <div class="column">
+        <div class="ten wide column">
             <div class="ui small header">Hepatitis B vaccination coverage</div>
             <canvas id="vizC"></canvas>
         </div>
+
     </div>  <!-- end ui two column stackable grid -->
 
-    
-    <div class="ui three column stackable grid container">
+    <!-- VIZ C -->
+    <!-- <div class="ui stackable grid container">
+        <div class="ten wide column">
+            <div class="ui small header">Hepatitis B vaccination coverage</div>
+            <canvas id="vizC"></canvas>
+        </div>
+    </div> -->
+
+    <div class="ui divider"></div>
+
+     <!-- VIZ D -->
+                
+    <div class="ui two column stackable grid container">
         <div class="column">
-            <div class="ui small header">Estimated HBsAg prevalence %</div>
+             <div class="ui small header">Estimated HBsAg prevalence %: Country</div>
             <canvas id="vizD-1"></canvas>
             <div class="chartd-subheads"><span class="fl"> &lt; 5 years</span><span class="fr">General Pop</span></div> 
         </div>
+
         <div class="column">
-            <div class="ui small header">Estimated # of HBsAg carriers</div>
+            <div class="ui small header">Estimated HBsAg prevalence %: Regional and Income Grouups</div>
+            <canvas id="vizD-1b"></canvas>
+            <div class="chartd-subheads"><span class="fl"> &lt; 5 years</span><span class="fr">General Pop</span></div> 
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui two column stackable grid container">
+        <div class="column">
+            <div class="ui small header">Estimated # of HBsAg carriers: Country</div>
             <canvas id="vizD-2"></canvas>
             <div class="chartd-subheads"><span class="fl"> &lt; 5 years</span><span class="fr">General Pop</span></div>
         </div>
+        <div class="column">
+            <div class="ui small header">Estimated # of HBsAg carriers: Regional and Income Grouups</div>
+            <canvas id="vizD-2b"></canvas>
+            <div class="chartd-subheads"><span class="fl"> &lt; 5 years</span><span class="fr">General Pop</span></div>
+        </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui two column stackable grid container">
          <div class="column">
             <div class="ui small header"># of ABsAg carriers prevented</div>
             <canvas id="vizD-3"></canvas>
+        </div>
+
+        <div class="column">
+            <div class="ui small header"># of ABsAg carriers prevented</div>
+            <canvas id="vizD-3b"></canvas>
         </div>
     </div>
 
@@ -228,13 +266,12 @@
         </div>
         <div class="content">
             <p>We report national-level prevalence estimates of chronic HBV derived by a systematic review of peer-reviewed literature reporting HBV prevalence (hepatitis B surface antigen [HBsAg]) in the general population for children under 5 years of age and population above 5 years of age. The criteria were similar to (Schweitzer, et al., 2015). Observational studies on chronic HBV infection seroprevalence (HBsAg prevalence), done in the general population or among blood donors, health-care workers (HCWs), and pregnant women were considered for inclusion in this systematic review. Studies were excluded if they were systematic reviews or meta-analyses, surveillance reports, case studies, letters or correspondence, or did not contain HBsAg seroprevalence data. Studies were also excluded if they exclusively reported prevalence estimates for high-risk population groups (e.g., migrants and refugees).</p>
-                
             <p>The data was modelled using a logistic regression, weighting each study by its size and using a conditional autoregressive model accounting for spatial and economic correlations between similar countries. The response variable in the model was the prevalence of Hepatitis surface antigen (HBsAg) with the predictor variables being age (three categories, under 5, juvenile (5-15) and adult (16+), split using the average age of participants in the study), sex (proportion female in the study), study bias (e.g. a high fraction of study participants from indigenous populations), 3 dose vaccine coverage, birth dose of the vaccine and country of study.</p>
             <p>A detailed description of the literature search, data extraction and model are in this <a href="docs/HBsAg_estimates_and_methods_final_V3.pdf">downloadable PDF document<a/>.</p>
         </div>
     </div>
 
-    <div class="ui modal tiny" id="modal-data">
+    <div class="ui modal tiny" id="modal-data-sources">
         <i class="close icon"></i>
         <div class="header">
             Data sources
@@ -250,8 +287,7 @@
             Disclaimer
         </div>
         <div class="content">
-            <p>    This dataset represents the best estimates of WHO using a methodology reviewed by two WHO advisory committees: Immunization and vaccines related implementation research advisory committee (IVIR-AC) and the Strategic Advisory Group of Experts (SAGE) for the hepatitis b surface antigen indicator that aim for comparability across countries and time; it is updated as more recent or revised data become available, or when there are changes to the methodology being used. Therefore, they are not always the same as official national estimates, although WHO whenever possible will provide Member States the opportunity review and comment on data and estimates as part of country consultations. Last database update: 23 March 2017.</p>
- 
+            <p>This dataset represents the best estimates of WHO using a methodology reviewed by two WHO advisory committees: Immunization and vaccines related implementation research advisory committee (IVIR-AC) and the Strategic Advisory Group of Experts (SAGE) for the hepatitis b surface antigen indicator that aim for comparability across countries and time; it is updated as more recent or revised data become available, or when there are changes to the methodology being used. Therefore, they are not always the same as official national estimates, although WHO whenever possible will provide Member States the opportunity review and comment on data and estimates as part of country consultations. Last database update: 23 March 2017.</p>
             <p>Due to scarcity of data the model works better at global and regional level than at country level. Countries should focus on the credible intervals and not on the point estimates.</p>
         </div>
     </div>
