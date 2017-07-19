@@ -173,17 +173,31 @@
 
      <!-- VIZ D -->
                 
-    <div class="ui two column stackable grid container">
-        <div class="column">
+    <div class="ui stackable grid container">
+        <div class="eight wide column">
              <div class="ui small header">Estimated HBsAg prevalence %: Country</div>
             <canvas id="vizD-1"></canvas>
-            <div class="chartd-subheads"><span class="fl"> &lt; 5 years</span><span class="fr">General Pop</span></div> 
+            <div class="ui grid">
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">under 5 years old</div>
+                </div>
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">general population</div>
+                </div>
+            </div> 
         </div>
 
-        <div class="column">
+        <div class="eight wide column">
             <div class="ui small header">Estimated HBsAg prevalence %: Regional and Income Grouups</div>
             <canvas id="vizD-1b"></canvas>
-            <div class="chartd-subheads"><span class="fl"> &lt; 5 years</span><span class="fr">General Pop</span></div> 
+            <div class="ui grid">
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">under 5 years old</div>
+                </div>
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">general population</div>
+                </div>
+            </div> 
         </div>
     </div>
 
@@ -193,12 +207,26 @@
         <div class="column">
             <div class="ui small header">Estimated # of HBsAg carriers: Country</div>
             <canvas id="vizD-2"></canvas>
-            <div class="chartd-subheads"><span class="fl"> &lt; 5 years</span><span class="fr">General Pop</span></div>
+            <div class="ui grid">
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">under 5 years old</div>
+                </div>
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">general population</div>
+                </div>
+            </div> 
         </div>
         <div class="column">
-            <div class="ui small header">Estimated # of HBsAg carriers: Regional and Income Grouups</div>
+            <div class="ui small header">Estimated # of HBsAg carriers: Regional and Income Groups</div>
             <canvas id="vizD-2b"></canvas>
-            <div class="chartd-subheads"><span class="fl"> &lt; 5 years</span><span class="fr">General Pop</span></div>
+            <div class="ui grid">
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">under 5 years old</div>
+                </div>
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">general population</div>
+                </div>
+            </div> 
         </div>
     </div>
 
@@ -302,7 +330,7 @@
     integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
     crossorigin="anonymous"></script>
     <script src="semantic/dist/semantic.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="data/iso-codes.js"></script>
     <script src="js/main.js"></script>
   </body>

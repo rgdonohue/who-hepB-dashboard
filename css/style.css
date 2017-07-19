@@ -25,15 +25,15 @@
 #chartjs-tooltip {
     opacity: 1;
     position: absolute;
-    background: rgba(0, 0, 0, .7);
+    /* background: rgba(0, 0, 0, .7);
     color: white;
-    border-radius: 3px;
-    width: 180px;
+    border-radius: 3px; */
+    min-width: 140px;
     -webkit-transition: all .1s ease;
     transition: all .1s ease;
     pointer-events: none;
-    -webkit-transform: translate(0, -50%);
-    transform: translate(0, -50%);
+    -webkit-transform: translate(12px, -50%);
+    transform: translate(12px, -50%);
 }
 
 .chartjs-tooltip-key {
@@ -62,4 +62,11 @@
 #chartEtableBody {
     height: 300px;
     overflow-y: scroll; 
+}
+
+table div {
+    font-weight: bold;
+}
+table div span {
+    font-weight: normal;
 }
