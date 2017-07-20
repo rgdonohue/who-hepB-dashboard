@@ -269,20 +269,28 @@
     <div class="ui divider"></div>
 
     <div class="ui container">
-        <div class="ui grid container">
-            <div class="ui 3 wide column">
-                <div class="ui dropdown" id="map-dropdown">
-                    <input type="hidden" name="variables">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Variables</div>
-                    <div class="menu">
-                        <div class="item" data-value="male">HBsAg prevalence  pre vaccination &lt; 5 years-(Estimated prevalence %)</div>
-                        <div class="item" data-value="male">HBsAg prevalence  pre vaccination General population-(Estimated prevalence %)</div>
-                        <div class="item" data-value="male">HBsAg prevalence  post vaccination &lt; 5 years-(Estimated prevalence %)</div>
-                        <div class="item" data-value="male">HBsAg prevalence  post vaccination General population-(Estimated prevalence %)</div>
-                        <div class="item" data-value="male">HBsAg prevalence  number of carriers prevented ('000s) &lt; 5 years</div>
-                        <div class="item" data-value="male">HBsAg prevalence  number of carriers prevented ('000s) General population</div>
-                    </div>
+        <div class="ui medium header">
+            Global hepatitis response to vaccination schedules
+        </div>
+        <div class="ui grid">
+            <div class="ui eight wide column">
+                <div class="ui radio checkbox">
+                    <input type="radio" name="radio" data-value="PreU5EstPre" checked="checked">
+                    <label>&lt; 5 years pre-vaccation</label>
+                </div>
+                <div class="ui radio checkbox">
+                    <input type="radio" name="radio" data-value="PostU5EstPre">
+                    <label>&lt; 5 years 2015 estimate</label>
+                </div>
+            </div>
+            <div class="ui eight wide column">
+                <div class="ui radio checkbox">
+                    <input type="radio" name="radio" data-value="PreGPEstPre">
+                    <label>general population pre-vaccation</label>
+                </div>
+                <div class="ui radio checkbox">
+                    <input type="radio" name="radio" data-value="PostGPEstPre">
+                    <label>general population 2015 estimate</label>
                 </div>
             </div>
         </div>
@@ -312,18 +320,18 @@
         <div class="content">
             <p>We report national-level prevalence estimates of chronic HBV derived by a systematic review of peer-reviewed literature reporting HBV prevalence (hepatitis B surface antigen [HBsAg]) in the general population for children under 5 years of age and population above 5 years of age. The criteria were similar to (Schweitzer, et al., 2015). Observational studies on chronic HBV infection seroprevalence (HBsAg prevalence), done in the general population or among blood donors, health-care workers (HCWs), and pregnant women were considered for inclusion in this systematic review. Studies were excluded if they were systematic reviews or meta-analyses, surveillance reports, case studies, letters or correspondence, or did not contain HBsAg seroprevalence data. Studies were also excluded if they exclusively reported prevalence estimates for high-risk population groups (e.g., migrants and refugees).</p>
             <p>The data was modelled using a logistic regression, weighting each study by its size and using a conditional autoregressive model accounting for spatial and economic correlations between similar countries. The response variable in the model was the prevalence of Hepatitis surface antigen (HBsAg) with the predictor variables being age (three categories, under 5, juvenile (5-15) and adult (16+), split using the average age of participants in the study), sex (proportion female in the study), study bias (e.g. a high fraction of study participants from indigenous populations), 3 dose vaccine coverage, birth dose of the vaccine and country of study.</p>
-            <p>A detailed description of the literature search, data extraction and model are in this <a href="docs/HBsAg_estimates_and_methods_final_V3.pdf">downloadable PDF document<a/>.</p>
+            <p>A detailed description of the literature search, data extraction and model are in this <a href="docs/HBsAg_estimates_and_methods_final_V3.pdf">downloadable PDF document</a>.</p>
         </div>
     </div>
 
     <div class="ui modal tiny" id="modal-data-sources">
-        <i class="close icon"></i>
+       <i class="close icon"></i>
         <div class="header">
             Data sources
         </div>
-        <div class="content">
+          <div class="content">
             <p>Demographics data, year of vaccine introduction in the entire country, coverage, schedules data are derived from official reports by WHO Member States and unless otherwise stated, data are reported annually through the <a href="http://www.who.int/immunization/monitoring_surveillance/data/en/">WHO/UNICEF joint reporting process</a>.</p>
-        </div>
+        </div> 
     </div>
 
     <div class="ui modal" id="modal-disclaimer">
@@ -337,18 +345,12 @@
         </div>
     </div>
 
-
-
-
-
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="semantic/dist/semantic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
     <script src="https://unpkg.com/topojson@3"></script>
-
-    <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="semantic/dist/semantic.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="data/iso-codes.js"></script>
     <script src="js/main.js"></script>
   </body>

@@ -71,7 +71,7 @@ table div span {
     height: 480px;
     width: 100%;
     background: steelblue;
-    margin-bottom: 18px;
+    margin: 18px auto;
 }
 .stroke {
   fill: none;
@@ -95,7 +95,7 @@ table div span {
 }
 
 .country {
-  fill: #888;
+  /* fill: #888; */
   stroke: whitesmoke;
   stroke-width: .3px;
 }

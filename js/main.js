@@ -1145,8 +1145,6 @@
 
     function makeMap(data, countries) {
 
-        $('#map-dropdown').dropdown();
-
         var na = [];
 
         data.forEach(function(datum) {
@@ -1166,16 +1164,14 @@
 
         var svg = d3.select("#map svg")
             .attr("width", width)
-            .attr("height", height);
+            .attr("height", height)
+            .attr("id", "map-svg")
 
         var geoJSON = topojson.feature(countries, {
             type: "GeometryCollection",
             geometries: countries.objects.countries.geometries
         });
-
-        console.log(geoJSON)
         
-
         var projection = d3.geoEckert3()
             // .scale(Math.PI * 2)
             .fitSize([width, height], geoJSON)
@@ -1201,14 +1197,14 @@
             .attr("class", "graticule")
             .attr("d", path);
 
-        var countries = svg.selectAll("path")
+        var countrySvgs = svg.selectAll("path")
             .data(topojson.feature(countries, countries.objects.countries).features)
             .enter()
             .append("path")
             .attr("class", "country")
             .attr("d", path)
             .on('mouseover', function(d) {
-                console.log(d.properties.data);
+                // console.log(d.properties.data);
             })
 
         // svg.call(zoom)
@@ -1230,8 +1226,62 @@
             //                d3.select('defs path').attr("transform", transform);
         }
 
+        // $("#map-dropdown").on('input change', function() {
+        //     console.log($(this).attr('data-value'));
+        // });
+    
+        // $("#map-dropdown").onChange(function(value, text, choice) {
+        //     console.log(value, text, choice);
+        // });
 
+        updateMap(countrySvgs, data, "PreU5EstPre");
 
+        // $('#map-dropdown').dropdown({
+        //     onChange: function(value, text, choice) {
+        //         updateMap(countrySvgs, data, value);
+        //     }
+        // });
+
+        $(".checkbox").checkbox({
+            onChecked: function(t) {
+                var val = $(this).attr('data-value');
+                updateMap(countrySvgs, data, val);
+            }
+        });
+
+        d3.select("#map")
+            .on("resize", sizeChange);
+            
+        function sizeChange() {
+            d3.select("#map-svg").attr("transform", "scale(" + $("#container").width()/900 + ")");
+	        $("#map-svg").height($("#map").width()*0.618);
+        }
+
+    }
+
+    function updateMap(countries, data, variable) {
+
+        var colors = [ 
+            "#ffc6c4",
+            "#ee919b",
+            "#cc607d",
+            "#9e3963"
+        ];
+
+        var breaks = [2, 5, 8]
+
+        var color = d3.scaleThreshold()
+            .domain(breaks)
+            .range(colors);
+
+        countries.attr('fill', function(d) {
+                try {
+                    var val = d.properties.data[variable];
+                    return color(val);
+                } catch(e) {
+                    // silence
+                }
+            })
 
     }
 
