@@ -1145,7 +1145,18 @@
 
     function makeMap(data, countries) {
 
-        var na = [];
+        var colors = [ 
+            "#ffc6c4",
+            "#ee919b",
+            "#cc607d",
+            "#9e3963"
+        ];
+
+        $("#legend1").css('background', colors[3]);
+        $("#legend2").css('background', colors[2]);
+        $("#legend3").css('background', colors[1]);
+        $("#legend4").css('background', colors[0]);
+        $("#legend5").css('background', "black");
 
         data.forEach(function(datum) {
             var dataIso = datum.ISO3;
@@ -1236,12 +1247,6 @@
 
         updateMap(countrySvgs, data, "PreU5EstPre");
 
-        // $('#map-dropdown').dropdown({
-        //     onChange: function(value, text, choice) {
-        //         updateMap(countrySvgs, data, value);
-        //     }
-        // });
-
         $(".checkbox").checkbox({
             onChecked: function(t) {
                 var val = $(this).attr('data-value');
@@ -1268,14 +1273,6 @@
             "#9e3963"
         ];
 
-        $("#legend1").css('background', colors[3]);
-        $("#legend2").css('background', colors[2]);
-        $("#legend3").css('background', colors[1]);
-        $("#legend4").css('background', colors[0]);
-        $("#legend5").css('background', "black");
-
-        
-
         var breaks = [2, 5, 8]
 
         var color = d3.scaleThreshold()
@@ -1284,8 +1281,7 @@
 
         countries.attr('fill', function(d) {
             try {
-                var val = d.properties.data[variable];
-                return color(val);
+                return color(d.properties.data[variable]);
             } catch(e) {
                 // silence
             }
