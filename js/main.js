@@ -1268,6 +1268,14 @@
             "#9e3963"
         ];
 
+        $("#legend1").css('background', colors[3]);
+        $("#legend2").css('background', colors[2]);
+        $("#legend3").css('background', colors[1]);
+        $("#legend4").css('background', colors[0]);
+        $("#legend5").css('background', "black");
+
+        
+
         var breaks = [2, 5, 8]
 
         var color = d3.scaleThreshold()
@@ -1275,13 +1283,13 @@
             .range(colors);
 
         countries.attr('fill', function(d) {
-                try {
-                    var val = d.properties.data[variable];
-                    return color(val);
-                } catch(e) {
-                    // silence
-                }
-            })
+            try {
+                var val = d.properties.data[variable];
+                return color(val);
+            } catch(e) {
+                // silence
+            }
+        });
 
     }
 

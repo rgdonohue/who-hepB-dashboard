@@ -294,7 +294,17 @@
                 </div>
             </div>
         </div>
-        <div id="map"><svg></svg></div>
+        <div id="map">
+            <svg></svg>
+            <div id="map-legend">
+                <div class="ui tiny header">Percent prevalence of Hepatitis</div>
+                <div><span id="legend1"></span>highly endemic (&gt; 8%)</div>
+                <div><span id="legend2"></span>high intermediate endemic (5% &ndash; 8%)</div>
+                <div><span id="legend3"></span>low intermediate (2% &ndash; 5%)</div>
+                <div><span id="legend4"></span>low endemic (&lt; 2%)</div>
+                <div><span id="legend5"></span>no data</div>
+            </div>
+        </div>
     </div>
 
     <div class="ui modal" id="modal-about">
@@ -303,6 +313,7 @@
             About
         </div>
         <div class="content">
+            <p>This dashboard shows the HBsAg prevalence estimates at global, regional and country level and how they have changed since vaccination was introduced.</p>
             <p>Disease caused by HBV has a worldwide distribution. The endemicity of active HBV infection is reflected in the serologic prevalence of the hepatitis B surface antigen (HBsAg) in the general population of a defined geographical area. HBsAg prevalence of ≥8% defines highly endemic areas, prevalence of 5%–7% defines high intermediate, 2%–4% low intermediate, and <2% defines low endemic areas.</p>
             <p>Based on serological data, it was estimated that in 1995 more than 2 billion people globally had evidence of past or present HBV infection.  In 2015 the global prevalence of HBV infection in the general population was estimated at 3.5% with about 257 million persons living with chronic HBV infection. Prevalence varies considerably among the WHO Regions, with the highest in the African (6.1%) and  Western Pacific Regions (6.2%).</p>
             <p>Most of the burden of HBV-related disease results from infections acquired in infancy through perinatal or early childhood exposure to HBV because infection acquired at an early age is more likely to become chronic than infection acquired later in life.</p>
