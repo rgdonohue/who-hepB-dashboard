@@ -269,7 +269,24 @@
     <div class="ui divider"></div>
 
     <div class="ui container">
-        <div id="map"></div>
+        <div class="ui grid container">
+            <div class="ui 3 wide column">
+                <div class="ui dropdown" id="map-dropdown">
+                    <input type="hidden" name="variables">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">Variables</div>
+                    <div class="menu">
+                        <div class="item" data-value="male">HBsAg prevalence  pre vaccination &lt; 5 years-(Estimated prevalence %)</div>
+                        <div class="item" data-value="male">HBsAg prevalence  pre vaccination General population-(Estimated prevalence %)</div>
+                        <div class="item" data-value="male">HBsAg prevalence  post vaccination &lt; 5 years-(Estimated prevalence %)</div>
+                        <div class="item" data-value="male">HBsAg prevalence  post vaccination General population-(Estimated prevalence %)</div>
+                        <div class="item" data-value="male">HBsAg prevalence  number of carriers prevented ('000s) &lt; 5 years</div>
+                        <div class="item" data-value="male">HBsAg prevalence  number of carriers prevented ('000s) General population</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="map"><svg></svg></div>
     </div>
 
     <div class="ui modal" id="modal-about">
@@ -325,10 +342,11 @@
 
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+    <script src="https://unpkg.com/topojson@3"></script>
+
     <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous"></script>
+    src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="semantic/dist/semantic.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="data/iso-codes.js"></script>

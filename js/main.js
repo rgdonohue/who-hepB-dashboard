@@ -38,12 +38,13 @@
     d3.queue()
         .defer(d3.csv, 'data/hepB-master.csv')
         .defer(d3.csv, 'data/seroprevalence_surveys.csv')
+        .defer(d3.json, 'data/countries.json')
         .await(ready);
 
-    function ready(e,hepData, surveyData) {
+    function ready(e,hepData, surveyData, countries) {
         makeCountryDropdown(hepData, surveyData);
+        makeMap(hepData, countries);
     }
-
 
     function makeCountryDropdown(data, surveyData) {
 
@@ -141,6 +142,9 @@
                             beginAtZero: true
                         }
                     }]
+                },
+                tooltips: {
+                    enabled: false
                 }
             }
         });
@@ -1137,6 +1141,99 @@
         tooltipEl.style.fontStyle = tooltip._fontStyle;
         tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
     };
+
+
+    function makeMap(data, countries) {
+
+        $('#map-dropdown').dropdown();
+
+        var na = [];
+
+        data.forEach(function(datum) {
+            var dataIso = datum.ISO3;
+
+            countries.objects.countries.geometries.forEach(function(country) {
+
+                var iso = country.properties.iso;
+                if(dataIso === iso) {
+                    country.properties.data = datum;
+                }
+            });
+        });
+
+        var width = d3.select("#map").style("width").slice(0, -2),
+            height = d3.select("#map").style("height").slice(0, -2);
+
+        var svg = d3.select("#map svg")
+            .attr("width", width)
+            .attr("height", height);
+
+        var geoJSON = topojson.feature(countries, {
+            type: "GeometryCollection",
+            geometries: countries.objects.countries.geometries
+        });
+
+        console.log(geoJSON)
+        
+
+        var projection = d3.geoEckert3()
+            // .scale(Math.PI * 2)
+            .fitSize([width, height], geoJSON)
+            // .translate([0, 0])
+            // .precision(0.1);
+
+        var path = d3.geoPath()
+            .projection(projection);
+
+        var graticule = d3.geoGraticule();
+
+        var path = d3.geoPath()
+            .projection(projection);
+
+        var zoom = d3.zoom()
+            .scaleExtent([10, 200])
+            .on("zoom", zoomed);
+
+        var center = projection([-30, 20]);
+
+        var grat = svg.append("path")
+            .datum(graticule)
+            .attr("class", "graticule")
+            .attr("d", path);
+
+        var countries = svg.selectAll("path")
+            .data(topojson.feature(countries, countries.objects.countries).features)
+            .enter()
+            .append("path")
+            .attr("class", "country")
+            .attr("d", path)
+            .on('mouseover', function(d) {
+                console.log(d.properties.data);
+            })
+
+        // svg.call(zoom)
+        //     .call(zoom.transform, d3.zoomIdentity
+        //         .translate(width / 2, height / 2)
+        //         .scale(19.5)
+        //         .translate(-center[0] - 3, -center[1] - 1));
+
+        function zoomed() {
+
+            var transform = d3.event.transform;
+
+            countries.attr("transform", transform)
+                .style("stroke-width", 1 / transform.k);
+
+            grat.attr("transform", transform)
+                .style("stroke-width", 1 / transform.k);
+
+            //                d3.select('defs path').attr("transform", transform);
+        }
+
+
+
+
+    }
 
 
 

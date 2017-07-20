@@ -17,11 +17,6 @@
 #dropdown-current-country {
     font-size: 1.2em;
 }
-#map {
-    height: 480px;
-    width: 100%;
-    background: steelblue;
-}
 #chartjs-tooltip {
     opacity: 1;
     position: absolute;
@@ -69,4 +64,41 @@ table div {
 }
 table div span {
     font-weight: normal;
+}
+
+/* MAP STUFF */
+#map {
+    height: 480px;
+    width: 100%;
+    background: steelblue;
+    margin-bottom: 18px;
+}
+.stroke {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1px;
+}
+
+.fill {
+  fill: #fff;
+}
+
+.graticule {
+  fill: none;
+  stroke: #999;
+  stroke-width: .3px;
+  stroke-opacity: .2;
+}
+
+.land {
+  fill: #666;
+}
+
+.country {
+  fill: #888;
+  stroke: whitesmoke;
+  stroke-width: .3px;
+}
+.country:hover {
+    cursor: pointer;
 }
