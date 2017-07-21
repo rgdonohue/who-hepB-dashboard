@@ -66,7 +66,7 @@ table div span {
 #map {
     height: 480px;
     width: 100%;
-    background: steelblue;
+    background: #0072bb;
     margin: 18px auto;
     position: relative
 }
@@ -88,17 +88,17 @@ table div span {
 }
 .stroke {
   fill: none;
-  stroke: #666;
+  stroke: #fff;
   stroke-width: 1px;
 }
 
 .fill {
-  fill: #fff;
+  fill: #0072bb;
 }
 
 .graticule {
   fill: none;
-  stroke: #999;
+  stroke: #fff;
   stroke-width: .3px;
   stroke-opacity: .2;
 }

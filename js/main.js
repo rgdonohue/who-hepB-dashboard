@@ -1193,16 +1193,16 @@
             .attr("height", height)
             .attr("id", "map-svg")
 
-        var geoJSON = topojson.feature(countries, {
-            type: "GeometryCollection",
-            geometries: countries.objects.countries.geometries
-        });
+        // var geoJSON = topojson.feature(countries, {
+        //     type: "GeometryCollection",
+        //     geometries: countries.objects.countries.geometries
+        // });
         
         var projection = d3.geoEckert3()
-            // .scale(Math.PI * 2)
-            .fitSize([width, height], geoJSON)
-            // .translate([0, 0])
-            // .precision(0.1);
+            .scale(8)
+            // .fitSize([width, height], geoJSON)
+            .translate([0, 0])
+            .precision(0.1);
 
         var path = d3.geoPath()
             .projection(projection);
@@ -1217,6 +1217,28 @@
             .on("zoom", zoomed);
 
         var center = projection([-30, 20]);
+
+        var defs = svg.append("defs");
+
+        defs.append("path")
+            .datum({
+                type: "Sphere"
+            })
+            .attr("id", "sphere")
+            .attr("d", path);
+        
+        defs.append("clipPath")
+            .attr("id", "clip")
+            .append("use")
+            .attr("xlink:href", "#sphere");
+        
+        svg.append("use")
+            .attr("class", "stroke")
+            .attr("xlink:href", "#sphere");
+        
+        svg.append("use")
+            .attr("class", "fill")
+            .attr("xlink:href", "#sphere");
 
         var grat = svg.append("path")
             .datum(graticule)
@@ -1238,23 +1260,25 @@
                 // console.log(d.properties.data);
             })
 
-        // svg.call(zoom)
-        //     .call(zoom.transform, d3.zoomIdentity
-        //         .translate(width / 2, height / 2)
-        //         .scale(19.5)
-        //         .translate(-center[0] - 3, -center[1] - 1));
+        svg.call(zoom)
+            .call(zoom.transform, d3.zoomIdentity
+                .translate(width / 2, height / 2)
+                .scale(19.5)
+                .translate(-center[0] - 3, -center[1] - 2));
 
         function zoomed() {
 
             var transform = d3.event.transform;
 
-            countries.attr("transform", transform)
+            countrySvgs.attr("transform", transform)
                 .style("stroke-width", 1 / transform.k);
 
             grat.attr("transform", transform)
                 .style("stroke-width", 1 / transform.k);
 
-            //                d3.select('defs path').attr("transform", transform);
+             d3.select('defs path').attr("transform", transform)
+                .style("stroke-width", 1 / transform.k);
+
         }
 
         updateMap(countrySvgs, data, "PreU5EstPre");
@@ -1266,13 +1290,13 @@
             }
         });
 
-        d3.select("#map")
-            .on("resize", sizeChange);
+        // d3.select("#map")
+        //     .on("resize", sizeChange);
             
-        function sizeChange() {
-            d3.select("#map-svg").attr("transform", "scale(" + $("#container").width()/900 + ")");
-	        $("#map-svg").height($("#map").width()*0.618);
-        }
+        // function sizeChange() {
+        //     d3.select("#map-svg").attr("transform", "scale(" + $("#container").width()/900 + ")");
+	    //     $("#map-svg").height($("#map").width()*0.618);
+        // }
 
     }
 
