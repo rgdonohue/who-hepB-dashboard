@@ -155,12 +155,14 @@
             labels: ["Pre-vaccination", "2015 estimate", "Pre-vaccination", "2015 estimate"],
             datasets: [{
                 type: "line",
-                borderColor: "#0072bb",
+                borderColor: "lightgray",
+                borderWidth: 2,
                 fill: false,
                 pointRadius: 1
             },{
                 type: "line",
-                borderColor: "#0072bb",
+                borderColor: "lightgray",
+                borderWidth: 2,
                 fill: false,
                 pointRadius: 1
             },{
@@ -229,11 +231,13 @@
             {
                 type: "line",
                 borderColor: "lightgray",
+                borderWidth: 2,
                 fill: false,
                 pointRadius: 1
             },{
                 type: "line",
                 borderColor: "lightgray",
+                borderWidth: 2,
                 fill: false,
                 pointRadius: 1
             },{
@@ -421,12 +425,15 @@
             }
         });
 
+        $(".current-country").html('<i class="dz flag"></i> Algeria')
+
         $('#country-dropdown').dropdown({
             on: "hover",
             onChange: function(value, text, $selectedItem) {
                 currentCode = value;
                 updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD2, chartD2B, chartD3, chartD3B);
                 $("#dropdown-current-country").html(text);
+                $(".current-country").html(text);
             }
         });
 
@@ -459,7 +466,7 @@
                     
                     if(currentYear >= i) {
                         $totalPopU5.html((datum['U5'+i] * 1000).toLocaleString());
-                        $urbanPop.html((datum['UrbPop'+i] * 1000).toLocaleString());
+                        $urbanPop.html(Math.round(datum['UrbPop'+i] * 10)/10 + "%");
                         $("#under-five-pop-years").html("(" + i + " &ndash; " + (+i + 4) + ")");
                         $("#urban-pop-years").html("(" + i + " &ndash; " + (+i + 4) + ")");
                     }
@@ -485,7 +492,7 @@
                 for(var interval in infantMortalityIntervals) {
                     if(+currentYear >= infantMortalityIntervals[interval][0] && 
                        +currentYear <= infantMortalityIntervals[interval][1]) {
-                           $infantMortality.html((datum[interval] * 1000).toLocaleString());
+                           $infantMortality.html(Math.round(datum[interval] * 10)/10 + " per 1,000");
                            $("#infant-mortality-years").html("(" + infantMortalityIntervals[interval][0] + " &ndash; " + infantMortalityIntervals[interval][1] + ")");
                     }
                 }
@@ -503,7 +510,8 @@
 
          var $hepBIntroYear = $('#chartB-hepB-intro-year'),
              $hepBBirthYear = $('#chartB-hepB-birth-year'),
-             $chartBSchedule = $('#chartB-schedule');
+             $chartBSchedule = $('#chartB-schedule'),
+             $chartBType = $('#chartB-type');
 
         // CHART C data
 
@@ -559,6 +567,8 @@
                 } else {
                     $chartBSchedule.html("N/A");
                 }
+
+                $chartBType.html(datum.Type);
                 
 
 
@@ -897,7 +907,7 @@
 
         // CHART E
 
-        var chartE = $('#chartEtableBody'),
+        var chartE = $('#chartEtableBody').html(''),
             html;
 
         surveyData.forEach(function(survey) {
@@ -1209,7 +1219,12 @@
             .attr("d", path);
 
         var countrySvgs = svg.selectAll("path")
-            .data(topojson.feature(countries, countries.objects.countries).features)
+            .data(topojson.feature(countries, countries.objects.countries).features
+                    .filter(function(d) {
+                        if(d.properties.iso != "ATA") {
+                            return d;
+                        }
+                    }))
             .enter()
             .append("path")
             .attr("class", "country")
@@ -1236,14 +1251,6 @@
 
             //                d3.select('defs path').attr("transform", transform);
         }
-
-        // $("#map-dropdown").on('input change', function() {
-        //     console.log($(this).attr('data-value'));
-        // });
-    
-        // $("#map-dropdown").onChange(function(value, text, choice) {
-        //     console.log(value, text, choice);
-        // });
 
         updateMap(countrySvgs, data, "PreU5EstPre");
 
