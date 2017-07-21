@@ -1160,6 +1160,17 @@
 
     function makeMap(data, countries) {
 
+        var currentVariable = "PreU5EstPre";
+
+        var variableMap = {
+            "PreU5EstPre": "Under 5 years old pre-vaccination",
+            "PostU5EstPre": "Under 5 years old 2015 estimate",
+            "PreGPEstPre": "General population pre-vaccination",
+            "PostGPEstPre": "General population 2015 estimate"
+        };
+
+        d3.select("#map-hover-output").style("opacity", 0);
+
         var colors = [ 
             "#ffc6c4",
             "#ee919b",
@@ -1247,18 +1258,28 @@
 
         var countrySvgs = svg.selectAll("path")
             .data(topojson.feature(countries, countries.objects.countries).features
-                    .filter(function(d) {
-                        if(d.properties.iso != "ATA") {
-                            return d;
-                        }
-                    }))
+                .filter(function(d) {
+                    if(d.properties.iso != "ATA") {
+                        return d;
+                    }
+                }))
             .enter()
             .append("path")
             .attr("class", "country")
             .attr("d", path)
             .on('mouseover', function(d) {
-                // console.log(d.properties.data);
+                try {
+                    d3.select("#map-hover-current-country").html(d.properties.data.Country);
+                    d3.select("#map-hover-current-variable").html(variableMap[currentVariable]);
+                    d3.select("#map-hover-current-value").html(d.properties.data[currentVariable]);
+                    d3.select("#map-hover-output").transition().style("opacity", 1);
+                } catch(e) {
+                    // silence
+                }
             })
+            .on('mouseout', function() {
+                d3.select("#map-hover-output").transition().style("opacity", 0);
+            });
 
         svg.call(zoom)
             .call(zoom.transform, d3.zoomIdentity
@@ -1281,22 +1302,14 @@
 
         }
 
-        updateMap(countrySvgs, data, "PreU5EstPre");
+        updateMap(countrySvgs, data, currentVariable);
 
         $(".checkbox").checkbox({
-            onChecked: function(t) {
-                var val = $(this).attr('data-value');
-                updateMap(countrySvgs, data, val);
+            onChecked: function() {
+                currentVariable = $(this).attr('data-value');
+                updateMap(countrySvgs, data, currentVariable);
             }
         });
-
-        // d3.select("#map")
-        //     .on("resize", sizeChange);
-            
-        // function sizeChange() {
-        //     d3.select("#map-svg").attr("transform", "scale(" + $("#container").width()/900 + ")");
-	    //     $("#map-svg").height($("#map").width()*0.618);
-        // }
 
     }
 

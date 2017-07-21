@@ -296,35 +296,40 @@
     <div class="ui divider"></div>
 
     <div class="ui container">
-        <div class="ui grid">
-            <div class="ui six wide column">
+        <div class="ui grid container">
+            <div class="ui four wide column">
                 <div class="ui medium header">
                     Global hepatitis response to vaccination schedules
                 </div>
             </div>
-            <div class="ui ten wide column">
-                <div class="ui grid">
-                    <div class="ui five wide column">
-                        <div class="ui tiny header">Under 5 years old</div>
-                        <div class="ui radio checkbox">
-                             <input type="radio" name="radio" data-value="PreU5EstPre" checked="checked">
-                            <label>pre-vaccation</label>
-                        </div>
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="radio" data-value="PostU5EstPre">
-                            <label>2015 estimate</label>
-                        </div>
-                    </div>
-                    <div class="ui five wide column">
-                        <div class="ui tiny header">General population</div>
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="radio" data-value="PreGPEstPre">
-                            <label>pre-vaccation</label>
-                        </div>
-                        <div class="ui radio checkbox">
-                            <input type="radio" name="radio" data-value="PostGPEstPre">
-                            <label>2015 estimate</label>
-                        </div>
+            <div class="ui three wide column">
+                <div class="ui tiny header">Under 5 years old</div>
+                <div class="ui radio checkbox">
+                        <input type="radio" name="radio" data-value="PreU5EstPre" checked="checked">
+                    <label>pre-vaccation</label>
+                </div>
+                <div class="ui radio checkbox">
+                    <input type="radio" name="radio" data-value="PostU5EstPre">
+                    <label>2015 estimate</label>
+                </div>
+            </div>
+            <div class="ui three wide column">
+                <div class="ui tiny header">General population</div>
+                <div class="ui radio checkbox">
+                    <input type="radio" name="radio" data-value="PreGPEstPre">
+                    <label>pre-vaccation</label>
+                </div>
+                <div class="ui radio checkbox">
+                    <input type="radio" name="radio" data-value="PostGPEstPre">
+                    <label>2015 estimate</label>
+                </div>
+            </div>
+            <div class="ui six wide column">
+                <div id="map-hover-output">
+                    <div id="map-hover-current-country" class="ui medium header"></div>
+                    <div>
+                        <span id="map-hover-current-variable" class="ui tiny header"></span>: 
+                        <span id="map-hover-current-value" class="ui small header"></span>%
                     </div>
                 </div>
             </div>

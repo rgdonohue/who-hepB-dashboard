@@ -110,7 +110,8 @@ table div span {
 .country {
   /* fill: #888; */
   stroke: whitesmoke;
-  stroke-width: .3px;
+  stroke-width: .2px;
+  stroke-opacity: .7;
 }
 .country:hover {
     cursor: pointer;
