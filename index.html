@@ -3,6 +3,7 @@
   <head>
     <title>Visualization Dashboard for Hepatitis B</title>
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
@@ -175,7 +176,7 @@
 
     <div class="ui divider"></div>
 
-     <!-- VIZ D -->
+     <!-- VIZ D1 -->
                 
     <div class="ui stackable grid container">
         <div class="eight wide column">
@@ -203,6 +204,19 @@
                 </div>
             </div> 
         </div>
+
+        <!-- <div class="eight wide column">
+            <div class="ui small header">Comparison to Regional and Income Groups (Estimated HBsAg prevalence %)</div>
+            <canvas id="vizD-1c"></canvas>
+            <div class="ui grid">
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">under 5 years old</div>
+                </div>
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">general population</div>
+                </div>
+            </div> 
+        </div> -->
     </div>
 
     <div class="ui divider"></div>
@@ -251,12 +265,11 @@
     <div class="ui divider"></div>
 
     <div class="ui container">
-        <div class="ui small header">Hepatitis B seriological surveys</div>
-        <table class="ui celled table">
+        <div class="ui small header">Hepatitis B seriological surveys: <span class="current-country"></span></div>
+        <table class="ui celled table" id="chartETable">
             <thead>
                 <tr>
                     <th>Year</th>
-                    <th>Country</th>
                     <th>Location</th>
                     <th>Ages enrolled</th>
                     <th>Sample size</th>
@@ -265,8 +278,7 @@
                     <th>Link to report</th>
                 </tr>
             </thead>
-            <tbody id="chartEtableBody">
-            </tbody>
+            <tbody></tbody>
         </table>
     </div>
 
@@ -370,6 +382,7 @@
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="semantic/dist/semantic.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>

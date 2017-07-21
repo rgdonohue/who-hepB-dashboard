@@ -907,7 +907,7 @@
 
         // CHART E
 
-        var chartE = $('#chartEtableBody').html(''),
+        var $chartEBody = $('#chartETable tbody').html(''),
             html;
 
         surveyData.forEach(function(survey) {
@@ -916,7 +916,6 @@
 
                 html =  "<tr>" + 
                     "<td><div>" + survey['Year start'] + " &ndash; " + survey['Year end'] + "</div></td>" +
-                    "<td><div>" + survey.Country + "</div></td>" +
                     "<td><div>" + survey.Level + "</div></td>" +
                     "<td><div>" + survey['Agestart'] + " &ndash; " + survey['Ageend'] + "</div></td>" +
                     "<td><div>" + (+survey['Sample size']).toLocaleString() + "</div></td>" +
@@ -925,10 +924,17 @@
                     "<td><div><a href='" + survey.URL + "'>link</a></div></td>" +
                 "</tr>"
 
-                chartE.append(html)
+                $chartEBody.append(html)
 
             }
 
+        });
+
+        $("#chartETable").DataTable({
+            "scrollY": "200px",
+            "scrollCollapse": true,
+            "paging": false,
+            "searching": false
         });
 
     }
@@ -950,11 +956,10 @@
             cntx._chart.canvas.parentNode.appendChild(tooltipEl);
         }
 
-        console.log(tooltip.opacity)
-        // Remove if no tooltip
-        if (tooltip.opacity === 0) {
-            tooltipEl.remove();
-        }
+        // // Remove if no tooltip
+        // if (tooltip.opacity === 0) {
+        //     tooltipEl.remove();
+        // }
 
         // Set caret Position
         tooltipEl.classList.remove('above', 'below', 'no-transform');
@@ -1166,7 +1171,7 @@
         $("#legend2").css('background', colors[2]);
         $("#legend3").css('background', colors[1]);
         $("#legend4").css('background', colors[0]);
-        $("#legend5").css('background', "black");
+        $("#legend5").css('background', "#979797");
 
         data.forEach(function(datum) {
             var dataIso = datum.ISO3;
@@ -1290,7 +1295,7 @@
             try {
                 return color(d.properties.data[variable]);
             } catch(e) {
-                // silence
+                return "#979797";
             }
         });
 
