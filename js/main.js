@@ -119,18 +119,21 @@
             data: {
                 datasets: [{
                     label: "% infants vaccinated with 3 doses of Hep B",
-                    borderColor: '#f3e79b',
+                    borderColor: '#fbc02d',
+                    pointBackgroundColor: '#fbc02d',
                     fill: false
                 }, 
                 {
                     label: "% infants vaccinated with birth dose of Hep B",
-                    borderColor: '#5c53a5',
+                    borderColor: '#e64a19',
+                    pointBackgroundColor: '#e64a19',
                     fill: false
                 }]
             },
             options: {
                 legend: {
                     position: 'bottom',
+                    reverse: true,
                     labels: {
                         usePointStyle: true
                     },
