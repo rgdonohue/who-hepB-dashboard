@@ -917,6 +917,7 @@
         chartD1.options.tooltips.custom = function(tooltip) {
 
             if(tooltip.dataPoints) {
+                console.log(this)
                 var barIndex = tooltip.dataPoints[0].index;
                 createTooltip(this, tooltip, barIndex, chartD1Data, chartD1UpperCI, chartD1LowerCI, "Estimated %");
             } else {
@@ -1099,7 +1100,6 @@
     }
 
     function createTooltip(cntx, tooltip, index, d, dhighci, dlowci, valueLabel) {
-
 
         var title = tooltip.title,
             value = d[index].toLocaleString(),
