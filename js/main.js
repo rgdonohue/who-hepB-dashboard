@@ -182,7 +182,7 @@
                 tooltips: {
                     enabled: false,
                     mode: "index",
-                    position: "nearest",
+                    position: "nearest"
                 }
             }
         });
@@ -195,11 +195,6 @@
                 type: "bar",
                 backgroundColor: 'purple',
                 label: "region"
-            },
-            {
-                type: "bar",
-                backgroundColor: 'green',
-                label: "income"
             }]
         };
     
@@ -212,7 +207,7 @@
                     display: true,
                 },
                 legend: {
-                    display: true,
+                    display: false,
                     position: 'top',
                     fullWidth: false,
                     onClick: null
@@ -220,7 +215,54 @@
                 tooltips: {
                     enabled: false,
                     mode: "index",
-                    position: "nearest",
+                    position: "nearest"
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        var ctxD1C = document.getElementById('vizD-1c').getContext('2d');
+
+        var chartD1CData = {
+            labels: ["Pre-vaccination", "2015 estimate", "Pre-vaccination", "2015 estimate"],
+            datasets: [{
+                type: "bar",
+                backgroundColor: 'green',
+                label: "income"
+            }]
+        };
+    
+
+        var chartD1C = new Chart(ctxD1C, {
+            type: 'bar',
+            data: chartD1CData,
+            options: {
+                title: {
+                    display: true,
+                },
+                legend: {
+                    display: false,
+                    position: 'top',
+                    fullWidth: false,
+                    onClick: null
+                },
+                tooltips: {
+                    enabled: false,
+                    mode: "index",
+                    position: "nearest"
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
             }
         });
@@ -260,7 +302,7 @@
                 tooltips: {
                     enabled: false,
                     mode: "index",
-                    position: "nearest",
+                    position: "nearest"
                 },
                 scales: {
                     yAxes: [{
@@ -279,15 +321,11 @@
 
         var chartD2BData = {
             labels: ["Pre-vac", "2015 est", "Pre-vac", "2015 est"],
-            datasets: [{
+            datasets: [
+            {
                 type: "bar",
                 backgroundColor: 'purple',
                 label: "region"
-            },
-            {
-                type: "bar",
-                backgroundColor: 'green',
-                label: "income"
             }]
         };
     
@@ -303,7 +341,45 @@
                 tooltips: {
                     enabled: false,
                     mode: "index",
-                    position: "nearest",
+                    position: "nearest"
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            }
+                        }
+                    }]
+                }
+            }
+        });
+
+        var ctxD2C = document.getElementById('vizD-2c').getContext('2d');
+
+        var chartD2CData = {
+            labels: ["Pre-vac", "2015 est", "Pre-vac", "2015 est"],
+            datasets: [
+            {
+                type: "bar",
+                backgroundColor: 'green',
+                label: "income"
+            }]
+        };
+    
+
+        var chartD2C = new Chart(ctxD2C, {
+            type: 'bar',
+            data: chartD2CData,
+            options: {
+                title: {
+                    display: true,
+                },
+                legend: false,
+                tooltips: {
+                    enabled: false,
+                    mode: "index",
+                    position: "nearest"
                 },
                 scales: {
                     yAxes: [{
@@ -331,7 +407,7 @@
             type: 'bar',
             data: chartD3Data,
             options: {
-                scaleBeginAtZero: true,
+                // scaleBeginAtZero: true,
                 title: {
                     display: false
                 },
@@ -339,7 +415,7 @@
                 tooltips: {
                     enabled: false,
                     mode: "index",
-                    position: "nearest",
+                    position: "nearest"
                 },
                 scales: {
                     yAxes: [{
@@ -357,24 +433,9 @@
         var chartD3BData = {
             labels: ["< 5 yrs", "General pop"],
             datasets: [{
-                type: "line",
-                fill: false,
-                showLine: false,
-                pointBackgroundColor: "orange"
-            },{
-                type: "line",
-                fill: false,
-                showLine: false,
-                pointBackgroundColor: "red"
-            },{
                 type: "bar",
                 backgroundColor: 'purple',
                 label: "region"
-            },
-            {
-                type: "bar",
-                backgroundColor: 'green',
-                label: "income"
             }]
         };
 
@@ -384,19 +445,51 @@
             type: 'bar',
             data: chartD3BData,
             options: {
+                title: {
+                    display: false
+                },
+                legend: false,
+                tooltips: {
+                    enabled: false,
+                    mode: "index",
+                    position: "nearest"
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            }
+                        }
+                    }]
+                }
+            }
+        });
+
+        var chartD3CData = {
+            labels: ["< 5 yrs", "General pop"],
+            datasets: [{
+                type: "bar",
+                backgroundColor: 'green',
+                label: "income"
+            }]
+        };
+
+        var ctxD3C = document.getElementById('vizD-3c').getContext('2d');
+
+        var chartD3C = new Chart(ctxD3C, {
+            type: 'bar',
+            data: chartD3CData,
+            options: {
                 scaleBeginAtZero: true,
                 title: {
                     display: false
                 },
                 legend: false,
                 tooltips: {
-                    enabled: true,
+                    enabled: false,
                     mode: "index",
-                    position: "nearest",
-                    // custom: customTooltip
-                    // custom: function(tooltip, data) {
-                    //     console.log(tooltip, this);
-                    // }
+                    position: "nearest"
                 },
                 scales: {
                     yAxes: [{
@@ -415,7 +508,7 @@
             currentCode = "DZA";
 
         updateChartA(data, currentYear, currentCode);
-        updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD2, chartD2B, chartD3, chartD3B);
+        updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C);
 
         $('#year-dropdown').dropdown({
             on: "hover",
@@ -431,7 +524,7 @@
             on: "hover",
             onChange: function(value, text, $selectedItem) {
                 currentCode = value;
-                updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD2, chartD2B, chartD3, chartD3B);
+                updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C);
                 $("#dropdown-current-country").html(text);
                 $(".current-country").html(text);
             }
@@ -504,7 +597,7 @@
         });
     }
 
-    function updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD2, chartD2B, chartD3, chartD3B) {
+    function updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C) {
 
          // CHART B selections
 
@@ -524,32 +617,39 @@
 
         var chartD1Data = [],
             chartD1LowerCI = [],
-            chartD1HigherCI = [];
+            chartD1UpperCI = [];
 
-        var chartD1BDataRegion = [],
-            chartD1BDataIncome = [],
-            chartD1BLowerCIRegion = [],
-            chartD1BHigherCIRegion = [],
-            chartD1BLowerCIIncome = [],
-            chartD1BHigherCIncome = [];
+        var chartD1BData = [],
+            chartD1BLowerCI = [],
+            chartD1BUpperCI = [];
+        
+        var chartD1CData = [],
+            chartD1CLowerCI = [],
+            chartD1CUpperCI = [];
         
         var chartD2Data = [],
             chartD2LowerCI = [],
-            chartD2HigherCI = [];
+            chartD2UpperCI = [];
 
-        var chartD2BDataRegion = [],
-            chartD2BDataIncome = [],
-            chartD2BLowerCIRegion = [],
-            chartD2BHigherCIRegion = [],
-            chartD2BLowerCIIncome = [],
-            chartD2BHigherCIncome = [];
+        var chartD2BData = [],
+            chartD2BLowerCI = [],
+            chartD2BUpperCI = [];
+
+        var chartD2CData = [],
+            chartD2CLowerCI = [],
+            chartD2CUpperCI = [];
 
         var chartD3Data = [],
             chartD3LowerCI = [],
-            chartD3HigherCI = [];
+            chartD3UpperCI = [];
 
-        var chartD3BDataRegion = [],
-            chartD3BDataIncome = [];
+        var chartD3BData = [],
+            chartD3BLowerCI = [],
+            chartD3BUpperCI = [];
+
+        var chartD3CData = [],
+            chartD3CLowerCI = [],
+            chartD3CUpperCI = [];
 
 
         data.forEach(function(datum) {
@@ -598,8 +698,6 @@
                     datum['PostGPEstPre']
                 ];
 
-                console.log(chartD1Data)
-
                 chartD1LowerCI = [
                     datum['PreU5EstPreLowCI'], 
                     datum['PostU5EstPreLowCI'],
@@ -607,49 +705,49 @@
                     datum['PostGPEstPreLowCI']
                 ];
 
-                chartD1HigherCI = [
+                chartD1UpperCI = [
                     datum['PreU5EstPreHighCI'], 
                     datum['PostU5EstPreHighCI'],
                     datum['PreGPEstPreHighCI'],
                     datum['PostGPEstPreHighCI']
                 ];
 
-                chartD1BDataRegion = [
+                chartD1BData = [
                     datum['PreU5EstPre-region'], 
                     datum['PostU5EstPre-region'], 
                     datum['PreGPEstPre-region'], 
                     datum['PostGPEstPre-region'], 
                 ];
 
-                chartD1BDataIncome = [
+                chartD1CData = [
                     datum['PreU5EstPre-income'],
                     datum['PostU5EstPre-income'],
                     datum['PreGPEstPre-income'],
                     datum['PostGPEstPre-income']
                 ]
 
-                chartD1BDataRegionLowerCI = [
+                chartD1BLowerCI = [
                     datum['PreU5EstPreLowCI-region'], 
                     datum['PostU5EstPreLowCI-region'], 
                     datum['PreGPEstPreLowCI-region'], 
                     datum['PostGPEstPreLowCI-region']
                 ];
 
-                chartD1BDataRegionHigherCI = [
+                chartD1BUpperCI = [
                     datum['PreU5EstPreHighCI-region'], 
                     datum['PostU5EstPreHighCI-region'], 
                     datum['PreGPEstPreHighCI-region'], 
                     datum['PostGPEstPreHighCI-region']
                 ];
 
-                chartD1BDataIncomeLowerCI = [
+                chartD1CLowerCI = [
                     datum['PreU5EstPreLowCI-income'], 
                     datum['PostU5EstPreLowCI-income'], 
                     datum['PreGPEstPreLowCI-income'], 
                     datum['PostGPEstPreLowCI-income']
                 ];
 
-                chartD1BDataIncomeHigherCI = [
+                chartD1CUpperCI = [
                     datum['PreU5EstPreHighCI-income'], 
                     datum['PostU5EstPreHighCI-income'], 
                     datum['PreGPEstPreHighCI-income'], 
@@ -663,7 +761,6 @@
                     datum['PostGPEstCar'] * 1000
                 ];
 
-
                 chartD2LowerCI = [
                     datum['PreU5EstCarLowCI'] * 1000, 
                     datum['PostU5EstCarLowCI'] * 1000,
@@ -671,46 +768,49 @@
                     datum['PostGPEstCarLowCI'] * 1000
                 ];
 
-                chartD2HigherCI = [
+                chartD2UpperCI = [
                     datum['PreU5EstCarHighCI'] * 1000, 
                     datum['PostU5EstCarHighCI'] * 1000,
                     datum['PreGPEstCarHighCI'] * 1000,
                     datum['PostGPEstCarHighCI'] * 1000
                 ];
 
-                chartD2BDataRegion = [
+                chartD2BData = [
                     datum['PreU5EstCar-region'] * 1000, 
                     datum['PostU5EstCar-region'] * 1000, 
                     datum['PreGPEstCar-region'] * 1000, 
                     datum['PostGPEstCar-region'] * 1000, 
                 ];
 
-                chartD2BDataIncome = [
+                chartD2CData = [
                     datum['PreU5EstCar-income'] * 1000,
                     datum['PostU5EstCar-income'] * 1000,
                     datum['PreGPEstCar-income'] * 1000,
                     datum['PostGPEstCar-income'] * 1000
                 ];
 
-                chartD2BDataRegionLowerCI = [
+                chartD2BLowerCI = [
                     datum['PreU5EstCarLowCI-region'] * 1000, 
                     datum['PostU5EstCarLowCI-region'] * 1000, 
                     datum['PreGPEstCarLowCI-region'] * 1000, 
                     datum['PostGPEstCarLowCI-region'] * 1000, 
                 ];
-                chartD2BDataRegionHigherCI = [
-                    datum['PreU5EstCarHigh-region'] * 1000, 
-                    datum['PostU5EstCarHigh-region'] * 1000, 
-                    datum['PreGPEstCarHigh-region'] * 1000, 
-                    datum['PostGPEstCarHigh-region'] * 1000, 
+
+                chartD2BUpperCI = [
+                    datum['PreU5EstCarHighCI-region'] * 1000, 
+                    datum['PostU5EstCarHighCI-region'] * 1000, 
+                    datum['PreGPEstCarHighCI-region'] * 1000, 
+                    datum['PostGPEstCarHighCI-region'] * 1000, 
                 ];
-                chartD2BDataIncomeLowerCI = [
+
+                chartD2CLowerCI = [
                     datum['PreU5EstCarLowCI-income'] * 1000,
                     datum['PostU5EstCarLowCI-income'] * 1000,
                     datum['PreGPEstCarLowCI-income'] * 1000,
                     datum['PostGPEstCarLowCI-income'] * 1000
                 ];
-                chartD2BDataIncomeHigherCI = [
+
+                chartD2CUpperCI = [
                     datum['PreU5EstCarHighCI-income'] * 1000,
                     datum['PostU5EstCarHighCI-income'] * 1000,
                     datum['PreGPEstCarHighCI-income'] * 1000,
@@ -727,19 +827,39 @@
                     datum['NumCarPrevGPLowCI'] * 1000,
                 ];
 
-                chartD3HigherCI = [
+                chartD3UpperCI = [
                     datum['NumCarPrevU5HighCI'] * 1000, 
                     datum['NumCarPrevGPHighCI'] * 1000,
                 ];
 
-                chartD3BDataRegion = [
+                chartD3BData = [
                     datum['NumCarPrevU5-region'] * 1000, 
                     datum['NumCarPrevGP-region'] * 1000
                 ];
 
-                chartD3BDataIncome = [
+                chartD3BLowerCI = [
+                    datum['NumCarPrevU5LowCI-region'] * 1000, 
+                    datum['NumCarPrevGPLowCI-region'] * 1000
+                ];
+
+                chartD3BUpperCI = [
+                    datum['NumCarPrevU5HighCI-region'] * 1000, 
+                    datum['NumCarPrevGPHighCI-region'] * 1000
+                ];
+
+                chartD3CData = [
                     datum['NumCarPrevU5-income'] * 1000, 
                     datum['NumCarPrevGP-income'] * 1000
+                ];
+
+                chartD3CLowerCI = [
+                    datum['NumCarPrevU5LowCI-income'] * 1000, 
+                    datum['NumCarPrevGPLowCI-income'] * 1000
+                ];
+
+                chartD3CUpperCI = [
+                    datum['NumCarPrevU5HighCI-income'] * 1000, 
+                    datum['NumCarPrevGPHighCI-income'] * 1000
                 ];
 
             } // end if country code
@@ -798,7 +918,7 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD1Data, chartD1HigherCI, chartD1LowerCI, "Estimated %");
+                createTooltip(this, tooltip, barIndex, chartD1Data, chartD1UpperCI, chartD1LowerCI, "Estimated %");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }
@@ -808,11 +928,7 @@
         chartD1.update();
 
         chartD1B.data.datasets.forEach(function(dataset, i) {
-            if(i === 0) {
-                dataset.data = chartD1BDataRegion;
-            } else if(i ===1) {
-                dataset.data = chartD1BDataIncome;
-            }
+            dataset.data = chartD1BData;
         });
 
 
@@ -820,13 +936,29 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltipB(this, tooltip, barIndex, chartD1BDataRegion, chartD1BDataIncome, chartD1BDataRegionLowerCI, chartD1BDataRegionHigherCI, chartD1BDataIncomeLowerCI, chartD1BDataIncomeLowerCI,"Estimated %");
+                createTooltip(this, tooltip, barIndex, chartD1BData, chartD1BUpperCI, chartD1BLowerCI, "Estimated %");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }
         }
 
         chartD1B.update();
+
+        chartD1C.data.datasets.forEach(function(dataset, i) {
+            dataset.data = chartD1BData;
+        });
+
+        chartD1C.options.tooltips.custom = function(tooltip) {
+
+            if(tooltip.dataPoints) {
+                var barIndex = tooltip.dataPoints[0].index;
+                createTooltip(this, tooltip, barIndex, chartD1CData, chartD1CUpperCI, chartD1CLowerCI, "Estimated %");
+            } else {
+                document.getElementById('chartjs-tooltip').remove();
+            }
+        }
+
+        chartD1C.update();
 
         chartD2.data.datasets.forEach(function(dataset, i) {
             if(i === 0) {
@@ -843,7 +975,7 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD2Data, chartD2HigherCI, chartD2LowerCI, "Estimated #");
+                createTooltip(this, tooltip, barIndex, chartD2Data, chartD2UpperCI, chartD2LowerCI, "Estimated #");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }  
@@ -852,24 +984,36 @@
         chartD2.update();
 
         chartD2B.data.datasets.forEach(function(dataset, i) {
-            if(i === 0) {
-                dataset.data = chartD2BDataRegion;
-            } else if(i === 1) {
-                dataset.data = chartD2BDataIncome;
-            }
+            dataset.data = chartD2BData;
         });
 
         chartD2B.options.tooltips.custom = function(tooltip) {
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltipB(this, tooltip, barIndex, chartD2BDataRegion, chartD2BDataIncome, chartD2BDataRegionLowerCI, chartD2BDataRegionHigherCI, chartD2BDataIncomeLowerCI, chartD2BDataIncomeLowerCI,"Estimated #");
+                createTooltip(this, tooltip, barIndex, chartD2BData, chartD2BUpperCI, chartD2BLowerCI, "Estimated #");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }
         }
 
         chartD2B.update();
+
+        chartD2C.data.datasets.forEach(function(dataset, i) {
+            dataset.data = chartD2CData;
+        });
+
+        chartD2C.options.tooltips.custom = function(tooltip) {
+
+            if(tooltip.dataPoints) {
+                var barIndex = tooltip.dataPoints[0].index;
+                createTooltip(this, tooltip, barIndex, chartD2CData, chartD2CUpperCI, chartD2CLowerCI,"Estimated #");
+            } else {
+                document.getElementById('chartjs-tooltip').remove();
+            }
+        }
+
+        chartD2C.update();
 
         chartD3.data.datasets.forEach(function(dataset, i) {
             dataset.data = chartD3Data;
@@ -879,7 +1023,7 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD3Data, chartD3HigherCI, chartD3LowerCI, "# prevented: ");
+                createTooltip(this, tooltip, barIndex, chartD3Data, chartD3UpperCI, chartD3LowerCI, "# prevented: ");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }  
@@ -888,21 +1032,36 @@
         chartD3.update();
 
         chartD3B.data.datasets.forEach(function(dataset, i) {
-            // if(i === 0) {
-            //     dataset.data = chartD3LowerCI;
-            // } else if(i === 1) {
-            //     dataset.data = chartD3HigherCI;
-            // } else {
-            //     dataset.data = chartD3Data;
-            // }
-            if(i === 2) {
-                dataset.data = chartD3BDataRegion;
-            } else if(i === 3) {
-                dataset.data = chartD3BDataIncome;
-            }
+            dataset.data = chartD3BData;
         });
 
+        chartD3B.options.tooltips.custom = function(tooltip) {
+
+            if(tooltip.dataPoints) {
+                var barIndex = tooltip.dataPoints[0].index;
+                createTooltip(this, tooltip, barIndex, chartD3BData, chartD3BUpperCI, chartD3BLowerCI, "# prevented: ");
+            } else {
+                document.getElementById('chartjs-tooltip').remove();
+            }  
+        }
+
         chartD3B.update();
+
+        chartD3C.data.datasets.forEach(function(dataset, i) {
+            dataset.data = chartD3CData;
+        });
+
+        chartD3C.options.tooltips.custom = function(tooltip) {
+
+            if(tooltip.dataPoints) {
+                var barIndex = tooltip.dataPoints[0].index;
+                createTooltip(this, tooltip, barIndex, chartD3CData, chartD3CUpperCI, chartD3CLowerCI, "# prevented: ");
+            } else {
+                document.getElementById('chartjs-tooltip').remove();
+            }  
+        }
+
+        chartD3C.update();
 
 
         // CHART E
@@ -941,6 +1100,7 @@
 
     function createTooltip(cntx, tooltip, index, d, dhighci, dlowci, valueLabel) {
 
+
         var title = tooltip.title,
             value = d[index].toLocaleString(),
             hiCi = dhighci[index].toLocaleString(),
@@ -955,11 +1115,6 @@
             tooltipEl.innerHTML = "<table class='ui celled table'></table>"
             cntx._chart.canvas.parentNode.appendChild(tooltipEl);
         }
-
-        // // Remove if no tooltip
-        // if (tooltip.opacity === 0) {
-        //     tooltipEl.remove();
-        // }
 
         // Set caret Position
         tooltipEl.classList.remove('above', 'below', 'no-transform');
@@ -1001,161 +1156,6 @@
         tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
 
     }
-
-     function createTooltipB(cntx, tooltip, index, dregion, dincome, dhighciRegion, dlowciRegion, dhighciIncome, dlowciIcome,valueLabel) {
-
-       // console.log(cntx, tooltip, index, dregion, dincome, dhighciRegion, dlowciRegion, dhighciIncome, dlowciIcome,valueLabel);
-
-        var title = tooltip.title,
-            valueRegion = dregion[index].toLocaleString(),
-            valueIncome = dincome[index].toLocaleString(),
-            hiCiRegion = dhighciRegion[index].toLocaleString(),
-            lowCiRegion = dlowciRegion[index].toLocaleString(),
-            hiCiIncome = dhighciIncome[index].toLocaleString(),
-            lowCiIncome = dlowciIcome[index].toLocaleString();
-
-          // Tooltip Element
-        var tooltipEl = document.getElementById('chartjs-tooltip');
-
-        if (!tooltipEl) {
-            tooltipEl = document.createElement('div');
-            tooltipEl.id = 'chartjs-tooltip';
-            tooltipEl.innerHTML = "<table class='ui celled table'></table>"
-            cntx._chart.canvas.parentNode.appendChild(tooltipEl);
-        }
-
-        console.log(tooltip.opacity)
-        // Remove if no tooltip
-        if (tooltip.opacity === 0) {
-            tooltipEl.remove();
-        }
-
-        // Set caret Position
-        tooltipEl.classList.remove('above', 'below', 'no-transform');
-        if (tooltip.yAlign) {
-            tooltipEl.classList.add(tooltip.yAlign);
-        } else {
-            tooltipEl.classList.add('no-transform');
-        }
-
-        var innerHtml = '<thead>';
-
-    
-        innerHtml += '<tr><th>Regional</th><th>Income Group</th></tr>';
-        
-        innerHtml += '</thead><tbody>';
-
-        innerHtml += '<tr><td>Estimated: ' + valueRegion + '</td><td>Estimated: ' + valueIncome + '</td></tr>';
-
-        innerHtml += '<tr><td>Lower CI: ' + lowCiRegion + '</td><td>Lower CI: ' + lowCiIncome + '</td></tr>';
-
-        innerHtml += '<tr><td>Upper CI: ' + hiCiRegion + '</td><td>Upper CI: ' + hiCiIncome + '</td></tr>';
-
-        innerHtml += '</tbody>';
-
-        var tableRoot = tooltipEl.querySelector('table');
-        
-        tableRoot.innerHTML = innerHtml;
-
-        var positionY = cntx._chart.canvas.offsetTop;
-        var positionX = cntx._chart.canvas.offsetLeft;
-
-        // Display, position, and set styles for font
-        tooltipEl.style.opacity = 1;
-        tooltipEl.style.left = positionX + tooltip.caretX + 'px';
-        tooltipEl.style.top = positionY + tooltip.caretY + 'px';
-        tooltipEl.style.fontFamily = tooltip._fontFamily;
-        tooltipEl.style.fontSize = tooltip.fontSize;
-        tooltipEl.style.fontStyle = tooltip._fontStyle;
-        tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
-
-    }
-
-    function customTooltip(tooltip) {
-
-        // Tooltip Element
-        var tooltipEl = document.getElementById('chartjs-tooltip');
-
-        if (!tooltipEl) {
-            tooltipEl = document.createElement('div');
-            tooltipEl.id = 'chartjs-tooltip';
-            tooltipEl.innerHTML = "<table></table>"
-            this._chart.canvas.parentNode.appendChild(tooltipEl);
-        }
-
-        // Remove if no tooltip
-        if (tooltip.opacity === 0) {
-            tooltipEl.remove();
-        }
-
-        // Set caret Position
-        tooltipEl.classList.remove('above', 'below', 'no-transform');
-        if (tooltip.yAlign) {
-            tooltipEl.classList.add(tooltip.yAlign);
-        } else {
-            tooltipEl.classList.add('no-transform');
-        }
-
-        function getBody(bodyItem) {
-            return bodyItem.lines;
-        }
-
-        // Set Text
-        if (tooltip.body) {
-            var titleLines = tooltip.title || [];
-            var bodyLines = tooltip.body.map(getBody);
-
-            var innerHtml = '<thead>';
-
-            titleLines.forEach(function(title) {
-                innerHtml += '<tr><th>' + title + '</th></tr>';
-            });
-            innerHtml += '</thead><tbody>';
-
-            //bodyLines.reverse();
-
-            bodyLines.forEach(function(body, i) {
-              
-
-                // hacky solution to get items ordered right in tooltip
-                // if(i === 0) {
-                //     var colors = tooltip.labelColors[3];
-                //     var style = 'background:' + colors.backgroundColor;
-                //     var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
-                //     innerHtml += '<tr><td>' + span + 'Estimated #' + body + '</td></tr>';
-                // } else if(i === 1) {
-                //     var colors = tooltip.labelColors[2];
-                //     var style = 'background:' + colors.backgroundColor;
-                //     style += '; border-radius: 50%';
-                //     var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
-                //     innerHtml += '<tr><td>' + span + 'Upper CI #' + body + '</td></tr>';
-                // } else if(i === 2) {
-                //     var colors = tooltip.labelColors[1];
-                //     var style = 'background:' + colors.backgroundColor;
-                //     style += '; border-radius: 50%';
-                //     var span = '<span class="chartjs-tooltip-key" style="' + style + '"></span>';
-                //     innerHtml += '<tr><td>' + span + 'Lower CI #' + body + '</td></tr>';
-                // }
-          
-            });
-            innerHtml += '</tbody>';
-
-            var tableRoot = tooltipEl.querySelector('table');
-            tableRoot.innerHTML = innerHtml;
-        }
-
-        var positionY = this._chart.canvas.offsetTop;
-        var positionX = this._chart.canvas.offsetLeft;
-
-        // Display, position, and set styles for font
-        tooltipEl.style.opacity = 1;
-        tooltipEl.style.left = positionX + tooltip.caretX + 'px';
-        tooltipEl.style.top = positionY + tooltip.caretY + 'px';
-        tooltipEl.style.fontFamily = tooltip._fontFamily;
-        tooltipEl.style.fontSize = tooltip.fontSize;
-        tooltipEl.style.fontStyle = tooltip._fontStyle;
-        tooltipEl.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
-    };
 
 
     function makeMap(data, countries) {

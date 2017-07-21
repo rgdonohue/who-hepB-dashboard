@@ -29,6 +29,7 @@
     pointer-events: none;
     -webkit-transform: translate(12px, -50%);
     transform: translate(12px, -50%);
+    z-index: 1000;
 }
 
 .chartjs-tooltip-key {

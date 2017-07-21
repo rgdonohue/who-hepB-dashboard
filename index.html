@@ -25,7 +25,7 @@
   </head>
   <body>
 
-    <div class="ui fixed inverted menu">
+    <div class="ui fixed inverted stackable menu">
         <div class="ui container">
             <a href="#" class="ui header item" id="mast-header">
                 <img class="logo" src="images/who-logo-white.png">
@@ -166,20 +166,12 @@
 
     </div>  <!-- end ui two column stackable grid -->
 
-    <!-- VIZ C -->
-    <!-- <div class="ui stackable grid container">
-        <div class="ten wide column">
-            <div class="ui small header">Hepatitis B vaccination coverage</div>
-            <canvas id="vizC"></canvas>
-        </div>
-    </div> -->
-
     <div class="ui divider"></div>
 
      <!-- VIZ D1 -->
                 
-    <div class="ui stackable grid container">
-        <div class="eight wide column">
+    <div class="ui three column stackable grid container">
+        <div class=" column">
              <div class="ui small header">Estimated HBsAg prevalence %: <span class="current-country"></span></div>
             <canvas id="vizD-1"></canvas>
             <div class="ui grid">
@@ -192,8 +184,8 @@
             </div> 
         </div>
 
-        <div class="eight wide column">
-            <div class="ui small header">Comparison to Regional and Income Groups (Estimated HBsAg prevalence %)</div>
+        <div class="column">
+            <div class="ui small header">Comparison to Regional Groups (Estimated HBsAg prevalence %)</div>
             <canvas id="vizD-1b"></canvas>
             <div class="ui grid">
                 <div class="eight wide column">
@@ -205,8 +197,8 @@
             </div> 
         </div>
 
-        <!-- <div class="eight wide column">
-            <div class="ui small header">Comparison to Regional and Income Groups (Estimated HBsAg prevalence %)</div>
+         <div class="column">
+            <div class="ui small header">Comparison to Income Groups (Estimated HBsAg prevalence %)</div>
             <canvas id="vizD-1c"></canvas>
             <div class="ui grid">
                 <div class="eight wide column">
@@ -216,18 +208,20 @@
                     <div class="ui tiny header centered">general population</div>
                 </div>
             </div> 
-        </div> -->
+        </div> 
     </div>
 
     <div class="ui divider"></div>
 
-    <div class="ui two column stackable grid container">
+    <!-- VIZ D1 -->
+
+    <div class="ui three column stackable grid container">
         <div class="column">
             <div class="ui small header">Estimated # of HBsAg carriers: <span class="current-country"></span></div>
             <canvas id="vizD-2"></canvas>
             <div class="ui grid">
                 <div class="eight wide column">
-                    <div class="ui tiny header centered">under 5 years old</div>
+                    <div class="ui tiny header centered">&lt; 5 yrs</div>
                 </div>
                 <div class="eight wide column">
                     <div class="ui tiny header centered">general population</div>
@@ -235,11 +229,23 @@
             </div> 
         </div>
         <div class="column">
-            <div class="ui small header">Comparison to Regional and Income Groups (Estimated # of HBsAg carriers)</div>
+            <div class="ui small header">Comparison to Regional Groups (Estimated # of HBsAg carriers)</div>
             <canvas id="vizD-2b"></canvas>
             <div class="ui grid">
                 <div class="eight wide column">
-                    <div class="ui tiny header centered">under 5 years old</div>
+                    <div class="ui tiny header centered">&lt; 5 yrs</div>
+                </div>
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">general population</div>
+                </div>
+            </div> 
+        </div>
+        <div class="column">
+            <div class="ui small header">Comparison to Income Groups (Estimated # of HBsAg carriers)</div>
+            <canvas id="vizD-2c"></canvas>
+            <div class="ui grid">
+                <div class="eight wide column">
+                    <div class="ui tiny header centered">&lt; 5 yrs</div>
                 </div>
                 <div class="eight wide column">
                     <div class="ui tiny header centered">general population</div>
@@ -250,15 +256,20 @@
 
     <div class="ui divider"></div>
 
-    <div class="ui two column stackable grid container">
+    <div class="ui three column stackable grid container">
          <div class="column">
             <div class="ui small header"># of ABsAg carriers prevented: <span class="current-country"></span></div>
             <canvas id="vizD-3"></canvas>
         </div>
 
         <div class="column">
-            <div class="ui small header">Comparison to Regional and Income Groups (# of ABsAg carriers prevented)</div>
+            <div class="ui small header">Comparison to Regional Groups (# of ABsAg carriers prevented)</div>
             <canvas id="vizD-3b"></canvas>
+        </div>
+
+        <div class="column">
+            <div class="ui small header">Comparison to Income Groups (# of ABsAg carriers prevented)</div>
+            <canvas id="vizD-3c"></canvas>
         </div>
     </div>
 
