@@ -19,7 +19,7 @@
         'InfMort2010-2015': [2011, 2015],
     };
 
-    $("#modal-about-trigger").on('click', function() { 
+    $(".modal-about-trigger").on('click', function() { 
         $("#modal-about").modal('show');
     });
 
@@ -152,7 +152,7 @@
         var ctxD1 = document.getElementById('vizD-1').getContext('2d');
 
         var chartD1Data = {
-            labels: ["Pre-vaccination", "2015 estimate", "Pre-vaccination", "2015 estimate"],
+            labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
             datasets: [{
                 type: "line",
                 borderColor: "lightgray",
@@ -167,7 +167,7 @@
                 pointRadius: 1
             },{
                 type: "bar",
-                backgroundColor: '#0072bb'
+                backgroundColor: '#2196f3'
             }]
         };
     
@@ -190,10 +190,10 @@
         var ctxD1B = document.getElementById('vizD-1b').getContext('2d');
 
         var chartD1BData = {
-            labels: ["Pre-vaccination", "2015 estimate", "Pre-vaccination", "2015 estimate"],
+            labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
             datasets: [{
                 type: "bar",
-                backgroundColor: 'purple',
+                backgroundColor: '#7e57c2',
                 label: "region"
             }]
         };
@@ -230,10 +230,10 @@
         var ctxD1C = document.getElementById('vizD-1c').getContext('2d');
 
         var chartD1CData = {
-            labels: ["Pre-vaccination", "2015 estimate", "Pre-vaccination", "2015 estimate"],
+            labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
             datasets: [{
                 type: "bar",
-                backgroundColor: 'green',
+                backgroundColor: '#26a69a',
                 label: "income"
             }]
         };
@@ -268,7 +268,7 @@
         });
 
         var chartD2Data = {
-            labels: ["Pre-vaccination", "2015 estimate", "Pre-vaccination", "2015 estimate"],
+            labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
             datasets: [
             {
                 type: "line",
@@ -284,7 +284,7 @@
                 pointRadius: 1
             },{
                 type: "bar",
-                backgroundColor: "#0072bb"
+                backgroundColor: "#2196f3"
             }]
         };
 
@@ -320,11 +320,11 @@
         var ctxD2B = document.getElementById('vizD-2b').getContext('2d');
 
         var chartD2BData = {
-            labels: ["Pre-vac", "2015 est", "Pre-vac", "2015 est"],
+            labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
             datasets: [
             {
                 type: "bar",
-                backgroundColor: 'purple',
+                backgroundColor: '#7e57c2',
                 label: "region"
             }]
         };
@@ -358,11 +358,11 @@
         var ctxD2C = document.getElementById('vizD-2c').getContext('2d');
 
         var chartD2CData = {
-            labels: ["Pre-vac", "2015 est", "Pre-vac", "2015 est"],
+            labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
             datasets: [
             {
                 type: "bar",
-                backgroundColor: 'green',
+                backgroundColor: '#26a69a',
                 label: "income"
             }]
         };
@@ -394,10 +394,10 @@
         });
 
         var chartD3Data = {
-            labels: ["under 5 years old", "general population"],
+            labels: ["Under 5 yrs", "General pop"],
             datasets: [{
                 type: "bar",
-                backgroundColor: "#0072bb"
+                backgroundColor: "#2196f3"
             }]
         };
 
@@ -431,10 +431,10 @@
 
 
         var chartD3BData = {
-            labels: ["< 5 yrs", "General pop"],
+            labels: ["Under 5 yrs", "General pop"],
             datasets: [{
                 type: "bar",
-                backgroundColor: 'purple',
+                backgroundColor: '#7e57c2',
                 label: "region"
             }]
         };
@@ -467,10 +467,10 @@
         });
 
         var chartD3CData = {
-            labels: ["< 5 yrs", "General pop"],
+            labels: ["Under 5 yrs", "General pop"],
             datasets: [{
                 type: "bar",
-                backgroundColor: 'green',
+                backgroundColor: '#26a69a',
                 label: "income"
             }]
         };
@@ -919,7 +919,7 @@
             if(tooltip.dataPoints) {
                 console.log(this)
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD1Data, chartD1UpperCI, chartD1LowerCI, "Estimated %");
+                createTooltip(this, tooltip, barIndex, chartD1Data, chartD1UpperCI, chartD1LowerCI, "%");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }
@@ -937,7 +937,7 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD1BData, chartD1BUpperCI, chartD1BLowerCI, "Estimated %");
+                createTooltip(this, tooltip, barIndex, chartD1BData, chartD1BUpperCI, chartD1BLowerCI, "%");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }
@@ -953,7 +953,7 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD1CData, chartD1CUpperCI, chartD1CLowerCI, "Estimated %");
+                createTooltip(this, tooltip, barIndex, chartD1CData, chartD1CUpperCI, chartD1CLowerCI, "%");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }
@@ -976,7 +976,7 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD2Data, chartD2UpperCI, chartD2LowerCI, "Estimated #");
+                createTooltip(this, tooltip, barIndex, chartD2Data, chartD2UpperCI, chartD2LowerCI, "#");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }  
@@ -992,7 +992,7 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD2BData, chartD2BUpperCI, chartD2BLowerCI, "Estimated #");
+                createTooltip(this, tooltip, barIndex, chartD2BData, chartD2BUpperCI, chartD2BLowerCI, "#");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }
@@ -1008,7 +1008,7 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD2CData, chartD2CUpperCI, chartD2CLowerCI,"Estimated #");
+                createTooltip(this, tooltip, barIndex, chartD2CData, chartD2CUpperCI, chartD2CLowerCI,"#");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }
@@ -1024,7 +1024,7 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD3Data, chartD3UpperCI, chartD3LowerCI, "# prevented: ");
+                createTooltip(this, tooltip, barIndex, chartD3Data, chartD3UpperCI, chartD3LowerCI, "# ");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }  
@@ -1040,7 +1040,7 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD3BData, chartD3BUpperCI, chartD3BLowerCI, "# prevented: ");
+                createTooltip(this, tooltip, barIndex, chartD3BData, chartD3BUpperCI, chartD3BLowerCI, "#");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }  
@@ -1056,7 +1056,7 @@
 
             if(tooltip.dataPoints) {
                 var barIndex = tooltip.dataPoints[0].index;
-                createTooltip(this, tooltip, barIndex, chartD3CData, chartD3CUpperCI, chartD3CLowerCI, "# prevented: ");
+                createTooltip(this, tooltip, barIndex, chartD3CData, chartD3CUpperCI, chartD3CLowerCI, "#");
             } else {
                 document.getElementById('chartjs-tooltip').remove();
             }  
@@ -1106,13 +1106,21 @@
             hiCi = dhighci[index].toLocaleString(),
             lowCi = dlowci[index].toLocaleString();
 
+        var titleMap = {
+            "Pre-vac": "Pre-vaccination",
+            "2015 est.": "2015 estimate",
+            "Under 5 yrs": "Under 5 years",
+            "General pop": "General Population"
+        }
+
           // Tooltip Element
         var tooltipEl = document.getElementById('chartjs-tooltip');
 
         if (!tooltipEl) {
             tooltipEl = document.createElement('div');
             tooltipEl.id = 'chartjs-tooltip';
-            tooltipEl.innerHTML = "<table class='ui celled table'></table>"
+            // tooltipEl.innerHTML = "<table class='ui celled table'></table>";
+            tooltipEl.innerHTML = "<div id='popup-content'></div>";
             cntx._chart.canvas.parentNode.appendChild(tooltipEl);
         }
 
@@ -1124,24 +1132,16 @@
             tooltipEl.classList.add('no-transform');
         }
 
-        var innerHtml = '<thead>';
+        if(valueLabel != "%") {
+            valueLabel = '';
+        }
 
-    
-        innerHtml += '<tr><th>' + title + '</th></tr>';
- 
-        innerHtml += '</thead><tbody>';
+        var innerHtml = "<div class='ui medium header'>" + titleMap[title] + "</div>";
+        innerHtml += "<div class='ui tiny header'>Estimated: " + value + valueLabel + "</div>";
+        innerHtml += "<div class='ui tiny header'>Upper CI: " + hiCi + valueLabel + "</div>";
+        innerHtml += "<div class='ui tiny header'>Lower CI: " + lowCi + valueLabel + "</div>";
 
-        innerHtml += '<tr><td>' + valueLabel + ': ' + value + '</td></tr>';
-
-        innerHtml += '<tr><td>' + 'Upper CI: ' + hiCi + '</td></tr>';
-
-        innerHtml += '<tr><td>' + 'Lower CI: ' + lowCi + '</td></tr>';
-
-        innerHtml += '</tbody>';
-
-        var tableRoot = tooltipEl.querySelector('table');
-        
-        tableRoot.innerHTML = innerHtml;
+        $('#popup-content').html(innerHtml);
 
         var positionY = cntx._chart.canvas.offsetTop;
         var positionX = cntx._chart.canvas.offsetLeft;

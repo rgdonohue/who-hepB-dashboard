@@ -7,6 +7,26 @@
 .ui.inverted.menu {
     background: #0072bb;
 }
+#intro-text {
+    font-size: 1.2rem;
+}
+#intro-text .modal-about-trigger:hover {
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+}
+#intro-text .modal-about-trigger:hover {
+    cursor: pointer;
+    opacity: .6;
+}
+#menu-info a {
+    font-size: 1.1rem;
+}
+
+
+
+
 #country-dropdown .menu .menu {
     max-height: 480px;
     overflow-y: scroll;
@@ -20,23 +40,21 @@
 #chartjs-tooltip {
     opacity: 1;
     position: absolute;
-    /* background: rgba(0, 0, 0, .7);
+    background: rgba(0, 0, 0, .7);
     color: white;
-    border-radius: 3px; */
+    border-radius: 3px; 
     min-width: 140px;
     -webkit-transition: all .1s ease;
     transition: all .1s ease;
     pointer-events: none;
     -webkit-transform: translate(12px, -50%);
     transform: translate(12px, -50%);
-    z-index: 1000;
+    z-index: 1000; 
 }
-
-.chartjs-tooltip-key {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 10px;
+#popup-content div {
+    color: white;
+    font-weight: normal;
+    margin: 2px 0;
 }
 .fl {
     float: left;
@@ -60,6 +78,10 @@ table div {
 }
 table div span {
     font-weight: normal;
+}
+
+.modal .content p{
+    font-size: 1.1rem;
 }
 
 /* MAP STUFF */
