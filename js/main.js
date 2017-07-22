@@ -1278,9 +1278,9 @@
                     d3.select("#map-hover-current-variable").html(variableMap[currentVariable]);
                     d3.select("#map-hover-current-value").html(d.properties.data[currentVariable]);
                     if(currentVariable === "PostU5EstPre" || currentVariable === "PostGPEstPre") {
-                        d3.select("#map-hover-u5-prevented").html(d.properties.data['NumCarPrevU5'])
+                        d3.select("#map-hover-u5-prevented").html((d.properties.data['NumCarPrevU5'] * 1000).toLocaleString());
                         d3.select("#u5-prevented").transition().style("opacity", 1);
-                        d3.select("#map-hover-gp-prevented").html(d.properties.data['NumCarPrevGP'])
+                        d3.select("#map-hover-gp-prevented").html((d.properties.data['NumCarPrevGP'] * 1000).toLocaleString());
                         d3.select("#gp-prevented").transition().style("opacity", 1);
                     }
                     d3.select("#map-hover-output").transition().style("opacity", 1);
