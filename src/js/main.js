@@ -48,14 +48,15 @@
         .defer(d3.csv, 'data/hepB-master.csv')
         .defer(d3.csv, 'data/seroprevalence_surveys.csv')
         .defer(d3.json, 'data/countries.json')
+        .defer(d3.json, 'data/iso-codes.json')
         .await(ready);
 
-    function ready(e,hepData, surveyData, countries) {
-        makeCountryDropdown(hepData, surveyData);
+    function ready(e,hepData, surveyData, countries, isoCodes) {
+        makeCountryDropdown(hepData, surveyData, isoCodes);
         makeMap(hepData, countries);
     }
 
-    function makeCountryDropdown(data, surveyData) {
+    function makeCountryDropdown(data, surveyData, isoCodes) {
 
         // we want to reverse the codes
         // should produce new output file instead

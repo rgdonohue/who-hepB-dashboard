@@ -7,7 +7,8 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": ""
+    "prebuild": "gulp clean",
+    "build": "gulp scripts && gulp copy"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,11 @@
   },
   "homepage": "https://github.com/rgdonohue/who-hepB-dashboard#readme",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^3.0.0"
   },
   "dependencies": {
     "chartjs": "^0.3.24",
