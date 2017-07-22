@@ -89,12 +89,16 @@ table div span {
 }
 
 /* MAP STUFF */
+#map-container {
+    margin-top: 24px;
+}
 #map {
     height: 480px;
     width: 100%;
-    background: #0072bb;
+    background: #408ab8;
     margin: 18px auto;
-    position: relative
+    position: relative;
+    border: 3px solid #bdbdbd;
 }
 #map-legend {
     position: absolute;
@@ -112,14 +116,21 @@ table div span {
     display: inline-block;
     margin-right: 8px;
 }
+#map-legend .header {
+    margin-top: 8px;
+}
+#map-hover-output {
+    min-height: 140px;
+}
 .stroke {
   fill: none;
   stroke: #fff;
   stroke-width: 3px;
+  stroke-opacity: .6;
 }
 
 .fill {
-  fill: #0072bb;
+  fill: #408ab8;
 }
 
 .graticule {
@@ -129,7 +140,7 @@ table div span {
   stroke-opacity: .2;
 }
 .country {
-  stroke: whitesmoke;
+  stroke: #fafafa;
   stroke-width: .2px;
   stroke-opacity: .7;
 }

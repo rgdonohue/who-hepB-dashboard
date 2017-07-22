@@ -298,7 +298,7 @@
 
     <div class="ui divider"></div>
 
-    <div class="ui container">
+    <div class="ui container" id="map-container"> <!-- beginning of map section -->
         <div class="ui grid container">
             <div class="ui four wide column">
                 <div class="ui medium header">
@@ -329,16 +329,17 @@
             </div>
             <div class="ui six wide column">
                 <div id="map-hover-output">
-                    <div id="map-hover-current-country" class="ui medium header"></div>
+                    <div id="map-hover-current-country" class="ui medium header">Country</div>
                     <div>
                         <span id="map-hover-current-variable" class="ui tiny header"></span>: 
-                        <span id="map-hover-current-value" class="ui small header"></span>%
+                        <span id="map-hover-current-value" class="ui medium header"></span>
                     </div>
-                    <div id="u5-prevented"><span class="ui tiny header"># of carriers under 5 years old prevented: </span>
-                        <span id="map-hover-u5-prevented" class="ui small header"></span>
+                    <div class="ui divider"></div>
+                    <div id="u5-prevented"><span class="ui tiny header"># of carriers prevented (&lt; 5 yrs): </span>
+                        <span id="map-hover-u5-prevented" class="ui medium header"></span>
                     </div>
-                    <div id="gp-prevented"><span class="ui tiny header"># of carriers in general population prevented: </span>
-                        <span id="map-hover-gp-prevented" class="ui small header"></span>
+                    <div id="gp-prevented"><span class="ui tiny header"># of carriers prevented (general pop.): </span>
+                        <span id="map-hover-gp-prevented" class="ui medium header"></span>
                     </div>
                 </div>
             </div>

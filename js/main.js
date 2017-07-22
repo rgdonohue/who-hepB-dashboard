@@ -1173,7 +1173,7 @@
             "PostGPEstPre": "General population 2015 estimate"
         };
 
-        d3.select("#map-hover-output").style("opacity", 0);
+        d3.select("#map-hover-current-variable").html(variableMap[currentVariable]);
         d3.select("#u5-prevented").style("opacity", 0);
         d3.select("#gp-prevented").style("opacity", 0);
 
@@ -1206,7 +1206,7 @@
             height = d3.select("#map").style("height").slice(0, -2);
 
         var svg = d3.select("#map svg")
-            .attr("width", width)
+            .attr("width", width - 5)
             .attr("height", height)
             .attr("id", "map-svg")
 
@@ -1276,23 +1276,24 @@
             .on('mouseover', function(d) {
                 try {
                     d3.select("#map-hover-current-country").html(d.properties.data.Country);
-                    d3.select("#map-hover-current-variable").html(variableMap[currentVariable]);
-                    d3.select("#map-hover-current-value").html(d.properties.data[currentVariable]);
+                    d3.select("#map-hover-current-value").html(d.properties.data[currentVariable] + "%");
                     if(currentVariable === "PostU5EstPre" || currentVariable === "PostGPEstPre") {
                         d3.select("#map-hover-u5-prevented").html((d.properties.data['NumCarPrevU5'] * 1000).toLocaleString());
-                        d3.select("#u5-prevented").transition().style("opacity", 1);
                         d3.select("#map-hover-gp-prevented").html((d.properties.data['NumCarPrevGP'] * 1000).toLocaleString());
-                        d3.select("#gp-prevented").transition().style("opacity", 1);
                     }
-                    d3.select("#map-hover-output").transition().style("opacity", 1);
+                    // d3.select("#map-hover-output").transition().style("opacity", 1);
                 } catch(e) {
                     // silence
                 }
+                // d3.select(this).style('stroke', "#ffd740");
             })
             .on('mouseout', function() {
-                d3.select("#map-hover-output").transition().style("opacity", 0);
-                d3.select("#u5-prevented").transition().style("opacity", 0);
-                d3.select("#gp-prevented").transition().style("opacity", 0);
+                d3.select("#map-hover-current-country").html('Country');
+                d3.select("#map-hover-current-value").html('&nbsp;');
+                d3.select("#map-hover-u5-prevented").html('&nbsp;');
+                d3.select("#map-hover-gp-prevented").html('&nbsp;');
+                // d3.select(this).style('stroke', "#fafafa");
+
             });
 
         svg.call(zoom)
@@ -1322,6 +1323,15 @@
             onChecked: function() {
                 currentVariable = $(this).attr('data-value');
                 updateMap(countrySvgs, data, currentVariable);
+                d3.select("#map-hover-current-variable").html(variableMap[currentVariable]);
+
+                if(currentVariable === "PostU5EstPre" || currentVariable === "PostGPEstPre") {
+                        d3.select("#u5-prevented").transition().style("opacity", 1);
+                        d3.select("#gp-prevented").transition().style("opacity", 1);
+                } else {
+                        d3.select("#u5-prevented").transition().style("opacity", 0);
+                        d3.select("#gp-prevented").transition().style("opacity", 0);
+                }
             }
         });
 
