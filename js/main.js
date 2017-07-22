@@ -1,5 +1,12 @@
 (function(Chart, $){
 
+    $("#chartETable").DataTable({
+        "scrollY": "200px",
+        "scrollCollapse": true,
+        "paging": false,
+        "searching": false
+    });
+
     var birthYearIntervals = {
         'births-1980-1985': [1980, 1985],
         'births-1985-1990': [1986, 1990],
@@ -118,22 +125,21 @@
             type: 'line',
             data: {
                 datasets: [{
-                    label: "% infants vaccinated with 3 doses of Hep B",
-                    borderColor: '#fbc02d',
-                    pointBackgroundColor: '#fbc02d',
-                    fill: false
-                }, 
-                {
                     label: "% infants vaccinated with birth dose of Hep B",
                     borderColor: '#e64a19',
                     pointBackgroundColor: '#e64a19',
                     fill: false
-                }]
+                },{
+                    label: "% infants vaccinated with 3 doses of Hep B",
+                    borderColor: '#fbc02d',
+                    pointBackgroundColor: '#fbc02d',
+                    fill: false
+                }
+              ]
             },
             options: {
                 legend: {
                     position: 'bottom',
-                    reverse: true,
                     labels: {
                         usePointStyle: true
                     },
@@ -1093,12 +1099,7 @@
 
         });
 
-        $("#chartETable").DataTable({
-            "scrollY": "200px",
-            "scrollCollapse": true,
-            "paging": false,
-            "searching": false
-        });
+
 
     }
 

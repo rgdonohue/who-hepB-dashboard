@@ -84,6 +84,10 @@ table div span {
     font-size: 1.1rem;
 }
 
+#chartETable_info {
+     display: none; 
+}
+
 /* MAP STUFF */
 #map {
     height: 480px;
