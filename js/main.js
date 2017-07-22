@@ -1177,10 +1177,10 @@
         d3.select("#gp-prevented").style("opacity", 0);
 
         var colors = [ 
-            "#ffc6c4",
-            "#ee919b",
-            "#cc607d",
-            "#9e3963"
+           "#f6d2a9",
+            "#f19c7c",
+            "#dd686c",
+            "#b13f64"
         ];
 
         $("#legend1").css('background', colors[3]);
@@ -1329,10 +1329,10 @@
     function updateMap(countries, data, variable) {
 
         var colors = [ 
-            "#ffc6c4",
-            "#ee919b",
-            "#cc607d",
-            "#9e3963"
+           "#f6d2a9",
+            "#f19c7c",
+            "#dd686c",
+            "#b13f64"
         ];
 
         var breaks = [2, 5, 8]
