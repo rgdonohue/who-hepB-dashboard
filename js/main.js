@@ -1,11 +1,13 @@
 (function(Chart, $){
 
-    $("#chartETable").DataTable({
-        "scrollY": "200px",
-        "scrollCollapse": true,
-        "paging": false,
-        "searching": false
-    });
+    // $("#chartETable").DataTable({
+    //     "scrollY": "200px",
+    //     "scrollCollapse": false,
+    //     "paging": false,
+    //     "searching": false
+    // });
+
+    // $("chartETable").DataTable();
 
     var birthYearIntervals = {
         'births-1980-1985': [1980, 1985],
@@ -538,13 +540,15 @@
         $('#country-dropdown').dropdown({
             on: "hover",
             onChange: function(value, text, $selectedItem) {
+
+                // $("#chartETable").destroy();
+
                 currentCode = value;
                 updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C);
                 $("#dropdown-current-country").html(text);
                 $(".current-country").html(text);
                 $(".regional-group").html("(" + regionAndIncomeMap[currentCode].region + ")");
                 $(".income-group").html("(" + regionAndIncomeMap[currentCode].income + ")");
-
             }
         });
 
@@ -1086,7 +1090,8 @@
         // CHART E
 
         var $chartEBody = $('#chartETable tbody').html(''),
-            html;
+            html,
+            numArticles = 0;
 
         surveyData.forEach(function(survey) {
 
@@ -1102,13 +1107,25 @@
                     "<td><div><a href='" + survey.URL + "'>link</a></div></td>" +
                 "</tr>"
 
-                $chartEBody.append(html)
+                $chartEBody.append(html);
+                numArticles++;
 
             }
 
         });
 
-
+        if(numArticles === 0) {
+           $("#no-studies").show();
+        } else {
+            $("#no-studies").hide()
+            $("#chartETable").DataTable({
+                "scrollY": "200px",
+                "scrollCollapse": false,
+                "paging": false,
+                "searching": false,
+                "retrieve": true
+            });
+        }
 
     }
 
