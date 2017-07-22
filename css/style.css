@@ -1,3 +1,4 @@
+/* styles by @rgdonohue  */
 .ui.menu .item img.logo {
     margin-right: 1em;
 }
@@ -23,9 +24,6 @@
 #menu-info a {
     font-size: 1.1rem;
 }
-
-
-
 
 #country-dropdown .menu .menu {
     max-height: 480px;

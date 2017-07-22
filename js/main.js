@@ -519,7 +519,7 @@
         });
 
 
-        var currentYear = 1990,
+        var currentYear = 2015,
             currentCode = "DZA";
 
         updateChartA(data, currentYear, currentCode);
