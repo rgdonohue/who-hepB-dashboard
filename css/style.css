@@ -111,7 +111,7 @@ table div span {
 .stroke {
   fill: none;
   stroke: #fff;
-  stroke-width: 1px;
+  stroke-width: 3px;
 }
 
 .fill {
@@ -124,13 +124,7 @@ table div span {
   stroke-width: .3px;
   stroke-opacity: .2;
 }
-
-.land {
-  fill: #666;
-}
-
 .country {
-  /* fill: #888; */
   stroke: whitesmoke;
   stroke-width: .2px;
   stroke-opacity: .7;
