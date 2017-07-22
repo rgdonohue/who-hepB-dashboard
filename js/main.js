@@ -68,6 +68,8 @@
             $menuWpro = $('#menu-wpro');
 
         var item;
+
+        var regionAndIncomeMap = {};
         
         // loop through data
         data.forEach(function(datum) {
@@ -77,6 +79,8 @@
 
             // shortcut for region
             var region = datum.Region;
+
+            regionAndIncomeMap[dataISO] = {region: region, income: datum['income category']};
 
             // loop through codes and create swapped object
             for(var code in isoCodes) {
@@ -113,11 +117,11 @@
 
         });
 
-        makeCharts(data, surveyData);
+        makeCharts(data, surveyData, regionAndIncomeMap);
 
     }
 
-    function makeCharts(data, surveyData) {
+    function makeCharts(data, surveyData, regionAndIncomeMap) {
 
         var ctxC = document.getElementById('vizC').getContext('2d');
         
@@ -126,13 +130,13 @@
             data: {
                 datasets: [{
                     label: "% infants vaccinated with birth dose of Hep B",
-                    borderColor: '#e64a19',
-                    pointBackgroundColor: '#e64a19',
+                    borderColor: '#f9a825',
+                    pointBackgroundColor: '#f9a825',
                     fill: false
                 },{
                     label: "% infants vaccinated with 3 doses of Hep B",
-                    borderColor: '#fbc02d',
-                    pointBackgroundColor: '#fbc02d',
+                    borderColor: '#2196f3',
+                    pointBackgroundColor: '#2196f3',
                     fill: false
                 }
               ]
@@ -164,19 +168,19 @@
             labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
             datasets: [{
                 type: "line",
-                borderColor: "lightgray",
+                borderColor: "#2196f3",
                 borderWidth: 2,
                 fill: false,
                 pointRadius: 1
             },{
                 type: "line",
-                borderColor: "lightgray",
+                borderColor: "#2196f3",
                 borderWidth: 2,
                 fill: false,
                 pointRadius: 1
             },{
                 type: "bar",
-                backgroundColor: '#2196f3'
+                backgroundColor: '#c62828'
             }]
         };
     
@@ -281,19 +285,19 @@
             datasets: [
             {
                 type: "line",
-                borderColor: "lightgray",
+                borderColor: "#2196f3",
                 borderWidth: 2,
                 fill: false,
                 pointRadius: 1
             },{
                 type: "line",
-                borderColor: "lightgray",
+                borderColor: "#2196f3",
                 borderWidth: 2,
                 fill: false,
                 pointRadius: 1
             },{
                 type: "bar",
-                backgroundColor: "#2196f3"
+                backgroundColor: "#c62828"
             }]
         };
 
@@ -527,7 +531,9 @@
             }
         });
 
-        $(".current-country").html('<i class="dz flag"></i> Algeria')
+        $(".current-country").html('<i class="dz flag"></i> Algeria');
+        $(".regional-group").html("(" + regionAndIncomeMap[currentCode].region + ")");
+        $(".income-group").html("(" + regionAndIncomeMap[currentCode].income + ")");
 
         $('#country-dropdown').dropdown({
             on: "hover",
@@ -536,6 +542,9 @@
                 updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C);
                 $("#dropdown-current-country").html(text);
                 $(".current-country").html(text);
+                $(".regional-group").html("(" + regionAndIncomeMap[currentCode].region + ")");
+                $(".income-group").html("(" + regionAndIncomeMap[currentCode].income + ")");
+
             }
         });
 
