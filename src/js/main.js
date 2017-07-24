@@ -535,8 +535,8 @@
         });
 
         $(".current-country").html('<i class="dz flag"></i> Algeria');
-        $(".regional-group").html("(" + regionAndIncomeMap[currentCode].region + ")");
-        $(".income-group").html("(" + regionAndIncomeMap[currentCode].income + ")");
+        $(".regional-group").html(regionAndIncomeMap[currentCode].region);
+        $(".income-group").html(regionAndIncomeMap[currentCode].income);
 
         $('#country-dropdown').dropdown({
             on: "hover",
@@ -548,8 +548,8 @@
                 updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C);
                 $("#dropdown-current-country").html(text);
                 $(".current-country").html(text);
-                $(".regional-group").html("(" + regionAndIncomeMap[currentCode].region + ")");
-                $(".income-group").html("(" + regionAndIncomeMap[currentCode].income + ")");
+                $(".regional-group").html(regionAndIncomeMap[currentCode].region);
+                $(".income-group").html(regionAndIncomeMap[currentCode].income);
             }
         });
 

@@ -163,7 +163,7 @@
                 
     <div class="ui three column stackable grid container">
         <div class=" column">
-             <div class="ui small header">Estimated HBsAg prevalence %: <span class="current-country"></span></div>
+             <div class="ui small header"><span class="current-country"></span> estimated &#37; HBsAg prevalence (95&#37; CI)</div>
             <canvas id="vizD-1"></canvas>
             <div class="ui grid">
                 <div class="eight wide column">
@@ -176,7 +176,8 @@
         </div>
 
         <div class="column">
-            <div class="ui small header">Comparison to Regional Group <span class="regional-group"></span></div>
+            <div class="ui small header"><span class="regional-group"></span> region estimated &#37; HBsAg prevalence (95% CI)
+            </div>
             <canvas id="vizD-1b"></canvas>
             <div class="ui grid">
                 <div class="eight wide column">
@@ -189,7 +190,7 @@
         </div>
 
          <div class="column">
-            <div class="ui small header">Comparison to Income Group <span class="income-group"></span></div>
+            <div class="ui small header"><span class="income-group"></span> estimated HBsAg prevalence (%, 95% CI)</div>
             <canvas id="vizD-1c"></canvas>
             <div class="ui grid">
                 <div class="eight wide column">
@@ -204,11 +205,11 @@
 
     <div class="ui divider"></div>
 
-    <!-- VIZ D1 -->
+    <!-- VIZ D2 -->
 
     <div class="ui three column stackable grid container">
         <div class="column">
-            <div class="ui small header">Estimated # of HBsAg carriers: <span class="current-country"></span></div>
+            <div class="ui small header"><span class="current-country"></span> estimated number of HBsAg carriers (number, 95&#37; CI)</div>
             <canvas id="vizD-2"></canvas>
             <div class="ui grid">
                 <div class="eight wide column">
@@ -220,7 +221,7 @@
             </div> 
         </div>
         <div class="column">
-            <div class="ui small header">Comparison to Regional Group <span class="regional-group"></span></div>
+            <div class="ui small header"><span class="regional-group"></span> region estimated number of HBsAg carriers (95% CI)</div>
             <canvas id="vizD-2b"></canvas>
             <div class="ui grid">
                 <div class="eight wide column">
@@ -232,7 +233,7 @@
             </div> 
         </div>
         <div class="column">
-            <div class="ui small header">Comparison to Income Group <span class="income-group"></span></div>
+            <div class="ui small header"><span class="income-group"></span> estimated number of HBsAg carriers (95% CI)</div>
             <canvas id="vizD-2c"></canvas>
             <div class="ui grid">
                 <div class="eight wide column">
@@ -247,19 +248,21 @@
 
     <div class="ui divider"></div>
 
+    <!-- VIZ D3 -->
+
     <div class="ui three column stackable grid container">
          <div class="column">
-            <div class="ui small header"># of ABsAg carriers prevented: <span class="current-country"></span></div>
+            <div class="ui small header"><span class="current-country"></span> estimated number of HBsAg carriers prevented (95&#37; CI)</div>
             <canvas id="vizD-3"></canvas>
         </div>
 
         <div class="column">
-            <div class="ui small header">Comparison to Regional Group <span class="regional-group"></span></div>
+            <div class="ui small header"><span class="regional-group"></span> region estimated number of HBsAg carriers prevented</div>
             <canvas id="vizD-3b"></canvas>
         </div>
 
         <div class="column">
-            <div class="ui small header">Comparison to Income Group <span class="income-group"></span></div>
+            <div class="ui small header"><span class="income-group"></span> estimated number of HBsAg carriers prevented (Number, 95% CI)</div>
             <canvas id="vizD-3c"></canvas>
         </div>
     </div>
@@ -275,7 +278,7 @@
                     <th>Location</th>
                     <th>Ages enrolled</th>
                     <th>Sample size</th>
-                    <th>HBsAg Prevalence (95% CI)</th>
+                    <th>HBsAg Prevalence (95&#37; CI)</th>
                     <th>Author, Date</th>
                     <th>Link to report</th>
                 </tr>
@@ -338,8 +341,8 @@
             <div id="map-legend">
                 <div class="ui tiny header">Percent prevalence of Hepatitis</div>
                 <div><span id="legend1"></span>highly endemic (&gt; 8%)</div>
-                <div><span id="legend2"></span>high intermediate endemic (5% &ndash; 8%)</div>
-                <div><span id="legend3"></span>low intermediate (2% &ndash; 5%)</div>
+                <div><span id="legend2"></span>high intermediate endemic (5&#37; &ndash; 8%)</div>
+                <div><span id="legend3"></span>low intermediate (2&#37; &ndash; 5%)</div>
                 <div><span id="legend4"></span>low endemic (&lt; 2%)</div>
                 <div><span id="legend5"></span>no data</div>
             </div>
@@ -353,10 +356,10 @@
         </div>
         <div class="content">
             <p>This dashboard shows the HBsAg prevalence estimates at global, regional and country level and how they have changed since vaccination was introduced.</p>
-            <p>Disease caused by HBV has a worldwide distribution. The endemicity of active HBV infection is reflected in the serologic prevalence of the hepatitis B surface antigen (HBsAg) in the general population of a defined geographical area. HBsAg prevalence of ≥8% defines highly endemic areas, prevalence of 5%–7% defines high intermediate, 2%–4% low intermediate, and <2% defines low endemic areas.</p>
-            <p>Based on serological data, it was estimated that in 1995 more than 2 billion people globally had evidence of past or present HBV infection.  In 2015 the global prevalence of HBV infection in the general population was estimated at 3.5% with about 257 million persons living with chronic HBV infection. Prevalence varies considerably among the WHO Regions, with the highest in the African (6.1%) and  Western Pacific Regions (6.2%).</p>
+            <p>Disease caused by HBV has a worldwide distribution. The endemicity of active HBV infection is reflected in the serologic prevalence of the hepatitis B surface antigen (HBsAg) in the general population of a defined geographical area. HBsAg prevalence of ≥8&#37; defines highly endemic areas, prevalence of 5%–7&#37; defines high intermediate, 2%–4&#37; low intermediate, and <2&#37; defines low endemic areas.</p>
+            <p>Based on serological data, it was estimated that in 1995 more than 2 billion people globally had evidence of past or present HBV infection.  In 2015 the global prevalence of HBV infection in the general population was estimated at 3.5&#37; with about 257 million persons living with chronic HBV infection. Prevalence varies considerably among the WHO Regions, with the highest in the African (6.1%) and  Western Pacific Regions (6.2%).</p>
             <p>Most of the burden of HBV-related disease results from infections acquired in infancy through perinatal or early childhood exposure to HBV because infection acquired at an early age is more likely to become chronic than infection acquired later in life.</p>
-            <p>Major progress in the global response to viral hepatitis has been achieved through the expansion of routine hepatitis B vaccination, which was facilitated by the introduction of new combination vaccines. In 2015, global coverage with 3 doses of hepatitis B vaccine during infancy reached 84%. Between the date of introduction of the vaccine, (ranging from the 1980s to the early 2000s in different countries) and 2015, the proportion of children <5 years of age who became chronically infected fell from 4.7% to 1.3%.</p>
+            <p>Major progress in the global response to viral hepatitis has been achieved through the expansion of routine hepatitis B vaccination, which was facilitated by the introduction of new combination vaccines. In 2015, global coverage with 3 doses of hepatitis B vaccine during infancy reached 84%. Between the date of introduction of the vaccine, (ranging from the 1980s to the early 2000s in different countries) and 2015, the proportion of children <5 years of age who became chronically infected fell from 4.7&#37; to 1.3%.</p>
             <p>Further information in the <a href="#">Hepatitis B vaccines: WHO position paper – July 2017</a>.</p>
         </div>
     </div>
