@@ -627,7 +627,8 @@
          var $hepBIntroYear = $('#chartB-hepB-intro-year'),
              $hepBBirthYear = $('#chartB-hepB-birth-year'),
              $chartBSchedule = $('#chartB-schedule'),
-             $chartBType = $('#chartB-type');
+             $chartBType = $('#chartB-type'),
+             $chartBComments = $('#chartB-comments');
 
         // CHART C data
 
@@ -691,9 +692,12 @@
                     $chartBSchedule.html("N/A");
                 }
 
-                $chartBType.html(datum.Type);
+                if(datum.Type === "HepB") {
+                      $chartBType.html(datum.Type + " monovalent");
+                } else {
+                    $chartBType.html(datum.Type);
+                }
                 
-
 
                 // CHART C
                 for(var i = 1990; i <= 2015; i++) {
