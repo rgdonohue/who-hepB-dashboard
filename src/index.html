@@ -307,7 +307,7 @@
                 <div class="ui tiny header">Under 5 years old</div>
                 <div class="ui radio checkbox">
                         <input type="radio" name="radio" data-value="PreU5EstPre" checked="checked">
-                    <label>pre-vaccation</label>
+                    <label>pre-vaccination</label>
                 </div>
                 <div class="ui radio checkbox">
                     <input type="radio" name="radio" data-value="PostU5EstPre">
@@ -318,27 +318,11 @@
                 <div class="ui tiny header">General population</div>
                 <div class="ui radio checkbox">
                     <input type="radio" name="radio" data-value="PreGPEstPre">
-                    <label>pre-vaccation</label>
+                    <label>pre-vaccination</label>
                 </div>
                 <div class="ui radio checkbox">
                     <input type="radio" name="radio" data-value="PostGPEstPre">
                     <label>2015 estimate</label>
-                </div>
-            </div>
-            <div class="ui six wide column">
-                <div id="map-hover-output">
-                    <div id="map-hover-current-country" class="ui medium header"></div>
-                    <div>
-                        <span id="map-hover-current-variable" class="ui tiny header"></span>: 
-                        <span id="map-hover-current-value" class="ui medium header"></span>
-                    </div>
-                    <div class="ui divider"></div>
-                    <div id="u5-prevented"><span class="ui tiny header"># of carriers prevented (&lt; 5 yrs): </span>
-                        <span id="map-hover-u5-prevented" class="ui medium header"></span>
-                    </div>
-                    <div id="gp-prevented"><span class="ui tiny header"># of carriers prevented (general pop.): </span>
-                        <span id="map-hover-gp-prevented" class="ui medium header"></span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -404,10 +388,15 @@
         </div>
     </div>
 
-    <!-- <div class="ui popup">
-        <div class="header">User Rating</div>
-        <div class""></div>
-    </div> -->
+    <div id="map-hover-output">
+        <div id="map-hover-country" class="ui inverted header"></div>
+        <div>Under 5 years old pre-vaccination: <span id="map-hover-under-pre" class="ui inverted medium header right floated"></span></div>
+        <div>Under 5 years 2015 estimate: <span id="map-hover-under-2015" class="ui inverted medium header right floated"></span></div>
+        <div>General population pre-vaccination: <span id="map-hover-general-pre" class="ui inverted medium header right floated"></span></div>
+        <div>General population 2015 estimate: <span id="map-hover-general-2015" class="ui inverted medium header right floated"></span></div>
+        <div># of carriers prevented (&lt; 5 yrs): <span id="map-hover-u5-prevented" class="ui inverted medium header right floated"></span></div>
+        <div># of carriers prevented (general pop.): <span id="map-hover-gp-prevented" class="ui inverted medium header right floated"></span></div>
+    </div>
 
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/semantic.js"></script>

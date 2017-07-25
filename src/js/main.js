@@ -1206,8 +1206,6 @@
         };
 
         d3.select("#map-hover-current-variable").html(variableMap[currentVariable]);
-        d3.select("#u5-prevented").style("opacity", 0);
-        d3.select("#gp-prevented").style("opacity", 0);
 
         var colors = [ 
            "#f6d2a9",
@@ -1242,14 +1240,8 @@
             .attr("height", height)
             .attr("id", "map-svg")
 
-        // var geoJSON = topojson.feature(countries, {
-        //     type: "GeometryCollection",
-        //     geometries: countries.objects.countries.geometries
-        // });
-        
         var projection = d3.geoEckert3()
             .scale(8)
-            // .fitSize([width, height], geoJSON)
             .translate([0, 0])
             .precision(0.1);
 
@@ -1294,6 +1286,8 @@
             .attr("class", "graticule")
             .attr("d", path);
 
+        var info = $("#map-hover-output");
+
         var countrySvgs = svg.selectAll("path")
             .data(topojson.feature(countries, countries.objects.countries).features
                 .filter(function(d) {
@@ -1307,26 +1301,45 @@
             .attr("d", path)
             .on('mouseover', function(d) {
                 try {
-                    d3.select("#map-hover-current-country").html(d.properties.data.Country);
-                    d3.select("#map-hover-current-value").html(d.properties.data[currentVariable] + "%");
-                    if(currentVariable === "PostU5EstPre" || currentVariable === "PostGPEstPre") {
-                        d3.select("#map-hover-u5-prevented").html((d.properties.data['NumCarPrevU5'] * 1000).toLocaleString());
-                        d3.select("#map-hover-gp-prevented").html((d.properties.data['NumCarPrevGP'] * 1000).toLocaleString());
-                    }
-                    // d3.select("#map-hover-output").transition().style("opacity", 1);
+                    d3.select("#map-hover-country").html(d.properties.data.Country);
+                    d3.select("#map-hover-under-pre").html(d.properties.data["PreU5EstPre"] + "%");
+                    d3.select("#map-hover-under-2015").html(d.properties.data["PostU5EstPre"] + "%");
+                    d3.select("#map-hover-general-pre").html(d.properties.data["PreGPEstPre"] + "%");
+                    d3.select("#map-hover-general-2015").html(d.properties.data["PostGPEstPre"] + "%");
+                    d3.select("#map-hover-u5-prevented").html((d.properties.data['NumCarPrevU5'] * 1000).toLocaleString());
+                    d3.select("#map-hover-gp-prevented").html((d.properties.data['NumCarPrevGP'] * 1000).toLocaleString());
+                    info.show();
+
                 } catch(e) {
-                    // silence
+                    // shhhhhh ... 
                 }
-                // d3.select(this).style('stroke', "#ffd740");
+
             })
             .on('mouseout', function() {
-                d3.select("#map-hover-current-country").html('Country');
-                d3.select("#map-hover-current-value").html('&nbsp;');
-                d3.select("#map-hover-u5-prevented").html('&nbsp;');
-                d3.select("#map-hover-gp-prevented").html('&nbsp;');
-                // d3.select(this).style('stroke', "#fafafa");
-
+                // info.hide();
             });
+
+        // when the mouse moves on the document
+        $(document).mousemove(function(e) {
+            // first offset from the mouse position of the info window
+            info.css({
+                "left": e.pageX + 6,
+                "top": e.pageY - info.height() - 25
+            });
+
+            // if it crashes into the top, flip it lower right
+            if (info.offset().top < 4) {
+                info.css({
+                    "top": e.pageY + 15
+                });
+            }
+            // if it crashes into the right, flip it to the left
+            if (info.offset().left + info.width() >= $(document).width() - 40) {
+                info.css({
+                    "left": e.pageX - info.width() - 80
+                });
+            }
+        });
 
         svg.call(zoom)
             .call(zoom.transform, d3.zoomIdentity
