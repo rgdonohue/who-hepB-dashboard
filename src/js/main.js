@@ -45,7 +45,7 @@
     });
 
     d3.queue()
-        .defer(d3.csv, 'data/hepB-master.csv')
+        .defer(d3.csv, 'data/hepB-master-20170724.csv')
         .defer(d3.csv, 'data/seroprevalence_surveys.csv')
         .defer(d3.json, 'data/countries.json')
         .defer(d3.json, 'data/iso-codes.json')
@@ -155,7 +155,6 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true,
                             min: 0,
                             max: 100
                         }
@@ -197,6 +196,13 @@
                     display: false,
                 },
                 legend: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0
+                        }
+                    }]
+                },
                 tooltips: {
                     enabled: false,
                     mode: "index",
@@ -238,7 +244,7 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            min: 0
                         }
                     }]
                 }
@@ -278,7 +284,7 @@
                 scales: {
                     yAxes: [{
                         ticks: {
-                            beginAtZero: true
+                            min: 0
                         }
                     }]
                 }
@@ -694,11 +700,7 @@
                     $chartBSchedule.html("N/A");
                 }
 
-                if(datum.Type === "HepB") {
-                      $chartBType.html(datum.Type + " monovalent");
-                } else {
-                    $chartBType.html(datum.Type);
-                }
+                $chartBType.html(datum.Type);
                 
 
                 // CHART C
@@ -931,6 +933,26 @@
         });
         
         chartC.update();
+
+        var maxChartDValue = 0;
+
+        console.log(+chartD1Data[3] > +chartD1BData[3])
+
+        if(+chartD1Data[3] > +chartD1BData[3]) {
+            maxChartDValue = +chartD1Data[3];
+        } else {
+            maxChartDValue = +chartD1BData[3];
+        }
+
+        if(maxChartDValue < +chartD1CData[3]) {
+            maxChartDValue = +chartD1CData[3];
+        }
+
+        maxChartDValue = Math.round(maxChartDValue + 4);
+
+        chartD1.options.scales.yAxes[0].ticks.max = maxChartDValue;
+        chartD1B.options.scales.yAxes[0].ticks.max = maxChartDValue;
+        chartD1C.options.scales.yAxes[0].ticks.max = maxChartDValue;
 
         chartD1.data.datasets.forEach(function(dataset, i) {
             if(i === 0) {
