@@ -1316,7 +1316,7 @@
 
             })
             .on('mouseout', function() {
-                // info.hide();
+                info.hide();
             });
 
         // when the mouse moves on the document
