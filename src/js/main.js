@@ -948,7 +948,9 @@
             maxChartDValue = +chartD1CData[3];
         }
 
-        maxChartDValue = Math.round(maxChartDValue + 4);
+        maxChartDValue = Math.round(maxChartDValue + 2);
+
+        console.log(maxChartDValue)
 
         chartD1.options.scales.yAxes[0].ticks.max = maxChartDValue;
         chartD1B.options.scales.yAxes[0].ticks.max = maxChartDValue;
