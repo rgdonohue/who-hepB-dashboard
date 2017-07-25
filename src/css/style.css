@@ -70,7 +70,13 @@
 .chartd-subheads span:nth-child(2) {
     margin-right: 30px;
 }
-
+.asterisk {
+    color: #0072bb;
+}
+.credible-interval {
+    color: #0072bb;
+    margin-bottom: 18px; 
+}
 table div {
     /* font-weight: bold; */
 }
