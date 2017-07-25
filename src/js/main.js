@@ -1109,7 +1109,8 @@
                     "<td><div>" + (+survey['Sample size']).toLocaleString() + "</div></td>" +
                     "<td><div>" + survey.pHBsAg+ "</div></td>" +
                     "<td><div>" + survey['Author, Date'] + "</div></td>" +
-                    "<td><div><a href='" + survey.URL + "'>link</a></div></td>" +
+                    "<td><div>link pending</div></td>" +
+                    // "<td><div><a href='" + survey.URL + "'>link</a></div></td>" +
                 "</tr>"
 
                 $chartEBody.append(html);
