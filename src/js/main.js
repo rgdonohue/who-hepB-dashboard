@@ -52,11 +52,10 @@
         .await(ready);
 
     function ready(e,hepData, surveyData, countries, isoCodes) {
-        makeCountryDropdown(hepData, surveyData, isoCodes);
-        makeMap(hepData, countries);
+        makeCountryDropdown(hepData, surveyData, isoCodes, countries);
     }
 
-    function makeCountryDropdown(data, surveyData, isoCodes) {
+    function makeCountryDropdown(data, surveyData, isoCodes, countries) {
 
         // we want to reverse the codes
         // should produce new output file instead
@@ -120,11 +119,11 @@
 
         });
 
-        makeCharts(data, surveyData, regionAndIncomeMap);
+        makeCharts(data, surveyData, regionAndIncomeMap, countries, isoCodes);
 
     }
 
-    function makeCharts(data, surveyData, regionAndIncomeMap) {
+    function makeCharts(data, surveyData, regionAndIncomeMap, countries, isoCodes) {
 
         var ctxC = document.getElementById('vizC').getContext('2d');
         
@@ -537,6 +536,7 @@
 
         updateChartA(data, currentYear, currentCode);
         updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C);
+        makeMap(data, countries, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C, regionAndIncomeMap, isoCodes);
 
         $('#year-dropdown').dropdown({
             on: "hover",
@@ -553,9 +553,6 @@
         $('#country-dropdown').dropdown({
             on: "hover",
             onChange: function(value, text, $selectedItem) {
-
-                // $("#chartETable").destroy();
-
                 currentCode = value;
                 updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C);
                 $("#dropdown-current-country").html(text);
@@ -564,9 +561,6 @@
                 $(".income-group").html(regionAndIncomeMap[currentCode].income);
             }
         });
-
-
-
     }
 
     function updateChartA(data, currentYear, currentCode) {
@@ -633,6 +627,8 @@
     }
 
     function updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C) {
+
+        console.log(currentCode)
 
          // CHART B selections
 
@@ -954,8 +950,6 @@
 
         maxChartDValue = Math.round(maxChartDValue + 2);
 
-        console.log(maxChartDValue)
-
         chartD1.options.scales.yAxes[0].ticks.max = maxChartDValue;
         chartD1B.options.scales.yAxes[0].ticks.max = maxChartDValue;
         chartD1C.options.scales.yAxes[0].ticks.max = maxChartDValue;
@@ -1224,7 +1218,7 @@
     }
 
 
-    function makeMap(data, countries) {
+    function makeMap(data, countries, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C, regionAndIncomeMap, isoCodes) {
 
         var currentVariable = "PreU5EstPre";
 
@@ -1347,6 +1341,21 @@
             })
             .on('mouseout', function() {
                 info.hide();
+            })
+            .on('click', function(d) {
+
+                var currentCode = d.properties.data.ISO3;
+                for(var code in isoCodes) {
+                    if (currentCode === isoCodes[code]) {
+                        var iso2Code = code;
+                    }
+                }
+                updateChartA(data, currentYear, currentCode);
+                updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C);
+                $("#dropdown-current-country").html("<i class='" + iso2Code.toLowerCase() + " flag'></i>" + d.properties.data.Country);
+                $(".current-country").html("<i class='" + iso2Code.toLowerCase() + " flag'></i>" + d.properties.data.Country);
+                $(".regional-group").html(regionAndIncomeMap[currentCode].region);
+                $(".income-group").html(regionAndIncomeMap[currentCode].income);
             });
 
         // when the mouse moves on the document
