@@ -47,7 +47,7 @@
     d3.queue()
         .defer(d3.csv, 'data/hepB-master-20170724.csv')
         .defer(d3.csv, 'data/seroprevalence_surveys_v2.csv')
-        .defer(d3.json, 'data/countries.json')
+        .defer(d3.json, 'data/who-countries.json')
         .defer(d3.json, 'data/iso-codes.json')
         .await(ready);
 
@@ -1262,15 +1262,6 @@
 
         var currentVariable = "PreU5EstPre";
 
-        var variableMap = {
-            "PreU5EstPre": "Under 5 years old pre-vaccination",
-            "PostU5EstPre": "Under 5 years old 2015 estimate",
-            "PreGPEstPre": "General population pre-vaccination",
-            "PostGPEstPre": "General population 2015 estimate"
-        };
-
-        d3.select("#map-hover-current-variable").html(variableMap[currentVariable]);
-
         var colors = [ 
            "#f6d2a9",
             "#f19c7c",
@@ -1285,11 +1276,13 @@
         $("#legend5").css('background', "#979797");
 
         data.forEach(function(datum) {
-            var dataIso = datum.ISO3;
 
+            var dataIso = datum.ISO3;
+       
             countries.objects.countries.geometries.forEach(function(country) {
 
-                var iso = country.properties.iso;
+                var iso = country.properties.ISO_3_CODE;
+
                 if(dataIso === iso) {
                     country.properties.data = datum;
                 }
@@ -1301,7 +1294,7 @@
 
         var svg = d3.select("#map svg")
             .attr("width", width - 5)
-            .attr("height", height)
+            .attr("height", height - 5)
             .attr("id", "map-svg")
 
         var projection = d3.geoEckert3()
@@ -1322,33 +1315,6 @@
             .on("zoom", zoomed);
 
         var center = projection([-30, 20]);
-
-        var defs = svg.append("defs");
-
-        defs.append("path")
-            .datum({
-                type: "Sphere"
-            })
-            .attr("id", "sphere")
-            .attr("d", path);
-        
-        defs.append("clipPath")
-            .attr("id", "clip")
-            .append("use")
-            .attr("xlink:href", "#sphere");
-        
-        svg.append("use")
-            .attr("class", "stroke")
-            .attr("xlink:href", "#sphere");
-        
-        svg.append("use")
-            .attr("class", "fill")
-            .attr("xlink:href", "#sphere");
-
-        var grat = svg.append("path")
-            .datum(graticule)
-            .attr("class", "graticule")
-            .attr("d", path);
 
         var info = $("#map-hover-output");
 
@@ -1407,6 +1373,16 @@
                 $(".income-group").html(regionAndIncomeMap[currentCode].income);
             });
 
+        var maskLines = svg.append('g');
+
+        maskLines.selectAll("path")
+            .data(topojson.feature(countries, countries.objects.maskline_general_2013).features)
+            .enter()
+            .append("path")
+            .attr("class", "lines")
+            .attr("d", path);
+
+
         // when the mouse moves on the document
         $(document).mousemove(function(e) {
             // first offset from the mouse position of the info window
@@ -1429,6 +1405,8 @@
             }
         });
 
+        
+
         svg.call(zoom)
             .call(zoom.transform, d3.zoomIdentity
                 .translate(width / 2, height / 2)
@@ -1442,11 +1420,13 @@
             countrySvgs.attr("transform", transform)
                 .style("stroke-width", 1 / transform.k);
 
-            grat.attr("transform", transform)
+            maskLines.attr("transform", transform)
                 .style("stroke-width", 1 / transform.k);
+            // grat.attr("transform", transform)
+            //     .style("stroke-width", 1 / transform.k);
 
-             d3.select('defs path').attr("transform", transform)
-                .style("stroke-width", 1 / transform.k);
+            //  d3.select('defs path').attr("transform", transform)
+            //     .style("stroke-width", 1 / transform.k);
 
         }
 
@@ -1457,14 +1437,6 @@
                 currentVariable = $(this).attr('data-value');
                 updateMap(countrySvgs, data, currentVariable);
                 d3.select("#map-hover-current-variable").html(variableMap[currentVariable]);
-
-                if(currentVariable === "PostU5EstPre" || currentVariable === "PostGPEstPre") {
-                        d3.select("#u5-prevented").transition().style("opacity", 1);
-                        d3.select("#gp-prevented").transition().style("opacity", 1);
-                } else {
-                        d3.select("#u5-prevented").transition().style("opacity", 0);
-                        d3.select("#gp-prevented").transition().style("opacity", 0);
-                }
             }
         });
 
