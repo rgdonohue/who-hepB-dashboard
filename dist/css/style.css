@@ -4,6 +4,7 @@
 }
 #mast-header {
     font-weight: normal;
+    line-height: 1.4em;
 }
 .ui.inverted.menu {
     background: #0072bb;
@@ -70,7 +71,13 @@
 .chartd-subheads span:nth-child(2) {
     margin-right: 30px;
 }
-
+.asterisk {
+    color: #0072bb;
+}
+.credible-interval {
+    color: #0072bb;
+    margin-bottom: 18px; 
+}
 table div {
     /* font-weight: bold; */
 }
@@ -86,6 +93,9 @@ table div span {
      display: none; 
 }
 
+.ci-marker {
+    color: #f57f17;
+}
 /* MAP STUFF */
 #map-container {
     margin-top: 24px;
@@ -93,7 +103,7 @@ table div span {
 #map {
     height: 480px;
     width: 100%;
-    background: #408ab8;
+    background: whitesmoke;
     margin: 18px auto;
     position: relative;
     border: 3px solid #bdbdbd;
@@ -107,6 +117,7 @@ table div span {
     display: inline-block;
     padding: 8px 12px;
     border-radius: 3px;
+    border: 2px solid rgba(0,0,0,.3);
 }
 #map-legend span {
     width: 12px;
@@ -117,9 +128,6 @@ table div span {
 #map-legend .header {
     margin-top: 8px;
 }
-#map-hover-output {
-    min-height: 140px;
-}
 .stroke {
   fill: none;
   stroke: #fff;
@@ -128,7 +136,7 @@ table div span {
 }
 
 .fill {
-  fill: #408ab8;
+  fill: whitesmoke;
 }
 
 .graticule {
@@ -142,6 +150,34 @@ table div span {
   stroke-width: .2px;
   stroke-opacity: .7;
 }
+.lines {
+  stroke: #f6d2a9;
+  stroke-width: .01px;
+  stroke-opacity: 1;
+  fill: none;
+}
 .country:hover {
     cursor: pointer;
+}
+#map-hover-output {
+    position: absolute;
+    z-index: 1001;
+    display: none;
+    color: white;
+    background: rgba(0, 0, 0, .7);
+    border-radius: 3px;
+    padding: 12px 18px;
+    width: 400px;
+}
+#map-hover-output div {
+    margin-bottom: 6px;
+}
+#who-map-logo {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    border-radius: 3px;
+    border: 2px solid rgba(0,0,0,.3);
+    background: white;
+    padding: 8px 12px;
 }
