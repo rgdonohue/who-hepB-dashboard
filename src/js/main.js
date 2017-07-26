@@ -963,19 +963,41 @@
 
         var maxChartDValue = 0;
 
-        console.log(+chartD1Data[3] > +chartD1BData[3])
+        // console.log(+chartD1Data[3] > +chartD1BData[3])
 
-        if(+chartD1Data[3] > +chartD1BData[3]) {
-            maxChartDValue = +chartD1Data[3];
-        } else {
-            maxChartDValue = +chartD1BData[3];
-        }
+        // if(+chartD1Data[3] > +chartD1BData[3]) {
+        //     maxChartDValue = +chartD1Data[3];
+        // } else {
+        //     maxChartDValue = +chartD1BData[3];
+        // }
 
-        if(maxChartDValue < +chartD1CData[3]) {
-            maxChartDValue = +chartD1CData[3];
-        }
+        // if(maxChartDValue < +chartD1CData[3]) {
+        //     maxChartDValue = +chartD1CData[3];
+        // }
 
-        maxChartDValue = Math.round(maxChartDValue + 2);
+        // maxChartDValue = Math.round(maxChartDValue + 2);
+
+        chartD1Data.forEach(function(val) {
+            if(val > maxChartDValue) {
+                maxChartDValue = val;
+            }
+        });
+
+        chartD1BData.forEach(function(val) {
+            if(val > maxChartDValue) {
+                maxChartDValue = val;
+            }
+        });
+
+        chartD1CData.forEach(function(val) {
+            if(val > maxChartDValue) {
+                maxChartDValue = val;
+            }
+        });
+
+        console.log(maxChartDValue)
+
+        maxChartDValue = Math.round(maxChartDValue + 2)
 
         chartD1.options.scales.yAxes[0].ticks.max = maxChartDValue;
         chartD1B.options.scales.yAxes[0].ticks.max = maxChartDValue;
