@@ -93,6 +93,9 @@ table div span {
      display: none; 
 }
 
+.ci-marker {
+    color: #f57f17;
+}
 /* MAP STUFF */
 #map-container {
     margin-top: 24px;

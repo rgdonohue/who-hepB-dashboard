@@ -171,6 +171,18 @@
             labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
             datasets: [{
                 type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
+                type: "line",
                 borderColor: "#2196f3",
                 borderWidth: 2,
                 fill: false,
@@ -220,6 +232,18 @@
         var chartD1BData = {
             labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
             datasets: [{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
                 type: "bar",
                 backgroundColor: '#7e57c2',
                 label: "region"
@@ -264,6 +288,18 @@
         var chartD1CData = {
             labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
             datasets: [{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
                 type: "bar",
                 backgroundColor: '#26a69a',
                 label: "income"
@@ -304,8 +340,19 @@
 
         var chartD2Data = {
             labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
-            datasets: [
-            {
+            datasets: [{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
                 type: "line",
                 borderColor: "#2196f3",
                 borderWidth: 2,
@@ -361,8 +408,19 @@
 
         var chartD2BData = {
             labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
-            datasets: [
-            {
+            datasets: [{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
                 type: "bar",
                 backgroundColor: '#7e57c2',
                 label: "region"
@@ -402,8 +460,19 @@
 
         var chartD2CData = {
             labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
-            datasets: [
-            {
+            datasets: [{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
                 type: "bar",
                 backgroundColor: '#26a69a',
                 label: "income"
@@ -442,6 +511,18 @@
         var chartD3Data = {
             labels: ["Under 5 yrs", "General pop"],
             datasets: [{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
                 type: "bar",
                 backgroundColor: "#2196f3"
             }]
@@ -482,6 +563,18 @@
         var chartD3BData = {
             labels: ["Under 5 yrs", "General pop"],
             datasets: [{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
                 type: "bar",
                 backgroundColor: '#7e57c2',
                 label: "region"
@@ -521,6 +614,18 @@
         var chartD3CData = {
             labels: ["Under 5 yrs", "General pop"],
             datasets: [{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2
+            },{
                 type: "bar",
                 backgroundColor: '#26a69a',
                 label: "income"
@@ -963,25 +1068,23 @@
 
         var maxChartDValue = 0;
 
-        chartD1Data.forEach(function(val) {
+        chartD1UpperCI.forEach(function(val) {
             if(+val > maxChartDValue) {
                 maxChartDValue = +val;
             }
         });
 
-        chartD1BData.forEach(function(val) {
+        chartD1BUpperCI.forEach(function(val) {
             if(+val > maxChartDValue) {
                 maxChartDValue = +val;
             }
         });
 
-        chartD1CData.forEach(function(val) {
+        chartD1CUpperCI.forEach(function(val) {
             if(+val > maxChartDValue) {
                 maxChartDValue = +val;
             }
         });
-
-        console.log(maxChartDValue)
 
         maxChartDValue = Math.round(maxChartDValue + 2)
 
@@ -991,8 +1094,12 @@
 
         chartD1.data.datasets.forEach(function(dataset, i) {
             if(i === 0) {
-               dataset.data = [chartD1Data[0], chartD1Data[1], null, null]; 
+               dataset.data = chartD1LowerCI; 
             } else if (i === 1) {
+               dataset.data = chartD1UpperCI;  
+            } else if (i === 2) {
+               dataset.data = [chartD1Data[0], chartD1Data[1], null, null]; 
+            } else if (i === 3) {
                dataset.data = [null, null, chartD1Data[2], chartD1Data[3]];  
             } else {
                 dataset.data = chartD1Data;
@@ -1003,7 +1110,6 @@
         chartD1.options.tooltips.custom = function(tooltip) {
 
             if(tooltip.dataPoints) {
-                console.log(this)
                 var barIndex = tooltip.dataPoints[0].index;
                 createTooltip(this, tooltip, barIndex, chartD1Data, chartD1UpperCI, chartD1LowerCI, "%");
             } else {
@@ -1015,7 +1121,14 @@
         chartD1.update();
 
         chartD1B.data.datasets.forEach(function(dataset, i) {
-            dataset.data = chartD1BData;
+            if(i == 0) {
+                dataset.data = chartD1BLowerCI;
+            } else if(i == 1) {
+                dataset.data = chartD1BUpperCI;
+            } else {
+                dataset.data = chartD1BData;
+            }
+
         });
 
 
@@ -1032,7 +1145,13 @@
         chartD1B.update();
 
         chartD1C.data.datasets.forEach(function(dataset, i) {
-            dataset.data = chartD1CData;
+            if(i == 0) {
+                dataset.data = chartD1CLowerCI;
+            } else if(i == 1) {
+                dataset.data = chartD1CUpperCI;
+            } else {
+                dataset.data = chartD1CData;
+            }
         });
 
         chartD1C.options.tooltips.custom = function(tooltip) {
@@ -1049,10 +1168,14 @@
 
         chartD2.data.datasets.forEach(function(dataset, i) {
             if(i === 0) {
-               dataset.data = [chartD2Data[0], chartD2Data[1], null, null]; 
+               dataset.data = chartD2LowerCI;
             } else if(i ===1) {
+               dataset.data = chartD2UpperCI;
+            } else if(i === 2) {
+               dataset.data = [chartD2Data[0], chartD2Data[1], null, null]; 
+            } else if(i === 3) {
                dataset.data = [null, null, chartD2Data[2], chartD2Data[3]];  
-            } else {
+            } else  {
                  dataset.data = chartD2Data;
             }
             
@@ -1071,7 +1194,13 @@
         chartD2.update();
 
         chartD2B.data.datasets.forEach(function(dataset, i) {
-            dataset.data = chartD2BData;
+            if(i === 0) {
+               dataset.data = chartD2BLowerCI;
+            } else if(i ===1) {
+               dataset.data = chartD2BUpperCI;
+            } else {
+                dataset.data = chartD2BData;
+            }
         });
 
         chartD2B.options.tooltips.custom = function(tooltip) {
@@ -1087,7 +1216,13 @@
         chartD2B.update();
 
         chartD2C.data.datasets.forEach(function(dataset, i) {
-            dataset.data = chartD2CData;
+            if(i === 0) {
+               dataset.data = chartD2CLowerCI;
+            } else if(i ===1) {
+               dataset.data = chartD2CUpperCI;
+            } else {
+                dataset.data = chartD2CData;
+            }
         });
 
         chartD2C.options.tooltips.custom = function(tooltip) {
@@ -1103,7 +1238,13 @@
         chartD2C.update();
 
         chartD3.data.datasets.forEach(function(dataset, i) {
-            dataset.data = chartD3Data;
+            if(i === 0) {
+               dataset.data = chartD3LowerCI;
+            } else if(i ===1) {
+               dataset.data = chartD3UpperCI;
+            } else {
+                dataset.data = chartD3Data;
+            }
         });
 
         chartD3.options.tooltips.custom = function(tooltip) {
@@ -1119,7 +1260,13 @@
         chartD3.update();
 
         chartD3B.data.datasets.forEach(function(dataset, i) {
-            dataset.data = chartD3BData;
+            if(i === 0) {
+               dataset.data = chartD3BLowerCI;
+            } else if(i ===1) {
+               dataset.data = chartD3BUpperCI;
+            } else {
+                dataset.data = chartD3BData;
+            }
         });
 
         chartD3B.options.tooltips.custom = function(tooltip) {
@@ -1135,7 +1282,13 @@
         chartD3B.update();
 
         chartD3C.data.datasets.forEach(function(dataset, i) {
-            dataset.data = chartD3CData;
+            if(i === 0) {
+               dataset.data = chartD3CLowerCI;
+            } else if(i ===1) {
+               dataset.data = chartD3CUpperCI;
+            } else {
+                dataset.data = chartD3CData;
+            }
         });
 
         chartD3C.options.tooltips.custom = function(tooltip) {
