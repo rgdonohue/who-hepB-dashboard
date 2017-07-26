@@ -175,12 +175,14 @@
                 borderColor: "#2196f3",
                 borderWidth: 2,
                 fill: false,
+                borderDash:  [5, 5, 5],
                 pointRadius: 1
             },{
                 type: "line",
                 borderColor: "#2196f3",
                 borderWidth: 2,
                 fill: false,
+                borderDash:  [5, 5, 5],
                 pointRadius: 1
             },{
                 type: "bar",
@@ -299,13 +301,15 @@
                 borderColor: "#2196f3",
                 borderWidth: 2,
                 fill: false,
-                pointRadius: 1
+                pointRadius: 1,
+                borderDash:  [5, 5, 5]
             },{
                 type: "line",
                 borderColor: "#2196f3",
                 borderWidth: 2,
                 fill: false,
-                pointRadius: 1
+                pointRadius: 1,
+                borderDash:  [5, 5, 5]
             },{
                 type: "bar",
                 backgroundColor: "#c62828"
