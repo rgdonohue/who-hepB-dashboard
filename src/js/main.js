@@ -202,13 +202,16 @@
                         ticks: {
                             min: 0
                         }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
                     }]
                 },
                 tooltips: {
                     enabled: false,
                     mode: "index",
                     position: "nearest"
-                }
+                },
             }
         });
 
@@ -247,7 +250,11 @@
                         ticks: {
                             min: 0
                         }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
                     }]
+                    
                 }
             }
         });
@@ -287,6 +294,9 @@
                         ticks: {
                             min: 0
                         }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
                     }]
                 }
             }
@@ -338,6 +348,9 @@
                                 return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                             }
                         }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
                     }]
                 }
             }
@@ -377,6 +390,9 @@
                                 return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                             }
                         }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
                     }]
                 }
             }
@@ -415,6 +431,9 @@
                                 return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                             }
                         }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
                     }]
                 }
             }
@@ -451,6 +470,9 @@
                                 return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                             }
                         }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
                     }]
                 }
             }
@@ -488,6 +510,9 @@
                                 return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                             }
                         }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
                     }]
                 }
             }
@@ -525,11 +550,13 @@
                                 return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                             }
                         }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
                     }]
                 }
             }
         });
-
 
         var currentYear = 2015,
             currentCode = "DZA";
