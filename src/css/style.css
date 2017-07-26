@@ -99,7 +99,7 @@ table div span {
 #map {
     height: 480px;
     width: 100%;
-    background: #408ab8;
+    background: whitesmoke;
     margin: 18px auto;
     position: relative;
     border: 3px solid #bdbdbd;
@@ -113,6 +113,7 @@ table div span {
     display: inline-block;
     padding: 8px 12px;
     border-radius: 3px;
+    border: 2px solid rgba(0,0,0,.3);
 }
 #map-legend span {
     width: 12px;
@@ -131,7 +132,7 @@ table div span {
 }
 
 .fill {
-  fill: #408ab8;
+  fill: whitesmoke;
 }
 
 .graticule {
