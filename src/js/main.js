@@ -1325,7 +1325,13 @@
             .attr("d", path)
             .on('mouseover', function(d) {
                 try {
-                    d3.select("#map-hover-country").html(d.properties.data.Country);
+                    var currentCode = d.properties.data.ISO3;
+                    for(var code in isoCodes) {
+                        if (currentCode === isoCodes[code]) {
+                            var iso2Code = code;
+                        }
+                    }
+                    d3.select("#map-hover-country").html("<i class='" + iso2Code.toLowerCase() + " flag'></i>" + d.properties.data.Country);
                     d3.select("#map-hover-under-pre").html(d.properties.data["PreU5EstPre"] + "%");
                     d3.select("#map-hover-under-2015").html(d.properties.data["PostU5EstPre"] + "%");
                     d3.select("#map-hover-general-pre").html(d.properties.data["PreGPEstPre"] + "%");
