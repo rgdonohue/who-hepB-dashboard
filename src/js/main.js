@@ -963,35 +963,21 @@
 
         var maxChartDValue = 0;
 
-        // console.log(+chartD1Data[3] > +chartD1BData[3])
-
-        // if(+chartD1Data[3] > +chartD1BData[3]) {
-        //     maxChartDValue = +chartD1Data[3];
-        // } else {
-        //     maxChartDValue = +chartD1BData[3];
-        // }
-
-        // if(maxChartDValue < +chartD1CData[3]) {
-        //     maxChartDValue = +chartD1CData[3];
-        // }
-
-        // maxChartDValue = Math.round(maxChartDValue + 2);
-
         chartD1Data.forEach(function(val) {
-            if(val > maxChartDValue) {
-                maxChartDValue = val;
+            if(+val > maxChartDValue) {
+                maxChartDValue = +val;
             }
         });
 
         chartD1BData.forEach(function(val) {
-            if(val > maxChartDValue) {
-                maxChartDValue = val;
+            if(+val > maxChartDValue) {
+                maxChartDValue = +val;
             }
         });
 
         chartD1CData.forEach(function(val) {
-            if(val > maxChartDValue) {
-                maxChartDValue = val;
+            if(+val > maxChartDValue) {
+                maxChartDValue = +val;
             }
         });
 
@@ -1046,7 +1032,7 @@
         chartD1B.update();
 
         chartD1C.data.datasets.forEach(function(dataset, i) {
-            dataset.data = chartD1BData;
+            dataset.data = chartD1CData;
         });
 
         chartD1C.options.tooltips.custom = function(tooltip) {
@@ -1385,7 +1371,7 @@
                             var iso2Code = code;
                         }
                     }
-                    countrySvgsg.style('opacity', ".7");
+                    countrySvgs.style('opacity', ".7");
                     d3.select(this).style('opacity', "1");
                     d3.select("#map-hover-country").html("<i class='" + iso2Code.toLowerCase() + " flag'></i>" + d.properties.data.Country);
                     d3.select("#map-hover-under-pre").html(d.properties.data["PreU5EstPre"] + "%");
