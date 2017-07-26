@@ -46,7 +46,7 @@
 
     d3.queue()
         .defer(d3.csv, 'data/hepB-master-20170724.csv')
-        .defer(d3.csv, 'data/seroprevalence_surveys.csv')
+        .defer(d3.csv, 'data/seroprevalence_surveys_v2.csv')
         .defer(d3.json, 'data/countries.json')
         .defer(d3.json, 'data/iso-codes.json')
         .await(ready);
@@ -1157,12 +1157,17 @@
                     "<td><div>" + survey['Year start'] + " &ndash; " + survey['Year end'] + "</div></td>" +
                     "<td><div>" + survey.Level + "</div></td>" +
                     "<td><div>" + survey['Agestart'] + " &ndash; " + survey['Ageend'] + "</div></td>" +
-                    "<td><div>" + (+survey['Sample size']).toLocaleString() + "</div></td>" +
+                    "<td><div>" + (+survey['sample size']).toLocaleString() + "</div></td>" +
                     "<td><div>" + survey.pHBsAg+ "</div></td>" +
-                    "<td><div>" + survey['Author, Date'] + "</div></td>" +
-                    "<td><div>link pending</div></td>" +
-                    // "<td><div><a href='" + survey.URL + "'>link</a></div></td>" +
-                "</tr>"
+                    "<td><div>" + survey['Author,Date'] + "</div></td>";
+
+                    if(survey.hyperlink) {
+                        html += "<td><div><a target='_blank' href='" + survey.URL + "'>link</a></div></td>";
+                    } else {
+                        html += "<td><div>link pending</div></td>";
+                    }
+
+                html += "</tr>";
 
                 $chartEBody.append(html);
                 numArticles++;
@@ -1358,7 +1363,7 @@
                             var iso2Code = code;
                         }
                     }
-                    countrySvgs.style('opacity', ".7");
+                    countrySvgsg.style('opacity', ".7");
                     d3.select(this).style('opacity', "1");
                     d3.select("#map-hover-country").html("<i class='" + iso2Code.toLowerCase() + " flag'></i>" + d.properties.data.Country);
                     d3.select("#map-hover-under-pre").html(d.properties.data["PreU5EstPre"] + "%");
