@@ -1358,6 +1358,8 @@
                             var iso2Code = code;
                         }
                     }
+                    countrySvgs.style('opacity', ".7");
+                    d3.select(this).style('opacity', "1");
                     d3.select("#map-hover-country").html("<i class='" + iso2Code.toLowerCase() + " flag'></i>" + d.properties.data.Country);
                     d3.select("#map-hover-under-pre").html(d.properties.data["PreU5EstPre"] + "%");
                     d3.select("#map-hover-under-2015").html(d.properties.data["PostU5EstPre"] + "%");
@@ -1374,6 +1376,7 @@
             })
             .on('mouseout', function() {
                 info.hide();
+                 countrySvgs.style('opacity', "1");
             })
             .on('click', function(d) {
 
