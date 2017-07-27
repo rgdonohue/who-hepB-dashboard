@@ -32,12 +32,6 @@
         $("#modal-data-sources").modal('show');
     });
 
-    // $("#modal-disclaimer-trigger").on('click', function() { 
-    //     $("#modal-disclaimer").modal('show');
-    // });
-
-    $('.sidebar').sidebar();
-
     d3.queue()
         .defer(d3.csv, 'data/hepB-master-20170724.csv')
         .defer(d3.csv, 'data/seroprevalence_surveys_v2.csv')
