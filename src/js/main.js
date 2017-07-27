@@ -754,7 +754,6 @@
 
     function updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C) {
 
-        console.log(currentCode)
 
          // CHART B selections
 
@@ -830,14 +829,14 @@
 
                 // CHART C
                 for(var i = 1990; i <= 2015; i++) {
-                    if(datum['Cov_HepB3_' + i]) {
-                        chartCData1.push(datum['Cov_HepB3_' + i]);
+                    if(datum['Cov_HepB_BD_' + i]) {
+                        chartCData1.push(datum['Cov_HepB_BD_' + i]);
                     } else {
                         chartCData1.push(null);
                     }
 
-                    if(datum['Cov_HepB_BD_' + i]) {
-                        chartCData2.push(datum['Cov_HepB_BD_' + i]);
+                    if(datum['Cov_HepB3_' + i]) {
+                        chartCData2.push(datum['Cov_HepB3_' + i]);
                     } else {
                         chartCData2.push(null);
                     }
@@ -1306,17 +1305,17 @@
         surveyData.forEach(function(survey) {
 
             if(survey.ISO3 === currentCode) {
-
                 html =  "<tr>" + 
                     "<td><div>" + survey['Year start'] + " &ndash; " + survey['Year end'] + "</div></td>" +
                     "<td><div>" + survey.Level + "</div></td>" +
                     "<td><div>" + survey['Agestart'] + " &ndash; " + survey['Ageend'] + "</div></td>" +
                     "<td><div>" + (+survey['sample size']).toLocaleString() + "</div></td>" +
                     "<td><div>" + survey.pHBsAg+ "</div></td>" +
+                    "<td><div>" + survey.Low_CI2 + " &ndash; " + survey.High_CI2 + "</div></td>" +
                     "<td><div>" + survey['Author,Date'] + "</div></td>";
-
+    
                     if(survey.hyperlink) {
-                        html += "<td><div><a target='_blank' href='" + survey.URL + "'>link</a></div></td>";
+                        html += "<td><div><a target='_blank' href='" + survey.hyperlink + "'>link</a></div></td>";
                     } else {
                         html += "<td><div>link pending</div></td>";
                     }
@@ -1582,7 +1581,6 @@
             onChecked: function() {
                 currentVariable = $(this).attr('data-value');
                 updateMap(countrySvgs, data, currentVariable);
-                d3.select("#map-hover-current-variable").html(variableMap[currentVariable]);
             }
         });
 
