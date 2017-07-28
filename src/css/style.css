@@ -2,8 +2,15 @@
 .ui.menu .item img.logo {
     margin-right: 1em;
 }
+.toc.item {
+    display: none !important;
+}
+#toc-menu {
+    display: none;
+}
 #mast-header {
     font-weight: normal;
+    font-size: 1.2em;
     line-height: 1.4em;
 }
 .ui.inverted.menu {
@@ -180,3 +187,30 @@ table div span {
     background: white;
     padding: 8px 12px;
 }
+
+@media only screen and (max-width: 960px) {
+    #menu-info {
+        display: none;
+    }
+    .toc.item {
+        display: flex !important;
+    }
+
+}
+@media only screen and (max-width: 680px) {
+    #menu-info {
+        display: none;
+    }
+    #mast-header {
+        display: none;
+    }
+    #toc-menu {
+        display: block;
+    }
+    .toc.item {
+        display: flex !important;
+    }
+
+}
+
+
