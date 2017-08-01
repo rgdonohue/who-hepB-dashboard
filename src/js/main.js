@@ -1,4 +1,4 @@
-(function(Chart, $){
+(function(Chart, $, d3){
 
     $('.ui.sidebar')
         .sidebar('attach events', '.toc.item');
@@ -8,12 +8,42 @@
     
         menuHeight = Math.round(menuHeight.slice(0,-2));
 
-        $("#first-container").css("margin-top", menuHeight);
+        $("#strategy").css("margin-top", menuHeight);
     }
 
-    calcFirstContainerMargin();
+    // calcFirstContainerMargin();
 
-    $(window).on('resize', calcFirstContainerMargin);
+    // $(window).on('resize', calcFirstContainerMargin);
+
+    $(".who-page").hide();
+
+    var hash = window.location.hash;
+
+    if(!hash || hash === "#home") {
+        $("div[name*='home']").fadeIn(600).addClass('current-who-page');
+
+    } else {
+        $(".menu .item").removeClass('active');
+        $(".menu .item[href='" + hash + "']").addClass('active');
+        $(".current-who-page").removeClass('current-who-page');
+        $("div[name*='" + hash.slice(1, hash.length) + "']").fadeIn(600).addClass('current-who-page');
+    }
+
+    $(".menu a.item").on('click', function(){
+        var target = $(this).attr('href');
+
+        
+        $(".menu .item").removeClass('active');
+        $(".menu a[href='" + target + "']").addClass('active');
+
+        target = target.slice(1, target.length)
+
+        $(".current-who-page").fadeOut(200, function(){
+            $(this).removeClass('current-who-page');
+            $("div[name*='" + target + "']").fadeIn(600).addClass('current-who-page');
+        });
+
+    });
 
 
     var birthYearIntervals = {
@@ -49,7 +79,7 @@
 
     d3.queue()
         .defer(d3.csv, 'data/hepB-master-20170724.csv')
-        .defer(d3.csv, 'data/seroprevalence_surveys_v2.csv')
+        .defer(d3.csv, 'data/seroprevalence_surveys.csv')
         .defer(d3.json, 'data/who-countries.json')
         .defer(d3.json, 'data/iso-codes.json')
         .await(ready);
@@ -1622,4 +1652,4 @@
 
 
 
-})(Chart, $);
+})(Chart, $, d3);

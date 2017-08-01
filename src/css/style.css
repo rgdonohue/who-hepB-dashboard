@@ -1,38 +1,19 @@
 /* styles by @rgdonohue  */
-.ui.menu .item img.logo {
-    margin-right: 1em;
-}
 .toc.item {
     display: none !important;
 }
 #toc-menu {
     display: none;
 }
-#mast-header {
-    font-weight: normal;
-    font-size: 1.2em;
-    line-height: 1.4em;
-}
 .ui.inverted.menu {
     background: #0072bb;
 }
-#intro-text {
-    font-size: 1.2rem;
+#spacer {
+    height: 120px;
 }
-#intro-text .modal-about-trigger:hover {
-    opacity: 1;
-    transition: opacity .25s ease-in-out;
-   -moz-transition: opacity .25s ease-in-out;
-   -webkit-transition: opacity .25s ease-in-out;
+.ui.inverted.pointing.menu .active.item:after, .ui.inverted.pointing.menu:hover .active.item:after  {
+    background: #2a83c6 !important;
 }
-#intro-text .modal-about-trigger:hover {
-    cursor: pointer;
-    opacity: .6;
-}
-#menu-info a {
-    font-size: 1.1rem;
-}
-
 #country-dropdown .menu .menu {
     max-height: 480px;
     overflow-y: scroll;
@@ -117,7 +98,7 @@ table div span {
 }
 #map-legend {
     position: absolute;
-    z-index: 1000;
+    z-index: 100;
     bottom: 18px;
     left: 18px;
     background: whitesmoke;
@@ -188,24 +169,9 @@ table div span {
     padding: 8px 12px;
 }
 
-@media only screen and (max-width: 960px) {
-    #menu-info {
-        display: none;
-    }
-    .toc.item {
-        display: flex !important;
-    }
-
-}
-@media only screen and (max-width: 680px) {
-    #menu-info {
-        display: none;
-    }
-    #mast-header {
-        display: none;
-    }
-    #toc-menu {
-        display: block;
+@media only screen and (max-width: 900px) {
+    .collapsible-menu-item {
+        display: none !important;
     }
     .toc.item {
         display: flex !important;
