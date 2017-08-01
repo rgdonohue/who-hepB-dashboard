@@ -1,5 +1,20 @@
 (function(Chart, $){
 
+    $('.ui.sidebar')
+        .sidebar('attach events', '.toc.item');
+
+    function calcFirstContainerMargin (){
+        var menuHeight = $(".top.fixed.inverted.menu").css('height');
+    
+        menuHeight = Math.round(menuHeight.slice(0,-2));
+
+        $("#first-container").css("margin-top", menuHeight);
+    }
+
+    calcFirstContainerMargin();
+
+    $(window).on('resize', calcFirstContainerMargin);
+
 
     var birthYearIntervals = {
         'births-1980-1985': [1980, 1985],
@@ -24,11 +39,11 @@
         $("#modal-about").modal('show');
     });
 
-    $("#modal-methods-trigger").on('click', function() { 
+    $(".modal-methods-trigger").on('click', function() { 
         $("#modal-methods").modal('show');
     });
 
-    $("#modal-data-trigger").on('click', function() { 
+    $(".modal-data-trigger").on('click', function() { 
         $("#modal-data-sources").modal('show');
     });
 
