@@ -11,6 +11,9 @@
 #spacer {
     height: 120px;
 }
+.who-page {
+    margin-bottom: 40px;
+}
 .ui.inverted.pointing.menu .active.item:after, .ui.inverted.pointing.menu:hover .active.item:after  {
     background: #2a83c6 !important;
 }

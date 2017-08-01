@@ -22,16 +22,18 @@
 
     <div class="pusher">
 
-        <div class="ui top fixed inverted large pointing menu">
-            <a class="toc item"><i class="sidebar icon"></i></a>
-            <img class="item" src="images/who-logo-white.png">
-            <a href="#home" class="item">
-                WHO chronic HBV infections<br> (prevalence of HBsAg) dashboard
-            </a>
-            <a href="#strategy" class="item collapsible-menu-item">Strategy</a>
-            <a href="#burden-of-disease" class="item collapsible-menu-item">Burden of Disease</a>
-            <a href="#vaccine" class="item collapsible-menu-item">Vaccine</a>
-            <a href="#systematic-review-&amp;-model" class="item collapsible-menu-item">Systematic Review &amp; Model</a> 
+        <div class="ui top fixed inverted large menu">
+            <div class="ui container">
+                <a class="toc item"><i class="sidebar icon"></i></a>
+                <img class="item" src="images/who-logo-white.png">
+                <a href="#home" class="item active">
+                    WHO chronic HBV infections<br> (prevalence of HBsAg) dashboard
+                </a>
+                <a href="#strategy" class="item collapsible-menu-item">Strategy</a>
+                <a href="#burden-of-disease" class="item collapsible-menu-item">Burden of Disease</a>
+                <a href="#vaccine" class="item collapsible-menu-item">Vaccine</a>
+                <a href="#systematic-review-&amp;-model" class="item collapsible-menu-item">Systematic Review &amp; Model</a>
+            </div>
         </div>
         <div id="spacer"></div>
 
@@ -435,13 +437,19 @@
 
         <div class="ui container who-page" name="systematic-review-&amp;-model">
             <h2>Methods</h2>
-            <h3>Systematic review of surface antigen data published between 1965 and 2017</h3>
-            <p>We report national-level prevalence estimates of chronic HBV derived by a systematic review of peer-reviewed literature reporting HBV prevalence (hepatitis B surface antigen [HBsAg]) in children under 5 years of age and the general population. We updated the systematic review conducted by Schweitzer, et al., 2015. It included a systematic search on articles published between Jan 1, 1965, and Oct 23, 2013. We updated the systematic search on articles published between Oct 23, 2013, and March 20, 2017 and searched the databases Embase, PubMed, Global Index Medicus, Popline, and Web of Science. The inclusion/exclusion criteria were similar to (Schweitzer, et al.). Observational studies on chronic HBV infection seroprevalence (HBsAg prevalence), done in the general population or among blood donors, health-care workers (HCWs), and pregnant women were considered for inclusion in this systematic review. Studies were excluded if they were systematic reviews or meta-analyses, surveillance reports, case studies, letters or correspondence, or did not contain HBsAg seroprevalence data. Studies were also excluded if they exclusively reported prevalence estimates for high-risk population groups (e.g., migrants and refugees).</p>
-            <h3>Model to estimate the surface antigen prevalence</h3>
-            <p>The data was modelled using a logistic regression, weighting each study by its size and using a conditional autoregressive model accounting for spatial and economic correlations between similar countries. The response variable in the model was the prevalence of Hepatitis surface antigen (HBsAg) with the predictor variables being age (three categories, under 5, juvenile (5-15) and adult (16+), split using the average age of participants in the study), sex (proportion female in the study), study bias (e.g. a high fraction of study participants from indigenous populations), 3 dose vaccine coverage, birth dose of the vaccine and country of study.</p>
-            <p>The model was simulated in the Bayesian statistical package WinBUGS, and data manipulation and model initialisation run from R (3.3.1) using R2WinBUGS. We considered the parameters of age, sex, study bias (e.g. a high fraction of study participants from indigenous populations), vaccine coverage, birth dose of the vaccine and country of study. The coverage of routine 3 dose vaccination and birth dose vaccination was calculated by cross referencing the year of and age of participants in each study with the corresponding WHO-UNICEF vaccine coverage estimates for that country.</p>
-            <p>We used the CAR-normal function, in WinBUGS, to model the spatial and developmental autocorrelation related to neighbouring countries. For each country for which we had prevalence data a weighted central position was calculated using the size and location of each study. For those with no data, we used the population centroid. In a novel approach, we considered 3 dimensions in the country proximity matrix; we used the usual geographic dimensions, latitude and longitude and also combined these with the natural log of the country’s GDP per capita.</p>
-            <p><a href="http://who.int/entity/immunization/diseases/hepatitisB/HBsAg_estimates_and_methods_final_V3.pdf?ua=1">Estimations of worldwide prevalence of chronic hepatitis B virus infection: a systematic review of data published between 1965 and 2017</a></p>
+            <div class="ui stackable two column grid">
+                <div class="column">
+                    <h3>Systematic review of surface antigen data published between 1965 and 2017</h3>
+                    <p>We report national-level prevalence estimates of chronic HBV derived by a systematic review of peer-reviewed literature reporting HBV prevalence (hepatitis B surface antigen [HBsAg]) in children under 5 years of age and the general population. We updated the systematic review conducted by Schweitzer, et al., 2015. It included a systematic search on articles published between Jan 1, 1965, and Oct 23, 2013. We updated the systematic search on articles published between Oct 23, 2013, and March 20, 2017 and searched the databases Embase, PubMed, Global Index Medicus, Popline, and Web of Science. The inclusion/exclusion criteria were similar to (Schweitzer, et al.). Observational studies on chronic HBV infection seroprevalence (HBsAg prevalence), done in the general population or among blood donors, health-care workers (HCWs), and pregnant women were considered for inclusion in this systematic review. Studies were excluded if they were systematic reviews or meta-analyses, surveillance reports, case studies, letters or correspondence, or did not contain HBsAg seroprevalence data. Studies were also excluded if they exclusively reported prevalence estimates for high-risk population groups (e.g., migrants and refugees).</p>
+                </div>
+                <div class="column">
+                    <h3>Model to estimate the surface antigen prevalence</h3>
+                    <p>The data was modelled using a logistic regression, weighting each study by its size and using a conditional autoregressive model accounting for spatial and economic correlations between similar countries. The response variable in the model was the prevalence of Hepatitis surface antigen (HBsAg) with the predictor variables being age (three categories, under 5, juvenile (5-15) and adult (16+), split using the average age of participants in the study), sex (proportion female in the study), study bias (e.g. a high fraction of study participants from indigenous populations), 3 dose vaccine coverage, birth dose of the vaccine and country of study.</p>
+                    <p>The model was simulated in the Bayesian statistical package WinBUGS, and data manipulation and model initialisation run from R (3.3.1) using R2WinBUGS. We considered the parameters of age, sex, study bias (e.g. a high fraction of study participants from indigenous populations), vaccine coverage, birth dose of the vaccine and country of study. The coverage of routine 3 dose vaccination and birth dose vaccination was calculated by cross referencing the year of and age of participants in each study with the corresponding WHO-UNICEF vaccine coverage estimates for that country.</p>
+                    <p>We used the CAR-normal function, in WinBUGS, to model the spatial and developmental autocorrelation related to neighbouring countries. For each country for which we had prevalence data a weighted central position was calculated using the size and location of each study. For those with no data, we used the population centroid. In a novel approach, we considered 3 dimensions in the country proximity matrix; we used the usual geographic dimensions, latitude and longitude and also combined these with the natural log of the country’s GDP per capita.</p>
+                    <p><a href="http://who.int/entity/immunization/diseases/hepatitisB/HBsAg_estimates_and_methods_final_V3.pdf?ua=1">Estimations of worldwide prevalence of chronic hepatitis B virus infection: a systematic review of data published between 1965 and 2017</a></p>
+                </div>
+            </div>
         </div>
 
 
