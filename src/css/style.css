@@ -172,7 +172,7 @@ table div span {
     padding: 8px 12px;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-device-width: 900px) {
     .collapsible-menu-item {
         display: none !important;
     }
