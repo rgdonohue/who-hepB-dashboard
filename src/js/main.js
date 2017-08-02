@@ -427,20 +427,6 @@
                 fill: false,
                 pointRadius: 2
             },{
-                type: "line",
-                borderColor: "#2196f3",
-                borderWidth: 2,
-                fill: false,
-                borderDash:  [5, 5, 5],
-                pointRadius: 1
-            },{
-                type: "line",
-                borderColor: "#2196f3",
-                borderWidth: 2,
-                fill: false,
-                borderDash:  [5, 5, 5],
-                pointRadius: 1
-            },{
                 type: "bar",
                 backgroundColor: '#c62828'
             }]
@@ -597,20 +583,6 @@
                 showLine: false,
                 fill: false,
                 pointRadius: 2
-            },{
-                type: "line",
-                borderColor: "#2196f3",
-                borderWidth: 2,
-                fill: false,
-                pointRadius: 1,
-                borderDash:  [5, 5, 5]
-            },{
-                type: "line",
-                borderColor: "#2196f3",
-                borderWidth: 2,
-                fill: false,
-                pointRadius: 1,
-                borderDash:  [5, 5, 5]
             },{
                 type: "bar",
                 backgroundColor: "#c62828"
@@ -1339,10 +1311,6 @@
                dataset.data = chartD1LowerCI; 
             } else if (i === 1) {
                dataset.data = chartD1UpperCI;  
-            } else if (i === 2) {
-               dataset.data = [chartD1Data[0], chartD1Data[1], null, null]; 
-            } else if (i === 3) {
-               dataset.data = [null, null, chartD1Data[2], chartD1Data[3]];  
             } else {
                 dataset.data = chartD1Data;
             }
@@ -1413,10 +1381,6 @@
                dataset.data = chartD2LowerCI;
             } else if(i ===1) {
                dataset.data = chartD2UpperCI;
-            } else if(i === 2) {
-               dataset.data = [chartD2Data[0], chartD2Data[1], null, null]; 
-            } else if(i === 3) {
-               dataset.data = [null, null, chartD2Data[2], chartD2Data[3]];  
             } else  {
                  dataset.data = chartD2Data;
             }
