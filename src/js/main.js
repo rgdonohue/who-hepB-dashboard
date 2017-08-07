@@ -29,7 +29,7 @@
         $("div[name*='" + hash.slice(1, hash.length) + "']").fadeIn(600).addClass('current-who-page');
     }
 
-    $(".menu a.item").on('click', function(){
+    $(".menu a").on('click', function(){
 
 
         var target = $(this).attr('href');
