@@ -5,226 +5,57 @@
     <link rel="stylesheet" type="text/css" href="css/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="css/dataTables.semanticui.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   </head>
   <body>
 
     <!-- Sidebar Menu -->
     <div class="ui vertical inverted sidebar menu">
-        <div class="ui inverted small header item" id="toc-menu">WHO chronic HBV infections<br> (prevalence of HBsAg) dashboard</div>
-        <a class="ui item modal-about-trigger">about</a>
-        <a class="ui item modal-methods-trigger">methods</a>
-        <a class="ui item modal-data-trigger">data sources</a>
+            <a href="#home" class="item">
+                Home
+            </a>
+            <a href="#strategy" class="item">Strategy</a>
+            <a href="#burden-of-disease" class="item">Burden of Disease</a>
+            <a href="#vaccine" class="item">Vaccine</a>
+            <a href="#systematic-review-&amp;-model" class="item">Systematic Review &amp; Model</a>
     </div>
 
     <div class="pusher">
 
-        <div class="ui top fixed inverted menu">
+        <div class="ui top fixed inverted large menu">
             <div class="ui container">
-                <a class="toc item">
-                    <i class="sidebar icon"></i>
-                </a>
-                <a href="#" class="ui header item" id="mast-header">
-                    <img class="logo" src="images/who-logo-white.png">
+                <a class="toc item"><i class="sidebar icon"></i></a>
+                <img class="item" src="images/who-logo-white.png">
+                <a href="#home" class="item active">
                     WHO chronic HBV infections<br> (prevalence of HBsAg) dashboard
                 </a>
-                <div class="ui simple dropdown item" id="country-dropdown">
-                    <span id="dropdown-current-country"><i class="dz flag"></i>Algeria</span> <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <div class="item">
-                            <i class="dropdown icon"></i>
-                            AFRO
-                            <div class="menu" id="menu-afro"></div>
-                        </div>
-                        <div class="item">
-                            <i class="dropdown icon"></i>
-                            EMRO
-                            <div class="menu" id="menu-emro"></div>
-                        </div>
-                        <div class="item">
-                            <i class="dropdown icon"></i>
-                            EURO
-                            <div class="menu" id="menu-euro"></div>
-                        </div>
-                        <div class="item">
-                            <i class="dropdown icon"></i>
-                            PAHO
-                            <div class="menu" id="menu-paho"></div>
-                        </div>
-                        <div class="item">
-                            <i class="dropdown icon"></i>
-                            SEARO
-                            <div class="menu" id="menu-searo"></div>
-                        </div>
-                        <div class="item">
-                            <i class="dropdown icon"></i>
-                            WPRO
-                            <div class="menu" id="menu-wpro"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="ui right floated item" id="menu-info">
-                    <a class="ui item modal-about-trigger">about</a>
-                    <a class="ui item modal-methods-trigger">methods</a>
-                    <a class="ui item modal-data-trigger">data sources</a>
-                    <!-- <a class="ui item" id="modal-disclaimer-trigger">disclaimer</a> -->
-                </div>
+                <a href="#strategy" class="item collapsible-menu-item">Strategy</a>
+                <a href="#burden-of-disease" class="item collapsible-menu-item">Burden of Disease</a>
+                <a href="#vaccine" class="item collapsible-menu-item">Vaccine</a>
+                <a href="#systematic-review-&amp;-model" class="item collapsible-menu-item">Systematic Review &amp; Model</a>
             </div>
-        </div> 
-
-
-        <div class="ui stackable grid container" id="first-container">
-            <div class="six wide column">
-                <div class="ui small header">Country Demographics &nbsp; &nbsp;
-                    <div class="ui selection dropdown" id="year-dropdown">
-                        <input type="hidden" name="year" value="2015">
-                        <i class="dropdown icon"></i>
-                        <div class="text">2015</div> 
-                        <div class="menu">
-                            <div class="item" data-value="1990">1990</div>
-                            <div class="item" data-value="1991">1991</div>
-                            <div class="item" data-value="1992">1992</div>
-                            <div class="item" data-value="1993">1993</div>
-                            <div class="item" data-value="1994">1994</div>
-                            <div class="item" data-value="1995">1995</div>
-                            <div class="item" data-value="1996">1996</div>
-                            <div class="item" data-value="1997">1997</div>
-                            <div class="item" data-value="1998">1998</div>
-                            <div class="item" data-value="1999">1999</div>
-                            <div class="item" data-value="2000">2000</div>
-                            <div class="item" data-value="2001">2001</div>
-                            <div class="item" data-value="2002">2002</div>
-                            <div class="item" data-value="2003">2003</div>
-                            <div class="item" data-value="2004">2004</div>
-                            <div class="item" data-value="2005">2005</div>
-                            <div class="item" data-value="2006">2006</div>
-                            <div class="item" data-value="2007">2007</div>
-                            <div class="item" data-value="2008">2008</div>
-                            <div class="item" data-value="2009">2009</div>
-                            <div class="item" data-value="2010">2010</div>
-                            <div class="item" data-value="2011">2011</div>
-                            <div class="item" data-value="2012">2012</div>
-                            <div class="item" data-value="2013">2013</div>
-                            <div class="item" data-value="2014">2014</div>
-                            <div class="item" data-value="2015">2015</div>
-                        </div>
-                    </div>
-                </div> <!-- end item -->
-                <table class="ui celled table">
-                    <tbody>
-                        <tr>
-                            <td><div>Total Population <span id="total-pop-year"><span></div></td>
-                            <td><div id="chartA-total-pop"></div></td>
-                        </tr>
-                        <tr>
-                            <td><div>Total Population under 5 <span id="under-five-pop-years"><span></div></td>
-                            <td><div id="chartA-total-pop-u5"></div></td>
-                        </tr>
-                        <tr>
-                            <td><div>Births <span id="birth-years"><span></div></td>
-                            <td><div id="chartA-births"></div></td>
-                        </tr>
-                        <tr>
-                            <td><div>Infant Mortality <span id="infant-mortality-years"><span></div></td>
-                            <td><div id="chartA-infant-mortality"></div></td>
-                        </tr>
-                        <tr>
-                            <td><div>Urban Population <span id="urban-pop-years"><span></div></td>
-                            <td><div id="chartA-urban-population"></div></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>Source: United Nations, Population Division. The World Population Prospects - the 2017 revision". New York, 2017</p>
-                <div class="ui small header">Hepatitis B Vaccine Schedule</div>
-                <table class="ui celled table">
-                    <tbody>
-                        <tr>
-                            <td><div>HepB vaccine introduced nationwide</div></td>
-                            <td><div id="chartB-hepB-intro-year"></div></td>
-                        </tr>
-                        <tr>
-                            <td><div>HepB birth dose introduced</div></td>
-                            <td><div id="chartB-hepB-birth-year"></div></td>
-                        </tr>
-                        <tr>
-                            <td><div>Current schedule</div></td>
-                            <td><div id="chartB-schedule"></div></td>
-                        </tr>
-                        <tr>
-                            <td><div>HepB vaccinae types</div></td>
-                            <td><div id="chartB-type"></div></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>Source: <a target="_blank" href="http://www.who.int/immunization/monitoring_surveillance/data/en/">http://www.who.int/immunization/monitoring_surveillance/data/en/</a></p>
-            </div>
-            <div class="ten wide column">
-                <div id="intro-text">
-                    <p><span class="ui large header">T</span>his dashboard shows the HBsAg prevalence estimates at global, regional and country level and how they have changed since vaccination was introduced. Read <a class="modal-about-trigger"> more about the project</a>.</p>
-                </div>
-                <div class="ui small header">Immunization coverage in infants with three doses of hepatitis b and hepatitis b birth dose vaccine (1990-2015)</div>
-                <canvas id="vizC"></canvas>
-                <p>Source: <a target="_blank" href="http://www.who.int/immunization/monitoring_surveillance/data/en/">http://www.who.int/immunization/monitoring_surveillance/data/en/</a></p>
-            </div>
-
-        </div>  <!-- end ui three column stackable grid -->
-
-        <div class="ui divider"></div>
-
-        <!-- VIZ D1 -->
-        <div class="ui medium header container">Estimated Hepatitis B surface antigen prevalence</div> 
-        <div class="ui three column stackable grid container">
-            <div class=" column">
-                <div class="ui small header"><span class="current-country"></span> estimated  HBsAg prevalence (%, 95% CI<span class="asterisk"> *</span>)</div>
-                <canvas id="vizD-1"></canvas>
-                <div class="ui grid">
-                    <div class="eight wide column">
-                        <div class="ui tiny header centered">under 5 years old</div>
-                    </div>
-                    <div class="eight wide column">
-                        <div class="ui tiny header centered">general population</div>
-                    </div>
-                </div> 
-            </div>
-
-            <div class="column">
-                <div class="ui small header"><span class="regional-group"></span> region estimated HBsAg prevalence (%, 95% CI<span class="asterisk"> *</span>)
-                </div>
-                <canvas id="vizD-1b"></canvas>
-                <div class="ui grid">
-                    <div class="eight wide column">
-                        <div class="ui tiny header centered">under 5 years old</div>
-                    </div>
-                    <div class="eight wide column">
-                        <div class="ui tiny header centered">general population</div>
-                    </div>
-                </div> 
-            </div>
-
-            <div class="column">
-                <div class="ui small header"><span class="income-group"></span> countries estimated HBsAg prevalence (%, 95% CI<span class="asterisk"> *</span>)</div>
-                <canvas id="vizD-1c"></canvas>
-                <div class="ui grid">
-                    <div class="eight wide column">
-                        <div class="ui tiny header centered">under 5 years old</div>
-                    </div>
-                    <div class="eight wide column">
-                        <div class="ui tiny header centered">general population</div>
-                    </div>
-                </div> 
-            </div>
-            <div class="credible-interval"><span class="asterisk">*</span> credible interval</div>
-            <div class="ci-marker"><span>&#8226;</span> indicates upper and lower CIs</div>
         </div>
+        <div id="spacer"></div>
 
-        <div class="ui divider"></div>
+        <div class="ui stackable grid container who-page current-who-page" name="home">
+            <div class="ui six wide column">
+                <h2 class="ui small header">Global  Immunization 3rd dose of Hepatitis B (HepB3) coverage in infants and Birth Dose of Hepatitis B in newborns, 2000-2015</h2>
+                <img class="ui image" src="images/global-line-chart.png" alt="Global Immunization 3rd dose of Hepatitis B (HepB3) coverage in infants and Birth Dose of Hepatitis B in newborns, 2000-2015" />
+                
+                
+                <div class="ui small header">Global estimated  HBsAg prevalence (%, 95% CI<span class="asterisk"> *</span>)</div>
+                <canvas id="viz-global-a"></canvas>
+                <div class="ui grid">
+                    <div class="eight wide column">
+                        <div class="ui tiny header centered">under 5 years old</div>
+                    </div>
+                    <div class="eight wide column">
+                        <div class="ui tiny header centered">general population</div>
+                    </div>
+                </div>
 
-        <!-- VIZ D2 -->
-        <div class="ui medium header container">Estimated number of hepatitis B surface antigen carriers</div> 
-        <div class="ui three column stackable grid container">
-            <div class="column">
-                <div class="ui small header"><span class="current-country"></span> estimated number of HBsAg carriers (95% CI<span class="asterisk"> *</span>)</div>
-                <canvas id="vizD-2"></canvas>
+                <div class="ui small header">Global estimated number of HBsAg carriers (95% CI<span class="asterisk"> *</span>)</div>
+                <canvas id="viz-global-b"></canvas>
                 <div class="ui grid">
                     <div class="eight wide column">
                         <div class="ui tiny header centered">under 5 years old</div>
@@ -233,10 +64,9 @@
                         <div class="ui tiny header centered">general population</div>
                     </div>
                 </div> 
-            </div>
-            <div class="column">
-                <div class="ui small header"><span class="regional-group"></span> region estimated number of HBsAg carriers (95% CI<span class="asterisk"> *</span>)</div>
-                <canvas id="vizD-2b"></canvas>
+
+                <div class="ui small header">Global estimated number of HBsAg carriers prevented (95% CI<span class="asterisk"> *</span>)</div>
+                <canvas id="viz-global-c"></canvas>
                 <div class="ui grid">
                     <div class="eight wide column">
                         <div class="ui tiny header centered">under 5 years old</div>
@@ -245,97 +75,46 @@
                         <div class="ui tiny header centered">general population</div>
                     </div>
                 </div> 
+            </div><!-- end ui six wide column -->
+            <div class="ui ten wide column">
+                <h2>Status of Hepatitis b: first give years of life &ndash; a critical time to prevent chronic hepatitis b infection</h2>
+                <h3>Goal</h3>
+                <p>In May 2016, the World Health Assembly endorsed the Global Health Sector Strategy (GHSS) on viral hepatitis 2016–2021. The GHSS calls for the elimination of viral hepatitis as a public health threat by 2030 (reducing new infections by 90% and mortality by 65%).</p>
+                <p>Most of the burden of disease from hepatitis B virus (HBV) infection comes from infections acquired before the age of 5 years. Therefore, prevention of HBV infection focuses on children under 5 years of age. The United Nations selected the cumulative incidence of chronic HBV infection at 5 years of age as an indicator of the Sustainable Development Goal target for “combating hepatitis” . This indicator is measured indirectly through the proportion of children 5 years of age who have developed chronic HBV infection (i.e. the proportion that tests positive for a marker of infection called hepatitis B surface antigen [HBsAg]).</p>
+                <h3>Hepatitis B HBsAg estimates, a baseline towards the elimination targets</h3>
+                <p>This dashboard shows the HBsAg prevalence estimates at global, regional and country level and how they have changed since hepatitis B vaccination was introduced.</p>
+                <p>This dataset represents the best estimates for the hepatitis B surface antigen indicator and aims to facilitate comparability across countries and over time. The estimates are not always the same as the official national estimates, because of the use of different methodologies and data sources. Estimates are provided for 194 WHO Member States. The analysis was carried out for the age groups 0-5 years and for the general population. Due to scarcity of data from some countries, the estimates are more robust at global and regional level than at country level, therefore, we suggest countries focus on the 95% Credible Intervals and not only on the reported point estimates.</p>
+                <p>WHO’s estimates uses a methodology reviewed by the Immunization and Vaccines Related Implementation Research Advisory Committee (IVIR-AC) and presented to the Strategic Advisory Group of Experts (SAGE). These estimates have been documented following the Guidelines for Accurate and Transparent Health Estimates Reporting (GATHER). More detailed information on quality of data sources and methods, as well as estimated uncertainty intervals, is provided in the Global Hepatitis Report  2017, the WHO Immunization surveillance, assessment and monitoring system and in other referenced sources.</p>
+                <p>WHO provided Member States the opportunity to review and comment on data and estimates as part of the so called country consultation process.</p>
+                <p>The database last update was 23 March 2017. Estimates will be updated as more recent or revised data become available, or when there are changes to the methodology being used. Next scheduled update will be in Q1 2018. Member States, civil society, country and regional offices that wish to contribute to improve the seroprevalence database can send their potential eligible published and unpublished reports on surface antigen prevalence to the following email: VaccineResearch@who.int until October 15, 2017. They will be screened according to the inclusion criteria of the review. Potential contributions received after this date will be considered in the next update exercise.</p>
             </div>
-            <div class="column">
-                <div class="ui small header"><span class="income-group"></span> estimated number of HBsAg carriers (95% CI<span class="asterisk"> *</span>)</div>
-                <canvas id="vizD-2c"></canvas>
-                <div class="ui grid">
-                    <div class="eight wide column">
-                        <div class="ui tiny header centered">under 5 years old</div>
+            <div class="ui container" id="map-container">
+                <div class="ui stackable grid container"> 
+                    <div class="ui ten wide column">
+                        <div class="ui medium header">Hepatitis b surface antigen estimates in 2015 and the pre- vaccination era and number of carriers prevented in the general population estimate and in the &lt; 5 years</div>
                     </div>
-                    <div class="eight wide column">
-                        <div class="ui tiny header centered">general population</div>
+                    <div class="ui three wide column">
+                        <div class="ui tiny header">Under 5 years old</div>
+                        <div class="ui radio checkbox">
+                                <input type="radio" name="radio" data-value="PreU5EstPre" checked="checked">
+                            <label>pre-vaccination</label>
+                        </div>
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="radio" data-value="PostU5EstPre">
+                            <label>2015 estimate</label>
+                        </div>
                     </div>
-                </div> 
-            </div>
-            <div class="credible-interval"><span class="asterisk">*</span> credible interval</div>
-            <div class="ci-marker"><span>&#8226;</span> indicates upper and lower CIs</div>
-        </div>
-
-        <div class="ui divider"></div>
-
-        <!-- VIZ D3 -->
-        <div class="ui medium header container">Estimated number of hepatitis B surface antigen carriers prevented</div>
-        <div class="ui three column stackable grid container">
-            <div class="column">
-                <div class="ui small header"><span class="current-country"></span> estimated number of HBsAg carriers prevented (95&#37; CI<span class="asterisk"> *</span>)</div>
-                <canvas id="vizD-3"></canvas>
-            </div>
-
-            <div class="column">
-                <div class="ui small header"><span class="regional-group"></span> region estimated number of HBsAg carriers prevented (95% CI<span class="asterisk"> *</span>)</div>
-                <canvas id="vizD-3b"></canvas>
-            </div>
-
-            <div class="column">
-                <div class="ui small header"><span class="income-group"></span> estimated number of HBsAg carriers prevented (95% CI<span class="asterisk"> *</span>)</div>
-                <canvas id="vizD-3c"></canvas>
-            </div>
-            <div class="credible-interval"><span class="asterisk">*</span> credible interval</div>
-            <div class="ci-marker"><span>&#8226;</span> indicates upper and lower CIs</div>
-        </div>
-
-        <div class="ui divider"></div>
-
-        <div class="ui container">
-            <div class="ui small header">Serological surveys eligible for the systematic review: &nbsp;&nbsp;&nbsp;<span class="current-country"></span> <span id="no-studies" class="ui small header"> (No studies for this country at this time)</span></div>
-            <table class="ui celled table" id="chartETable" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>Year</th>
-                        <th>Location</th>
-                        <th>Ages reported</th>
-                        <th>Individuals in the analysis</th>
-                        <th>HBsAg Prevalence (95&#37; CI)</th>
-                        <th>Credible interval</th>
-                        <th>Author, Date</th>
-                        <th>Link to report</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-
-        </div>
-
-        <div class="ui divider"></div>
-
-        <div class="ui container" id="map-container"> <!-- beginning of map section -->
-            <div class="ui stackable grid container"> 
-                <div class="ui ten wide column">
-                    <div class="ui medium header">Hepatitis b surface antigen estimates in 2015 and the pre- vaccination era and number of carriers prevented in the general population estimate and in the &lt; 5 years</div>
-                </div>
-                <div class="ui three wide column">
-                    <div class="ui tiny header">Under 5 years old</div>
-                    <div class="ui radio checkbox">
-                            <input type="radio" name="radio" data-value="PreU5EstPre" checked="checked">
-                        <label>pre-vaccination</label>
+                    <div class="ui three wide column">
+                        <div class="ui tiny header">General population</div>
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="radio" data-value="PreGPEstPre">
+                            <label>pre-vaccination</label>
+                        </div>
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="radio" data-value="PostGPEstPre">
+                            <label>2015 estimate</label>
+                        </div>
                     </div>
-                    <div class="ui radio checkbox">
-                        <input type="radio" name="radio" data-value="PostU5EstPre">
-                        <label>2015 estimate</label>
-                    </div>
-                </div>
-                <div class="ui three wide column">
-                    <div class="ui tiny header">General population</div>
-                    <div class="ui radio checkbox">
-                        <input type="radio" name="radio" data-value="PreGPEstPre">
-                        <label>pre-vaccination</label>
-                    </div>
-                    <div class="ui radio checkbox">
-                        <input type="radio" name="radio" data-value="PostGPEstPre">
-                        <label>2015 estimate</label>
-                    </div>
-                </div>
             </div>
             <div id="map">
                 <svg></svg>
@@ -353,47 +132,329 @@
                 <p>Disclaimer: The boundaries and names shown and the designations used on this map do not imply the expression of any opinion whatsoever on the part of the World Health Organization concerning the legal status of any country, territory, city or area or of its authorities, or concerning the delimitation of its frontiers or boundaries.  Dotted lines on maps represent approximate border lines for which there may not yet be full agreement. © WHO 2016. All rights reserved.</p>
             </div>
         </div>
+
+        </div>
+
+        <div class="ui container who-page" name="strategy">
+            <div class="ui stackable grid">
+                <div class="ui sixteen wide column">
+                    <h2>Global Health Sector Strategy on viral hepatitis</h2>
+                    <p>The strategy includes both impact (incidence and mortality) and service coverage target. By 2020, five million people will be receiving treatment for chronic hepatitis B virus infection and the number of new cases of chronic hepatitis infection would have been reduced by 30% compared with the number of new cases in 2015. By 2030, the incidence of chronic hepatitis infection will have been reduced by 90% and there will be universal access to key prevention and treatment services.</p>
+                    <p>An early win in the global response to viral hepatitis was achieved through the effective scaling up of hepatitis B vaccine. WHO recommends that all infants receive the hepatitis B vaccine as soon as possible after birth, preferably within 24 hours. Birth-dose vaccination is a key intervention for prevention of hepatitis B virus infection in infants. However, its delivery can be a challenge in communities where a large proportion of births occur outside of health facilities. As a result, global coverage is only around 38% In 2015, global coverage with the three doses of hepatitis B vaccine in infancy reached 84%. This has substantially reduced HBV transmission in the first five years of life, as reflected by the reduction in HBV prevalence among children to 1.3%. Other prevention interventions are available but insufficiently implemented.</p>
+                    <p><a href="http://apps.who.int/iris/bitstream/10665/255016/1/9789241565455-eng.pdf?ua=1">Global Hepatitis Report 2017</a></p>
+                    <p><a href="http://apps.who.int/iris/bitstream/10665/246177/1/WHO-HIV-2016.06-eng.pdf?ua=1">Global Health Sector Strategy on Viral Hepatitis 2016 &ndash; 2017</a></p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="who-page" name="burden-of-disease">
+            <div class="ui stackable grid container">
+                <div class="ui six wide column">
+                    <div class="ui small header">Country Demographics &nbsp; &nbsp;
+                        <div class="ui selection dropdown" id="year-dropdown">
+                            <input type="hidden" name="year" value="2015">
+                            <i class="dropdown icon"></i>
+                            <div class="text">2015</div> 
+                            <div class="menu">
+                                <div class="item" data-value="1990">1990</div>
+                                <div class="item" data-value="1991">1991</div>
+                                <div class="item" data-value="1992">1992</div>
+                                <div class="item" data-value="1993">1993</div>
+                                <div class="item" data-value="1994">1994</div>
+                                <div class="item" data-value="1995">1995</div>
+                                <div class="item" data-value="1996">1996</div>
+                                <div class="item" data-value="1997">1997</div>
+                                <div class="item" data-value="1998">1998</div>
+                                <div class="item" data-value="1999">1999</div>
+                                <div class="item" data-value="2000">2000</div>
+                                <div class="item" data-value="2001">2001</div>
+                                <div class="item" data-value="2002">2002</div>
+                                <div class="item" data-value="2003">2003</div>
+                                <div class="item" data-value="2004">2004</div>
+                                <div class="item" data-value="2005">2005</div>
+                                <div class="item" data-value="2006">2006</div>
+                                <div class="item" data-value="2007">2007</div>
+                                <div class="item" data-value="2008">2008</div>
+                                <div class="item" data-value="2009">2009</div>
+                                <div class="item" data-value="2010">2010</div>
+                                <div class="item" data-value="2011">2011</div>
+                                <div class="item" data-value="2012">2012</div>
+                                <div class="item" data-value="2013">2013</div>
+                                <div class="item" data-value="2014">2014</div>
+                                <div class="item" data-value="2015">2015</div>
+                            </div>
+                        </div>
+                    </div> <!-- end item -->
+                    <table class="ui celled table">
+                        <tbody>
+                            <tr>
+                                <td><div>Total Population <span id="total-pop-year"><span></div></td>
+                                <td><div id="chartA-total-pop"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div>Total Population under 5 <span id="under-five-pop-years"><span></div></td>
+                                <td><div id="chartA-total-pop-u5"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div>Births <span id="birth-years"><span></div></td>
+                                <td><div id="chartA-births"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div>Infant Mortality <span id="infant-mortality-years"><span></div></td>
+                                <td><div id="chartA-infant-mortality"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div>Urban Population <span id="urban-pop-years"><span></div></td>
+                                <td><div id="chartA-urban-population"></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Source: United Nations, Population Division. The World Population Prospects - the 2017 revision". New York, 2017</p>
+                    <div class="ui small header">Hepatitis B Vaccine Schedule</div>
+                    <table class="ui celled table">
+                        <tbody>
+                            <tr>
+                                <td><div>HepB vaccine introduced nationwide</div></td>
+                                <td><div id="chartB-hepB-intro-year"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div>HepB birth dose introduced</div></td>
+                                <td><div id="chartB-hepB-birth-year"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div>Current schedule</div></td>
+                                <td><div id="chartB-schedule"></div></td>
+                            </tr>
+                            <tr>
+                                <td><div>HepB vaccinae types</div></td>
+                                <td><div id="chartB-type"></div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Source: <a target="_blank" href="http://www.who.int/immunization/monitoring_surveillance/data/en/">http://www.who.int/immunization/monitoring_surveillance/data/en/</a></p>
+                </div>
+                <div class="ten wide column">
+
+                                    <div class="ui simple dropdown item" id="country-dropdown">
+                        <span id="dropdown-current-country"><i class="dz flag"></i>Algeria</span> <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item">
+                                <i class="dropdown icon"></i>
+                                AFRO
+                                <div class="menu" id="menu-afro"></div>
+                            </div>
+                            <div class="item">
+                                <i class="dropdown icon"></i>
+                                EMRO
+                                <div class="menu" id="menu-emro"></div>
+                            </div>
+                            <div class="item">
+                                <i class="dropdown icon"></i>
+                                EURO
+                                <div class="menu" id="menu-euro"></div>
+                            </div>
+                            <div class="item">
+                                <i class="dropdown icon"></i>
+                                PAHO
+                                <div class="menu" id="menu-paho"></div>
+                            </div>
+                            <div class="item">
+                                <i class="dropdown icon"></i>
+                                SEARO
+                                <div class="menu" id="menu-searo"></div>
+                            </div>
+                            <div class="item">
+                                <i class="dropdown icon"></i>
+                                WPRO
+                                <div class="menu" id="menu-wpro"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui small header">Immunization coverage in infants with three doses of hepatitis b and hepatitis b birth dose vaccine (1990-2015)</div>
+                    <canvas id="vizC"></canvas>
+                    <p>Source: <a target="_blank" href="http://www.who.int/immunization/monitoring_surveillance/data/en/">http://www.who.int/immunization/monitoring_surveillance/data/en/</a></p>
+                </div>
+
+            </div>  <!-- end ui three column stackable grid -->
+
+            <!-- VIZ D1 -->
+
+            <div class="ui three column stackable grid container">
+                <div class="ui medium header container">Estimated Hepatitis B surface antigen prevalence</div> 
+                <div class="column">
+                    <div class="ui small header"><span class="current-country"></span> estimated  HBsAg prevalence (%, 95% CI<span class="asterisk"> *</span>)</div>
+                    <canvas id="vizD-1"></canvas>
+                    <div class="ui grid">
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">under 5 years old</div>
+                        </div>
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">general population</div>
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="column">
+                    <div class="ui small header"><span class="regional-group"></span> region estimated HBsAg prevalence (%, 95% CI<span class="asterisk"> *</span>)
+                    </div>
+                    <canvas id="vizD-1b"></canvas>
+                    <div class="ui grid">
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">under 5 years old</div>
+                        </div>
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">general population</div>
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="column">
+                    <div class="ui small header"><span class="income-group"></span> countries estimated HBsAg prevalence (%, 95% CI<span class="asterisk"> *</span>)</div>
+                    <canvas id="vizD-1c"></canvas>
+                    <div class="ui grid">
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">under 5 years old</div>
+                        </div>
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">general population</div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="credible-interval"><span class="asterisk">*</span> credible interval</div>
+                <div class="ci-marker"><span>&#8226;</span> indicates upper and lower CIs</div>
+            </div>
+
+            <!-- VIZ D2 -->
+            <div class="ui medium header container">Estimated number of hepatitis B surface antigen carriers</div> 
+            <div class="ui three column stackable grid container">
+                <div class="column">
+                    <div class="ui small header"><span class="current-country"></span> estimated number of HBsAg carriers (95% CI<span class="asterisk"> *</span>)</div>
+                    <canvas id="vizD-2"></canvas>
+                    <div class="ui grid">
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">under 5 years old</div>
+                        </div>
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">general population</div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="column">
+                    <div class="ui small header"><span class="regional-group"></span> region estimated number of HBsAg carriers (95% CI<span class="asterisk"> *</span>)</div>
+                    <canvas id="vizD-2b"></canvas>
+                    <div class="ui grid">
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">under 5 years old</div>
+                        </div>
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">general population</div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="column">
+                    <div class="ui small header"><span class="income-group"></span> estimated number of HBsAg carriers (95% CI<span class="asterisk"> *</span>)</div>
+                    <canvas id="vizD-2c"></canvas>
+                    <div class="ui grid">
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">under 5 years old</div>
+                        </div>
+                        <div class="eight wide column">
+                            <div class="ui tiny header centered">general population</div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="credible-interval"><span class="asterisk">*</span> credible interval</div>
+                <div class="ci-marker"><span>&#8226;</span> indicates upper and lower CIs</div>
+            </div>
+
+            <!-- VIZ D3 -->
+            <div class="ui medium header container">Estimated number of hepatitis B surface antigen carriers prevented</div>
+            <div class="ui three column stackable grid container">
+                <div class="column">
+                    <div class="ui small header"><span class="current-country"></span> estimated number of HBsAg carriers prevented (95&#37; CI<span class="asterisk"> *</span>)</div>
+                    <canvas id="vizD-3"></canvas>
+                </div>
+
+                <div class="column">
+                    <div class="ui small header"><span class="regional-group"></span> region estimated number of HBsAg carriers prevented (95% CI<span class="asterisk"> *</span>)</div>
+                    <canvas id="vizD-3b"></canvas>
+                </div>
+
+                <div class="column">
+                    <div class="ui small header"><span class="income-group"></span> estimated number of HBsAg carriers prevented (95% CI<span class="asterisk"> *</span>)</div>
+                    <canvas id="vizD-3c"></canvas>
+                </div>
+                <div class="credible-interval"><span class="asterisk">*</span> credible interval</div>
+                <div class="ci-marker"><span>&#8226;</span> indicates upper and lower CIs</div>
+            </div>
+
+            <div class="ui container">
+                <div class="ui small header">Serological surveys eligible for the systematic review: &nbsp;&nbsp;&nbsp;<span class="current-country"></span> <span id="no-studies" class="ui small header"> (No studies for this country at this time)</span></div>
+                <table class="ui celled table" id="chartETable" cellspacing="0" width="100%">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Location</th>
+                            <th>Ages reported</th>
+                            <th>Individuals in the analysis</th>
+                            <th>HBsAg Prevalence (95&#37; CI)</th>
+                            <th>Credible interval</th>
+                            <th>Author, Date</th>
+                            <th>Link to report</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+        </div><!-- end burden-of-disease -->
+
+        <div class="ui container who-page" name="vaccine">
+            <div class="ui stackable grid">
+                <div class="ui seven wide column">
+                    <h2>Hepatitis B vaccine recommendations</h2>
+                    <p>WHO recommends that all infants receive the hepatitis B vaccine as soon as possible after birth, preferably within 24 hours. If administration within 24 hours is not feasible, a late birth dose has some effectiveness. Although effectiveness declines progressively in the days after birth, after 7 days, a late birth dose can still be effective in preventing horizontal transmission and therefore remains beneficial. WHO recommends that all infants receive the late birth dose during the first contact with health-care providers at any time up to the time of the next dose of the primary schedule.</p>
+                <p>The birth dose should be followed by 2 or 3 doses to complete the primary series. In most cases, 1 of the following 2 options is considered appropriate:</p>
+                <ul class="ui list">
+                    <li class="item">a 3-dose schedule of hepatitis B vaccine, with the first dose (monovalent) being given at birth and the second and third (monovalent or combined vaccine) given at the same time as the first and third doses of diphtheria, pertussis (whooping cough), and tetanus – (DTP) vaccine; or</li>
+                    <li class="item">a 4-dose schedule, where a monovalent birth dose is followed by three monovalent or combined vaccine doses, usually given with other routine infant vaccines.
+                WHO Hepatitis B Vaccine position paper</li>
+                </ul> 
+                <p><a href="http://apps.who.int/iris/bitstream/10665/255841/1/WER9227.pdf?ua=1">WHO Hepatitis B Vaccine position paper</a></p>
+            </div>
+            <div class="ui nine wide column">
+                <img class="ui image" src="images/vaccinegraphic_PC_GLOBAL.jpg" alt="global vaccination coverage graphic" />
+                <ul class="ui list">
+                    <li class="item"><a href="">Immunization surveillance assessment and monitoring</a></li>
+                    <li class="item"><a href="">Global Health Observatory visualizations</a></li>   
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="ui container who-page" name="systematic-review-&amp;-model">
+            <h2>Methods</h2>
+            <div class="ui stackable two column grid">
+                <div class="column">
+                    <h3>Systematic review of surface antigen data published between 1965 and 2017</h3>
+                    <p>We report national-level prevalence estimates of chronic HBV derived by a systematic review of peer-reviewed literature reporting HBV prevalence (hepatitis B surface antigen [HBsAg]) in children under 5 years of age and the general population. We updated the systematic review conducted by Schweitzer, et al., 2015. It included a systematic search on articles published between Jan 1, 1965, and Oct 23, 2013. We updated the systematic search on articles published between Oct 23, 2013, and March 20, 2017 and searched the databases Embase, PubMed, Global Index Medicus, Popline, and Web of Science. The inclusion/exclusion criteria were similar to (Schweitzer, et al.). Observational studies on chronic HBV infection seroprevalence (HBsAg prevalence), done in the general population or among blood donors, health-care workers (HCWs), and pregnant women were considered for inclusion in this systematic review. Studies were excluded if they were systematic reviews or meta-analyses, surveillance reports, case studies, letters or correspondence, or did not contain HBsAg seroprevalence data. Studies were also excluded if they exclusively reported prevalence estimates for high-risk population groups (e.g., migrants and refugees).</p>
+                </div>
+                <div class="column">
+                    <h3>Model to estimate the surface antigen prevalence</h3>
+                    <p>The data was modelled using a logistic regression, weighting each study by its size and using a conditional autoregressive model accounting for spatial and economic correlations between similar countries. The response variable in the model was the prevalence of Hepatitis surface antigen (HBsAg) with the predictor variables being age (three categories, under 5, juvenile (5-15) and adult (16+), split using the average age of participants in the study), sex (proportion female in the study), study bias (e.g. a high fraction of study participants from indigenous populations), 3 dose vaccine coverage, birth dose of the vaccine and country of study.</p>
+                    <p>The model was simulated in the Bayesian statistical package WinBUGS, and data manipulation and model initialisation run from R (3.3.1) using R2WinBUGS. We considered the parameters of age, sex, study bias (e.g. a high fraction of study participants from indigenous populations), vaccine coverage, birth dose of the vaccine and country of study. The coverage of routine 3 dose vaccination and birth dose vaccination was calculated by cross referencing the year of and age of participants in each study with the corresponding WHO-UNICEF vaccine coverage estimates for that country.</p>
+                    <p>We used the CAR-normal function, in WinBUGS, to model the spatial and developmental autocorrelation related to neighbouring countries. For each country for which we had prevalence data a weighted central position was calculated using the size and location of each study. For those with no data, we used the population centroid. In a novel approach, we considered 3 dimensions in the country proximity matrix; we used the usual geographic dimensions, latitude and longitude and also combined these with the natural log of the country’s GDP per capita.</p>
+                    <p><a href="http://who.int/entity/immunization/diseases/hepatitisB/HBsAg_estimates_and_methods_final_V3.pdf?ua=1">Estimations of worldwide prevalence of chronic hepatitis B virus infection: a systematic review of data published between 1965 and 2017</a></p>
+                </div>
+            </div>
+        </div>
+
+
+       
     </div> <!-- end pusher -->
-
-    <div class="ui modal" id="modal-about">
-        <i class="close icon"></i>
-        <div class="header">
-            About
-        </div>
-        <div class="content">
-            <p>This dashboard shows the HBsAg prevalence estimates at global, regional and country level and how they have changed since vaccination was introduced.</p>
-            <p>This dataset represents the best estimates for the hepatitis b surface antigen indicator that aim for comparability across countries and time. It uses a methodology reviewed by two WHO advisory committees: Immunization and Vaccines Related Implementation Research Advisory Committee (IVIR-AC) and the Strategic Advisory Group of Experts (SAGE). Estimates will be updated as more recent or revised data become available, or when there are changes to the methodology being used. Therefore, they are not always the same as official national estimates, although WHO whenever possible will provide Member States the opportunity to review and comment on data and estimates as part of country consultations. Database last updated: 23 March 2017.</p>
-            <p>Due to scarcity of data the model works better at global and regional level than at country level. Countries should focus on the credible intervals and not on the point estimates.</p>
-            <p>Disease caused by HBV has a worldwide distribution. The endemicity of active HBV infection is reflected in the serologic prevalence of the hepatitis B surface antigen (HBsAg) in the general population of a defined geographical area. HBsAg prevalence of ≥8&#37; defines highly endemic areas, prevalence of 5%–7&#37; defines high intermediate, 2%–4&#37; low intermediate, and <2&#37; defines low endemic areas.</p>
-            <p>Based on serological data, it was estimated that in 1995 more than 2 billion people globally had evidence of past or present HBV infection.  In 2015 the global prevalence of HBV infection in the general population was estimated at 3.5&#37; with about 257 million persons living with chronic HBV infection. Prevalence varies considerably among the WHO Regions, with the highest in the African (6.1%) and  Western Pacific Regions (6.2%).</p>
-            <p>Most of the burden of HBV-related disease results from infections acquired in infancy through perinatal or early childhood exposure to HBV because infection acquired at an early age is more likely to become chronic than infection acquired later in life.</p>
-            <p>Major progress in the global response to viral hepatitis has been achieved through the expansion of routine hepatitis B vaccination, which was facilitated by the introduction of new combination vaccines. In 2015, global coverage with 3 doses of hepatitis B vaccine during infancy reached 84%. Between the date of introduction of the vaccine, (ranging from the 1980s to the early 2000s in different countries) and 2015, the proportion of children &lt; 5 years of age who became chronically infected fell from 4.7&#37; to 1.3%.</p>
-            <p>Further information in the <a href="#">Hepatitis B vaccines: WHO position paper – July 2017</a>.</p>
-        </div>
-    </div>
-
-
-    <div class="ui modal" id="modal-methods">
-        <i class="close icon"></i>
-        <div class="header">
-            Research Methods
-        </div>
-        <div class="content">
-            <p>We report national-level prevalence estimates of chronic HBV derived by a systematic review of peer-reviewed literature reporting HBV prevalence (hepatitis B surface antigen [HBsAg]) in children under 5 years of age and the general population. We updated the systematic review conducted by Schweitzer, et al., 2015. It included a systematic search on articles published between Jan 1, 1965, and Oct 23, 2013. We updated the systematic search on articles published between Oct 23, 2013, and March 20, 2017 and searched the databases Embase, PubMed, Global Index Medicus, Popline, and Web of Science. The inclusion/exclusion criteria were similar to (Schweitzer, et al.). Observational studies on chronic HBV infection seroprevalence (HBsAg prevalence), done in the general population or among blood donors, health-care workers (HCWs), and pregnant women were considered for inclusion in this systematic review. Studies were excluded if they were systematic reviews or meta-analyses, surveillance reports, case studies, letters or correspondence, or did not contain HBsAg seroprevalence data. Studies were also excluded if they exclusively reported prevalence estimates for high-risk population groups (e.g., migrants and refugees).</p>
-            <p>The data was modelled using a logistic regression, weighting each study by its size and using a conditional autoregressive model accounting for spatial and economic correlations between similar countries. The response variable in the model was the prevalence of Hepatitis surface antigen (HBsAg) with the predictor variables being age (three categories, under 5, juvenile (5-15) and adult (16+), split using the average age of participants in the study), sex (proportion female in the study), study bias (e.g. a high fraction of study participants from indigenous populations), 3 dose vaccine coverage, birth dose of the vaccine and country of study.</p>
-            <p>A detailed description of the literature search, data extraction and model are in this <a href="docs/HBsAg_estimates_and_methods_final_V3.pdf">downloadable PDF document</a>.</p>
-        </div>
-    </div>
-
-    <div class="ui modal tiny" id="modal-data-sources">
-       <i class="close icon"></i>
-        <div class="header">
-            Data sources
-        </div>
-          <div class="content">
-            <p>Unless otherwise specified, data provided by Member States, through the <a href="http://www.who.int/immunization/monitoring_surveillance/data/en/">WHO-UNICEF Joint Reporting Form and WHO Regional Offices</a>. Population data obtained from the “United Nations, Population Division. The World Population Prospects &ndash; the 2017 revision". New York, 2017.</p>
-        </div> 
-    </div>
 
     <div id="map-hover-output">
         <div id="map-hover-country" class="ui inverted header"></div>

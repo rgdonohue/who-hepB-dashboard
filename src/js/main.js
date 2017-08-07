@@ -1,4 +1,4 @@
-(function(Chart, $){
+(function(Chart, $, d3){
 
     $('.ui.sidebar')
         .sidebar('attach events', '.toc.item');
@@ -8,12 +8,44 @@
     
         menuHeight = Math.round(menuHeight.slice(0,-2));
 
-        $("#first-container").css("margin-top", menuHeight);
+        $("#strategy").css("margin-top", menuHeight);
     }
 
-    calcFirstContainerMargin();
+    // calcFirstContainerMargin();
 
-    $(window).on('resize', calcFirstContainerMargin);
+    // $(window).on('resize', calcFirstContainerMargin);
+
+    $(".who-page").hide();
+
+    var hash = window.location.hash;
+
+    if(!hash || hash === "#home") {
+        $("div[name*='home']").fadeIn(600).addClass('current-who-page');
+
+    } else {
+        $(".menu .item").removeClass('active');
+        $(".menu .item[href='" + hash + "']").addClass('active');
+        $(".current-who-page").removeClass('current-who-page');
+        $("div[name*='" + hash.slice(1, hash.length) + "']").fadeIn(600).addClass('current-who-page');
+    }
+
+    $(".menu a").on('click', function(){
+
+
+        var target = $(this).attr('href');
+
+        
+        $(".menu .item").removeClass('active');
+        $(".menu a[href='" + target + "']").addClass('active');
+
+        target = target.slice(1, target.length)
+
+        $(".current-who-page").fadeOut(200, function(){
+            $(this).removeClass('current-who-page');
+            $("div[name*='" + target + "']").fadeIn(600).addClass('current-who-page');
+        });
+
+    });
 
 
     var birthYearIntervals = {
@@ -49,7 +81,7 @@
 
     d3.queue()
         .defer(d3.csv, 'data/hepB-master-20170724.csv')
-        .defer(d3.csv, 'data/seroprevalence_surveys_v2.csv')
+        .defer(d3.csv, 'data/seroprevalence_surveys.csv')
         .defer(d3.json, 'data/who-countries.json')
         .defer(d3.json, 'data/iso-codes.json')
         .await(ready);
@@ -128,6 +160,216 @@
 
     function makeCharts(data, surveyData, regionAndIncomeMap, countries, isoCodes) {
 
+
+        var ctxGlobalA = document.getElementById('viz-global-a').getContext('2d');
+
+         var chartGlobalAData = {
+            labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
+            datasets: [{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2,
+                data: [3.5, .9, 3.3, 2.7]
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2,
+                data: [6.8, 2.2, 6.1, 5.0]
+            },{
+                type: "bar",
+                backgroundColor: '#c62828',
+                label: "world",
+                data: [4.6, 1.3, 4.3, 3.5]
+            }]
+        };
+    
+
+        var chartGlobalA= new Chart(ctxGlobalA, {
+            type: 'bar',
+            data: chartGlobalAData,
+            options: {
+                title: {
+                    display: true,
+                },
+                legend: {
+                    display: false,
+                    position: 'top',
+                    fullWidth: false,
+                    onClick: null
+                },
+                tooltips: {
+                    enabled: false,
+                    mode: "index",
+                    position: "nearest",
+                    custom: function(tooltip) {
+
+                        if(tooltip.dataPoints) {
+                            var barIndex = tooltip.dataPoints[0].index;
+                            createTooltip(this, tooltip, barIndex, [4.6, 1.3, 4.3, 3.5], [6.8, 2.2, 6.1, 5.0], [3.5, .9, 3.3, 2.7], "%");
+                        } else {
+                            document.getElementById('chartjs-tooltip').remove();
+                        }
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0
+                        }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
+                    }]
+                    
+                }
+            }
+        });
+
+         var ctxGlobalB = document.getElementById('viz-global-b').getContext('2d');
+
+         var chartGlobalBData = {
+            labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
+            datasets: [{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2,
+                data: [23162, 6098, 240769, 199231]
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2,
+                data: [45456, 14589, 442995, 367134]
+            },{
+                type: "bar",
+                backgroundColor: '#c62828',
+                label: "world",
+                data: [31036, 8922, 310367, 256640]
+            }]
+        };
+    
+
+        var chartGlobalB= new Chart(ctxGlobalB, {
+            type: 'bar',
+            data: chartGlobalBData,
+            options: {
+                title: {
+                    display: true,
+                },
+                legend: {
+                    display: false,
+                    position: 'top',
+                    fullWidth: false,
+                    onClick: null
+                },
+                tooltips: {
+                    enabled: false,
+                    mode: "index",
+                    position: "nearest",
+                    custom: function(tooltip) {
+
+                        if(tooltip.dataPoints) {
+                            var barIndex = tooltip.dataPoints[0].index;
+                            createTooltip(this, tooltip, barIndex, [31036, 8922, 310367, 256640], [45456, 14589, 442995, 367134], [23162, 6098, 240769, 199231], "#");
+                        } else {
+                            document.getElementById('chartjs-tooltip').remove();
+                        }
+                    }
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            }
+                        }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
+                    }]
+                    
+                }
+            }
+        });
+
+        var ctxGlobalC = document.getElementById('viz-global-c').getContext('2d');
+
+         var chartGlobalCData = {
+            labels: ["Under 5 yrs", "General pop"],
+            datasets: [{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2,
+                data: [15856, 57615]
+            },{
+                type: "line",
+                pointBackgroundColor: "#f57f17",
+                showLine: false,
+                fill: false,
+                pointRadius: 2,
+                data: [32149, 111884]
+            },{
+                type: "bar",
+                backgroundColor: '#2196f3',
+                label: "world",
+                data: [22067, 76818]
+            }]
+        };
+    
+
+        var chartGlobalC= new Chart(ctxGlobalC, {
+            type: 'bar',
+            data: chartGlobalCData,
+            options: {
+                title: {
+                    display: true,
+                },
+                legend: {
+                    display: false,
+                    position: 'top',
+                    fullWidth: false,
+                    onClick: null
+                },
+                tooltips: {
+                    enabled: false,
+                    mode: "index",
+                    position: "nearest",
+                    custom: function(tooltip) {
+
+                        if(tooltip.dataPoints) {
+                            var barIndex = tooltip.dataPoints[0].index;
+                            createTooltip(this, tooltip, barIndex, [22067, 76818], [32149, 111884], [15856, 57615], "#");
+                        } else {
+                            document.getElementById('chartjs-tooltip').remove();
+                        }
+                    }
+                },
+                scales: {
+                   yAxes: [{
+                        ticks: {
+                            callback: function(value, index, values) {
+                                return value.toFixed(0).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                            }
+                        }
+                    }],
+                    xAxes: [{
+                        barPercentage: 0.4
+                    }]
+                    
+                }
+            }
+        });
+
+
         var ctxC = document.getElementById('vizC').getContext('2d');
         
         var chartC = new Chart(ctxC, {
@@ -184,20 +426,6 @@
                 showLine: false,
                 fill: false,
                 pointRadius: 2
-            },{
-                type: "line",
-                borderColor: "#2196f3",
-                borderWidth: 2,
-                fill: false,
-                borderDash:  [5, 5, 5],
-                pointRadius: 1
-            },{
-                type: "line",
-                borderColor: "#2196f3",
-                borderWidth: 2,
-                fill: false,
-                borderDash:  [5, 5, 5],
-                pointRadius: 1
             },{
                 type: "bar",
                 backgroundColor: '#c62828'
@@ -355,20 +583,6 @@
                 showLine: false,
                 fill: false,
                 pointRadius: 2
-            },{
-                type: "line",
-                borderColor: "#2196f3",
-                borderWidth: 2,
-                fill: false,
-                pointRadius: 1,
-                borderDash:  [5, 5, 5]
-            },{
-                type: "line",
-                borderColor: "#2196f3",
-                borderWidth: 2,
-                fill: false,
-                pointRadius: 1,
-                borderDash:  [5, 5, 5]
             },{
                 type: "bar",
                 backgroundColor: "#c62828"
@@ -537,7 +751,6 @@
             type: 'bar',
             data: chartD3Data,
             options: {
-                // scaleBeginAtZero: true,
                 title: {
                     display: false
                 },
@@ -1098,10 +1311,6 @@
                dataset.data = chartD1LowerCI; 
             } else if (i === 1) {
                dataset.data = chartD1UpperCI;  
-            } else if (i === 2) {
-               dataset.data = [chartD1Data[0], chartD1Data[1], null, null]; 
-            } else if (i === 3) {
-               dataset.data = [null, null, chartD1Data[2], chartD1Data[3]];  
             } else {
                 dataset.data = chartD1Data;
             }
@@ -1172,10 +1381,6 @@
                dataset.data = chartD2LowerCI;
             } else if(i ===1) {
                dataset.data = chartD2UpperCI;
-            } else if(i === 2) {
-               dataset.data = [chartD2Data[0], chartD2Data[1], null, null]; 
-            } else if(i === 3) {
-               dataset.data = [null, null, chartD2Data[2], chartD2Data[3]];  
             } else  {
                  dataset.data = chartD2Data;
             }
@@ -1622,4 +1827,4 @@
 
 
 
-})(Chart, $);
+})(Chart, $, d3);
