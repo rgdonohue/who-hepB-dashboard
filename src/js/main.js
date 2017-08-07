@@ -19,6 +19,8 @@
 
     var hash = window.location.hash;
 
+    console.log(hash)
+
     if(!hash || hash === "#home") {
         $("div[name*='home']").fadeIn(600).addClass('current-who-page');
 
@@ -27,7 +29,14 @@
         $(".menu .item[href='" + hash + "']").addClass('active');
         $(".current-who-page").removeClass('current-who-page');
         $("div[name*='" + hash.slice(1, hash.length) + "']").fadeIn(600).addClass('current-who-page');
+        
+        if(hash === '#home' || hash === '#strategy') {
+            $("#map-container").show();
+        } else {
+            $("#map-container").hide();
+        }
     }
+
 
     $(".menu a").on('click', function(){
 
@@ -44,6 +53,12 @@
             $(this).removeClass('current-who-page');
             $("div[name*='" + target + "']").fadeIn(600).addClass('current-who-page');
         });
+
+        if(target === 'home' || target === 'strategy') {
+            $("#map-container").show();
+        } else {
+            $("#map-container").hide();
+        }
 
     });
 
@@ -1597,8 +1612,8 @@
 
         var innerHtml = "<div class='ui medium header'>" + titleMap[title] + "</div>";
         innerHtml += "<div class='ui tiny header'>Estimated: " + value + valueLabel + "</div>";
-        innerHtml += "<div class='ui tiny header'>Upper CI: " + hiCi + valueLabel + "</div>";
-        innerHtml += "<div class='ui tiny header'>Lower CI: " + lowCi + valueLabel + "</div>";
+        innerHtml += "<div class='ui tiny header'>Upper 95% CI: " + hiCi + valueLabel + "</div>";
+        innerHtml += "<div class='ui tiny header'>Lower 95% CI: " + lowCi + valueLabel + "</div>";
 
         $('#popup-content').html(innerHtml);
 

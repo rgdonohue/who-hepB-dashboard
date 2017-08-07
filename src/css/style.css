@@ -21,6 +21,16 @@
     max-height: 480px;
     overflow-y: scroll;
 }
+#logo {
+    margin-right: 18px;
+}
+div.ui.top.fixed.inverted.large.menu > div > a {
+    max-width: 180px;
+}
+body > div.pusher > div.ui.top.fixed.inverted.large.menu > div > a:nth-child(2) {
+    max-width: 100%;
+}
+
 #year-dropdown {
     min-width: 0;
 }
@@ -63,10 +73,10 @@
     margin-right: 30px;
 }
 .asterisk {
-    color: #0072bb;
+    color: #f57f17;
 }
 .credible-interval {
-    color: #0072bb;
+    color: #f57f17;
     margin-bottom: 18px; 
 }
 table div {
