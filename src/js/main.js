@@ -407,6 +407,7 @@
 
         var ctxD1 = document.getElementById('vizD-1').getContext('2d');
 
+
         var chartD1Data = {
             labels: ["Pre-vac", "2015 est.", "Pre-vac", "2015 est."],
             datasets: [{
@@ -414,7 +415,7 @@
                 pointBackgroundColor: "#f57f17",
                 showLine: false,
                 fill: false,
-                pointRadius: 2
+                pointRadius: 2,
             },{
                 type: "line",
                 pointBackgroundColor: "#f57f17",
@@ -449,7 +450,7 @@
                     enabled: false,
                     mode: "index",
                     position: "nearest"
-                },
+                }
             }
         });
 
@@ -482,19 +483,9 @@
             data: chartD1BData,
             options: {
                 title: {
-                    display: true,
-                },
-                legend: {
                     display: false,
-                    position: 'top',
-                    fullWidth: false,
-                    onClick: null
                 },
-                tooltips: {
-                    enabled: false,
-                    mode: "index",
-                    position: "nearest"
-                },
+                legend: false,
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -504,7 +495,11 @@
                     xAxes: [{
                         barPercentage: 0.4
                     }]
-                    
+                },
+                tooltips: {
+                    enabled: false,
+                    mode: "index",
+                    position: "nearest"
                 }
             }
         });
@@ -538,19 +533,9 @@
             data: chartD1CData,
             options: {
                 title: {
-                    display: true,
-                },
-                legend: {
                     display: false,
-                    position: 'top',
-                    fullWidth: false,
-                    onClick: null
                 },
-                tooltips: {
-                    enabled: false,
-                    mode: "index",
-                    position: "nearest"
-                },
+                legend: false,
                 scales: {
                     yAxes: [{
                         ticks: {
@@ -560,6 +545,11 @@
                     xAxes: [{
                         barPercentage: 0.4
                     }]
+                },
+                tooltips: {
+                    enabled: false,
+                    mode: "index",
+                    position: "nearest"
                 }
             }
         });
@@ -644,8 +634,9 @@
             type: 'bar',
             data: chartD2BData,
             options: {
+                scaleBeginAtZero: true,
                 title: {
-                    display: true,
+                    display: false
                 },
                 legend: false,
                 tooltips: {
@@ -696,8 +687,9 @@
             type: 'bar',
             data: chartD2CData,
             options: {
+                scaleBeginAtZero: true,
                 title: {
-                    display: true,
+                    display: false
                 },
                 legend: false,
                 tooltips: {
@@ -1318,7 +1310,7 @@
             }
         });
 
-        maxChartDValue = Math.round(maxChartDValue + 2)
+        maxChartDValue = Math.round(maxChartDValue)
 
         chartD1.options.scales.yAxes[0].ticks.max = maxChartDValue;
         chartD1B.options.scales.yAxes[0].ticks.max = maxChartDValue;
