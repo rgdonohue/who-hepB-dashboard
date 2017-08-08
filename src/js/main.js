@@ -62,26 +62,6 @@
 
     });
 
-
-    var birthYearIntervals = {
-        'births-1980-1985': [1980, 1985],
-        'births-1985-1990': [1986, 1990],
-        'births-1980-1985': [1991, 1995],
-        'births-1985-1990': [1996, 2000],
-        'births-1980-1985': [2001, 2005],
-        'births-1985-1990': [2006, 2010],
-        'births-1980-1985': [2011, 2015],
-    };
-
-    var infantMortalityIntervals = {
-        'InfMort1985-1990': [1985, 1990],
-        'InfMort1990-1995': [1991, 1995],
-        'InfMort1995-2000': [1996, 2000],
-        'InfMort2000-2005': [2001, 2005],
-        'InfMort2005-2010': [2006, 2010],
-        'InfMort2010-2015': [2011, 2015],
-    };
-
     $(".modal-about-trigger").on('click', function() { 
         $("#modal-about").modal('show');
     });
@@ -929,6 +909,26 @@
 
     function updateChartA(data, currentYear, currentCode) {
 
+
+        var birthYearIntervals = {
+            'births-1980-1985': [1980, 1985],
+            'births-1985-1990': [1986, 1990],
+            'births-1990-1995': [1991, 1995],
+            'births-1995-2000': [1996, 2000],
+            'births-2000-2005': [2001, 2005],
+            'births-2005-2010': [2006, 2010],
+            'births-2010-2015': [2011, 2015],
+        };
+
+        var infantMortalityIntervals = {
+            'InfMort1985-1990': [1985, 1990],
+            'InfMort1990-1995': [1991, 1995],
+            'InfMort1995-2000': [1996, 2000],
+            'InfMort2000-2005': [2001, 2005],
+            'InfMort2005-2010': [2006, 2010],
+            'InfMort2010-2015': [2011, 2015],
+        };
+
         // CHART A selections
 
         var $totalPop = $("#chartA-total-pop"),
@@ -947,14 +947,16 @@
                 // CHART A
 
                 $totalPop.html((datum['pop'+currentYear] * 1000).toLocaleString());
-
+                console.log('new years')
                 for(var i = 1990; i <= 2015; i += 5) {
                     
-                    if(currentYear >= i) {
+                    if(+currentYear >= i) {
                         $totalPopU5.html((datum['U5'+i] * 1000).toLocaleString());
                         $urbanPop.html(Math.round(datum['UrbPop'+i] * 10)/10 + "%");
-                        $("#under-five-pop-years").html("(" + i + " &ndash; " + (+i + 4) + ")");
-                        $("#urban-pop-years").html("(" + i + " &ndash; " + (+i + 4) + ")");
+
+                        $("#under-five-pop-years").html("(" + i + ")");
+                        $("#urban-pop-years").html("(" + i + ")");
+
                     }
                 }
 

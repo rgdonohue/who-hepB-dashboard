@@ -43,7 +43,7 @@
                 <img class="ui image" src="images/global-line-chart.png" alt="Global Immunization 3rd dose of Hepatitis B (HepB3) coverage in infants and Birth Dose of Hepatitis B in newborns, 2000-2015" />
                 
                 
-                <div class="ui small header">Global estimated  HBsAg prevalence (%, 95% CI<span class="asterisk"> *</span>)</div>
+                <div class="ui small header">Global estimated  HBsAg prevalence <br>(%, 95% CI<span class="asterisk"> *</span>)</div>
                 <canvas id="viz-global-a"></canvas>
                 <div class="ui grid">
                     <div class="eight wide column">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="credible-interval"><span class="asterisk">*</span> credible intervals and ∙ indicates upper and lower intervals</div>
                 
-                <div class="ui small header">Global estimated number of HBsAg carriers (95% CI<span class="asterisk"> *</span>)</div>
+                <div class="ui small header">Global estimated number of HBsAg carriers<br>(95% CI<span class="asterisk"> *</span>)</div>
                 <canvas id="viz-global-b"></canvas>
                 <div class="ui grid">
                     <div class="eight wide column">
@@ -67,7 +67,7 @@
                 </div> 
                 <div class="credible-interval"><span class="asterisk">*</span> credible intervals and  ∙ indicates upper and lower intervals</div>
 
-                <div class="ui small header">Global estimated number of HBsAg carriers prevented (95% CI<span class="asterisk"> *</span>)</div>
+                <div class="ui small header">Global estimated number of HBsAg carriers prevented <br>(95% CI<span class="asterisk"> *</span>)</div>
                 <canvas id="viz-global-c"></canvas>
                 <div class="ui grid">
                     <div class="eight wide column">
@@ -142,6 +142,7 @@
                                 <div class="item" data-value="2013">2013</div>
                                 <div class="item" data-value="2014">2014</div>
                                 <div class="item" data-value="2015">2015</div>
+                                <!-- <div class="item" data-value="2016">2016</div> -->
                             </div>
                         </div>
                     </div> <!-- end item -->
@@ -170,7 +171,7 @@
                         </tbody>
                     </table>
                     <p>Source: <a href="https://esa.un.org/unpd/wpp/Download/Standard/Population/">United Nations, Population Division</a>. The World Population Prospects - the 2017 revision". New York, 2017</p>
-                    <p>Note: </p>
+                    <p>Note: Births and Infant Mortality refers to five-year periods running from 1 July to 30 June of the initial and final years.</p>
                     <div class="ui small header">Hepatitis B Vaccine Schedule</div>
                     <table class="ui celled table">
                         <tbody>
@@ -246,7 +247,7 @@
             <div class="ui three column stackable grid container">
                 <div class="ui medium header container">Estimated Hepatitis B surface antigen prevalence</div> 
                 <div class="column">
-                    <div class="ui small header"><span class="current-country"></span> estimated  HBsAg prevalence (%, 95% CI<span class="asterisk"> *</span>)</div>
+                    <div class="ui small header"><span class="current-country"></span> estimated  HBsAg prevalence <br>(%, 95% CI<span class="asterisk"> *</span>)</div>
                     <canvas id="vizD-1"></canvas>
                     <div class="ui grid">
                         <div class="eight wide column">
@@ -259,7 +260,7 @@
                 </div>
 
                 <div class="column">
-                    <div class="ui small header"><span class="regional-group"></span> region estimated HBsAg prevalence (%, 95% CI<span class="asterisk"> *</span>)
+                    <div class="ui small header"><span class="regional-group"></span> region estimated HBsAg prevalence <br>(%, 95% CI<span class="asterisk"> *</span>)
                     </div>
                     <canvas id="vizD-1b"></canvas>
                     <div class="ui grid">
@@ -273,7 +274,7 @@
                 </div>
 
                 <div class="column">
-                    <div class="ui small header"><span class="income-group"></span> countries estimated HBsAg prevalence (%, 95% CI<span class="asterisk"> *</span>)</div>
+                    <div class="ui small header"><span class="income-group"></span> countries estimated HBsAg prevalence <br>(%, 95% CI<span class="asterisk"> *</span>)</div>
                     <canvas id="vizD-1c"></canvas>
                     <div class="ui grid">
                         <div class="eight wide column">
@@ -291,7 +292,7 @@
             <div class="ui medium header container">Estimated number of hepatitis B surface antigen carriers</div> 
             <div class="ui three column stackable grid container">
                 <div class="column">
-                    <div class="ui small header"><span class="current-country"></span> estimated number of HBsAg carriers (95% CI<span class="asterisk"> *</span>)</div>
+                    <div class="ui small header"><span class="current-country"></span> estimated number of HBsAg carriers <br>(95% CI<span class="asterisk"> *</span>)</div>
                     <canvas id="vizD-2"></canvas>
                     <div class="ui grid">
                         <div class="eight wide column">
@@ -303,7 +304,7 @@
                     </div> 
                 </div>
                 <div class="column">
-                    <div class="ui small header"><span class="regional-group"></span> region estimated number of HBsAg carriers (95% CI<span class="asterisk"> *</span>)</div>
+                    <div class="ui small header"><span class="regional-group"></span> region estimated number of HBsAg carriers <br>(95% CI<span class="asterisk"> *</span>)</div>
                     <canvas id="vizD-2b"></canvas>
                     <div class="ui grid">
                         <div class="eight wide column">
@@ -315,7 +316,7 @@
                     </div> 
                 </div>
                 <div class="column">
-                    <div class="ui small header"><span class="income-group"></span> estimated number of HBsAg carriers (95% CI<span class="asterisk"> *</span>)</div>
+                    <div class="ui small header"><span class="income-group"></span> estimated number of HBsAg carriers <br>(95% CI<span class="asterisk"> *</span>)</div>
                     <canvas id="vizD-2c"></canvas>
                     <div class="ui grid">
                         <div class="eight wide column">
@@ -333,17 +334,17 @@
             <div class="ui medium header container">Estimated number of hepatitis B surface antigen carriers prevented</div>
             <div class="ui three column stackable grid container">
                 <div class="column">
-                    <div class="ui small header"><span class="current-country"></span> estimated number of HBsAg carriers prevented (95&#37; CI<span class="asterisk"> *</span>)</div>
+                    <div class="ui small header"><span class="current-country"></span> estimated number of HBsAg carriers prevented <br>(95&#37; CI<span class="asterisk"> *</span>)</div>
                     <canvas id="vizD-3"></canvas>
                 </div>
 
                 <div class="column">
-                    <div class="ui small header"><span class="regional-group"></span> region estimated number of HBsAg carriers prevented (95% CI<span class="asterisk"> *</span>)</div>
+                    <div class="ui small header"><span class="regional-group"></span> region estimated number of HBsAg carriers prevented <br>(95% CI<span class="asterisk"> *</span>)</div>
                     <canvas id="vizD-3b"></canvas>
                 </div>
 
                 <div class="column">
-                    <div class="ui small header"><span class="income-group"></span> estimated number of HBsAg carriers prevented (95% CI<span class="asterisk"> *</span>)</div>
+                    <div class="ui small header"><span class="income-group"></span> estimated number of HBsAg carriers prevented <br>(95% CI<span class="asterisk"> *</span>)</div>
                     <canvas id="vizD-3c"></canvas>
                 </div>
                 <div class="credible-interval"><span class="asterisk">*</span>credible intervals and ∙ indicates upper and lower intervals</div>
