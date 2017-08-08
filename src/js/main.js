@@ -969,7 +969,7 @@
                     if(+currentYear >= birthYearIntervals[interval][0] && 
                        +currentYear <= birthYearIntervals[interval][1]) {
                            $births.html((datum[interval] * 1000).toLocaleString());
-                           $("#birth-years").html("(" + birthYearIntervals[interval][0] + " &ndash; " + birthYearIntervals[interval][1]+ ")");
+                           $("#birth-years").html("(" + (birthYearIntervals[interval][0] - 1) + " &ndash; " + birthYearIntervals[interval][1]+ ")");
                     }
                 }
 
@@ -981,7 +981,7 @@
                     if(+currentYear >= infantMortalityIntervals[interval][0] && 
                        +currentYear <= infantMortalityIntervals[interval][1]) {
                            $infantMortality.html(Math.round(datum[interval] * 10)/10 + " per 1,000");
-                           $("#infant-mortality-years").html("(" + infantMortalityIntervals[interval][0] + " &ndash; " + infantMortalityIntervals[interval][1] + ")");
+                           $("#infant-mortality-years").html("(" + (infantMortalityIntervals[interval][0] - 1) + " &ndash; " + infantMortalityIntervals[interval][1] + ")");
                     }
                 }
 
