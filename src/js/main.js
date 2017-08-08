@@ -95,7 +95,7 @@
     });
 
     d3.queue()
-        .defer(d3.csv, 'data/hepB-master-20170724.csv')
+        .defer(d3.csv, 'data/hepB-master-20170807.csv')
         .defer(d3.csv, 'data/seroprevalence_surveys.csv')
         .defer(d3.json, 'data/who-countries.json')
         .defer(d3.json, 'data/iso-codes.json')
@@ -917,6 +917,7 @@
             on: "hover",
             onChange: function(value, text, $selectedItem) {
                 currentCode = value;
+                updateChartA(data, currentYear, currentCode);
                 updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C);
                 $("#dropdown-current-country").html(text);
                 $(".current-country").html(text);
@@ -1065,7 +1066,7 @@
                 
 
                 // CHART C
-                for(var i = 1990; i <= 2015; i++) {
+                for(var i = 1990; i <= 2016; i++) {
                     if(datum['Cov_HepB_BD_' + i]) {
                         chartCData1.push(datum['Cov_HepB_BD_' + i]);
                     } else {
