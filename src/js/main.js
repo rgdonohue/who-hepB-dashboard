@@ -38,7 +38,7 @@
     }
 
 
-    $(".menu a").on('click', function(){
+    $(".menu a").on('click touchstart', function(){
 
 
         var target = $(this).attr('href');
