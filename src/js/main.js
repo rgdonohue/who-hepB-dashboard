@@ -34,8 +34,11 @@
             d3.select(target).classed("current-who-page", true).style('top', '160px');
             d3.select(target).transition().style('opacity', '1');
         });
-
     })
+
+    d3.selectAll(".menu .image").on('click touchstart', function() {
+
+    });
 
     d3.queue()
         .defer(d3.csv, 'data/hepB-master-20170807.csv')
