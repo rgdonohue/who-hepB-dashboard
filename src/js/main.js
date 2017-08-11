@@ -3,7 +3,7 @@
     'use strict';
 
     // bind "hide and show vertical menu" event to top right icon button 
-    $('.ui.toggle.button').click(function () {
+    $('.ui.toggle.button').on("click touchstart", function () {
         $('.ui.vertical.menu').toggle("fast", "linear")
     });
 
