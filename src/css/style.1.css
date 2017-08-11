@@ -1,47 +1,21 @@
 /* styles by @rgdonohue  */
-
-body {
-
+.toc.item {
+    display: none !important;
 }
-
-.ui.fixed.borderless.menu {
-    background-color: #1e7fb8;
-}
-.ui.fixed.borderless.menu .row > a.header.item {
-    font-size: 1.2em;
-}
-.ui.fixed.borderless.huge.menu .computer.only.row a.item:not(:first-child) {
-    max-width: 180px;
-}
-.ui.vertical.menu {
+#toc-menu {
     display: none;
-    border: none;
-    box-shadow: none;
-    background-color: #1e7fb8;
-}
-.ui.vertical.menu > .item {
-    padding-left: 1.428em;
-}
-.ui.vertical.menu .item .title .dropdown.icon {
-    float: none;
-}
-.ui.vertical.menu .item .content .item {
-    padding: 0.5em 1em;
-}
-.ui.vertical.menu .header.item {
-    text-transform: uppercase;
 }
 .ui.inverted.menu {
-    background: #1e7fb8;
+    background: #0072bb;
 }
 #spacer {
-    height: 140px;
+    height: 120px;
 }
 .who-page {
-    /* margin-bottom: 40px;   */
-     position: absolute; 
-     top: -10000px;
-     opacity: 0;
+    margin-bottom: 40px;  
+}
+.ui.inverted.pointing.menu .active.item:after, .ui.inverted.pointing.menu:hover .active.item:after  {
+    background: #2a83c6 !important;
 }
 #country-dropdown .menu .menu {
     max-height: 480px;
@@ -52,6 +26,14 @@ body {
     width: 60px;
     height: 57px;
 }
+div.ui.top.fixed.inverted.large.menu > div > a {
+    max-width: 180px;
+}
+body > div.pusher > div.ui.top.fixed.inverted.large.menu > div > a:nth-child(2) {
+    max-width: 100%;
+    font-size: 120%;
+}
+
 #year-dropdown {
     min-width: 0;
 }
