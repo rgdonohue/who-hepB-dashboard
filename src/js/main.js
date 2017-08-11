@@ -1,7 +1,5 @@
 (function (Chart, $, d3) {
 
-    'use strict'
-
     // bind "hide and show vertical menu" event to top right icon button 
     $('.ui.toggle.button').click(function () {
         $('.ui.vertical.menu').toggle("fast", "linear")
@@ -41,7 +39,7 @@
     });
 
     d3.queue()
-        .defer(d3.csv, 'data/hepB-master-20170807.csv')
+        .defer(d3.csv, 'data/hepB-master-20170811.csv')
         .defer(d3.csv, 'data/seroprevalence_surveys.csv')
         .defer(d3.json, 'data/who-countries.json')
         .defer(d3.json, 'data/iso-codes.json')
@@ -902,7 +900,9 @@
             $totalPopU5 = $("#chartA-total-pop-u5"),
             $births = $("#chartA-births"),
             $infantMortality = $("#chartA-infant-mortality"),
-            $urbanPop = $("#chartA-urban-population");
+            $urbanPop = $("#chartA-urban-population"),
+            $birthsAttended  = $("#chartA-births-attended"),
+            $birthsAttendedYear = $("#chartA-births-attended-year");
 
         $("#total-pop-year").html("(" + currentYear + ")");
 
@@ -954,6 +954,16 @@
 
                 if ($births.html() === '') {
                     $infantMortality.html('N/A');
+                }
+
+                if(datum["BirthSkilledPer"]) {
+                    $birthsAttended.html(datum["BirthSkilledPer"]);
+                } else {
+                    $birthsAttended.html("N/A");
+                }
+
+                if(datum["BirthSkilledYear"]) {
+                    $birthsAttendedYear.html("(" + datum["BirthSkilledYear"] + ")");
                 }
             }
         });
