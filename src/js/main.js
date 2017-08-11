@@ -2,13 +2,42 @@
 
     'use strict'
 
-    $('.ui.dropdown').dropdown();
-    $('.ui.accordion').accordion();
-
     // bind "hide and show vertical menu" event to top right icon button 
     $('.ui.toggle.button').click(function () {
-        $('.ui.vertical.menu').toggle("250", "linear")
+        $('.ui.vertical.menu').toggle("fast", "linear")
     });
+
+
+    var hash = window.location.hash;
+
+    if(!hash || hash === "#public-health-strategies" || hash === "#") {
+        d3.selectAll(".menu .item[href='#public-health-strategies']").classed('active', true);
+        d3.select("#public-health-strategies").style('top', '160px')
+        d3.select("#public-health-strategies").classed("current-who-page", true).transition().style('opacity', 1);
+    } else {
+        d3.selectAll(".menu .item").classed('active', false);
+        d3.selectAll(".menu .item[href='" + hash + "']").classed('active', true);
+        d3.select(".current-who-page").classed('current-who-page', false);
+        d3.select(hash).style('top', '160px');
+        d3.select(hash).classed('current-who-page', true).transition().style('opacity', '1');
+    }
+
+    d3.selectAll(".menu a.tab").on('click touchstart', function() {
+
+        var target = d3.select(this).attr('href');
+
+        if(target != hash) {
+
+            d3.selectAll(".menu .item").classed('active', false);
+            d3.selectAll(".menu .item[href='" + target + "']").classed('active', true);
+      
+            d3.select(".current-who-page").transition().style('opacity', '0').on('end', function() {
+                d3.select(".current-who-page").classed("current-who-page", false).style('top', '-10000px');
+                d3.select(target).classed("current-who-page", true).style('top', '160px');
+                d3.select(target).transition().style('opacity', '1');
+            });
+        }
+    })
 
     d3.queue()
         .defer(d3.csv, 'data/hepB-master-20170807.csv')
@@ -813,75 +842,6 @@
         updateCharts(data, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C);
         updateChartE(surveyData, currentCode);
         makeMap(data, countries, surveyData, currentYear, currentCode, chartC, chartD1, chartD1B, chartD1C, chartD2, chartD2B, chartD2C, chartD3, chartD3B, chartD3C, regionAndIncomeMap, isoCodes);
-
-
-
-        // var hash = window.location.hash;
-
-        // if(!hash || hash === "#strategy") {
-        //     $(".who-page").hide();
-        //     $("div[name*='strategy']").fadeIn(600).addClass('current-who-page');
-
-        // } else {
-        //     $(".menu .item").removeClass('active');
-        //     $(".menu .item[href='" + hash + "']").addClass('active');
-        //     $(".current-who-page").removeClass('current-who-page');
-        //     $("div[name*='" + hash.slice(1, hash.length) + "']").fadeIn(600).addClass('current-who-page');
-        // }
-
-
-        // $(".menu a").on('click touchstart', function(){
-
-
-        //     var target = $(this).attr('href');
-
-
-        //     $(".menu .item").removeClass('active');
-        //     $(".menu a[href='" + target + "']").addClass('active');
-
-        //     target = target.slice(1, target.length)
-
-        //     $(".current-who-page").fadeOut(200, function(){
-        //         $(this).removeClass('current-who-page');
-        //         $("div[name*='" + target + "']").fadeIn(600).addClass('current-who-page');
-        //     });
-
-        // });
-
-        var hash = window.location.hash;
-
-        if(!hash || hash === "#public-health-strategies" || hash === "#") {
-            d3.select(".menu .item[href='#public-health-strategies']").classed('active', true);
-            d3.select("#public-health-strategies").style('top', '160px')
-            d3.select("#public-health-strategies").classed("current-who-page", true).transition().style('opacity', 1);
-        } else {
-            d3.selectAll(".menu .item").classed('active', false);
-            d3.select(".menu .item[href='" + hash + "']").classed('active', true);
-            d3.select(".current-who-page").classed('current-who-page', false);
-            d3.select(hash).style('top', '160px');
-            d3.select(hash).classed('current-who-page', true).transition().style('opacity', '1');
-        }
-
-        d3.selectAll(".menu a").on('click touchstart', function() {
-
-            // d3.event.preventDefault();
-
-            d3.select(".menu .active").classed('active', false);
-            d3.select(this).classed('active', true);
-
-            var target = d3.select(this).attr('href');
-            // remove # sign
-            // target = target.slice(1, target.length)
-
-            d3.select(".current-who-page").transition().style('opacity', '0').on('end', function() {
-                d3.select(".current-who-page").classed("current-who-page", false).style('top', '-10000px');
-
-                d3.select(target).classed("current-who-page", true).style('top', '160px');
-                d3.select(target).transition().style('opacity', '1');
-
-            });
-
-        })
 
 
         $('#year-dropdown').dropdown({

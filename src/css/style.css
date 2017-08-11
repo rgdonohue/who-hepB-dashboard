@@ -38,7 +38,6 @@ body {
     height: 140px;
 }
 .who-page {
-    /* margin-bottom: 40px;   */
      position: absolute; 
      top: -10000px;
      opacity: 0;
