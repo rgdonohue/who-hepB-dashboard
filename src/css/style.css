@@ -3,6 +3,9 @@
 body {
 
 }
+.master-container {
+
+}
 h1, h2, h3, h4, h5 {
     font-family: Lustria, serif !important;
     color: #37474f !important;
@@ -47,7 +50,11 @@ h1, h2, h3, h4, h5 {
 .who-page {
      position: absolute; 
      top: -10000px;
+     margin-bottom: 100px;
      opacity: 0;
+}
+.ui.grid.who-page {
+     margin-bottom: 100px;
 }
 #country-dropdown .menu .menu {
     max-height: 480px;

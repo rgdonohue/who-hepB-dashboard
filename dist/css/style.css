@@ -53,6 +53,9 @@ h1, h2, h3, h4, h5 {
     max-height: 480px;
     overflow-y: scroll;
 }
+.source-footnotes p {
+    font-size: 12px;
+}
 #logo {
     margin: 14px 18px 0 0;
     width: 60px;
@@ -105,9 +108,6 @@ h1, h2, h3, h4, h5 {
 .credible-interval {
     color: #f57f17;
     margin-bottom: 18px; 
-}
-table div {
-    /* font-weight: bold; */
 }
 table div span {
     font-weight: normal;

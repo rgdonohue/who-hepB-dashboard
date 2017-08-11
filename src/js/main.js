@@ -1,5 +1,7 @@
 (function (Chart, $, d3) {
 
+    'use strict';
+
     // bind "hide and show vertical menu" event to top right icon button 
     $('.ui.toggle.button').click(function () {
         $('.ui.vertical.menu').toggle("fast", "linear")
@@ -35,6 +37,15 @@
     })
 
     d3.selectAll(".menu .image").on('click touchstart', function() {
+
+        d3.selectAll(".menu .item").classed('active', false);
+        d3.selectAll(".menu .item[href='#public-health-strategies']").classed('active', true);
+
+        d3.select(".current-who-page").transition().style('opacity', '0').on('end', function() {
+            d3.select(".current-who-page").classed("current-who-page", false).style('top', '-10000px');
+        d3.select("#public-health-strategies").style('top', '160px')
+        d3.select("#public-health-strategies").classed("current-who-page", true).transition().style('opacity', 1);
+        });
 
     });
 
