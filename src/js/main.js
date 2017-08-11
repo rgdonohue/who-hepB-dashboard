@@ -26,17 +26,15 @@
 
         var target = d3.select(this).attr('href');
 
-        if(target != hash) {
+        d3.selectAll(".menu .item").classed('active', false);
+        d3.selectAll(".menu .item[href='" + target + "']").classed('active', true);
+    
+        d3.select(".current-who-page").transition().style('opacity', '0').on('end', function() {
+            d3.select(".current-who-page").classed("current-who-page", false).style('top', '-10000px');
+            d3.select(target).classed("current-who-page", true).style('top', '160px');
+            d3.select(target).transition().style('opacity', '1');
+        });
 
-            d3.selectAll(".menu .item").classed('active', false);
-            d3.selectAll(".menu .item[href='" + target + "']").classed('active', true);
-      
-            d3.select(".current-who-page").transition().style('opacity', '0').on('end', function() {
-                d3.select(".current-who-page").classed("current-who-page", false).style('top', '-10000px');
-                d3.select(target).classed("current-who-page", true).style('top', '160px');
-                d3.select(target).transition().style('opacity', '1');
-            });
-        }
     })
 
     d3.queue()
