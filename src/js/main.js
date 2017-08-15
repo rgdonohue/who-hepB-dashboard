@@ -4,7 +4,11 @@
 
     // bind "hide and show vertical menu" event to top right icon button 
     $('.ui.toggle.button').on("click touchstart", function () {
-        $('.ui.vertical.menu').toggle("fast", "linear")
+        $('.ui.vertical.menu').toggle("fast", "linear");
+    });
+
+    $('.tablet.mobile a.tab').on('click', function() {
+        $('.ui.vertical.menu').toggle("fast", "linear");
     });
 
 
