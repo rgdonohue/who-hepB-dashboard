@@ -1,4 +1,4 @@
-Level,"Author, Date",Year start,Year end,Agestart ,Ageend,pHBsAg,Low CI (for HBsAg) (new name - formerly Low_CI),High CI (for HBsAg) (new name - formerly HIgh_CI),Country,ISO3,Region,IIA (former variable name sample size),hyperlink
+Level,"Author, Date",Year start,Year end,Agestart,Ageend,pHBsAg,Low_CI,High_CI,Country,ISO3,Region,IIA,hyperlink
 City,"Todd, 2008",2006,2006,14,48,1.53,0.01,0.02,Afghanistan,AFG,EMRO,4452,
 Subnational,"Okulicz, 2013",2010,2012,16,65,8.9,,,Afghanistan,AFG,EMRO,59,
 City,"Da Villa, 1995",1993,1993,15,49,10,0.03,0.24,Albania,ALB,EURO,40,

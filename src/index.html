@@ -54,8 +54,6 @@
                         antigen prevalence</a>
                 </div>
             </div>
-
-
         </div>
     </div>
 
@@ -134,8 +132,9 @@
             </div>
             <div class="ui ten wide column">
                 <h3 class="ui header">Global Immunization Coverage</h3>
-                <img class="ui image" src="images/vaccinegraphic_PC_GLOBAL.jpg"
-                    alt="global vaccination coverage graphic" />
+                <img class="ui image" src="images/REGION-GLOBAL.jpg" alt="global vaccination coverage graphic" />
+                <img class="ui image" src="images/legend-punchcard.jpg"
+                    alt="global vaccination coverage graphic legend" />
                 <ul class="ui list">
                     <li class="item"><a
                             href="http://www.who.int/immunization/monitoring_surveillance/data/en/">Immunization
@@ -144,9 +143,6 @@
                             Observatory &ndash; Immunization coverage</a></li>
                 </ul>
             </div>
-
-
-
         </div>
 
         <div class="ui container who-page" id="global-strategies">
@@ -163,7 +159,11 @@
                         newborns, 2000-2015</h4>
                     <img class="ui image" src="images/global-line-chart.png"
                         alt="Global Immunization 3rd dose of Hepatitis B (HepB3) coverage in infants and Birth Dose of Hepatitis B in newborns, 2000-2015" />
-
+                    <div id="toggle-page2" class="ui buttons year-toggle">
+                        <button id="est-2015" class="ui primary button">2015 est</button>
+                        <div class="or"></div>
+                        <button id="est-2019" class="ui button">2019 est</button>
+                    </div>
 
                     <div class="ui small header">Global estimated HBsAg prevalence <br>(%, 95% CI<span class="asterisk">
                             *</span>)</div>
@@ -266,30 +266,38 @@
             <div class="ui container" id="map-container">
                 <div class="ui stackable grid container">
                     <div class="ui ten wide column">
-                        <div class="ui medium header">Hepatitis b surface antigen estimates in 2015 and in the pre-
-                            vaccination era and number of carriers
-                            prevented in all ages and in the under 5 years old population</div>
+                        <div class="ui medium header">Hepatitis b surface antigen estimates in 2015 and in the
+                            pre-vaccination era and number of carriers prevented in all ages and in the under 5 years
+                            old population</div>
                     </div>
                     <div class="ui three wide column">
                         <div class="ui tiny header">Under 5 years old</div>
                         <div class="ui radio checkbox">
-                            <input type="radio" name="radio" data-value="PreU5EstPre" checked="checked">
+                            <input type="radio" name="radio" data-value="PreVer1U5EstPer" checked="checked">
                             <label>pre-vaccination</label>
                         </div>
                         <div class="ui radio checkbox">
-                            <input type="radio" name="radio" data-value="PostU5EstPre">
+                            <input type="radio" name="radio" data-value="PostVer1U5EstPer">
                             <label>2015 estimate</label>
+                        </div>
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="radio" data-value="PostVer2U5EstPer">
+                            <label>2019 estimate</label>
                         </div>
                     </div>
                     <div class="ui three wide column">
                         <div class="ui tiny header">All ages</div>
                         <div class="ui radio checkbox">
-                            <input type="radio" name="radio" data-value="PreGPEstPre">
+                            <input type="radio" name="radio" data-value="PreVer2GPEstPer">
                             <label>pre-vaccination</label>
                         </div>
                         <div class="ui radio checkbox">
-                            <input type="radio" name="radio" data-value="PostGPEstPre">
+                            <input type="radio" name="radio" data-value="PostVer1GPEstPer">
                             <label>2015 estimate</label>
+                        </div>
+                        <div class="ui radio checkbox">
+                            <input type="radio" name="radio" data-value="PostVer2GPEstPer">
+                            <label>2019 estimate</label>
                         </div>
                     </div>
                 </div>
@@ -424,7 +432,7 @@
                         <p>Note: Births and Infant Mortality refers to five-year periods running from 1 July to 30 June
                             of the initial and final years.</p>
                         <p>* Births attended by skilled health personnel is from <a
-                                href="World Health Statistics 2017: http://apps.who.int/gho/data/node.main.REPWOMEN39?lang=en">WHO
+                                href="http://apps.who.int/gho/data/node.main.REPWOMEN39?lang=en" target="_blank">WHO
                                 Health Statistics 2017</a>. Data are scarce, comes from different years, and are not
                             available for every country.</p>
                     </div>
@@ -531,7 +539,7 @@
 
             <div class="ui three column stackable grid container">
                 <div class="ui large header container">Pre-vac &mdash; 2015/2019 estimation antigen data</div>
-                <div id="year-switcher" class="ui buttons">
+                <div id="toggle-d1" class="ui buttons year-toggle">
                     <button id="est-2015" class="ui primary button">2015 est</button>
                     <div class="or"></div>
                     <button id="est-2019" class="ui button">2019 est</button>
@@ -694,27 +702,19 @@
                     <h3 class="ui header">Methods: Systematic review of surface antigen data published between 1965 and
                         2017</h3>
                     <p>We present national-level prevalence estimates of chronic HBV derived by a systematic review of
-                        peer-reviewed
-                        literature reporting HBV prevalence (hepatitis B surface antigen [HBsAg]) in children under 5
-                        years
-                        of age and the general population. We updated the systematic review conducted by Schweitzer, et
-                        al.,
-                        2015. It included a systematic search on articles published between Jan 1, 1965, and Oct 23,
-                        2013.
+                        peer-reviewed literature reporting HBV prevalence (hepatitis B surface antigen [HBsAg]) in
+                        children under 5 years of age and the general population. We updated the systematic review
+                        conducted by Schweitzer, et al., 2015. It included a systematic search on articles published
+                        between Jan 1, 1965, and Oct 23, 2013.
                         We updated the systematic search on articles published between Oct 23, 2013, and March 20, 2017
-                        and
-                        searched the databases Embase, PubMed, Global Index Medicus, Popline, and Web of Science. The
-                        inclusion/exclusion
-                        criteria were similar to (Schweitzer, et al.). Observational studies on chronic HBV infection
-                        seroprevalence
-                        (HBsAg prevalence), done in the general population or among blood donors, health-care workers
-                        (HCWs),
-                        and pregnant women were considered for inclusion in this systematic review. Studies were
-                        excluded
-                        if they were systematic reviews or meta-analyses, surveillance reports, case studies, letters or
-                        correspondence, or did not contain HBsAg seroprevalence data. Studies were also excluded if they
-                        exclusively reported prevalence estimates for high-risk population groups (e.g., migrants and
-                        refugees).</p>
+                        and searched the databases Embase, PubMed, Global Index Medicus, Popline, and Web of Science.
+                        The inclusion/exclusion criteria were similar to (Schweitzer, et al.). Observational studies on
+                        chronic HBV infection seroprevalence (HBsAg prevalence), done in the general population or among
+                        blood donors, health-care workers (HCWs), and pregnant women were considered for inclusion in
+                        this systematic review. Studies were if they were systematic reviews or meta-analyses,
+                        surveillance reports, case studies, letters or correspondence, or did not contain HBsAg
+                        seroprevalence data. Studies were also excluded if they exclusively reported prevalence
+                        estimates for high-risk population groups (e.g., migrants and refugees).</p>
                 </div>
                 <div class="column">
                     <h3 class="ui header">Model to estimate the surface antigen prevalence</h3>
@@ -762,15 +762,15 @@
 
     </div> <!-- end master container -->
 
-
     <div class="ui footer basic segment">
         <div class="ui container">
             <p>
-                Dashboard designed and built by <a
-                    href="https://github.com/rgdonohue/who-hepB-dashboard">@rgdonohue</a>.
+                Dashboard designed and built by <a href="https://github.com/rgdonohue/who-hepB-dashboard">@rgdonohue</a>
+                and @mattzook.
             </p>
         </div>
     </div>
+
 
     <div id="map-hover-output">
         <div id="map-hover-country" class="ui inverted header"></div>
