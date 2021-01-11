@@ -11,6 +11,7 @@
   });
 
   var currentEstYear = '2015';
+  var currentEstYearA = '2015';
 
   var hash = window.location.hash;
 
@@ -157,24 +158,15 @@
           break;
       }
     });
-
+    makeTab2Charts();
     makeCharts(data, surveyData, regionAndIncomeMap, countries, isoCodes);
   }
 
-  function makeCharts(
-    data,
-    surveyData,
-    regionAndIncomeMap,
-    countries,
-    isoCodes
-  ) {
+  function makeTab2Charts() {
     var ctxGlobalA = document.getElementById('viz-global-a').getContext('2d');
 
-    if (currentEstYear == '2015') {
-    }
-
     var chartGlobalAData = {
-      labels: ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'],
+      // labels: ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'],
       datasets: [
         {
           type: 'line',
@@ -182,7 +174,7 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          data: [3.5, 0.9, 3.3, 2.7],
+          // data: [3.5, 0.9, 3.3, 2.7],
         },
         {
           type: 'line',
@@ -190,18 +182,18 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          data: [6.8, 2.2, 6.1, 5.0],
+          // data: [6.8, 2.2, 6.1, 5.0],
         },
         {
           type: 'bar',
           backgroundColor: '#c62828',
           label: 'world',
-          data: [4.6, 1.3, 4.3, 3.5],
+          // data: [4.6, 1.3, 4.3, 3.5],
         },
       ],
     };
 
-    new Chart(ctxGlobalA, {
+    var chartGlobalAChart = new Chart(ctxGlobalA, {
       type: 'bar',
       data: chartGlobalAData,
       options: {
@@ -263,7 +255,7 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          data: [23162, 6098, 240769, 199231],
+          // data: [23162, 6098, 240769, 199231],
         },
         {
           type: 'line',
@@ -271,18 +263,18 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          data: [45456, 14589, 442995, 367134],
+          // data: [45456, 14589, 442995, 367134],
         },
         {
           type: 'bar',
           backgroundColor: '#c62828',
           label: 'world',
-          data: [31036, 8922, 310367, 256640],
+          // data: [31036, 8922, 310367, 256640],
         },
       ],
     };
 
-    new Chart(ctxGlobalB, {
+    var chartGlobalBChart = new Chart(ctxGlobalB, {
       type: 'bar',
       data: chartGlobalBData,
       options: {
@@ -349,7 +341,7 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          data: [15856, 57615],
+          // data: [15856, 57615],
         },
         {
           type: 'line',
@@ -357,18 +349,18 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          data: [32149, 111884],
+          // data: [32149, 111884],
         },
         {
           type: 'bar',
           backgroundColor: '#2196f3',
           label: 'world',
-          data: [22067, 76818],
+          // data: [22067, 76818],
         },
       ],
     };
 
-    new Chart(ctxGlobalC, {
+    var chartGlobalCChart = new Chart(ctxGlobalC, {
       type: 'bar',
       data: chartGlobalCData,
       options: {
@@ -424,6 +416,79 @@
       },
     });
 
+    updateTab2Charts(chartGlobalAChart, chartGlobalBChart, chartGlobalCChart);
+
+    d3.selectAll('#toggle-page2 button').on('click', function () {
+      var currentButton = d3.select(this);
+      if (currentButton.classed('primary')) {
+        // silence
+      } else {
+        d3.selectAll('#toggle-page2 button').classed('primary', false);
+        currentButton.classed('primary', true);
+
+        if (d3.select(this).attr('id') == 'est-2015') {
+          currentEstYearA = '2015';
+        } else {
+          currentEstYearA = '2019';
+        }
+
+        updateTab2Charts(
+          chartGlobalAChart,
+          chartGlobalBChart,
+          chartGlobalCChart
+        );
+      }
+    });
+  }
+
+  function updateTab2Charts(chartA, chartB, chartC) {
+    if (currentEstYearA == '2015') {
+      chartA.data.labels = ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'];
+      chartA.data.datasets[0].data = [3.5, 0.9, 3.3, 2.7];
+      chartA.data.datasets[1].data = [6.8, 2.2, 6.1, 5.0];
+      chartA.data.datasets[2].data = [4.6, 1.3, 4.3, 3.5];
+
+      chartB.data.labels = ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'];
+      chartB.data.datasets[0].data = [23162, 6098, 240769, 199231];
+      chartB.data.datasets[1].data = [45456, 14589, 442995, 367134];
+      chartB.data.datasets[2].data = [23162, 6098, 240769, 199231];
+
+      chartC.data.datasets[0].data = [15856, 57615];
+      chartC.data.datasets[1].data = [32149, 111884];
+      chartC.data.datasets[2].data = [22067, 76818];
+
+      $('#global-c-container').show();
+      $('#pending').hide();
+    } else {
+      chartA.data.labels = ['Pre-vac', '2019 est.', 'Pre-vac', '2019 est.'];
+      chartA.data.datasets[0].data = [3.5, 0.82, 3.3, 3.62];
+      chartA.data.datasets[1].data = [6.8, 1.06, 6.1, 4.2];
+      chartA.data.datasets[2].data = [4.6, 0.94, 4.3, 3.89];
+
+      chartB.data.labels = ['Pre-vac', '2019 est.', 'Pre-vac', '2019 est.'];
+      chartB.data.datasets[0].data = [23162, 5583.8, 240769, 257601.0];
+      chartB.data.datasets[1].data = [45456, 7157.2, 442995, 298966.0];
+      chartB.data.datasets[2].data = [23162, 6349.3, 240769, 277012.2];
+
+      chartC.data.datasets[0].data = [null, null];
+      chartC.data.datasets[1].data = [null, null];
+      chartC.data.datasets[2].data = [null, null];
+      $('#global-c-container').hide();
+      $('#pending').show();
+    }
+
+    chartA.update();
+    chartB.update();
+    chartC.update();
+  }
+
+  function makeCharts(
+    data,
+    surveyData,
+    regionAndIncomeMap,
+    countries,
+    isoCodes
+  ) {
     var ctxC = document.getElementById('vizC').getContext('2d');
 
     var chartC = new Chart(ctxC, {
@@ -1092,16 +1157,6 @@
       },
     });
 
-    d3.selectAll('#toggle-page2 button').on('click', function () {
-      var currentButton = d3.select(this);
-      if (currentButton.classed('primary')) {
-        // silence
-      } else {
-        d3.selectAll('#toggle-page2 button').classed('primary', false);
-        currentButton.classed('primary', true);
-      }
-    });
-
     d3.selectAll('#toggle-d1 button').on('click', function () {
       var currentButton = d3.select(this);
       if (currentButton.classed('primary')) {
@@ -1173,7 +1228,7 @@
 
         $totalPop.html((datum['pop' + currentYear] * 1000).toLocaleString());
 
-        for (var i = 1990; i <= 2015; i += 5) {
+        for (var i = 1990; i <= 2019; i += 5) {
           if (+currentYear >= i) {
             $totalPopU5.html((datum['U5' + i] * 1000).toLocaleString());
             $urbanPop.html(Math.round(datum['UrbPop' + i] * 10) / 10 + '%');
@@ -2037,41 +2092,21 @@
       numArticles = 0;
     surveyData.forEach(function (survey) {
       if (survey.ISO3 === currentCode) {
-        html =
-          '<tr>' +
-          '<td><div>' +
-          survey['Year start'] +
-          ' &ndash; ' +
-          survey['Year end'] +
-          '</div></td>' +
-          '<td><div>' +
-          survey.Level +
-          '</div></td>' +
-          '<td><div>' +
-          survey['Agestart'] +
-          ' &ndash; ' +
-          survey['Ageend'] +
-          '</div></td>' +
-          '<td><div>' +
-          (+survey['IIA']).toLocaleString() +
-          '</div></td>' +
-          '<td><div>' +
-          survey.pHBsAg +
-          '</div></td>' +
-          '<td><div>' +
-          survey.Low_CI +
-          ' &ndash; ' +
-          survey.High_CI +
-          '</div></td>' +
-          '<td><div>' +
-          survey['Author, Date'] +
-          '</div></td>';
+        html = `<tr>
+            <td><div>${survey['Level']}</td></div>
+            <td><div>${survey['Author, Date']}</td></div>
+            <td><div>${survey['Year start']} &ndash; ${survey['Year end']}</td></div>
+            <td><div>${survey['Agestart']} &ndash; ${survey['Ageend']}</td></div>
+            <td><div>${survey['pHBsAg']}</td></div>
+            <td><div>${survey['Low_CI']}</td></div>
+            <td><div>${survey['High_CI']}</td></div>
+            <td><div>${survey['Country']}</td></div>
+            <td><div>${survey['ISO3']}</td></div>
+            <td><div>${survey['Region']}</td></div>
+            <td><div>${survey['IIA']}</td></div>`;
 
         if (survey.hyperlink) {
-          html +=
-            "<td><div><a target='_blank' href='" +
-            survey.hyperlink +
-            "'>link</a></div></td>";
+          html += `<td><div><a target='_blank' href='${survey.hyperlink}'>link</a></div></td>`;
         } else {
           html += '<td><div>link pending</div></td>';
         }

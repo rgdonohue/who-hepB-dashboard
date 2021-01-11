@@ -64,8 +64,8 @@ h5 {
   overflow-y: scroll;
 }
 
-.year-toggle {
-  margin-left: 12px;
+#toggle-page2,
+#toggle-d1 {
   margin-top: 18px;
 }
 .source-footnotes p {

@@ -195,17 +195,22 @@
 
                     <div class="ui small header">Global estimated number of chronic HBV infection prevented <br>(95%
                         CI<span class="asterisk"> *</span>)</div>
-                    <canvas id="viz-global-c"></canvas>
-                    <div class="ui grid">
-                        <div class="eight wide column">
-                            <div class="ui tiny header centered">under 5 years old</div>
+                    <div id="pending"><i>data pending for 2019</i></div>
+                    <div id='global-c-container'>
+                        <canvas id="viz-global-c"></canvas>
+                        <div class="ui grid">
+                            <div class="eight wide column">
+                                <div class="ui tiny header centered">under 5 years old</div>
+                            </div>
+                            <div class="eight wide column">
+                                <div class="ui tiny header centered">all ages</div>
+                            </div>
                         </div>
-                        <div class="eight wide column">
-                            <div class="ui tiny header centered">all ages</div>
-                        </div>
+                        <div class="credible-interval"><span class="asterisk">*</span> credible intervals and ∙
+                            indicates
+                            upper and lower intervals</div>
                     </div>
-                    <div class="credible-interval"><span class="asterisk">*</span> credible intervals and ∙ indicates
-                        upper and lower intervals</div>
+
                 </div> <!-- end ui six wide column -->
 
                 <div class="ui ten wide column">
@@ -671,19 +676,24 @@
             </div>
 
             <div class="ui container">
-                <div class="ui small header">Serological surveys eligible for the systematic review:
+                <br>
+                <div class="ui medium header">Serological surveys eligible for the systematic review:
                     &nbsp;&nbsp;&nbsp;<span class="current-country"></span> <span id="no-studies"
                         class="ui small header"> (No studies for this country at this time)</span></div>
                 <table class="ui celled table" id="chartETable" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th>Year</th>
-                            <th>Location</th>
-                            <th>Ages reported</th>
-                            <th>Individuals in the analysis</th>
-                            <th>HBsAg Prevalence (95&#37; CI)</th>
-                            <th>Credible interval</th>
+                            <th>Level</th>
                             <th>Author, Date</th>
+                            <th>Years</th>
+                            <th>Ages</th>
+                            <th>pHBsAg</th>
+                            <th>Low CI (for HBsAg) </th>
+                            <th>Hi CI (for HBsAg) </th>
+                            <th>Country</th>
+                            <th>ISO3</th>
+                            <th>Region</th>
+                            <th>IAA</th>
                             <th>Link to report</th>
                         </tr>
                     </thead>
