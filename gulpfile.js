@@ -5,6 +5,7 @@ var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 
 gulp.task('clean', [], function () {
+  console.log('test');
   return gulp
     .src('./dist/*', {
       read: false,

@@ -2274,7 +2274,7 @@
               var iso2Code = code;
             }
           }
-          countrySvgs.style('opacity', '.7');
+          countrySvgs.style('opacity', '1');
           d3.select(this).style('opacity', '1');
           d3.select('#map-hover-country').html(
             "<i class='" +
@@ -2282,11 +2282,15 @@
               " flag'></i>" +
               d.properties.data.Country
           );
+
           d3.select('#map-hover-under-Per').html(
             d.properties.data['PreVer1U5EstPer'] + '%'
           );
           d3.select('#map-hover-under-2015').html(
             d.properties.data['PostVer1U5EstPer'] + '%'
+          );
+          d3.select('#map-hover-under-2019').html(
+            d.properties.data['PostVer2U5EstPer'] + '%'
           );
           d3.select('#map-hover-general-Per').html(
             d.properties.data['PreVer1GPEstPer'] + '%'
@@ -2295,10 +2299,10 @@
             d.properties.data['PostVer1GPEstPer'] + '%'
           );
           d3.select('#map-hover-u5-prevented').html(
-            (d.properties.data['NumCarPreventU5'] * 1000).toLocaleString()
+            (d.properties.data['NumCarPreventVer1U5'] * 1000).toLocaleString()
           );
           d3.select('#map-hover-gp-prevented').html(
-            (d.properties.data['NumCarPreventGP'] * 1000).toLocaleString()
+            (d.properties.data['NumCarPreventVer1GP'] * 1000).toLocaleString()
           );
           info.show();
         } catch (e) {
