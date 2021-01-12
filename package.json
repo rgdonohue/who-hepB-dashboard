@@ -1,12 +1,13 @@
 {
   "name": "who-hepb-dashboard",
   "version": "1.0.0",
-  "description": "",
+  "description": "Dashboard for hep b info for WHO",
   "main": "index.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
+    "start": "live-sever",
     "prebuild": "gulp clean",
     "build": "gulp scripts && gulp copy"
   },
@@ -24,8 +25,8 @@
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-concat": "^2.6.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^3.0.0"
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.2"
   },
   "dependencies": {
     "chartjs": "^0.3.24",
