@@ -2232,8 +2232,8 @@
       });
     });
 
-    var width = d3.select('#map').style('width').slice(0, -2),
-      height = d3.select('#map').style('height').slice(0, -2);
+    var width = d3.select('#map').style('width').slice(0, -2);
+    var height = d3.select('#map').style('height').slice(0, -2);
 
     var svg = d3
       .select('#map svg')
