@@ -159,10 +159,10 @@
                         newborns, 2000-2015</h4>
                     <img class="ui image" src="images/global-line-chart.png"
                         alt="Global Immunization 3rd dose of Hepatitis B (HepB3) coverage in infants and Birth Dose of Hepatitis B in newborns, 2000-2015" />
-                    <div id="toggle-page2" class="ui buttons year-toggle">
-                        <button id="est-2015" class="ui primary button">2015 est</button>
+                    <div class="toggle-page2 ui buttons year-toggle">
+                        <button class="est-2015 ui primary button">2015 est</button>
                         <div class="or"></div>
-                        <button id="est-2019" class="ui button">2019 est</button>
+                        <button class="est-2019 ui button">2019 est</button>
                     </div>
 
                     <div class="ui small header">Global estimated HBsAg prevalence <br>(%, 95% CI<span class="asterisk">
@@ -179,6 +179,12 @@
                     <div class="credible-interval"><span class="asterisk">*</span> credible intervals and ∙ indicates
                         upper and lower intervals</div>
 
+                    <div class="toggle-page2 ui buttons year-toggle">
+                        <button class="est-2015 ui primary button">2015 est</button>
+                        <div class="or"></div>
+                        <button class="est-2019 ui button">2019 est</button>
+                    </div>
+
                     <div class="ui small header">Global estimated number of chronic HBV infection<br>(95% CI<span
                             class="asterisk"> *</span>)</div>
                     <canvas id="viz-global-b"></canvas>
@@ -192,6 +198,12 @@
                     </div>
                     <div class="credible-interval"><span class="asterisk">*</span> credible intervals and ∙ indicates
                         upper and lower intervals</div>
+
+                    <div class="toggle-page2 ui buttons year-toggle">
+                        <button class="est-2015 ui primary button">2015 est</button>
+                        <div class="or"></div>
+                        <button class="est-2019 ui button">2019 est</button>
+                    </div>
 
                     <div class="ui small header">Global estimated number of chronic HBV infection prevented <br>(95%
                         CI<span class="asterisk"> *</span>)</div>
@@ -544,10 +556,10 @@
 
             <div class="ui three column stackable grid container">
                 <div class="ui large header container">Pre-vac &mdash; 2015/2019 estimation antigen data</div>
-                <div id="toggle-d1" class="ui buttons year-toggle">
-                    <button id="est-2015" class="ui primary button">2015 est</button>
+                <div class="toggle-page3 ui buttons year-toggle">
+                    <button class="est-2015 ui primary button">2015 est</button>
                     <div class="or"></div>
-                    <button id="est-2019" class="ui button">2019 est</button>
+                    <button class="est-2019 ui button">2019 est</button>
                 </div>
                 <div class="ui medium header container">Estimated Hepatitis B surface antigen prevalence</div>
                 <div class="column">
@@ -599,6 +611,11 @@
 
             <!-- VIZ D2 -->
             <div class="ui medium header container">Estimated number of Hepatitis B surface antigen carriers</div>
+            <div class="toggle-page3 ui buttons year-toggle">
+                <button class="est-2015 ui primary button">2015 est</button>
+                <div class="or"></div>
+                <button class="est-2019 ui button">2019 est</button>
+            </div>
             <div class="ui three column stackable grid container">
                 <div class="column">
                     <div class="ui small header"><span class="current-country"></span> estimated number of chronic HBV
@@ -647,6 +664,11 @@
 
             <!-- VIZ D3 -->
             <div class="ui medium header container">Estimated number of hepatitis B surface antigen carriers prevented
+            </div>
+            <div class="toggle-page3 ui buttons year-toggle">
+                <button class="est-2015 ui primary button">2015 est</button>
+                <div class="or"></div>
+                <button class="est-2019 ui button">2019 est</button>
             </div>
             <div class="ui three column stackable grid container">
                 <div class="column">

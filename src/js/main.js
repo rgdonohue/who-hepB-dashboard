@@ -166,7 +166,6 @@
     var ctxGlobalA = document.getElementById('viz-global-a').getContext('2d');
 
     var chartGlobalAData = {
-      // labels: ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'],
       datasets: [
         {
           type: 'line',
@@ -174,7 +173,6 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          // data: [3.5, 0.9, 3.3, 2.7],
         },
         {
           type: 'line',
@@ -182,13 +180,11 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          // data: [6.8, 2.2, 6.1, 5.0],
         },
         {
           type: 'bar',
           backgroundColor: '#c62828',
           label: 'world',
-          // data: [4.6, 1.3, 4.3, 3.5],
         },
       ],
     };
@@ -255,7 +251,6 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          // data: [23162, 6098, 240769, 199231],
         },
         {
           type: 'line',
@@ -263,13 +258,11 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          // data: [45456, 14589, 442995, 367134],
         },
         {
           type: 'bar',
           backgroundColor: '#c62828',
           label: 'world',
-          // data: [31036, 8922, 310367, 256640],
         },
       ],
     };
@@ -418,17 +411,20 @@
 
     updateTab2Charts(chartGlobalAChart, chartGlobalBChart, chartGlobalCChart);
 
-    d3.selectAll('#toggle-page2 button').on('click', function () {
+    d3.selectAll('.toggle-page2 button').on('click', function () {
       var currentButton = d3.select(this);
       if (currentButton.classed('primary')) {
         // silence
       } else {
-        d3.selectAll('#toggle-page2 button').classed('primary', false);
-        currentButton.classed('primary', true);
-
-        if (d3.select(this).attr('id') == 'est-2015') {
+        if (d3.select(this).classed('est-2015')) {
+          console.log('yes 2015');
+          d3.selectAll('.toggle-page2 .est-2015').classed('primary', true);
+          d3.selectAll('.toggle-page2 .est-2019').classed('primary', false);
           currentEstYearA = '2015';
         } else {
+          console.log('yes 2019');
+          d3.selectAll('.toggle-page2 .est-2015').classed('primary', false);
+          d3.selectAll('.toggle-page2 .est-2019').classed('primary', true);
           currentEstYearA = '2019';
         }
 
@@ -536,7 +532,6 @@
     var ctxD1 = document.getElementById('vizD-1').getContext('2d');
 
     var chartD1Data = {
-      // labels: ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'],
       datasets: [
         {
           type: 'line',
@@ -592,7 +587,6 @@
     var ctxD1B = document.getElementById('vizD-1b').getContext('2d');
 
     var chartD1BData = {
-      // labels: ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'],
       datasets: [
         {
           type: 'line',
@@ -649,7 +643,6 @@
     var ctxD1C = document.getElementById('vizD-1c').getContext('2d');
 
     var chartD1CData = {
-      // labels: ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'],
       datasets: [
         {
           type: 'line',
@@ -704,7 +697,6 @@
     });
 
     var chartD2Data = {
-      // labels: ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'],
       datasets: [
         {
           type: 'line',
@@ -768,7 +760,6 @@
     var ctxD2B = document.getElementById('vizD-2b').getContext('2d');
 
     var chartD2BData = {
-      // labels: ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'],
       datasets: [
         {
           type: 'line',
@@ -831,7 +822,6 @@
     var ctxD2C = document.getElementById('vizD-2c').getContext('2d');
 
     var chartD2CData = {
-      // labels: ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'],
       datasets: [
         {
           type: 'line',
@@ -1157,17 +1147,18 @@
       },
     });
 
-    d3.selectAll('#toggle-d1 button').on('click', function () {
+    d3.selectAll('.toggle-page3 button').on('click', function () {
       var currentButton = d3.select(this);
       if (currentButton.classed('primary')) {
         // silence
       } else {
-        d3.selectAll('#toggle-d1 button').classed('primary', false);
-        currentButton.classed('primary', true);
-
-        if (d3.select(this).attr('id') == 'est-2015') {
+        if (d3.select(this).classed('est-2015')) {
+          d3.selectAll('.toggle-page3 .est-2015').classed('primary', true);
+          d3.selectAll('.toggle-page3 .est-2019').classed('primary', false);
           currentEstYear = '2015';
         } else {
+          d3.selectAll('.toggle-page3 .est-2015').classed('primary', false);
+          d3.selectAll('.toggle-page3 .est-2019').classed('primary', true);
           currentEstYear = '2019';
         }
         updateCharts(
@@ -1574,130 +1565,130 @@
           //  otherwise it's 2019
         } else {
           chartD1Data = [
-            datum['PreVer1U5EstPer'],
+            datum['PreVer2U5EstPer'],
             datum['PostVer2U5EstPer'],
-            datum['PreVer1GPEstPer'],
+            datum['PreVer2GPEstPer'],
             datum['PostVer2GPEstPer'],
           ];
 
           chartD1LowerCI = [
-            datum['PreVer1U5EstPerLowCI'],
+            datum['PreVer2U5EstPerLowCI'],
             datum['PostVer2U5EstPerLowCI'],
-            datum['PreVer1GPEstPerLowCI'],
+            datum['PreVer2GPEstPerLowCI'],
             datum['PostVer2GPEstPerLowCI'],
           ];
 
           chartD1UpperCI = [
-            datum['PreVer1U5EstPerHighCI'],
+            datum['PreVer2U5EstPerHighCI'],
             datum['PostVer2U5EstPerHighCI'],
-            datum['PreVer1GPEstPerHighCI'],
+            datum['PreVer2GPEstPerHighCI'],
             datum['PostVer2GPEstPerHighCI'],
           ];
 
           // Chart D1 B
 
           chartD1BData = [
-            datum['PreVer1U5EstPer-region'],
+            datum['PreVer2U5EstPer-region'],
             datum['PostVer2U5EstPer-region'],
-            datum['PreVer1GPEstPer-region'],
+            datum['PreVer2GPEstPer-region'],
             datum['PostVer2GPEstPer-region'],
           ];
 
           chartD1CData = [
-            datum['PreVer1U5EstPer-income'],
+            datum['PreVer2U5EstPer-income'],
             datum['PostVer2U5EstPer-income'],
-            datum['PreVer1GPEstPer-income'],
+            datum['PreVer2GPEstPer-income'],
             datum['PostVer2GPEstPer-income'],
           ];
 
           chartD1BLowerCI = [
-            datum['PreVer1U5EstPerLowCI-region'],
+            datum['PreVer2U5EstPerLowCI-region'],
             datum['PostVer2U5EstPerLowCI-region'],
-            datum['PreVer1GPEstPerLowCI-region'],
+            datum['PreVer2GPEstPerLowCI-region'],
             datum['PostVer2GPEstPerLowCI-region'],
           ];
 
           chartD1BUpperCI = [
-            datum['PreVer1U5EstPerHighCI-region'],
+            datum['PreVer2U5EstPerHighCI-region'],
             datum['PostVer2U5EstPerHighCI-region'],
-            datum['PreVer1GPEstPerHighCI-region'],
+            datum['PreVer2GPEstPerHighCI-region'],
             datum['PostVer2GPEstPerHighCI-region'],
           ];
 
           chartD1CLowerCI = [
-            datum['PreVer1U5EstPerLowCI-income'],
+            datum['PreVer2U5EstPerLowCI-income'],
             datum['PostVer2U5EstPerLowCI-income'],
-            datum['PreVer1GPEstPerLowCI-income'],
+            datum['PreVer2GPEstPerLowCI-income'],
             datum['PostVer2GPEstPerLowCI-income'],
           ];
 
           chartD1CUpperCI = [
-            datum['PreVer1U5EstPerHighCI-income'],
+            datum['PreVer2U5EstPerHighCI-income'],
             datum['PostVer2U5EstPerHighCI-income'],
-            datum['PreVer1GPEstPerHighCI-income'],
+            datum['PreVer2GPEstPerHighCI-income'],
             datum['PostVer2GPEstPerHighCI-income'],
           ];
 
           chartD2Data = [
-            datum['PreVer1U5EstCar'] * 1000,
+            datum['PreVer2U5EstCar'] * 1000,
             datum['PostVer2U5EstCar'] * 1000,
-            datum['PreVer1GPEstCar'] * 1000,
+            datum['PreVer2GPEstCar'] * 1000,
             datum['PostVer2GPEstCar'] * 1000,
           ];
 
           chartD2LowerCI = [
-            datum['PreVer1U5EstCarLowCI'] * 1000,
+            datum['PreVer2U5EstCarLowCI'] * 1000,
             datum['PostVer2U5EstCarLowCI'] * 1000,
-            datum['PreVer1GPEstCarLowCI'] * 1000,
+            datum['PreVer2GPEstCarLowCI'] * 1000,
             datum['PostVer2GPEstCarLowCI'] * 1000,
           ];
 
           chartD2UpperCI = [
-            datum['PreVer1U5EstCarHighCI'] * 1000,
+            datum['PreVer2U5EstCarHighCI'] * 1000,
             datum['PostVer2U5EstCarHighCI'] * 1000,
-            datum['PreVer1GPEstCarHighCI'] * 1000,
+            datum['PreVer2GPEstCarHighCI'] * 1000,
             datum['PostVer2GPEstCarHighCI'] * 1000,
           ];
 
           chartD2BData = [
-            datum['PreVer1U5EstCar-region'] * 1000,
+            datum['PreVer2U5EstCar-region'] * 1000,
             datum['PostVer2U5EstCar-region'] * 1000,
-            datum['PreVer1GPEstCar-region'] * 1000,
+            datum['PreVer2GPEstCar-region'] * 1000,
             datum['PostVer2GPEstCar-region'] * 1000,
           ];
 
           chartD2CData = [
-            datum['PreVer1U5EstCar-income'] * 1000,
+            datum['PreVer2U5EstCar-income'] * 1000,
             datum['PostVer2U5EstCar-income'] * 1000,
-            datum['PreVer1GPEstCar-income'] * 1000,
+            datum['PreVer2GPEstCar-income'] * 1000,
             datum['PostVer2GPEstCar-income'] * 1000,
           ];
 
           chartD2BLowerCI = [
-            datum['PreVer1U5EstCarLowCI-region'] * 1000,
+            datum['PreVer2U5EstCarLowCI-region'] * 1000,
             datum['PostVer2U5EstCarLowCI-region'] * 1000,
-            datum['PreVer1GPEstCarLowCI-region'] * 1000,
+            datum['PreVer2GPEstCarLowCI-region'] * 1000,
             datum['PostVer2GPEstCarLowCI-region'] * 1000,
           ];
 
           chartD2BUpperCI = [
-            datum['PreVer1U5EstCarHighCI-region'] * 1000,
+            datum['PreVer2U5EstCarHighCI-region'] * 1000,
             datum['PostVer2U5EstCarHighCI-region'] * 1000,
-            datum['PreVer1GPEstCarHighCI-region'] * 1000,
+            datum['PreVer2GPEstCarHighCI-region'] * 1000,
             datum['PostVer2GPEstCarHighCI-region'] * 1000,
           ];
 
           chartD2CLowerCI = [
-            datum['PreVer1U5EstCarLowCI-income'] * 1000,
+            datum['PreVer2U5EstCarLowCI-income'] * 1000,
             datum['PostVer2U5EstCarLowCI-income'] * 1000,
-            datum['PreVer1GPEstCarLowCI-income'] * 1000,
+            datum['PreVer2GPEstCarLowCI-income'] * 1000,
             datum['PostVer2GPEstCarLowCI-income'] * 1000,
           ];
 
           chartD2CUpperCI = [
-            datum['PreVer1U5EstCarHighCI-income'] * 1000,
+            datum['PreVer2U5EstCarHighCI-income'] * 1000,
             datum['PostVer2U5EstCarHighCI-income'] * 1000,
-            datum['PreVer1GPEstCarHighCI-income'] * 1000,
+            datum['PreVer2GPEstCarHighCI-income'] * 1000,
             datum['PostVer2GPEstCarHighCI-income'] * 1000,
           ];
 
