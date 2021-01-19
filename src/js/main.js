@@ -453,24 +453,24 @@
       chartC.data.datasets[1].data = [32149, 111884];
       chartC.data.datasets[2].data = [22067, 76818];
 
-      $('#global-c-container').show();
-      $('#pending').hide();
+      // $('#global-c-container').show();
+      // $('#pending').hide();
     } else {
       chartA.data.labels = ['Pre-vac', '2019 est.', 'Pre-vac', '2019 est.'];
-      chartA.data.datasets[0].data = [3.5, 0.82, 3.3, 3.62];
-      chartA.data.datasets[1].data = [6.8, 1.06, 6.1, 4.2];
-      chartA.data.datasets[2].data = [4.6, 0.94, 4.3, 3.89];
+      chartA.data.datasets[0].data = [4.42, 0.82, 4.46, 3.62];
+      chartA.data.datasets[1].data = [5.4, 1.06, 5.41, 4.2];
+      chartA.data.datasets[2].data = [4.9, 0.94, 5.01, 3.89];
 
       chartB.data.labels = ['Pre-vac', '2019 est.', 'Pre-vac', '2019 est.'];
-      chartB.data.datasets[0].data = [23162, 5583.8, 240769, 257601.0];
-      chartB.data.datasets[1].data = [45456, 7157.2, 442995, 298966.0];
-      chartB.data.datasets[2].data = [23162, 6349.3, 240769, 277012.2];
+      chartB.data.datasets[0].data = [29954.1, 5583.8, 240769, 330250.1];
+      chartB.data.datasets[1].data = [36576.6, 7157.2, 442995, 384691.9];
+      chartB.data.datasets[2].data = [33196.3, 6349.3, 356439.5, 277012.2];
 
-      chartC.data.datasets[0].data = [null, null];
-      chartC.data.datasets[1].data = [null, null];
-      chartC.data.datasets[2].data = [null, null];
-      $('#global-c-container').hide();
-      $('#pending').show();
+      chartC.data.datasets[0].data = [23935, 72427.7];
+      chartC.data.datasets[1].data = [29798.6, 86994.5];
+      chartC.data.datasets[2].data = [26855.1, 79413];
+      // $('#global-c-container').hide();
+      // $('#pending').show();
     }
 
     chartA.update();
