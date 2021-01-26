@@ -452,9 +452,6 @@
       chartC.data.datasets[0].data = [15856, 57615];
       chartC.data.datasets[1].data = [32149, 111884];
       chartC.data.datasets[2].data = [22067, 76818];
-
-      // $('#global-c-container').show();
-      // $('#pending').hide();
     } else {
       chartA.data.labels = ['Pre-vac', '2019 est.', 'Pre-vac', '2019 est.'];
       chartA.data.datasets[0].data = [4.42, 0.82, 4.46, 3.62];
@@ -469,8 +466,6 @@
       chartC.data.datasets[0].data = [23935, 72427.7];
       chartC.data.datasets[1].data = [29798.6, 86994.5];
       chartC.data.datasets[2].data = [26855.1, 79413];
-      // $('#global-c-container').hide();
-      // $('#pending').show();
     }
 
     chartA.update();
@@ -1189,6 +1184,7 @@
       'births-2000-2005': [2001, 2005],
       'births-2005-2010': [2006, 2010],
       'births-2010-2015': [2011, 2015],
+      'births-2015-2020': [2016, 2020],
     };
 
     var infantMortalityIntervals = {
@@ -1198,6 +1194,7 @@
       'InfMort2000-2005': [2001, 2005],
       'InfMort2005-2010': [2006, 2010],
       'InfMort2010-2015': [2011, 2015],
+      'InfMort2015-2020': [2016, 2020],
     };
 
     // CHART A selections
