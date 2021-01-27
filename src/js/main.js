@@ -207,28 +207,43 @@
           enabled: false,
           mode: 'index',
           position: 'nearest',
-          custom: function (tooltip) {
-            if (tooltip.dataPoints) {
-              var barIndex = tooltip.dataPoints[0].index;
-              createTooltip(
-                this,
-                tooltip,
-                barIndex,
-                [4.6, 1.3, 4.3, 3.5],
-                [6.8, 2.2, 6.1, 5.0],
-                [3.5, 0.9, 3.3, 2.7],
-                '%'
-              );
-            } else {
-              document.getElementById('chartjs-tooltip').remove();
-            }
-          },
+          // custom: function (tooltip) {
+          //   // let values =
+          //   if (tooltip.dataPoints) {
+          //     if ((currentEstYear = '2015')) {
+          //       var barIndex = tooltip.dataPoints[0].index;
+          //       createTooltip(
+          //         this,
+          //         tooltip,
+          //         barIndex,
+          //         [4.6, 1.3, 4.3, 3.5],
+          //         [6.8, 2.2, 6.1, 5.0],
+          //         [3.5, 0.9, 3.3, 2.7],
+          //         '%'
+          //       );
+          //     } else {
+          //       var barIndex = tooltip.dataPoints[0].index;
+          //       createTooltip(
+          //         this,
+          //         tooltip,
+          //         barIndex,
+          //         [4.42, 0.82, 4.46, 3.62],
+          //         [5.4, 1.06, 5.41, 4.2],
+          //         [4.9, 0.94, 5.01, 3.89],
+          //         '%'
+          //       );
+          //     }
+          //   } else {
+          //     document.getElementById('chartjs-tooltip').remove();
+          //   }
+          // },
         },
         scales: {
           yAxes: [
             {
               ticks: {
                 min: 0,
+                max: 8,
               },
             },
           ],
@@ -285,22 +300,22 @@
           enabled: false,
           mode: 'index',
           position: 'nearest',
-          custom: function (tooltip) {
-            if (tooltip.dataPoints) {
-              var barIndex = tooltip.dataPoints[0].index;
-              createTooltip(
-                this,
-                tooltip,
-                barIndex,
-                [31036, 8922, 310367, 256640],
-                [45456, 14589, 442995, 367134],
-                [23162, 6098, 240769, 199231],
-                '#'
-              );
-            } else {
-              document.getElementById('chartjs-tooltip').remove();
-            }
-          },
+          //   custom: function (tooltip) {
+          //     if (tooltip.dataPoints) {
+          //       var barIndex = tooltip.dataPoints[0].index;
+          //       createTooltip(
+          //         this,
+          //         tooltip,
+          //         barIndex,
+          //         [31036, 8922, 310367, 256640],
+          //         [45456, 14589, 442995, 367134],
+          //         [23162, 6098, 240769, 199231],
+          //         '#'
+          //       );
+          //     } else {
+          //       document.getElementById('chartjs-tooltip').remove();
+          //     }
+          //   },
         },
         scales: {
           yAxes: [
@@ -371,27 +386,29 @@
           enabled: false,
           mode: 'index',
           position: 'nearest',
-          custom: function (tooltip) {
-            if (tooltip.dataPoints) {
-              var barIndex = tooltip.dataPoints[0].index;
-              createTooltip(
-                this,
-                tooltip,
-                barIndex,
-                [22067, 76818],
-                [32149, 111884],
-                [15856, 57615],
-                '#'
-              );
-            } else {
-              document.getElementById('chartjs-tooltip').remove();
-            }
-          },
+          // custom: function (tooltip) {
+          //   if (tooltip.dataPoints) {
+          //     var barIndex = tooltip.dataPoints[0].index;
+          //     createTooltip(
+          //       this,
+          //       tooltip,
+          //       barIndex,
+          //       [22067, 76818],
+          //       [32149, 111884],
+          //       [15856, 57615],
+          //       '#'
+          //     );
+          //   } else {
+          //     document.getElementById('chartjs-tooltip').remove();
+          //   }
+          // },
         },
         scales: {
           yAxes: [
             {
               ticks: {
+                min: 0,
+                max: 120000,
                 callback: function (value, index, values) {
                   return value
                     .toFixed(0)
@@ -438,6 +455,93 @@
   }
 
   function updateTab2Charts(chartA, chartB, chartC) {
+    chartA.options.tooltips.custom = function (tooltip) {
+      if (tooltip.dataPoints) {
+        var barIndex = tooltip.dataPoints[0].index;
+        if (currentEstYearA == '2015') {
+          createTooltip(
+            this,
+            tooltip,
+            barIndex,
+            [4.6, 1.3, 4.3, 3.5],
+            [6.8, 2.2, 6.1, 5.0],
+            [3.5, 0.9, 3.3, 2.7],
+            '%'
+          );
+        } else {
+          createTooltip(
+            this,
+            tooltip,
+            barIndex,
+            [4.9, 0.94, 5.01, 3.89],
+            [5.4, 1.06, 5.41, 4.2],
+            [4.42, 0.82, 4.46, 3.62],
+            '%'
+          );
+        }
+      } else {
+        document.getElementById('chartjs-tooltip').remove();
+      }
+    };
+
+    chartB.options.tooltips.custom = function (tooltip) {
+      if (tooltip.dataPoints) {
+        var barIndex = tooltip.dataPoints[0].index;
+        if (currentEstYearA == '2015') {
+          createTooltip(
+            this,
+            tooltip,
+            barIndex,
+            [23162, 6098, 240769, 199231],
+            [45456, 14589, 442995, 367134],
+            [23162, 6098, 240769, 199231],
+            '#'
+          );
+        } else {
+          createTooltip(
+            this,
+            tooltip,
+            barIndex,
+            [31036, 8922, 310367, 256640],
+            [45456, 14589, 442995, 367134],
+            [23162, 6098, 240769, 199231],
+            '#'
+          );
+        }
+      } else {
+        document.getElementById('chartjs-tooltip').remove();
+      }
+    };
+
+    chartC.options.tooltips.custom = function (tooltip) {
+      if (tooltip.dataPoints) {
+        var barIndex = tooltip.dataPoints[0].index;
+        if (currentEstYearA == '2015') {
+          createTooltip(
+            this,
+            tooltip,
+            barIndex,
+            [22067, 76818],
+            [32149, 111884],
+            [15856, 57615],
+            '#'
+          );
+        } else {
+          createTooltip(
+            this,
+            tooltip,
+            barIndex,
+            [26855.1, 79413],
+            [29798.6, 86994.5],
+            [23935, 72427.7],
+            '#'
+          );
+        }
+      } else {
+        document.getElementById('chartjs-tooltip').remove();
+      }
+    };
+
     if (currentEstYearA == '2015') {
       chartA.data.labels = ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'];
       chartA.data.datasets[0].data = [3.5, 0.9, 3.3, 2.7];
