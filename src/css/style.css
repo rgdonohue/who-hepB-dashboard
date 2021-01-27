@@ -88,7 +88,7 @@ h5 {
   background: rgba(0, 0, 0, 0.7);
   color: white;
   border-radius: 3px;
-  min-width: 160px;
+  white-space: nowrap;
   -webkit-transition: all 0.1s ease;
   transition: all 0.1s ease;
   pointer-events: none;
@@ -96,7 +96,7 @@ h5 {
   transform: translate(12px, -50%);
   z-index: 1000;
 }
-#popup-content div {
+#popup-content span {
   color: white;
   font-weight: normal;
   margin: 2px 0;

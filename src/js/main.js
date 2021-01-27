@@ -2170,11 +2170,9 @@
       valueLabel = '';
     }
 
-    var innerHtml =
-      // <div class='ui medium header'>${titleMap[title]}</div>
-      `<div class='ui tiny header'>Estimated: ${value}${valueLabel}</div>
-      <div class='ui tiny header'>Upper 95% CI:  ${hiCi}${valueLabel}</div>
-      <div class='ui tiny header'>Lower 95% CI: ${lowCi}${valueLabel}</div>`;
+    var innerHtml = `<span class='ui tiny header'>Estimated: ${value}${valueLabel}</span><br>
+      <span class='ui tiny header'>Upper 95% CI:  ${hiCi}${valueLabel}</span><br>
+      <span class='ui tiny header'>Lower 95% CI: ${lowCi}${valueLabel}</span><br>`;
 
     $('#popup-content').html(innerHtml);
 
