@@ -1135,7 +1135,6 @@
     updateChartA(data, currentYear, currentCode);
     updateCharts(
       data,
-      currentYear,
       currentCode,
       chartC,
       chartD1,
@@ -1149,7 +1148,7 @@
       chartD3C
     );
     updateChartE(surveyData, currentCode);
-    makeMap(data, countries, currentYear, regionAndIncomeMap, isoCodes);
+    makeMap(data, countries, regionAndIncomeMap, isoCodes);
 
     $('#year-dropdown').dropdown({
       on: 'hover',
@@ -1349,7 +1348,6 @@
 
   function updateCharts(
     data,
-    currentYear,
     currentCode,
     chartC,
     chartD1,
@@ -2288,7 +2286,7 @@
       tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
   }
 
-  function makeMap(data, countries, currentYear, regionAndIncomeMap, isoCodes) {
+  function makeMap(data, countries, regionAndIncomeMap, isoCodes) {
     var currentVariable = 'PreVer1U5EstPer';
 
     var colors = ['#f6d2a9', '#f19c7c', '#dd686c', '#b13f64'];
