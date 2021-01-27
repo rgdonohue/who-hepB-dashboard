@@ -300,22 +300,6 @@
           enabled: false,
           mode: 'index',
           position: 'nearest',
-          //   custom: function (tooltip) {
-          //     if (tooltip.dataPoints) {
-          //       var barIndex = tooltip.dataPoints[0].index;
-          //       createTooltip(
-          //         this,
-          //         tooltip,
-          //         barIndex,
-          //         [31036, 8922, 310367, 256640],
-          //         [45456, 14589, 442995, 367134],
-          //         [23162, 6098, 240769, 199231],
-          //         '#'
-          //       );
-          //     } else {
-          //       document.getElementById('chartjs-tooltip').remove();
-          //     }
-          //   },
         },
         scales: {
           yAxes: [
@@ -350,7 +334,6 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          // data: [15856, 57615],
         },
         {
           type: 'line',
@@ -358,13 +341,11 @@
           showLine: false,
           fill: false,
           pointRadius: 3,
-          // data: [32149, 111884],
         },
         {
           type: 'bar',
           backgroundColor: '#2196f3',
           label: 'world',
-          // data: [22067, 76818],
         },
       ],
     };
@@ -386,22 +367,6 @@
           enabled: false,
           mode: 'index',
           position: 'nearest',
-          // custom: function (tooltip) {
-          //   if (tooltip.dataPoints) {
-          //     var barIndex = tooltip.dataPoints[0].index;
-          //     createTooltip(
-          //       this,
-          //       tooltip,
-          //       barIndex,
-          //       [22067, 76818],
-          //       [32149, 111884],
-          //       [15856, 57615],
-          //       '#'
-          //     );
-          //   } else {
-          //     document.getElementById('chartjs-tooltip').remove();
-          //   }
-          // },
         },
         scales: {
           yAxes: [
@@ -664,10 +629,7 @@
         scales: {
           yAxes: [
             {
-              ticks: {
-                min: 0,
-                max: 20,
-              },
+              min: 0,
             },
           ],
           xAxes: [
@@ -1187,25 +1149,7 @@
       chartD3C
     );
     updateChartE(surveyData, currentCode);
-    makeMap(
-      data,
-      countries,
-      surveyData,
-      currentYear,
-      currentCode,
-      chartC,
-      chartD1,
-      chartD1B,
-      chartD1C,
-      chartD2,
-      chartD2B,
-      chartD2C,
-      chartD3,
-      chartD3B,
-      chartD3C,
-      regionAndIncomeMap,
-      isoCodes
-    );
+    makeMap(data, countries, currentYear, regionAndIncomeMap, isoCodes);
 
     $('#year-dropdown').dropdown({
       on: 'hover',
@@ -1856,26 +1800,75 @@
     }); // end forEach
 
     var maxChartDValue = 0;
+    var bothD1UpperCIs = [];
 
-    chartD1UpperCI.forEach(function (val) {
-      if (+val > maxChartDValue) {
-        maxChartDValue = +val;
+    data.forEach(function (datum) {
+      // acccess data for current country
+      if (datum.ISO3 === currentCode) {
+        console.log(datum['PreVer1U5EstPerHighCI']);
+        // CHART B
+        bothD1UpperCIs.push([
+          datum['PreVer1U5EstPerHighCI'],
+          datum['PostVer1U5EstPerHighCI'],
+          datum['PreVer1GPEstPerHighCI'],
+          datum['PostVer1GPEstPerHighCI'],
+          datum['PreVer1U5EstPerHighCI-region'],
+          datum['PostVer1U5EstPerHighCI-region'],
+          datum['PreVer1GPEstPerHighCI-region'],
+          datum['PostVer1GPEstPerHighCI-region'],
+          datum['PreVer1U5EstPerHighCI-income'],
+          datum['PostVer1U5EstPerHighCI-income'],
+          datum['PreVer1GPEstPerHighCI-income'],
+          datum['PostVer1GPEstPerHighCI-income'],
+          datum['PreVer2U5EstPerHighCI'],
+          datum['PostVer2U5EstPerHighCI'],
+          datum['PreVer2GPEstPerHighCI'],
+          datum['PostVer2GPEstPerHighCI'],
+          datum['PreVer2U5EstPerHighCI-region'],
+          datum['PostVer2U5EstPerHighCI-region'],
+          datum['PreVer2GPEstPerHighCI-region'],
+          datum['PostVer2GPEstPerHighCI-region'],
+          datum['PreVer2U5EstPerHighCI-income'],
+          datum['PostVer2U5EstPerHighCI-income'],
+          datum['PreVer2GPEstPerHighCI-income'],
+          datum['PostVer2GPEstPerHighCI-income'],
+        ]);
       }
     });
 
-    chartD1BUpperCI.forEach(function (val) {
-      if (+val > maxChartDValue) {
-        maxChartDValue = +val;
-      }
+    bothD1UpperCIs.forEach(function (arr) {
+      arr.forEach(function (val) {
+        if (+val > maxChartDValue) {
+          maxChartDValue = +val;
+        }
+      });
     });
 
-    chartD1CUpperCI.forEach(function (val) {
-      if (+val > maxChartDValue) {
-        maxChartDValue = +val;
-      }
-    });
+    // chartD1UpperCI.forEach(function (val) {
+    //   if (+val > maxChartDValue) {
+    //     maxChartDValue = +val;
+    //   }
+    // });
+
+    // chartD1BUpperCI.forEach(function (val) {
+    //   if (+val > maxChartDValue) {
+    //     maxChartDValue = +val;
+    //   }
+    // });
+
+    // chartD1CUpperCI.forEach(function (val) {
+    //   if (+val > maxChartDValue) {
+    //     maxChartDValue = +val;
+    //   }
+    // });
 
     maxChartDValue = Math.round(maxChartDValue);
+
+    console.log(maxChartDValue);
+
+    // chartD1.options.scales.yAxes[0].ticks.max = maxChartDValue;
+    // chartD1B.options.scales.yAxes[0].ticks.max = maxChartDValue;
+    // chartD1C.options.scales.yAxes[0].ticks.max = maxChartDValue;
 
     chartD1.options.scales.yAxes[0].ticks.max = maxChartDValue;
     chartD1B.options.scales.yAxes[0].ticks.max = maxChartDValue;
@@ -2295,25 +2288,7 @@
       tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
   }
 
-  function makeMap(
-    data,
-    countries,
-    surveyData,
-    currentYear,
-    currentCode,
-    chartC,
-    chartD1,
-    chartD1B,
-    chartD1C,
-    chartD2,
-    chartD2B,
-    chartD2C,
-    chartD3,
-    chartD3B,
-    chartD3C,
-    regionAndIncomeMap,
-    isoCodes
-  ) {
+  function makeMap(data, countries, currentYear, regionAndIncomeMap, isoCodes) {
     var currentVariable = 'PreVer1U5EstPer';
 
     var colors = ['#f6d2a9', '#f19c7c', '#dd686c', '#b13f64'];
@@ -2421,22 +2396,7 @@
             var iso2Code = code;
           }
         }
-        updateChartA(data, currentYear, currentCode);
-        // updateCharts(
-        //   data,
-        //   currentYear,
-        //   currentCode,
-        //   chartC,
-        //   chartD1,
-        //   chartD1B,
-        //   chartD1C,
-        //   chartD2,
-        //   chartD2B,
-        //   chartD2C,
-        //   chartD3,
-        //   chartD3B,
-        //   chartD3C
-        // );
+
         $('#dropdown-current-country').html(
           "<i class='" +
             iso2Code.toLowerCase() +
