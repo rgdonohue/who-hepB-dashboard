@@ -115,7 +115,8 @@
 
       regionAndIncomeMap[dataISO] = {
         region: region,
-        income: datum['income category'],
+        income2017: datum['income category-2017'],
+        income2020: datum['income category-2020'],
       };
 
       // loop through codes and create swapped object
@@ -417,7 +418,6 @@
         // silence
       } else {
         if (d3.select(this).classed('est-2015')) {
-          console.log('yes 2015');
           d3.selectAll('.toggle-page2 .est-2015').classed('primary', true);
           d3.selectAll('.toggle-page2 .est-2019').classed('primary', false);
           currentEstYearA = '2015';
@@ -1112,7 +1112,12 @@
 
     $('.current-country').html('<i class="ao flag"></i> Angola');
     $('.regional-group').html(regionAndIncomeMap[currentCode].region);
-    $('.income-group').html(regionAndIncomeMap[currentCode].income);
+
+    if (currentEstYear == '2015') {
+      $('.income-group').html(regionAndIncomeMap[currentCode].income2017);
+    } else {
+      $('.income-group').html(regionAndIncomeMap[currentCode].income2020);
+    }
 
     $('#country-dropdown').dropdown({
       on: 'hover',
@@ -1138,7 +1143,11 @@
         $('#dropdown-current-country').html(text);
         $('.current-country').html(text);
         $('.regional-group').html(regionAndIncomeMap[currentCode].region);
-        $('.income-group').html(regionAndIncomeMap[currentCode].income);
+        if (currentEstYear == '2015') {
+          $('.income-group').html(regionAndIncomeMap[currentCode].income2017);
+        } else {
+          $('.income-group').html(regionAndIncomeMap[currentCode].income2020);
+        }
       },
     });
 
@@ -1171,6 +1180,11 @@
           chartD3B,
           chartD3C
         );
+      }
+      if (currentEstYear == '2015') {
+        $('.income-group').html(regionAndIncomeMap[currentCode].income2017);
+      } else {
+        $('.income-group').html(regionAndIncomeMap[currentCode].income2020);
       }
     });
   }
@@ -1208,6 +1222,7 @@
     var $birthsAttendedYear = $('#chartA-births-attended-year');
 
     $('#total-pop-year').html('(' + currentYear + ')');
+    $('#urban-pop-years').html('(' + currentYear + ')');
 
     data.forEach(function (datum) {
       // acccess data for current country
@@ -1216,13 +1231,11 @@
 
         $totalPop.html((datum['pop' + currentYear] * 1000).toLocaleString());
 
-        for (var i = 1990; i <= 2019; i += 5) {
-          if (+currentYear >= i) {
+        for (var i = 1990; i <= 2020; i += 5) {
+          if (currentYear >= i) {
             $totalPopU5.html((datum['U5' + i] * 1000).toLocaleString());
             $urbanPop.html(Math.round(datum['UrbPop' + i] * 10) / 10 + '%');
-
             $('#under-five-pop-years').html('(' + i + ')');
-            $('#urban-pop-years').html('(' + i + ')');
           }
         }
 
@@ -1359,8 +1372,8 @@
         $hepBIntroYear.html(Math.round(datum.HepBintroduced));
         $hepBBirthYear.html(Math.round(datum.HepBintroducedBirth));
 
-        if (datum.schedule) {
-          $chartBSchedule.html(datum.schedule);
+        if (datum.Schedule) {
+          $chartBSchedule.html(datum.Schedule);
         } else {
           $chartBSchedule.html('N/A');
         }
@@ -2333,7 +2346,12 @@
             d.properties.data.Country
         );
         $('.regional-group').html(regionAndIncomeMap[currentCode].region);
-        $('.income-group').html(regionAndIncomeMap[currentCode].income);
+
+        if (currentEstYear == '2015') {
+          $('.income-group').html(regionAndIncomeMap[currentCode].income2017);
+        } else {
+          $('.income-group').html(regionAndIncomeMap[currentCode].income2020);
+        }
       });
 
     var maskLines = svg.append('g');
@@ -2389,11 +2407,6 @@
       maskLines
         .attr('transform', transform)
         .style('stroke-width', 1 / transform.k);
-      // grat.attr("transform", transform)
-      //     .style("stroke-width", 1 / transform.k);
-
-      //  d3.select('defs path').attr("transform", transform)
-      //     .style("stroke-width", 1 / transform.k);
     }
 
     updateMap(countrySvgs, data, currentVariable);
