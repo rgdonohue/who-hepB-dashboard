@@ -666,6 +666,7 @@
             {
               ticks: {
                 min: 0,
+                max: 20,
               },
             },
           ],
@@ -2398,11 +2399,12 @@
             d.properties.data['PostVer1GPEstPer'] + '%'
           );
           d3.select('#map-hover-u5-prevented').html(
-            (d.properties.data['NumCarPreventU5'] * 1000).toLocaleString()
+            (d.properties.data['NumCarPreventVer1U5'] * 1000).toLocaleString()
           );
           d3.select('#map-hover-gp-prevented').html(
-            (d.properties.data['NumCarPreventGP'] * 1000).toLocaleString()
+            (d.properties.data['NumCarPreventVer1GP'] * 1000).toLocaleString()
           );
+          console.log(d.properties.data);
           info.show();
         } catch (e) {
           // shhhhhh ...
@@ -2420,21 +2422,21 @@
           }
         }
         updateChartA(data, currentYear, currentCode);
-        updateCharts(
-          data,
-          currentYear,
-          currentCode,
-          chartC,
-          chartD1,
-          chartD1B,
-          chartD1C,
-          chartD2,
-          chartD2B,
-          chartD2C,
-          chartD3,
-          chartD3B,
-          chartD3C
-        );
+        // updateCharts(
+        //   data,
+        //   currentYear,
+        //   currentCode,
+        //   chartC,
+        //   chartD1,
+        //   chartD1B,
+        //   chartD1C,
+        //   chartD2,
+        //   chartD2B,
+        //   chartD2C,
+        //   chartD3,
+        //   chartD3B,
+        //   chartD3C
+        // );
         $('#dropdown-current-country').html(
           "<i class='" +
             iso2Code.toLowerCase() +
