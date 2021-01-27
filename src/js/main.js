@@ -1174,7 +1174,6 @@
         updateChartA(data, currentYear, currentCode);
         updateCharts(
           data,
-          currentYear,
           currentCode,
           chartC,
           chartD1,
@@ -1215,7 +1214,6 @@
         }
         updateCharts(
           data,
-          currentYear,
           currentCode,
           chartC,
           chartD1,
@@ -1442,6 +1440,7 @@
           }
 
           chartCLabels.push(String(i));
+          console.log(chartCLabels);
         }
 
         // CHART D
@@ -2166,7 +2165,7 @@
     } else {
       var index = index2;
     }
-
+    console.log(chartCLabels);
     chartC.data.labels = chartCLabels.slice(index, chartCLabels.length);
 
     chartCData1 = chartCData1.slice(index, chartCData1.length);
