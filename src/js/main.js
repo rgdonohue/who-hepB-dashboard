@@ -1440,7 +1440,6 @@
           }
 
           chartCLabels.push(String(i));
-          console.log(chartCLabels);
         }
 
         // CHART D
@@ -1467,20 +1466,11 @@
             datum['PostVer1GPEstPerHighCI'],
           ];
 
-          // Chart D1 B
-
           chartD1BData = [
             datum['PreVer1U5EstPer-region'],
             datum['PostVer1U5EstPer-region'],
             datum['PreVer1GPEstPer-region'],
             datum['PostVer1GPEstPer-region'],
-          ];
-
-          chartD1CData = [
-            datum['PreVer1U5EstPer-income'],
-            datum['PostVer1U5EstPer-income'],
-            datum['PreVer1GPEstPer-income'],
-            datum['PostVer1GPEstPer-income'],
           ];
 
           chartD1BLowerCI = [
@@ -1495,6 +1485,13 @@
             datum['PostVer1U5EstPerHighCI-region'],
             datum['PreVer1GPEstPerHighCI-region'],
             datum['PostVer1GPEstPerHighCI-region'],
+          ];
+
+          chartD1CData = [
+            datum['PreVer1U5EstPer-income'],
+            datum['PostVer1U5EstPer-income'],
+            datum['PreVer1GPEstPer-income'],
+            datum['PostVer1GPEstPer-income'],
           ];
 
           chartD1CLowerCI = [
@@ -1539,13 +1536,6 @@
             datum['PostVer1GPEstCar-region'] * 1000,
           ];
 
-          chartD2CData = [
-            datum['PreVer1U5EstCar-income'] * 1000,
-            datum['PostVer1U5EstCar-income'] * 1000,
-            datum['PreVer1GPEstCar-income'] * 1000,
-            datum['PostVer1GPEstCar-income'] * 1000,
-          ];
-
           chartD2BLowerCI = [
             datum['PreVer1U5EstCarLowCI-region'] * 1000,
             datum['PostVer1U5EstCarLowCI-region'] * 1000,
@@ -1558,6 +1548,13 @@
             datum['PostVer1U5EstCarHighCI-region'] * 1000,
             datum['PreVer1GPEstCarHighCI-region'] * 1000,
             datum['PostVer1GPEstCarHighCI-region'] * 1000,
+          ];
+
+          chartD2CData = [
+            datum['PreVer1U5EstCar-income'] * 1000,
+            datum['PostVer1U5EstCar-income'] * 1000,
+            datum['PreVer1GPEstCar-income'] * 1000,
+            datum['PostVer1GPEstCar-income'] * 1000,
           ];
 
           chartD2CLowerCI = [
@@ -1650,13 +1647,6 @@
             datum['PostVer2GPEstPer-region'],
           ];
 
-          chartD1CData = [
-            datum['PreVer2U5EstPer-income'],
-            datum['PostVer2U5EstPer-income'],
-            datum['PreVer2GPEstPer-income'],
-            datum['PostVer2GPEstPer-income'],
-          ];
-
           chartD1BLowerCI = [
             datum['PreVer2U5EstPerLowCI-region'],
             datum['PostVer2U5EstPerLowCI-region'],
@@ -1669,6 +1659,13 @@
             datum['PostVer2U5EstPerHighCI-region'],
             datum['PreVer2GPEstPerHighCI-region'],
             datum['PostVer2GPEstPerHighCI-region'],
+          ];
+
+          chartD1CData = [
+            datum['PreVer2U5EstPer-income'],
+            datum['PostVer2U5EstPer-income'],
+            datum['PreVer2GPEstPer-income'],
+            datum['PostVer2GPEstPer-income'],
           ];
 
           chartD1CLowerCI = [
@@ -1713,13 +1710,6 @@
             datum['PostVer2GPEstCar-region'] * 1000,
           ];
 
-          chartD2CData = [
-            datum['PreVer2U5EstCar-income'] * 1000,
-            datum['PostVer2U5EstCar-income'] * 1000,
-            datum['PreVer2GPEstCar-income'] * 1000,
-            datum['PostVer2GPEstCar-income'] * 1000,
-          ];
-
           chartD2BLowerCI = [
             datum['PreVer2U5EstCarLowCI-region'] * 1000,
             datum['PostVer2U5EstCarLowCI-region'] * 1000,
@@ -1732,6 +1722,13 @@
             datum['PostVer2U5EstCarHighCI-region'] * 1000,
             datum['PreVer2GPEstCarHighCI-region'] * 1000,
             datum['PostVer2GPEstCarHighCI-region'] * 1000,
+          ];
+
+          chartD2CData = [
+            datum['PreVer2U5EstCar-income'] * 1000,
+            datum['PostVer2U5EstCar-income'] * 1000,
+            datum['PreVer2GPEstCar-income'] * 1000,
+            datum['PostVer2GPEstCar-income'] * 1000,
           ];
 
           chartD2CLowerCI = [
@@ -1796,80 +1793,136 @@
       } // end if country code
     }); // end forEach
 
-    var maxChartDValue = 0;
-    var bothD1UpperCIs = [];
+    var bothD1UpperCIs;
+    var bothD2UpperCIs;
+    var bothD2BUpperCIs;
+    var bothD2CUpperCIs;
+    var bothD3UpperCIs;
+    var bothD3BUpperCIs;
+    var bothD3CUpperCIs;
 
     data.forEach(function (datum) {
       // acccess data for current country
       if (datum.ISO3 === currentCode) {
-        console.log(datum['PreVer1U5EstPerHighCI']);
-        // CHART B
-        bothD1UpperCIs.push([
-          datum['PreVer1U5EstPerHighCI'],
-          datum['PostVer1U5EstPerHighCI'],
-          datum['PreVer1GPEstPerHighCI'],
-          datum['PostVer1GPEstPerHighCI'],
-          datum['PreVer1U5EstPerHighCI-region'],
-          datum['PostVer1U5EstPerHighCI-region'],
-          datum['PreVer1GPEstPerHighCI-region'],
-          datum['PostVer1GPEstPerHighCI-region'],
-          datum['PreVer1U5EstPerHighCI-income'],
-          datum['PostVer1U5EstPerHighCI-income'],
-          datum['PreVer1GPEstPerHighCI-income'],
-          datum['PostVer1GPEstPerHighCI-income'],
-          datum['PreVer2U5EstPerHighCI'],
-          datum['PostVer2U5EstPerHighCI'],
-          datum['PreVer2GPEstPerHighCI'],
-          datum['PostVer2GPEstPerHighCI'],
-          datum['PreVer2U5EstPerHighCI-region'],
-          datum['PostVer2U5EstPerHighCI-region'],
-          datum['PreVer2GPEstPerHighCI-region'],
-          datum['PostVer2GPEstPerHighCI-region'],
-          datum['PreVer2U5EstPerHighCI-income'],
-          datum['PostVer2U5EstPerHighCI-income'],
-          datum['PreVer2GPEstPerHighCI-income'],
-          datum['PostVer2GPEstPerHighCI-income'],
-        ]);
+        bothD1UpperCIs = [
+          +datum['PreVer1U5EstPerHighCI'],
+          +datum['PostVer1U5EstPerHighCI'],
+          +datum['PreVer1GPEstPerHighCI'],
+          +datum['PostVer1GPEstPerHighCI'],
+          +datum['PreVer1U5EstPerHighCI-region'],
+          +datum['PostVer1U5EstPerHighCI-region'],
+          +datum['PreVer1GPEstPerHighCI-region'],
+          +datum['PostVer1GPEstPerHighCI-region'],
+          +datum['PreVer1U5EstPerHighCI-income'],
+          +datum['PostVer1U5EstPerHighCI-income'],
+          +datum['PreVer1GPEstPerHighCI-income'],
+          +datum['PostVer1GPEstPerHighCI-income'],
+          +datum['PreVer2U5EstPerHighCI'],
+          +datum['PostVer2U5EstPerHighCI'],
+          +datum['PreVer2GPEstPerHighCI'],
+          +datum['PostVer2GPEstPerHighCI'],
+          +datum['PreVer2U5EstPerHighCI-region'],
+          +datum['PostVer2U5EstPerHighCI-region'],
+          +datum['PreVer2GPEstPerHighCI-region'],
+          +datum['PostVer2GPEstPerHighCI-region'],
+          +datum['PreVer2U5EstPerHighCI-income'],
+          +datum['PostVer2U5EstPerHighCI-income'],
+          +datum['PreVer2GPEstPerHighCI-income'],
+          +datum['PostVer2GPEstPerHighCI-income'],
+        ];
+
+        bothD2UpperCIs = [
+          +datum['PreVer1U5EstCarHighCI'] * 1000,
+          +datum['PostVer1U5EstCarHighCI'] * 1000,
+          +datum['PreVer1GPEstCarHighCI'] * 1000,
+          +datum['PostVer1GPEstCarHighCI'] * 1000,
+          +datum['PreVer2U5EstCarHighCI'] * 1000,
+          +datum['PostVer2U5EstCarHighCI'] * 1000,
+          +datum['PreVer2GPEstCarHighCI'] * 1000,
+          +datum['PostVer2GPEstCarHighCI'] * 1000,
+        ];
+
+        bothD2BUpperCIs = [
+          +datum['PreVer1U5EstCarHighCI-region'] * 1000,
+          +datum['PostVer1U5EstCarHighCI-region'] * 1000,
+          +datum['PreVer1GPEstCarHighCI-region'] * 1000,
+          +datum['PostVer1GPEstCarHighCI-region'] * 1000,
+          +datum['PreVer2U5EstCarHighCI-region'] * 1000,
+          +datum['PostVer2U5EstCarHighCI-region'] * 1000,
+          +datum['PreVer2GPEstCarHighCI-region'] * 1000,
+          +datum['PostVer2GPEstCarHighCI-region'] * 1000,
+        ];
+
+        bothD2CUpperCIs = [
+          +datum['PreVer1U5EstCarHighCI-income'] * 1000,
+          +datum['PostVer1U5EstCarHighCI-income'] * 1000,
+          +datum['PreVer1GPEstCarHighCI-income'] * 1000,
+          +datum['PostVer1GPEstCarHighCI-income'] * 1000,
+          +datum['PreVer2U5EstCarHighCI-income'] * 1000,
+          +datum['PostVer2U5EstCarHighCI-income'] * 1000,
+          +datum['PreVer2GPEstCarHighCI-income'] * 1000,
+          +datum['PostVer2GPEstCarHighCI-income'] * 1000,
+        ];
+
+        bothD3UpperCIs = [
+          +datum['NumCarPreventVer2U5HighCI'] * 1000,
+          +datum['NumCarPreventVer2GPHighCI'] * 1000,
+          +datum['NumCarPreventVer1U5HighCI'] * 1000,
+          +datum['NumCarPreventVer1GPHighCI'] * 1000,
+        ];
+        bothD3BUpperCIs = [
+          +datum['NumCarPreventVer2U5HighCI-region'] * 1000,
+          +datum['NumCarPreventVer2GPHighCI-region'] * 1000,
+          +datum['NumCarPreventVer1U5HighCI-region'] * 1000,
+          +datum['NumCarPreventVer1GPHighCI-region'] * 1000,
+        ];
+        bothD3CUpperCIs = [
+          +datum['NumCarPreventVer2U5HighCI-income'] * 1000,
+          +datum['NumCarPreventVer2GPHighCI-income'] * 1000,
+          +datum['NumCarPreventVer1U5HighCI-income'] * 1000,
+          +datum['NumCarPreventVer1GPHighCI-income'] * 1000,
+        ];
       }
     });
 
-    bothD1UpperCIs.forEach(function (arr) {
-      arr.forEach(function (val) {
-        if (+val > maxChartDValue) {
-          maxChartDValue = +val;
-        }
-      });
-    });
-
-    // chartD1UpperCI.forEach(function (val) {
-    //   if (+val > maxChartDValue) {
-    //     maxChartDValue = +val;
-    //   }
-    // });
-
-    // chartD1BUpperCI.forEach(function (val) {
-    //   if (+val > maxChartDValue) {
-    //     maxChartDValue = +val;
-    //   }
-    // });
-
-    // chartD1CUpperCI.forEach(function (val) {
-    //   if (+val > maxChartDValue) {
-    //     maxChartDValue = +val;
-    //   }
-    // });
-
-    maxChartDValue = Math.round(maxChartDValue);
-
-    console.log(maxChartDValue);
-
-    // chartD1.options.scales.yAxes[0].ticks.max = maxChartDValue;
-    // chartD1B.options.scales.yAxes[0].ticks.max = maxChartDValue;
-    // chartD1C.options.scales.yAxes[0].ticks.max = maxChartDValue;
-
+    var maxChartDValue = Math.round(
+      Math.max(...bothD1UpperCIs) + Math.max(...bothD1UpperCIs) / 5
+    );
     chartD1.options.scales.yAxes[0].ticks.max = maxChartDValue;
     chartD1B.options.scales.yAxes[0].ticks.max = maxChartDValue;
     chartD1C.options.scales.yAxes[0].ticks.max = maxChartDValue;
+
+    var maxChartD2Value = Math.max(...bothD2UpperCIs);
+    var maxChartD2BValue = Math.max(...bothD2BUpperCIs);
+    var maxChartD2CValue = Math.max(...bothD2CUpperCIs);
+
+    maxChartD2Value =
+      Math.round((maxChartD2Value + maxChartD2Value / 4) / 100000) * 100000;
+    maxChartD2BValue =
+      Math.round((maxChartD2BValue + maxChartD2BValue / 4) / 100000) * 100000;
+    maxChartD2CValue =
+      Math.round((maxChartD2CValue + maxChartD2CValue / 4) / 100000) * 100000;
+
+    chartD2.options.scales.yAxes[0].ticks.max = maxChartD2Value;
+    chartD2B.options.scales.yAxes[0].ticks.max = maxChartD2BValue;
+    chartD2C.options.scales.yAxes[0].ticks.max = maxChartD2CValue;
+
+    var maxChartD3Value = Math.max(...bothD3UpperCIs);
+    var maxChartD3BValue = Math.max(...bothD3BUpperCIs);
+    var maxChartD3CValue = Math.max(...bothD3CUpperCIs);
+
+    maxChartD2Value =
+      Math.round((maxChartD3Value + maxChartD3Value / 4) / 100000) * 100000;
+    maxChartD2BValue =
+      Math.round((maxChartD3BValue + maxChartD3BValue / 4) / 100000) * 100000;
+    maxChartD2CValue =
+      Math.round((maxChartD3CValue + maxChartD3CValue / 4) / 100000) * 100000;
+
+    chartD3.options.scales.yAxes[0].ticks.max = maxChartD3Value;
+    chartD3B.options.scales.yAxes[0].ticks.max = maxChartD3BValue;
+    chartD3C.options.scales.yAxes[0].ticks.max = maxChartD3CValue;
+
+    // LABELS
 
     if (currentEstYear == '2015') {
       var labels = ['Pre-vac', '2015 est.', 'Pre-vac', '2015 est.'];
@@ -2165,7 +2218,7 @@
     } else {
       var index = index2;
     }
-    console.log(chartCLabels);
+
     chartC.data.labels = chartCLabels.slice(index, chartCLabels.length);
 
     chartCData1 = chartCData1.slice(index, chartCData1.length);
