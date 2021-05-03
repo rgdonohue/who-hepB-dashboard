@@ -79,7 +79,7 @@
   });
 
   d3.queue()
-    .defer(d3.csv, './data/hepB-master-20201110.csv')
+    .defer(d3.csv, './data/hepB-master-20210422.csv')
     .defer(d3.csv, './data/seroprevalence_surveys-20201115.csv')
     .defer(d3.json, './data/who-countries.json')
     .defer(d3.json, './data/iso-codes.json')
