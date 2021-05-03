@@ -326,7 +326,7 @@
     var ctxGlobalC = document.getElementById('viz-global-c').getContext('2d');
 
     var chartGlobalCData = {
-      labels: ['Under 5 yrs', 'General pop'],
+      labels: ['Under 5 yrs', 'All Ages'],
       datasets: [
         {
           type: 'line',
@@ -944,7 +944,7 @@
     });
 
     var chartD3Data = {
-      labels: ['Under 5 yrs', 'General pop'],
+      labels: ['Under 5 yrs', 'All Ages'],
       datasets: [
         {
           type: 'line',
@@ -1005,7 +1005,7 @@
     });
 
     var chartD3BData = {
-      labels: ['Under 5 yrs', 'General pop'],
+      labels: ['Under 5 yrs', 'All Ages'],
       datasets: [
         {
           type: 'line',
@@ -1067,7 +1067,7 @@
     });
 
     var chartD3CData = {
-      labels: ['Under 5 yrs', 'General pop'],
+      labels: ['Under 5 yrs', 'All Ages'],
       datasets: [
         {
           type: 'line',
@@ -2292,7 +2292,7 @@
       'PreVer1-vac': 'PreVer1-vaccination',
       '2015 est.': '2015 estimate',
       'Under 5 yrs': 'Under 5 years',
-      'General pop': 'General Population',
+      'General pop': 'All Ages',
     };
 
     // Tooltip Element
